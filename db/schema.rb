@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(:version => 20130713123400) do
     t.datetime "updated_at",                                    :null => false
     t.string   "name_surname"
     t.date     "born"
-    t.integer  "pesel"
+    t.string   "pesel"
     t.string   "role",               :default => "user"
     t.integer  "potwierdzenie",      :default => 0
     t.string   "avatar",             :default => "/avatar.jpg"
