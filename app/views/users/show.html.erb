@@ -1,29 +1,25 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Username:</b>
-  <%= @user.username %>
+<p style="display:inline">
+<%= image_tag(@user.avatar, :class => "img-polaroid") %>
 </p>
-
+<h2 style="display:inline-block;margin:80px 0px 30px 20px;">
+<%= @user.username %> (<span style="text-transform:none;"><%= @user.name_surname %></span>)
+</h2>
+<pre>
 <p>
-  <b>Email:</b>
+  <b><i class="icon-envelope"></i> Email:</b>
   <%= @user.email %>
 </p>
-
 <p>
-  <b>Crypted password:</b>
-  <%= @user.crypted_password %>
+  <b><i class="icon-gift"></i> Urodziny:</b>
+  <%= @user.born %>
 </p>
-
 <p>
-  <b>Password salt:</b>
-  <%= @user.password_salt %>
+  <b><i class="icon-eye-open"></i> Ostatnia aktywność:</b>
+  <%= @user.last_request_at %>
 </p>
-
-<p>
-  <b>Persistence token:</b>
-  <%= @user.persistence_token %>
-</p>
+</pre>
 
 
 <%= link_to 'Edit', edit_user_path(@user) %> |

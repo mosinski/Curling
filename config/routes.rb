@@ -4,7 +4,7 @@ resources :users, :user_sessions
 match 'login' => 'user_sessions#new', :as => :login
 match 'logout' => 'user_sessions#destroy', :as => :logout
 match 'logowanie' => 'user_sessions#new', :as => :login
-match 'rejestracja' => 'users#new'
+match 'rejestracja' => 'users#new', :as => :rejestracja
 match 'about' => 'users_#about'
 match 'galeria' => 'users_#galeria'
 root :to => "users_#start"

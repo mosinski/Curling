@@ -1,167 +1,98 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>OSP Leśniewo</title>
-	<link rel="stylesheet" href="css/style.css" type="text/css">
-        <link href='http://fonts.googleapis.com/css?family=Exo:800italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-	<script type="text/javascript" src="/javascripts/jquery-1.9.1.min.js"></script>
-	<script type="text/javascript" src="/javascripts/bootstrap.js"></script>
+  <title>Gdańsk Curling Club</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<% if notice %>
-				<div class="notice">
-				<% if notice.match(/Uwaga!/) %>
-				<div class="alert alert-error">
-				<% elsif notice.match(/Gratulacje!/) %>
-				<div class="alert alert-success">
-				<% elsif notice.match(/Informacja!/) %>
-				<div class="alert alert-info">
-				<% end %>
-				    <button type="button" class="close" data-dismiss="alert">&times;</button>
-				    <strong><%= notice.html_safe %></strong>
-				</div>
-				</div>
-				<% end %>
-	<% if current_page?(:controller => 'users_', :action => 'start') %>
-	<div class="page page-home">
-	<% elsif current_page?(:controller => 'users_', :action => 'about') %>
-	<div class="page page-about">
-	<% else %>
-	<div class="page page-contact">
-	<% end %>
-		<div class="header">
-			<div>
-				<%= image_tag("herb.png", :class => "logo_herb") %>
-				<div style="margin-bottom:-37px;margin-top:-13px;">
-				<font style="color:white;font-family: 'Exo', sans-serif;font-size:40px;line-height:50px;">OCHOTNICZA STRAŻ POŻARNA <br>
-				<font style="color:red">w LEŚNIEWIE</font></font><span>Bogu na chwałę, ludziom na pożytek</span>
-				</div>
-				<ul>
-					<% if current_page?(:controller => 'users_', :action => 'start') %>
-					<li class="selected">
-					<% else %>
-					<li>
-					<% end %>
-						<a href="/">Start</a> <span>This is just a placeholder</span>
-					</li>
-					<li>
-						<a href="news.html">Aktualności</a> <span>This is just a placeholder</span>
-					</li>
-					<% if current_page?(:controller => 'users_', :action => 'galeria') %>
-					<li class="selected">
-					<% else %>
-					<li>
-					<% end %>
-						<a href="/galeria">Galeria</a> <span>This is just a placeholder</span>
-					</li>
-					<li>
-						<a href="contact.html">Zarząd</a> <span>This is just a placeholder</span>
-					</li>
-					<li>
-						<a href="contact.html">Kontakt</a> <span>This is just a placeholder</span>
-					</li>
-					<% if current_page?(:controller => 'users_', :action => 'about') %>
-					<li class="selected">
-					<% else %>
-					<li>
-					<% end %>
-						<a href="/about">O nas</a> <span>This is just a placeholder</span>
-					</li>
-				</ul>
-				<% if current_page?(:controller => 'users_', :action => 'galeria') %>
-				<% else %>
-				<div class="featured">
-					<h3>Lorem Ipsum Dolor Sit Amet</h3>
-					<p>
-						Vivamus dapibus fermentum
-					</p>
-					<a href="news.html">Read more&#62;&#62;</a>
-				</div>
-				<% end %>
-			</div>
+<div id="main">
+<!-- HEADER -->
+	<div id="header">	
+		<div class="site-nav">
+			<ul>
+				<li class="style1"><a href="home.html" class="act"><span>Start</span></a></li>
+				<li class="style2 dropdown"><a href="about-us.html" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><span>O Klubie</span></a>
+				<ul class="dropdown-menu">
+          				<li><a tabindex="-1" href="#">Media</a></li>
+          				<li><a tabindex="-1" href="sitemap.html">Dojazd</a></li>
+        </ul>
+				</li>
+				<li class="style3"><a href="articles.html"><span>Aktualnosci</span></a></li>
+				<li class="style5"><a href="sitemap.html"><span>Galeria</span></a></li>
+				<li class="style4"><a href="contact-us.html"><span>Kontakt</span></a></li>
+			</ul>
 		</div>
-		<div class="body">
-			<%= yield %>
-			<div class="sidebar">
-				<h4>Featured</h4>
-				<ul>
-					<li>
-						<a href="news.html"><%= image_tag("fireman4.jpg") %></a>
-						<div>
-							<h3>Featured Title One</h3>
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dapibus fermentum elit. Suspendisse potenti. Cras eget
-							</p>
-							<a href="news.html">Read more&#62;&#62;</a>
+		<div class="logo">
+			<div class="napis">
+			Gdańsk<br>
+			Curling<br>
+			Club
+
+			</div>
+			<a href="home.html">
+				<%= image_tag("logo.gif") %>
+			</a>
+		</div>
+	</div>
+<!-- CONTENT -->
+	<div id="content"><div class="inner_copy">More <a href="http://www.templates.com/">Website Templates</a> @ Templates.com!</div>
+		<div class="wrapper">
+			<div class="col-1">
+				<div class="box">
+					<div class="border-top">
+						<div class="left-top-corner">
+							<div class="right-top-corner">
+								<div class="inner">
+									<h3>Kalendarz Imprez:</h3>
+									<ul class="list">
+										<li><b><a href="#">February 15, 2010</a></b>Sed ut perspiciatis unde omnis iste natus	dolorque laudantium aperiam.</li>
+										<li><b><a href="#">February 07, 2010</a></b>Eaque ipsa quae ab illo inventore veritatis explicabo emo enim.</li>
+										<li><b><a href="#">January 31, 2010</a></b>Gpsam voluptatem quia voluptas sit ed quia consequuntur magni dolores eos qui.</li>
+									</ul>
+								</div>
+							</div>
 						</div>
-					</li>
-					<li>
-						<a href="news.html"><%= image_tag("fireman5.jpg") %></a>
-						<div>
-							<h3>Featured Title One</h3>
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dapibus fermentum elit. Suspendisse potenti. Cras eget
-							</p>
-							<a href="news.html">Read more&#62;&#62;</a>
+					</div>
+				</div>
+				<div class="box">
+					<div class="border-top">
+						<div class="left-top-corner">
+							<div class="right-top-corner">
+								<div class="inner">
+									<h3>Nasi Sponsorzy:</h3>
+									
+										<div class="button"><a href="#" onclick="document.getElementById('form').submit()"><em><b>Vote<span>Vote</span></b></em></a></div>
+									</form>
+								</div>
+							</div>
 						</div>
-					</li>
-				</ul>
-				<h4>Sign-up For Updates</h4>
-				<form action="index.html">
-					<input type="text" onclick="this.value='';" onfocus="this.select()" onblur="this.value=!this.value?'Enter e-mail address':this.value;" value="Enter e-mail address" id="email">
-					<input type="submit" value="">
-				</form>
-			</div>
-			<div class="section">
-				<div>
-					<h4>Galeria</h4>
-					<ul>
-						<li>
-							<a href="gallery.html"><%= image_tag("fireman1.jpg") %></a>
-						</li>
-						<li>
-							<a href="gallery.html"><%= image_tag("fireman2.jpg") %></a>
-						</li>
-						<li>
-							<a href="gallery.html"><%= image_tag("fireman3.jpg") %></a>
-						</li>
-					</ul>
-				</div>
-				<div class="connect">
-					<h4>Social</h4>
-					<a href="http://freewebsitetemplates.com/go/twitter/" id="twitter">twitter</a> <a href="http://freewebsitetemplates.com/go/facebook/" id="fb">fb</a> <a href="http://freewebsitetemplates.com/go/googleplus/" id="googleplus">google+</a> <a href="http://freewebsitetemplates.com/go/youtube/" id="vimeo">vimeo</a>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="footer">
-			<div>
-				<ul>
-					<li>
-						<a href="/">Home</a>
-					</li>
-					<li>
-						<a href="/about">About</a>
-					</li>
-					<li>
-						 <% if current_user %>
-						<%= current_user.username %>
-						<%= link_to "Wyloguj", :logout%>
-						<% else %>
-						<%= link_to "Logowanie", :login %>
-						<% end %>
-					</li>
-					<li>
-						<a href="contact.html">Contact</a>
-					</li>
-				</ul>
-				<p>
-					&#169; Copyright &#169; <%= Time.now.year %>. OSP Leśniewo all rights reserved.
-				</p>
+			<div class="col-2">
+				<%= yield %>
 			</div>
 		</div>
+	</div>
+
+<!-- FOOTER -->
+	<div id="footer">
+		<div class="indent">
+			<div class="fleft">Copyright © 2013 gdanskcurlingclub.pl</div>
+			<div class="fright">
+			<% if current_user %>
+				<i class="icon-user"></i> <%= current_user.username %> |
+				<i class="icon-off"></i> <%= link_to "Wyloguj", :logout %>
+			<% else %>
+				<%= link_to "Logowanie", :login %> |
+				<%= link_to "Rejestracja", new_user_path %>
+			<% end %>
+			Projekt: <%= link_to "Miłosz Osiński" , "http://m1l05z.pl" %> 
+			</div>
+		</div>
+	</div>
 </div>
 </body>
 </html>
