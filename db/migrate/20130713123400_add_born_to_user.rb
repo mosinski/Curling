@@ -2,7 +2,7 @@ class AddBornToUser < ActiveRecord::Migration
   def change
     add_column :users, :name_surname, :string
     add_column :users, :born, :date
-    add_column :users, :pesel, :bigint
+    add_column :users, :pesel, :string
     add_column :users, :role, :string, :default => "user"
     add_column :users, :potwierdzenie, :integer, :default => 0
     add_column :users, :avatar, :string, :default => "/avatar.jpg"
