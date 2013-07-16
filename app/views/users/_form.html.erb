@@ -1,5 +1,5 @@
 <%= form_for(@user) do |f| %>
-<% if @user.errors.any? %>
+ <% if @user.errors.any? %>
     <div id="error_explanation">
     <% if  (@user.errors.count) == 1  %>
       <h2>Użytkownik nie został stworzony z powodu jednego błędu</h2>
@@ -25,6 +25,7 @@
 <div class="field">
     <%= f.label :Data_urodzenia %>
     <%= f.date_select :born, :order => [:day, :month, :year], "style" => "width:50px"  %>
+</div>
 <div class="field">
   <%= f.label :email %>
   <%= f.text_field :email %>
@@ -43,6 +44,8 @@
 </div>
 <br />
  <div class="actions">
-     <%= f.submit :value => 'Zrejestruj', "style" => "height:35px;width:100px;font-weight:bold;cursor:pointer;" %>
+     <button type="submit" class="btn btn-primary">
+  	<i class="icon-check"></i> Zarejestruj
+     </button>
 </div>
 <% end %>
