@@ -49,7 +49,12 @@
 					<li>
 					<% end %>
 					<a href="/"><i class="icon-home"></i> Start</a></li>
-    					<li><a href="/users/"><i class="icon-user"></i> Użytkownicy</a></li>
+					<% if current_page?("/users") %>
+					<li class="active">
+					<% else %>
+    					<li>
+					<% end %>
+					<a href="/users/"><i class="icon-user"></i> Użytkownicy</a></li>
 					<li><a><i class="icon-wrench"></i> Ustawienia</a></li>
     				</ul>
     			    </div>
@@ -79,7 +84,9 @@
 									<center>
 									<%= image_tag("browar.png") %><br /><br />
 									<%= image_tag("mm.jpg") %><br /><br />
-									<%= image_tag("gdansk.jpg") %>
+									<%= image_tag("gdansk.jpg") %><br /><br />
+									<%= image_tag("gedanum.jpg") %><br /><br />
+									<%= image_tag("gak.jpg") %>
 									</center>
 								</div>
 							</div>

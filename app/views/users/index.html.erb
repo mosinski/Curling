@@ -1,10 +1,11 @@
-<h4>Listing users</h4>
+<h3>Lista Użytkowników</h3>
  
-<table>
+<table class="table">
 <tr>
-<th>Username</th>
+<th>Nick</th>
 <th>Email</th>
 <th>Zakceptowany</th>
+<th></th>
 <th></th>
 <th></th>
 <th></th>
@@ -21,13 +22,32 @@
 	Nie 
     <% end %>
 </td>
-<td><%= link_to 'Show', user %></td>
-<td><%= link_to 'Edit', edit_user_path(user) %></td>
-<td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
+<td>
+    <% if user.potwierdzenie == 1 %>
+	<%= link_to({:controller => "users", :action => "odwolaj", :id => user.id}, {:class => "btn btn-small btn-danger"}) do %>
+  		<i class="icon-thumbs-down"></i> Odwołaj
+	<% end %>
+    <% elsif user.potwierdzenie == 0 %> 
+	<%= link_to({:controller => "users", :action => "potwierdz", :id => user.id}, {:class => "btn btn-small btn-success"}) do %>
+  		<i class="icon-thumbs-up"></i> Potwierdź
+	<% end %>
+    <% end %>
+</td>
+<td>
+<%= link_to user, :class => "btn btn-small btn-primary" do %>
+  <i class="icon-eye-open"></i> Pokaż
+<% end %>
+</td>
+<td>
+<%= link_to edit_user_path(user), :class => "btn btn-small btn-inverse" do %>
+  <i class="icon-edit"></i> Edytuj
+<% end %>
+</td>
+<td>
+<%= link_to user, :confirm => "Czy napewno chcesz usunąć użytkownika #{user.username}?", :method => :delete, :class => "btn btn-small btn-danger" do %>
+  <i class="icon-trash"></i> Usuń
+<% end %>
+</td>
 </tr>
 <% end %>
 </table>
- 
-<br />
- 
-<%= link_to 'New User', new_user_path %>

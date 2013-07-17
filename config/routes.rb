@@ -9,6 +9,9 @@ match 'about' => 'users_#about'
 match 'galeria' => 'users_#galeria'
 root :to => "users_#start"
 
+match 'potwierdz/:id' => 'users#potwierdz', :as => 'potwierdz'
+match 'odwolaj/:id' => 'users#odwolaj', :as => 'odwolaj'
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

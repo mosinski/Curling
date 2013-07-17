@@ -120,4 +120,20 @@ if current_user
         redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
     end
   end
+
+  def potwierdz
+    @user = User.find(params[:id])
+    if @user.potwierdzenie == 0 && current_user.role == "admin"
+    @user.increment!(:potwierdzenie)
+    end
+    redirect_to users_path
+  end
+
+  def odwolaj
+    @user = User.find(params[:id])
+    if @user.potwierdzenie == 1 && current_user.role == "admin"
+    @user.decrement!(:potwierdzenie)
+    end
+    redirect_to users_path			
+  end
 end
