@@ -1,6 +1,7 @@
-<h3>Lista Użytkowników</h3>
+<h3><i class="icon-user"></i> Lista Użytkowników</h3>
  
-<table class="table">
+<table class="table table-hover">
+<thead>
 <tr>
 <th>Nick</th>
 <th>Email</th>
@@ -10,43 +11,50 @@
 <th></th>
 <th></th>
 </tr>
+</thead>
  
 <% @users.each do |user| %>
 <tr>
 <td><%= user.username %></td>
 <td align="center"><%= user.email %></td>
 <td align="center">
+<b>
     <% if user.potwierdzenie == 1 %> 
 	Tak 
     <% elsif user.potwierdzenie == 0 %> 
 	Nie 
     <% end %>
+</b>
 </td>
 <td>
-    <% if user.potwierdzenie == 1 %>
+    <% if user.potwierdzenie == 1 && current_user.role == "admin" %>
 	<%= link_to({:controller => "users", :action => "odwolaj", :id => user.id}, {:class => "btn btn-small btn-danger"}) do %>
   		<i class="icon-thumbs-down"></i> Odwołaj
 	<% end %>
-    <% elsif user.potwierdzenie == 0 %> 
+    <% elsif user.potwierdzenie == 0 && current_user.role == "admin" %> 
 	<%= link_to({:controller => "users", :action => "potwierdz", :id => user.id}, {:class => "btn btn-small btn-success"}) do %>
   		<i class="icon-thumbs-up"></i> Potwierdź
 	<% end %>
     <% end %>
 </td>
 <td>
-<%= link_to user, :class => "btn btn-small btn-primary" do %>
-  <i class="icon-eye-open"></i> Pokaż
-<% end %>
+	<%= link_to user, :class => "btn btn-small btn-primary" do %>
+  		<i class="icon-eye-open"></i> Pokaż
+	<% end %>
 </td>
 <td>
-<%= link_to edit_user_path(user), :class => "btn btn-small btn-inverse" do %>
-  <i class="icon-edit"></i> Edytuj
-<% end %>
+    <% if (user.username == current_user.username) || (current_user.role == "admin") %>
+	<%= link_to edit_user_path(user), :class => "btn btn-small btn-inverse" do %>
+  		<i class="icon-edit"></i> Edytuj
+	<% end %>
+    <% end %>
 </td>
 <td>
-<%= link_to user, :confirm => "Czy napewno chcesz usunąć użytkownika #{user.username}?", :method => :delete, :class => "btn btn-small btn-danger" do %>
-  <i class="icon-trash"></i> Usuń
-<% end %>
+    <% if current_user.role == "admin" %>
+	<%= link_to user, :confirm => "Czy napewno chcesz usunąć użytkownika #{user.username}?", :method => :delete, :class => "btn btn-small btn-danger" do %>
+  		<i class="icon-trash"></i> Usuń
+	<% end %>
+    <% end %>
 </td>
 </tr>
 <% end %>
