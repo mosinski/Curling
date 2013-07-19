@@ -7,20 +7,20 @@
 <%= @user.username %> (<span style="text-transform:none;"><%= @user.name_surname %></span>)
 </h2>
 <pre>
-<p>
+<div style="display:inline-block">
   <b><i class="icon-envelope"></i> Email:</b>
   <%= @user.email %>
-</p>
-<p>
+</div>
+<div style="display:inline-block">
   <b><i class="icon-gift"></i> Urodziny:</b>
-  <%= @user.born %>
-</p>
-<p>
+  <%=I18n.l @user.born, :format => "%d %B %Y" %>
+</div>
+<div style="display:inline-block">
   <b><i class="icon-eye-open"></i> Ostatnia aktywność:</b>
-  <%= @user.last_request_at %>
-</p>
+  <%=I18n.l @user.last_request_at, :format => :long   %>
+</div>
 </pre>
 
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to new_user_message_path(@user), class: "btn btn-primary input-medium pull-left" do %>
+	<i class="icon-share"></i> Wyślij wiadomość
+<% end %>

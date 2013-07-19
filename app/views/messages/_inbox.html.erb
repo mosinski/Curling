@@ -1,0 +1,42 @@
+<h3><i class="icon-inbox"></i> Skrzynka Odbiorcza</h3>
+<table class="table table-condensed table-hover">
+ <thead>
+	<tr>
+		<th>Del?</th>
+		<th>Temat</th>
+		<th>Od</th>
+		<th>Data</th>
+	</tr>
+ </thead>
+	<% if @messages.size == 0 %>
+		<tr>
+			<td colspan="4">
+				Brak wiadomości
+			</td>
+		</tr>
+	<% else %>
+		<% for message in @messages %>
+			<tr>
+				<td style="padding-left:15px"><%= check_box_tag "delete[]", message.id %></td>
+				<td>
+					<% if message.message_read? %>
+					  <%= link_to h(message.subject), user_message_path(@user, message) %>
+					<% else %>
+					  <strong><%= link_to "#{h(message.subject)} (unread)", user_message_path(@user, message) %></strong>
+					<% end %>
+				</td>
+				<td><%= link_to h(message.sender.username), user_path(message.sender) %></td>
+		    <td><%= I18n.l message.created_at, :format => :long %></td>
+			</tr>
+		<% end %>
+	<thead>
+		<tr>
+			<td colspan="4">
+				<%= button_tag(type: "submit", class: "btn btn-default") do %>
+					<i class="icon-trash"></i>
+				<% end %>
+			</td>
+		</tr>
+	</thead>
+	<% end %>
+</table>

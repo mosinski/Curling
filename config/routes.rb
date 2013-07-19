@@ -1,6 +1,14 @@
 Osp::Application.routes.draw do
 
-resources :users, :user_sessions
+  resources :users do
+             resources :messages do
+               collection do
+                 post :delete_selected
+               end
+             end
+           end
+
+resources :user_sessions
 match 'login' => 'user_sessions#new', :as => :login
 match 'logout' => 'user_sessions#destroy', :as => :logout
 match 'logowanie' => 'user_sessions#new', :as => :login

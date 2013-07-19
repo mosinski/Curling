@@ -1,0 +1,21 @@
+<div class="span6">
+<%= form_for @message, :url => user_messages_path(@user) do |f| %>
+  <p style="display:none;">
+		<%= f.text_field :to, :value => @user.username %>
+
+  </p>
+ <div class="controls controls-row">
+    <%= f.text_field :subject, :class => "span4", :placeholder => "Temat wiadomości..." %>
+ </div>
+
+ <div class="controls">
+      <%= f.text_area :body, :class => "span5", :placeholder => "Treść wiadomości..." %>
+ </div>
+
+ <div class="controls">
+	<%= button_tag(type: "submit", class: "btn btn-primary input-medium pull-left") do %>
+		<i class="icon-share"></i> Wyślij
+	<% end %>
+ </div>
+<% end %>
+</div>	

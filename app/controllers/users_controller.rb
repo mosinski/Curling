@@ -17,17 +17,13 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-  if current_user
+    if current_user
     @user = User.find(params[:id])
-       if (current_user.username == 'Administrator')||(current_user.username == @user.username)
 
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @user }
     end
-	else
-  	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnie&#324;!'
-  	end
     else
         redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
     end

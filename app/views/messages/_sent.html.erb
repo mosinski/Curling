@@ -1,0 +1,35 @@
+<h3><i class="icon-envelope"></i> Wysłane Wiadomości</h3>
+<table class="table table-condensed table-hover">
+    <thead>
+	<tr>
+		<th>Del?</th>
+		<th>Temat</th>
+		<th>Do</th>
+		<th>Data</th>
+	</tr>
+    </thead>
+	<% if @messages.size == 0 %>
+		<tr>
+			<td colspan="4">
+				Brak wiadomości
+			</td>
+		</tr>
+	<% else %>
+		<% for message in @messages %>
+			<tr>
+				<td style="padding-left:15px"><%= check_box_tag "delete[]", message.id %></td>
+				<td><%= link_to h(message.subject), user_message_path(@user, message) %></td>
+  			<td><%= link_to h(message.recipient.username), user_path(message.recipient) %></td>
+			  <td><%= I18n.l message.created_at, :format => :long %></td>
+			</tr>
+		<% end %>
+	<thead>
+		<tr>
+			<td colspan="4">
+				<%= button_tag(type: "submit", class: "btn btn-default") do %>
+					<i class="icon-trash"></i>
+				<% end %>
+		</tr>
+	</thead>
+ 	<% end %>
+</table>
