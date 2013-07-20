@@ -2,11 +2,11 @@
  <% if @user.errors.any? %>
     <div id="error_explanation">
     <% if  (@user.errors.count) == 1  %>
-      <h2>Użytkownik nie został stworzony z powodu jednego błędu</h2>
+      <h4>Użytkownik nie został stworzony z powodu jednego błędu</h4>
     <% elsif (@user.errors.count) > 1 %>
-        <h2>Użytkownik nie został stworzony z powodu <%= @user.errors.count %> błędów</h2>
+        <h4>Użytkownik nie został stworzony z powodu <%= @user.errors.count %> błędów</h4>
     <% end %>
-      <ul>
+      <ul style="background:none repeat scroll 0% 0% rgb(245, 245, 245);padding:10px;">
       <% @user.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
@@ -16,11 +16,11 @@
  
 <div class="field">
   <%= f.label :Nazwa_Użytkownika %>
-  <%= f.text_field :username %>
+  <%= f.text_field :username, :placeholder => "jkowalski" %>
 </div>
 <div class="field">
   <%= f.label :Imię_i_Nazwisko %>
-  <%= f.text_field :name_surname %>
+  <%= f.text_field :name_surname, :placeholder => "Jan Kowalski" %>
 </div>
 <div class="field">
     <%= f.label :Data_urodzenia %>
@@ -28,11 +28,11 @@
 </div>
 <div class="field">
   <%= f.label :email %>
-  <%= f.text_field :email %>
+  <%= f.text_field :email, :placeholder => "jkowalski@gmail.com" %>
 </div>
 <div class="field">
   <%= f.label :pesel %>
-  <%= f.number_field :pesel %>
+  <%= f.number_field :pesel, :placeholder => "88062542184" %>
 </div>
  <div class="field">
   <%= f.label :hasło %>
