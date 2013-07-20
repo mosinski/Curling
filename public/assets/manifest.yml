@@ -1,37 +1,4 @@
 ---
-!binary "T3BlblNhbnMtUmVndWxhci5lb3Q=": OpenSans-Regular-84d53d963ab66f135013237ca15ed175.eot
-!binary "T3BlblNhbnMtUmVndWxhci5vdGY=": OpenSans-Regular-c2b654f83899bc815e1ee8d16741e289.otf
-!binary "T3BlblNhbnMtUmVndWxhci5zdmc=": OpenSans-Regular-624dfbb936c48dae2e04e0d48a1c1818.svg
-!binary "T3BlblNhbnMtUmVndWxhci50dGY=": OpenSans-Regular-61b855390f8099ea1ac5771ea37e7d09.ttf
-!binary "T3BlblNhbnMtUmVndWxhci53b2Zm": OpenSans-Regular-93706d2481e2635244f7def62b832d99.woff
-!binary "ZXhvLWJvbGQtd2ViZm9udC5lb3Q=": exo-bold-webfont-bc4f98a6ec579234e85c5978311aa8be.eot
-!binary "ZXhvLWJvbGQtd2ViZm9udC5zdmc=": exo-bold-webfont-7e0e5ae3ef63b4238a6545f5a1ddae4b.svg
-!binary "ZXhvLWJvbGQtd2ViZm9udC50dGY=": exo-bold-webfont-4542e8309d403266e85acdf3e727f68d.ttf
-!binary "ZXhvLWJvbGQtd2ViZm9udC53b2Zm": exo-bold-webfont-c6750593f9336064eaf1698186ddda40.woff
-!binary "ZXhvLWJvbGRpdGFsaWMtd2ViZm9udC5lb3Q=": exo-bolditalic-webfont-4df63ff26274ea15a403ea51ce430377.eot
-!binary "ZXhvLWJvbGRpdGFsaWMtd2ViZm9udC5vdGY=": exo-bolditalic-webfont-3482b14a6979dbed27c37f06d57430fc.otf
-!binary "ZXhvLWJvbGRpdGFsaWMtd2ViZm9udC5zdmc=": exo-bolditalic-webfont-d38b6475a87c1f4be0d5a3c1b1f34bca.svg
-!binary "ZXhvLWJvbGRpdGFsaWMtd2ViZm9udC50dGY=": exo-bolditalic-webfont-b5893a429e3f4635b432fabc1c30ca77.ttf
-!binary "ZXhvLWJvbGRpdGFsaWMtd2ViZm9udC53b2Zm": exo-bolditalic-webfont-ac3220b7b633f486322f0a18086cb8fd.woff
-!binary "ZXhvLWV4dHJhbGlnaHQtd2ViZm9udC5lb3Q=": exo-extralight-webfont-7396d25a9b5b5519c4534a2e5253e44c.eot
-!binary "ZXhvLWV4dHJhbGlnaHQtd2ViZm9udC5vdGY=": exo-extralight-webfont-6f95cc3318858b3840baba50147be254.otf
-!binary "ZXhvLWV4dHJhbGlnaHQtd2ViZm9udC5zdmc=": exo-extralight-webfont-2242af2660335e89f17af359c001db1b.svg
-!binary "ZXhvLWV4dHJhbGlnaHQtd2ViZm9udC50dGY=": exo-extralight-webfont-ca3ae372d5ed0bb38103c37e4223fdda.ttf
-!binary "ZXhvLWV4dHJhbGlnaHQtd2ViZm9udC53b2Zm": exo-extralight-webfont-a09c17aa16fcbe10364b56c483769c63.woff
-!binary "ZXhvLWV4dHJhbGlnaHRpdGFsaWMtd2ViZm9udC5lb3Q=": exo-extralightitalic-webfont-bf700ef2511ec72fcafba60907fc0852.eot
-!binary "ZXhvLWV4dHJhbGlnaHRpdGFsaWMtd2ViZm9udC5zdmc=": exo-extralightitalic-webfont-382fe4268760ba58f979badf148ccef7.svg
-!binary "ZXhvLWV4dHJhbGlnaHRpdGFsaWMtd2ViZm9udC50dGY=": exo-extralightitalic-webfont-3e7bfa895bdd61e2884fd0bd4c56c8e6.ttf
-!binary "ZXhvLWV4dHJhbGlnaHRpdGFsaWMtd2ViZm9udC53b2Zm": exo-extralightitalic-webfont-aa2dd512c73734bd534b3b2f1da30f43.woff
-!binary "ZXhvLWxpZ2h0aXRhbGljLXdlYmZvbnQuZW90": exo-lightitalic-webfont-64331d9b3fd63bba75952aff25df7442.eot
-!binary "ZXhvLWxpZ2h0aXRhbGljLXdlYmZvbnQub3Rm": exo-lightitalic-webfont-bfaf53f0fb3956dc3bad8524a56aec4f.otf
-!binary "ZXhvLWxpZ2h0aXRhbGljLXdlYmZvbnQuc3Zn": exo-lightitalic-webfont-9bed6b30b87fd398d760f60bc43c21b0.svg
-!binary "ZXhvLWxpZ2h0aXRhbGljLXdlYmZvbnQudHRm": exo-lightitalic-webfont-12e7922c1bd81137af7f25149faa48d4.ttf
-!binary "ZXhvLWxpZ2h0aXRhbGljLXdlYmZvbnQud29mZg==": exo-lightitalic-webfont-093ac95bb1d0f3aa6884cb1418b9e41a.woff
-!binary "ZXhvLXJlZ3VsYXItd2ViZm9udC5lb3Q=": exo-regular-webfont-2224a74c983437bf447e9ecc2b534750.eot
-!binary "ZXhvLXJlZ3VsYXItd2ViZm9udC5vdGY=": exo-regular-webfont-b8def587036bfd9cc3b65d7890fbb966.otf
-!binary "ZXhvLXJlZ3VsYXItd2ViZm9udC5zdmc=": exo-regular-webfont-3d11a680b739e46642485786e41c086d.svg
-!binary "ZXhvLXJlZ3VsYXItd2ViZm9udC50dGY=": exo-regular-webfont-f24ee1a1ec022e5369f3bc53138e58b6.ttf
-!binary "ZXhvLXJlZ3VsYXItd2ViZm9udC53b2Zm": exo-regular-webfont-662f3d9ebfc74502ca86bbe472979865.woff
 !binary "MnBhZ2UtaW1nMS5qcGc=": 2page-img1-52069bc107f30d5b2e57926832011980.jpg
 !binary "MnBhZ2UtaW1nMi5qcGc=": 2page-img2-478948f6169bbabe5a3bad1f59e9e4cf.jpg
 !binary "MnBhZ2UtaW1nMy5qcGc=": 2page-img3-72409a1fc12fe3a936866c0097e2bceb.jpg
@@ -77,15 +44,15 @@
 !binary "cmlnaHQtdG9wLWNvcm5lci5naWY=": right-top-corner-43a407a7b435eb543378ee2a788af7d4.gif
 !binary "c3BhY2VyLmdpZg==": spacer-f561b1c264ed4bdb4ebfaacbe1b8313a.gif
 !binary "dGVtcGxhdGVzLWxvZ28uZ2lm": templates-logo-2e90ec7810c81616f62d980511379090.gif
-!binary "YXBwbGljYXRpb24uanM=": application-41b4aef7b8d02ea9c5e80c23dfe42f71.js
-!binary "YXBwbGljYXRpb24uY3Nz": application-db77cbead28c5bd890b6e652803732e0.css
-!binary "Zm9udGF3ZXNvbWUtd2ViZm9udC5lb3Q=": fontawesome-webfont-7cf1b0de49e2f8672c9ad6d9e382115f.eot
-!binary "Zm9udGF3ZXNvbWUtd2ViZm9udC5zdmc=": fontawesome-webfont-4d19fdd70a080778557b652cb4868557.svg
-!binary "Zm9udGF3ZXNvbWUtd2ViZm9udC50dGY=": fontawesome-webfont-1e29be0bb354c9f664cbca7df9a966d8.ttf
-!binary "Zm9udGF3ZXNvbWUtd2ViZm9udC53b2Zm": fontawesome-webfont-9c0e35b95bf9cea29c77678ebf71a29d.woff
+!binary "YXBwbGljYXRpb24uanM=": application-b44634c05fde180fc7e5129842ebaa67.js
+!binary "YXBwbGljYXRpb24uY3Nz": application-eec40f8d0511bcf0d2c303b7e9cdfda7.css
+!binary "Zm9udGF3ZXNvbWUtd2ViZm9udC5lb3Q=": fontawesome-webfont-d7a865d33c72e692a4e89b0c0c4d826e.eot
+!binary "Zm9udGF3ZXNvbWUtd2ViZm9udC5zdmc=": fontawesome-webfont-703a7ba6fde560b14dd4b85a23fb9b57.svg
+!binary "Zm9udGF3ZXNvbWUtd2ViZm9udC50dGY=": fontawesome-webfont-e959b6b345c4bfee7467ada467629a2b.ttf
+!binary "Zm9udGF3ZXNvbWUtd2ViZm9udC53b2Zm": fontawesome-webfont-e9c915040514e887cdf8091afe7c7c83.woff
 ? !binary |-
   dHdpdHRlci9ib290c3RyYXAvZ2x5cGhpY29ucy1oYWxmbGluZ3Mtd2hpdGUu
   cG5n
 : twitter/bootstrap/glyphicons-halflings-white-13553a5bf21ae3cc374006592488ec64.png
-!binary "dHdpdHRlci9ib290c3RyYXAvZ2x5cGhpY29ucy1oYWxmbGluZ3MucG5n": twitter/bootstrap/glyphicons-halflings-f6675c325532ec11a984d58e172b8e2a.png
-!binary "anF1ZXJ5Lm1pbi5tYXA=": jquery.min-0633f0a59e3d0cd55ac3518f228b2893.map
+!binary "dHdpdHRlci9ib290c3RyYXAvZ2x5cGhpY29ucy1oYWxmbGluZ3MucG5n": twitter/bootstrap/glyphicons-halflings-ab3144065a860d198f1d7d9a4882640c.png
+!binary "anF1ZXJ5Lm1pbi5tYXA=": jquery.min-70bec01470bf6bcfed5892ae554b38c8.map
