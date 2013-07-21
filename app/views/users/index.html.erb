@@ -28,11 +28,11 @@
 </b>
 </td>
 <td>
-    <% if user.potwierdzenie == 1 && current_user.role == "admin" %>
+    <% if user.potwierdzenie == 1 && current_user.role == "admin" && user.role != "admin" %>
 	<%= link_to({:controller => "users", :action => "odwolaj", :id => user.id}, {:class => "btn btn-small btn-danger"}) do %>
   		<i class="icon-thumbs-down"></i> Odwołaj
 	<% end %>
-    <% elsif user.potwierdzenie == 0 && current_user.role == "admin" %> 
+    <% elsif user.potwierdzenie == 0 && current_user.role == "admin" && user.role != "admin" %> 
 	<%= link_to({:controller => "users", :action => "potwierdz", :id => user.id}, {:class => "btn btn-small btn-success"}) do %>
   		<i class="icon-thumbs-up"></i> Potwierdź
 	<% end %>

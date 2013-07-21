@@ -122,7 +122,7 @@ if current_user
     if @user.potwierdzenie == 0 && current_user.role == "admin"
     @user.increment!(:potwierdzenie)
     end
-    redirect_to users_path
+    redirect_to users_path, :notice => 'Informacja! U&#380;ytkownik zosta&#322; potwierdzony'
   end
 
   def odwolaj
@@ -130,6 +130,6 @@ if current_user
     if @user.potwierdzenie == 1 && current_user.role == "admin"
     @user.decrement!(:potwierdzenie)
     end
-    redirect_to users_path			
+    redirect_to users_path, :notice => 'Informacja! U&#380;ytkownik zosta&#322; odwo&#322;any'	
   end
 end
