@@ -64,7 +64,7 @@ def create
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to( root_url, :notice => 'Informacja! Konto zarejestrowane!') }
+        format.html { redirect_to( root_url, :notice => '<h4>Informacja!</h4> Konto zarejestrowane!.<br>Twoje konto czeka teraz na potwierdzenie przez Administratora.') }
         format.xml { render :xml => @user, :status => :created, :location => @user }
       else
         format.html { render :action => "new" }

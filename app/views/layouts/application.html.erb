@@ -19,7 +19,7 @@
           				<li><a tabindex="-1" href="sitemap.html">Dojazd</a></li>
         </ul>
 				</li>
-				<li class="style3"><a href="articles.html"><span>Aktualnosci</span></a></li>
+				<li class="style3"><a href="articles.html"><span>Aktualności</span></a></li>
 				<li class="style5"><a href="sitemap.html"><span>Galeria</span></a></li>
 				<li class="style4"><a href="contact-us.html"><span>Kontakt</span></a></li>
 			</ul>
@@ -39,6 +39,20 @@
 <!-- CONTENT -->
 	<div id="content">
 		<div class="wrapper">
+				<% if notice %>
+				<div class="notice">
+				<% if notice.match(/Uwaga!/) %>
+				<div class="alert alert-error">
+				<% elsif notice.match(/Gratulacje!/) %>
+				<div class="alert alert-success">
+				<% elsif notice.match(/Informacja!/) %>
+				<div class="alert alert-info">
+				<% end %>
+				    <button type="button" class="close" data-dismiss="alert">&times;</button>
+				    <strong><%= notice.html_safe %></strong>
+				</div>
+				</div>
+				<% end %>
 			<div align="right" style="margin-top: 5px;">Dzisiaj: <%= I18n.l Time.now, :format => "%A, %d %B, %Y" %></div>
 			<div class="col-1">
 			  <% if current_user %>

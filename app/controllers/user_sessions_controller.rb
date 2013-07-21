@@ -19,11 +19,20 @@ end
 # POST /user_sessions.xml
 def create
   @user_session = UserSession.new(params[:user_session])
- 
+  
+
 	respond_to do |format|
 	 if @user_session.save
+	  @username = User.find_by_username(current_user.username)
+	  if @username.potwierdzenie == 1
 	   format.html { redirect_to(root_url, :notice => "Informacja! U&#380;ytkownik zalogowany") }
 	   format.xml { render :xml => @user_session, :status => :created, :location => @user_session }
+          else
+	   @user_session = UserSession.find
+	   @user_session.destroy
+	   format.html { redirect_to(root_url, :notice => '<h4>Uwaga!</h4> U&#380;ytkownik <u>niepotwierdzony</u> przez Administratora.<br>O potwierdzeniu zostaniesz poinformowany na maila podanego przy rejestracji.')}
+	   format.xml { head :ok }
+	  end
 	 else
 	   format.html { render :action => "new" }
 	   format.xml { render :xml => @user_session.errors, :status => :unprocessable_entity }
