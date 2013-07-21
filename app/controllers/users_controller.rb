@@ -63,7 +63,7 @@ def create
     @user = User.new(params[:user])
 
     respond_to do |format|
-      if @user.save
+      if @user.save_without_session_maintenance 
         format.html { redirect_to( root_url, :notice => '<h4>Informacja!</h4> Konto zarejestrowane!.<br>Twoje konto czeka teraz na potwierdzenie przez Administratora.') }
         format.xml { render :xml => @user, :status => :created, :location => @user }
       else
