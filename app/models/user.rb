@@ -3,6 +3,6 @@ class User < ActiveRecord::Base
     
     has_private_messages
 
-  validates :pesel, length: { in: 11..11 }, allow_blank: false
+  validates :pesel, length: { in: 11..11 }, allow_blank: false, :uniqueness => true, :numericality => true
   validates :name_surname, :format => { :with => /^[^0-9`!@#\$%\^&*+_=]+$/, :message => 'ma niepoprawny format.' }, allow_blank: false
 end
