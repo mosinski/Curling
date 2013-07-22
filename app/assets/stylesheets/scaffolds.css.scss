@@ -1,10 +1,15 @@
 /* TAGS */
 @font-face {
-	font-family: 'Conv_MarcellusSC-Regular';
-	src: url('fonts/MarcellusSC-Regular.eot');
-	src: local('☺'), url('fonts/MarcellusSC-Regular.woff') format('woff'), url('fonts/MarcellusSC-Regular.ttf') format('truetype'), url('fonts/MarcellusSC-Regular.svg') format('svg');
-	font-weight: normal;
-	font-style: normal;
+	font: {
+       	family: 'Conv_MarcellusSC-Regular';
+       	weight: 'normal';
+       	style: 'normal';
+    	}
+	src: asset-url('MarcellusSC-Regular.eot', font);
+	src: asset-url('MarcellusSC-Regular.eot', font) format('embedded-opentype'), 
+	asset-url('MarcellusSC-Regular.woff', font) format('woff'), 
+	asset-url('MarcellusSC-Regular.ttf', font) format('truetype'), 
+	asset-url('MarcellusSC-Regular.svg', font) format('svg');
 }
 * {
 	margin:0;
