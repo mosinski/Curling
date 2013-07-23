@@ -1,5 +1,13 @@
-<div class="home">
-	<h3>Rejestracja</h3>
-	<%= render 'form' %>
+<h3>Rejestracja</h3>
+
+<%= form_for @user, :html => { :multipart => true } do |f| %>
+<%= render partial: 'form', locals: { f: f } %>
+
+<div class="actions">
+     <button type="submit" class="btn btn-primary">
+  	<i class="icon-check"></i> Zarejestruj
+     </button>
 </div>
+<% end %>
+
 

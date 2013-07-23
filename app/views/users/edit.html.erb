@@ -1,7 +1,10 @@
 <h3><i class="icon-edit"></i> Edycja Profilu</h3>
+<%= form_for @user, :html => { :multipart => true } do |f| %>
+<%= render partial: 'form', locals: { f: f } %>
 
-<%= render 'form' %>
-
-<%= link_to @user do %> 
-	<i class="icon-eye-open"></i> Pokaż
-<% end %> |
+ <div class="actions">
+     <button type="submit" class="btn btn-primary">
+  	<i class="icon-check"></i> Zapisz
+     </button>
+ </div>
+<% end %>
