@@ -102,7 +102,7 @@ end
   def destroy
 if current_user
     @user = User.find(params[:id])
-       if (current_user.username == 'Administrator')||(current_user.username == @user.username)
+       if (current_user.role == 'admin' && @user.role != "admin")||(current_user.username == @user.username)
     @user.destroy
 
     respond_to do |format|
