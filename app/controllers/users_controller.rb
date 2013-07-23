@@ -48,7 +48,7 @@ class UsersController < ApplicationController
   def edit
     if current_user
     @user = User.find(params[:id])
-       if (current_user.username == 'Administrator')||(current_user.username == @user.username)
+       if (current_user.role == 'admin' && @user.role != "admin")||(current_user.username == @user.username)
 	else
   	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnie&#324;!'
   	end
@@ -78,7 +78,7 @@ end
   def update
    if current_user
     @user = User.find(params[:id])
-       if (current_user.username == 'Administrator')||(current_user.username == @user.username)
+       if (current_user.role == 'admin' && @user.role != "admin")||(current_user.username == @user.username)
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
