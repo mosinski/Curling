@@ -51,7 +51,7 @@
     <% end %>
 </td>
 <td>
-    <% if current_user.role == "admin" %>
+    <% if current_user.role == "admin" && user.role != "admin" %>
 	<%= link_to user, :confirm => "Czy napewno chcesz usunąć użytkownika #{user.username}?", :method => :delete, :class => "btn btn-small btn-danger" do %>
   		<i class="icon-trash"></i> Usuń
 	<% end %>
