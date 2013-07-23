@@ -128,11 +128,25 @@
 								<div class="inner">
 									<h3>Nasi Sponsorzy:</h3>
 									<center>
-									<%= image_tag("browar.png") %><br /><br />
-									<%= image_tag("mm.jpg") %><br /><br />
-									<%= image_tag("gdansk.jpg") %><br /><br />
-									<%= image_tag("gedanum.jpg") %><br /><br />
-									<%= image_tag("gak.jpg") %>
+									<%= link_to "http://www.alebrowar.pl/pl/gosciszewo/" do %>
+										<%= image_tag("browar.png") %>
+									<% end %>
+									<br /><br />
+									<%= link_to "http://www.media-mag.pl/" do %>
+										<%= image_tag("mm.jpg") %>
+									<% end %>
+									<br /><br />
+									<%= link_to "http://www.gdansk.pl/" do %>
+										<%= image_tag("gdansk.jpg") %>
+									<% end %>
+									<br /><br />
+									<%= link_to "http://www.gedanum.pl/" do %>
+										<%= image_tag("gedanum.jpg") %>
+									<% end %>
+									<br /><br />
+									<%= link_to "http://www.gak.gda.pl/" do %>
+										<%= image_tag("gak.jpg") %>
+									<% end %>
 									</center>
 								</div>
 							</div>
