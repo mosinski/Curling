@@ -33,7 +33,7 @@
   		<i class="icon-thumbs-down"></i> Odwołaj
 	<% end %>
     <% elsif user.potwierdzenie == 0 && current_user.role == "admin" && user.role != "admin" %> 
-	<%= link_to({:controller => "users", :action => "potwierdz", :id => user.id}, {:confirm => "Czy napewno chcesz potwierdzić użytkownika #{user.username}? \n Zostanie wysłany do niego mail z informacją o potwierdzeniu.",:class => "btn btn-small btn-success"}) do %>
+	<%= link_to({:controller => "users", :action => "potwierdz", :id => user.id}, {:confirm => "Czy napewno chcesz potwierdzić użytkownika #{user.username}? \nZostanie wysłany do niego mail z informacją o potwierdzeniu.",:class => "btn btn-small btn-success"}) do %>
   		<i class="icon-thumbs-up"></i> Potwierdź
 	<% end %>
     <% end %>
@@ -58,9 +58,11 @@
     <% end %>
 </td>
 <td>
+    <% if current_user.username != user.username %>
 	<%= link_to new_user_message_path(user), :class => "btn btn-small btn-success" do %>
 		<i class="icon-envelope"></i>
 	<% end %>
+    <% end %>
 </td>
 </tr>
 <% end %>
