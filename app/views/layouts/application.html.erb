@@ -73,7 +73,10 @@
 					<li>
 					<% end %>
 					<%= link_to user_messages_path(current_user) do %>
-					<i class="icon-inbox"></i> Skrzynka
+					<i class="icon-inbox"></i> Skrzynka 
+					  <% if current_user.unread_messages? %>
+						(<%= current_user.unread_message_count %>)
+					  <% end %>
 					<% end %>
 					</li>
 
