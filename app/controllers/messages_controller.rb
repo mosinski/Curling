@@ -47,7 +47,7 @@ class MessagesController < ApplicationController
           @message = Message.find(:first, :conditions => ["messages.id = ? AND (sender_id = ? OR recipient_id = ?)", id, @user, @user])
           @message.mark_deleted(@user) unless @message.nil?
         }
-        :notice => 'Gratulacje! Wiadomo&#347;&#263; zosta&#322;a usuni&#281;ta!'
+      flash[:notice] = "Gratulacje! Wiadomo&#347;&#263; zosta&#322;a usuni&#281;ta!"
       end
       redirect_to :back
     end
