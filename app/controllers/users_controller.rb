@@ -121,6 +121,7 @@ if current_user
     @user = User.find(params[:id])
     if @user.potwierdzenie == 0 && current_user.role == "admin"
     @user.increment!(:potwierdzenie)
+    NewsletterMailer.confirmation_sender(@user).deliver
     end
     redirect_to users_path, :notice => 'Informacja! U&#380;ytkownik zosta&#322; potwierdzony'
   end
