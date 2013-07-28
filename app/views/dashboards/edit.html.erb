@@ -1,6 +1,11 @@
-<h1>Editing dashboard</h1>
+<h3>Edycja Notatki</h3>
 
-<%= render 'form' %>
+<%= form_for @dashboard, :html => { :multipart => true } do |f| %>
+<%= render partial: 'form', locals: { f: f } %>
 
-<%= link_to 'Show', @dashboard %> |
-<%= link_to 'Back', dashboards_path %>
+ <div class="actions">
+     <button type="submit" class="btn btn-primary">
+  	<i class="icon-check"></i> Zapisz Zmiany
+     </button>
+ </div>
+<% end %>
