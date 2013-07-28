@@ -14,6 +14,7 @@
 ActiveRecord::Schema.define(:version => 20130728122247) do
 
   create_table "dashboards", :force => true do |t|
+    t.string   "tytul"
     t.text     "tekst"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false

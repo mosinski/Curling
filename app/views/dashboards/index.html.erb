@@ -1,23 +1,21 @@
-<h1>Listing dashboards</h1>
-
-<table>
-  <tr>
-    <th>Tekst</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @dashboards.each do |dashboard| %>
-  <tr>
-    <td>  <%= strip_tags(dashboard.tekst) %></td>
-    <td><%= link_to 'Show', dashboard %></td>
-    <td><%= link_to 'Edit', edit_dashboard_path(dashboard) %></td>
-    <td><%= link_to 'Destroy', dashboard, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
+<h3>Lista Aktualności Klubowych</h3>
+				<ul class="list3">
+				<% @dashboards.each do |dashboard| %>
+					<li><span><em><%= image_tag("icon4.gif") %></em></span><b><%= link_to dashboard.tytul, dashboard %></b><%= strip_tags(dashboard.tekst) %><br />
+					<div>
+					<%= link_to dashboard, :class => "btn btn-small" do %>
+  						 Czytaj więcej »
+					<% end %>
+    				<% if current_user.role == "admin" %>
+					<%= link_to edit_dashboard_path(dashboard), :class => "btn btn-small btn-inverse" do %>
+  						<i class="icon-edit"></i> Edytuj
+					<% end %>
+					<%= link_to dashboard, :confirm => "Czy napewno chcesz usunąć aktualność klubową #{dashboard.tytul}?", :method => :delete, :class => "btn btn-small btn-danger" do %>
+  						<i class="icon-trash"></i> Usuń
+					<% end %>
+				<% end %>
+					</li>
+				<% end %>
+				</ul>
 
 <%= link_to 'New Dashboard', new_dashboard_path %>

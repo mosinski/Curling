@@ -1,3 +1,3 @@
 class Dashboard < ActiveRecord::Base
-  attr_accessible :tekst
+  attr_accessible :tytul, :tekst
 end
