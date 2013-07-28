@@ -140,7 +140,14 @@ h2 {font-size:30px;line-height:1.5em;color:#092972;text-transform:uppercase;marg
 h3 {font-size:20px;line-height:1.2em;text-transform:uppercase;color:#092972;margin-bottom:20px}
 h4 {font-size:1em;color:#092972;margin-bottom:25px}
 /* BOXES */
-.box {background:#fff;width:100%}
+.box {
+    background: none repeat scroll 0% 0% rgb(255, 255, 255);
+    width: 100%;
+    border-width: 2px;
+    border-color: rgb(250, 248, 255);
+    border-style: none solid solid;
+    border-radius: 15px 15px 15px 15px;
+}
 .box .border-top {background:url(border-top.gif) repeat-x left top}
 .box .left-top-corner {background:url(left-top-corner.gif) no-repeat left top}
 .box .right-top-corner {background:url(right-top-corner.gif) no-repeat right top}

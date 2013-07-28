@@ -1,5 +1,8 @@
 Osp::Application.routes.draw do
 
+  resources :dashboards
+
+
   resources :users do
              resources :messages do
                collection do
