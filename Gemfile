@@ -43,3 +43,5 @@ gem 'therubyracer'
 gem 'authlogic'
 gem 'simple-private-messages', '0.0.0', :git => 'git://github.com/jongilbraith/simple-private-messages.git'
 gem 'redactor-rails'
+gem "carrierwave"
+gem "mini_magick"
