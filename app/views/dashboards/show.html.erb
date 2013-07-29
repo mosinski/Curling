@@ -1,11 +1,10 @@
-<div class="redactor_editor">
+
 <h3><%= @dashboard.tytul %></h3>
-<p>
+<div class="redactor_editor">
   <%= @dashboard.tekst.html_safe %>
-</p>
+</div>
 
 
 <%= link_to dashboards_path,:class => "btn btn-small btn-primary" do %>
 	<i class="icon-share-alt"></i> Wróć do listy
 <% end %>
-</div>
