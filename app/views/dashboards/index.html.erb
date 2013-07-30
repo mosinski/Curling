@@ -2,6 +2,11 @@
 				<ul class="list3">
 				<% @dashboards.each do |dashboard| %>
 					<li><span><em><%= image_tag("icon4.gif") %></em></span><b><%= link_to dashboard.tytul, dashboard %></b><%= strip_tags(dashboard.tekst[0..300])+"..." %><br />
+
+					<div style="float:left;display:inline-block;">
+					<i class="icon-calendar"></i> Opublikowano: <%= dashboard.create_at, :format => "%d-%m-%Y %H:%M" %>
+					</div>
+
 					<div style="float:right;">
 					<%= link_to dashboard, :class => "btn btn-small" do %>
   						 Czytaj więcej »
@@ -14,6 +19,7 @@
   						<i class="icon-trash"></i> Usuń
 					<% end %>
 				<% end %>
+					</div>
 					</li>
 				<% end %>
 				</ul>
