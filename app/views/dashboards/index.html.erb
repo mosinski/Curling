@@ -3,7 +3,7 @@
 				<% @dashboards.each do |dashboard| %>
 					<li><span><em><%= image_tag("icon4.gif") %></em></span><b><%= link_to dashboard.tytul, dashboard %></b><%= strip_tags(dashboard.tekst[0..300])+"..." %><br />
 
-					<div style="float:left;display:inline-block;">
+					<div class="dashboard_data">
 					<i class="icon-calendar"></i> Opublikowano: <%= dashboard.created_at.strftime("%d.%m.%Y %H:%M") %>
 					</div>
 
