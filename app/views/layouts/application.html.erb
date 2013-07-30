@@ -91,7 +91,6 @@
 					<% end %>
 					</li>
 
-
 					<% if current_page?("/users") %>
 					<li class="active">
 					<% else %>
@@ -102,6 +101,15 @@
 					<% end %>
 					</li>
 
+					<% if current_page?(dashboards_path) %>
+					<li class="active">
+					<% else %>
+    					<li>
+					<% end %>
+					<%= link_to dashboards_path do %>
+					<i class="icon-info-sign"></i> Inf. Klubowe
+					<% end %>
+					</li>
 
 					<li>
 					<a><i class="icon-wrench"></i> Ustawienia</a>
