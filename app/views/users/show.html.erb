@@ -13,10 +13,12 @@
   <b><i class="icon-gift"></i> Urodziny:</b>
   <%=I18n.l @user.born, :format => "%d %B %Y" %>
 </div>
+<% if @user.login_count > 0 %>
 <div style="display:inline-block">
   <b><i class="icon-eye-open"></i> Ostatnia aktywność:</b>
   <%=I18n.l @user.last_request_at, :format => :long   %>
 </div>
+<% end %>
 </pre>
 
 <%= link_to new_user_message_path(@user), class: "btn btn-primary input-medium pull-left" do %>

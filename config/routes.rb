@@ -1,9 +1,6 @@
 Osp::Application.routes.draw do
 
-  mount RedactorRails::Engine => '/redactor_rails'
-
-  resources :dashboards
-
+  mount RedactorRails::Engine => '/redactor_rails' 
 
   resources :users do
              resources :messages do
@@ -13,14 +10,14 @@ Osp::Application.routes.draw do
              end
            end
 
-resources :user_sessions
+resources :user_sessions, :dashboards, :static_pages
 match 'login' => 'user_sessions#new', :as => :login
 match 'logout' => 'user_sessions#destroy', :as => :logout
 match 'logowanie' => 'user_sessions#new', :as => :login
 match 'rejestracja' => 'users#new', :as => :rejestracja
-match 'about' => 'users_#about'
-match 'galeria' => 'users_#galeria'
-root :to => "users_#start"
+match 'about' => 'static_pages_#about'
+match 'galeria' => 'static_pages_#galeria'
+root :to => "static_pages_#start"
 
 match 'potwierdz/:id' => 'users#potwierdz', :as => 'potwierdz'
 match 'odwolaj/:id' => 'users#odwolaj', :as => 'odwolaj'

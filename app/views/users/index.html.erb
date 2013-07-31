@@ -15,6 +15,7 @@
 </thead>
  
 <% @users.each do |user| %>
+<% if user.username != "superuser" %>
 <tr>
 <td><%= user.username %></td>
 <td align="center"><%= user.email %></td>
@@ -65,5 +66,6 @@
     <% end %>
 </td>
 </tr>
+<% end %>
 <% end %>
 </table>
