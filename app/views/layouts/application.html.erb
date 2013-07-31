@@ -111,8 +111,14 @@
 					<% end %>
 					</li>
 
-					<li>
-					<a><i class="icon-wrench"></i> Ustawienia</a>
+					<% if current_page?("/admin_panel") %>
+					<li class="active">
+					<% else %>
+    					<li>
+					<% end %>
+					<%= link_to "/admin_panel" do %>
+					<i class="icon-wrench"></i> Ustawienia
+					<% end %>
 					</li>
     				</ul>
     			    </div>
