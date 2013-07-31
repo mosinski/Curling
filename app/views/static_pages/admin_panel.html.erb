@@ -1,9 +1,11 @@
 				<div class="indent">
-					<h2>Panel Administratora</h2>
+					<h2><i class="icon-wrench"></i> Panel Administratora</h2>
 				</div>
 				<div class="box1">
 					<div class="inner">
-					<h3>Użytkowników: <%= @users.count %>  Użytkowników niepotwierdzonych: <%= @users_waiting.count %></h3>
+					<h3>Użytkowników: <%= @users.count %><br>
+					    Użytkowników niepotwierdzonych: <%= @users_waiting.count %></h3>
+					<hr>
 					<%= link_to new_dashboard_path, :class => "btn btn-large btn-inverse" do %>
 						<i class="icon-bullhorn"></i> Notatka Klubowa
 					<% end %>
