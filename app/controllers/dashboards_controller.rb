@@ -19,6 +19,7 @@ class DashboardsController < ApplicationController
   def show
    if current_user
     @dashboard = Dashboard.find(params[:id])
+    @all_comments = @dashboard.root_comments
 
     respond_to do |format|
       format.html # show.html.erb
@@ -108,4 +109,20 @@ class DashboardsController < ApplicationController
         redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
    end
   end
+
+  def add_comment
+    @dashboard = Dashboard.find(params[:id])
+    @user_who_commented = current_user
+    @comment_reply = params[:parrent_id]
+    @comment = Comment.build_from( @dashboard, @user_who_commented.id, params[:komentarz] )
+    @comment.save
+
+    if @comment_reply != nil && @comment_reply != ""
+    @parent = Comment.find(@comment_reply)
+    @comment.move_to_child_of(@parent)
+    end
+    
+    redirect_to @dashboard, :notice => 'Gratulacje! Dodano nowy komentarz!'
+  end
+
 end

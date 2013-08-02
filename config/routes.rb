@@ -18,6 +18,7 @@ match 'rejestracja' => 'users#new', :as => :rejestracja
 match 'about' => 'static_pages_#about'
 match 'galeria' => 'static_pages_#galeria'
 match 'admin_panel' => 'static_pages_#admin_panel'
+match '/dashboards/add_comment' => 'dashboards#add_comment'
 root :to => "static_pages_#start"
 
 match 'potwierdz/:id' => 'users#potwierdz', :as => 'potwierdz'

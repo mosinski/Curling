@@ -465,3 +465,21 @@ text-shadow: -1px 0px black, 0px 1px white, 1px 0px black, 0px -1px black;
   border-color: gray;
   margin-top: 5px;
 }
+
+.comment_avatar, .comment_user {
+  display:inline-block;
+}
+
+.comment_user {
+  vertical-align:top;
+}
+.comment_reply_user {
+ border-top: 1px dotted;
+ margin-left:70px;
+ padding:10px;
+}
+#comment_reply_username {
+ margin-left:90px;
+ margin-top:-15px;
+ margin-bottom:0px;
+}

@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.2.11'
 
-ruby '1.9.3p125'
+ruby '1.9.3'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -45,5 +45,6 @@ gem 'therubyracer'
 gem 'authlogic'
 gem 'simple-private-messages', '0.0.0', :git => 'git://github.com/jongilbraith/simple-private-messages.git'
 gem 'redactor-rails'
-gem "carrierwave"
-gem "mini_magick"
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'acts_as_commentable_with_threading'
