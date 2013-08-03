@@ -125,4 +125,23 @@ class DashboardsController < ApplicationController
     redirect_to @dashboard, :notice => 'Gratulacje! Dodano nowy komentarz!'
   end
 
+  def destroy_comment
+    if current_user
+       if (current_user.role == 'admin')
+    @comment = Comment.find(params[:id])
+
+    if @comment.has_children?
+    @comment.children.each {|r| r.destroy}
+    end
+    @comment.destroy
+
+    redirect_to :back, :notice => 'Informacja! Usuni&#281;to komentarz/e!'
+	else
+  	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnie&#324;!'
+  	end
+    else
+        redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
+    end
+  end
+
 end
