@@ -16,6 +16,7 @@ match 'logout' => 'user_sessions#destroy', :as => :logout
 match 'logowanie' => 'user_sessions#new', :as => :login
 match 'rejestracja' => 'users#new', :as => :rejestracja
 match 'about' => 'static_pages_#about'
+match 'kontakt' => 'static_pages_#kontakt'
 match 'galeria' => 'static_pages_#galeria'
 match 'admin_panel' => 'static_pages_#admin_panel'
 match '/dashboards/add_comment' => 'dashboards#add_comment'
