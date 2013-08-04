@@ -23,13 +23,27 @@
 <% if @user.login_count > 0 %>
 	<div style="display:inline-block;padding:10px;">
   		<b><i class="icon-sort"></i> Liczba logowań:</b>
-  		<%= @user.login_count   %>
+  		<%= @user.login_count %>
 	</div>
+
+	<% if current_user.role == "admin" %>
+	<div style="display:inline-block;padding:10px;">
+  		<b><i class="icon-ban-circle"></i> Liczba nieudanych logowań:</b>
+  		<%= @user.failed_login_count %>
+	</div>
+	<% end %>
 
 	<div style="display:inline-block;padding:10px;">
   		<b><i class="icon-eye-open"></i> Ostatnia aktywność:</b>
   		<%=I18n.l @user.last_request_at, :format => :long   %>
 	</div>
+
+	<% if current_user.role == "admin" %>
+	<div style="display:inline-block;padding:10px;">
+  		<b><i class="icon-globe"></i> Ostatnia logowanie z IP:</b>
+  		<%= @user.last_login_ip %>
+	</div>
+	<% end %>
 <% end %>
 
 </div>
