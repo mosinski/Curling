@@ -19,6 +19,7 @@ class UsersController < ApplicationController
   def show
     if current_user
     @user = User.find(params[:id])
+    @comments = Comment.find_all_by_user_id(@user.id)
 
     respond_to do |format|
       format.html # show.html.erb
