@@ -14,5 +14,6 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
-//= require redactor-rails
+//= require redactor-rails/redactor.min
+//= require path/to/custom/config
 
