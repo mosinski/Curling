@@ -5,6 +5,6 @@ class ContactMailer < ActionMailer::Base
     @email = email
     @message = message
 
-    mail(:to => "komputery.fani@gmail.com", :subject => "Kontakt ze Strony")  
+    mail(:to => "mylosz@yahoo.pl", :subject => "Kontakt ze Strony")  
   end
 end
