@@ -4,7 +4,7 @@
       <h5 style="color: rgb(185, 74, 72);text-shadow: 1px 1px 1px rgb(0, 0, 0);">Logowanie nie powiodło się, popraw błędy i spróbuj ponownie.</h5><br /><br />
       <ul style="height:30px;">
       <% @user_session.errors.full_messages.each do |msg| %>
-        <li style="margin-top:-35px;"><div class="alert-error"><%= msg %></div></li>
+        <li style="margin-top:-35px;"><div class="alert-error" style="padding:10px;"><%= msg %></div></li>
       <% end %>
       </ul>
     </div>
@@ -25,5 +25,8 @@
      <button type="submit" class="btn btn-primary">
   	<i class="icon-ok"></i> Zaloguj
      </button>
+    <label class="checkbox" style="display:inline-block;">
+	     <%= f.check_box :remember_me, :title => 'Zapamiętaj Mnie', :id => 'zapamietaj_mnie' %> Zapamiętaj mnie
+    </label>
   </div>
 <% end %>
