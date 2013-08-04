@@ -42,4 +42,14 @@ class StaticPagesController < ApplicationController
     end
   end
 
+  def contact
+	@name = params[:contact_name]
+	@email = params[:contact_email]
+	@message = params[:contact_message]
+
+	ContactMailer.message_sender(@name,@email,@message).deliver
+
+        redirect_to root_url, :notice => 'Informacja! Wiadomosc wyslana pomyslnie dziekujemy!'
+  end
+
 end

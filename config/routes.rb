@@ -21,6 +21,7 @@ match 'galeria' => 'static_pages_#galeria'
 match 'admin_panel' => 'static_pages_#admin_panel'
 match '/dashboards/add_comment' => 'dashboards#add_comment'
 match 'destroy_comment/:id' => 'dashboards#destroy_comment', :as => 'destroy_comment'
+match '/static_pages/contact' => 'static_pages#contact'
 root :to => "static_pages_#start"
 
 match 'potwierdz/:id' => 'users#potwierdz', :as => 'potwierdz'
