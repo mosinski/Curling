@@ -476,13 +476,24 @@ text-shadow: -1px 0px black, 0px 1px white, 1px 0px black, 0px -1px black;
   vertical-align:top;
   max-width:85%;
 }
+
 .comment_reply_user {
   border-top: 1px dotted;
   margin-left:70px;
   padding:10px;
 }
+
 #comment_reply_username {
   margin-left:90px;
   margin-top:-15px;
   margin-bottom:0px;
+}
+
+.field_with_errors {
+  display:inline;
+}
+
+.field_with_errors input {
+  border-color: rgb(149, 59, 57);
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 6px rgb(213, 147, 146);
 }
