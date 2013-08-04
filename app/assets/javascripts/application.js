@@ -15,5 +15,5 @@
 //= require twitter/bootstrap
 //= require_tree .
 //= require redactor-rails/redactor.min
-//= require path/to/custom/config
+//= require /custom/config
 
