@@ -12,33 +12,60 @@
       </ul>
     </div>
   <% end %>
- 
-<div class="field">
-  <%= f.label :Nazwa_Użytkownika %>
-  <%= f.text_field :username, :placeholder => "jkowalski" %>
+
+<div class="controls">
+	<div class="field input-prepend">
+  		<%= f.label :Nazwa_Użytkownika %>
+  		<span class="add-on"><i class="icon-user"></i></span>
+  		<%= f.text_field :username, :placeholder => "jkowalski" %>
+	</div>
 </div>
-<div class="field">
-  <%= f.label :Imię_i_Nazwisko %>
-  <%= f.text_field :name_surname, :placeholder => "Jan Kowalski" %>
+
+<div class="controls">
+	<div class="field input-prepend">
+  		<%= f.label :Imię_i_Nazwisko %>
+  		<span class="add-on"><i class="icon-user"></i></span>
+  		<%= f.text_field :name_surname, :placeholder => "Jan Kowalski" %>
+	</div>
 </div>
-<div class="field">
-    <%= f.label :Data_urodzenia %>
-    <%= f.date_select :born, :order => [:day, :month, :year], :start_year => 1920, :end_year => Time.now.year, "style" => "width:50px"  %>
+
+<div class="controls">
+	<div class="field input-prepend">
+    		<%= f.label :Data_urodzenia %>
+  		<span class="add-on"><i class="icon-calendar"></i></span>
+    		<%= f.date_select :born, :order => [:day, :month, :year], :start_year => 1920, :end_year => Time.now.year, "style" => "width:50px"  %>
+	</div>
 </div>
-<div class="field">
-  <%= f.label :email %>
-  <%= f.text_field :email, :placeholder => "jkowalski@gmail.com" %>
+
+<div class="controls">
+	<div class="field input-prepend">
+  		<%= f.label :email %>
+  		<span class="add-on">@</span>
+		<%= f.text_field :email, :placeholder => "jkowalski@gmail.com" %>
+	</div>
 </div>
-<div class="field">
-  <%= f.label :pesel %>
-  <%= f.number_field :pesel, :placeholder => "88062542184" %>
+
+<div class="controls">
+	<div class="field input-prepend">
+  		<%= f.label :pesel %>
+  		<span class="add-on"><i class="icon-map-marker"></i></span>
+  		<%= f.number_field :pesel, :placeholder => "88062542184" %>
+	</div>
 </div>
- <div class="field">
-  <%= f.label :hasło %>
-  <%= f.password_field :password %>
+
+<div class="controls">
+	<div class="field input-prepend">
+  		<%= f.label :hasło %>
+  		<span class="add-on"><i class="icon-lock"></i></span>
+		<%= f.password_field :password %>
+	</div>
 </div>
-<div class="field">
-  <%= f.label :Potwierdź_hasło %>
-  <%= f.password_field :password_confirmation %>
+
+<div class="controls">
+	<div class="field input-prepend">
+  		<%= f.label :Potwierdź_hasło %>
+  		<span class="add-on"><i class="icon-lock"></i></span>
+		<%= f.password_field :password_confirmation %>
+	</div>
 </div>
 <br />

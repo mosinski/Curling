@@ -11,13 +11,13 @@
   <% end %>
 <br />
 <center>
-  <div class="field" style="display:inline-block">
+  <div class="field input-prepend" style="display:inline-block">
     <%= f.label :Nazwa_użytkownika %>
-    <%= f.text_field :username %>
+    <span class="add-on"><i class="icon-user"></i></span><%= f.text_field :username %>
   </div>
-  <div class="field" style="display:inline-block">
+  <div class="field input-prepend" style="display:inline-block">
     <%= f.label :hasło %>
-    <%= f.password_field :password %>
+    <span class="add-on"><i class="icon-lock"></i></span><%= f.password_field :password %>
   </div>
 </center>
 <br />
