@@ -50,6 +50,7 @@ module Osp
     # parameters by using an attr_accessible or attr_protected declaration.
     config.assets.paths << "#{Rails.root}/app/assets/fonts"
     config.assets.precompile += %w( .svg .eot .woff .ttf )
+    config.assets.precompile += ["redactor-rails/*"]
 
     # Enable the asset pipeline
     config.assets.enabled = true
