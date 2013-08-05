@@ -11,6 +11,18 @@
 	asset-url('MarcellusSC-Regular.ttf', font) format('truetype'), 
 	asset-url('MarcellusSC-Regular.svg', font) format('svg');
 }
+@font-face {
+	font: {
+       	family: 'Myriad-Pro-Regular';
+       	weight: 'normal';
+       	style: 'normal';
+    	}
+	src: asset-url('MyriadPro-Regular.eot', font);
+	src: asset-url('MyriadPro-Regular.eot', font) format('embedded-opentype'), 
+	asset-url('MyriadPro-Regular.woff', font) format('woff'), 
+	asset-url('MyriadPro-Regular.ttf', font) format('truetype'), 
+	asset-url('MyriadPro-Regular.svg', font) format('svg');
+}
 * {
 	margin:0;
 	padding:0}
@@ -77,9 +89,10 @@ ul, ol {list-style:none}
 .banner-list ul li.style2 a {background-image:url(icon2.gif)}
 /* style3 */
 .banner-list ul li.style3 a {background-image:url(icon3.gif)}
+h2, h3 { font-family: Myriad-Pro-Regular!important;}
 /* */
-.site-nav {position:absolute;left:5px;top:0}
-.site-nav ul li {float:left;font-size:16px;line-height:1.2em;text-transform:uppercase;padding-left:1px}
+.site-nav {position:absolute;left:-20px;top:0}
+.site-nav ul li {font-family: Myriad-Pro-Regular;float:left;font-size:18px;line-height:1.2em;text-transform:uppercase;padding-left:1px}
 .site-nav ul li a {color:#092972;display:block;text-align:center;text-decoration:none;width:119px;height:150px;border-bottom:5px solid #e4edff;background-color:#f1f5ff;background-repeat:no-repeat;background-position:center 28px}
 .site-nav ul li a span {display:block;padding-top:105px}
 .site-nav ul li a:hover, .site-nav ul li a.act {color:#479c23;font-size:20px}
@@ -91,7 +104,7 @@ ul, ol {list-style:none}
 .site-nav ul li.style2 a {background-image:url(m2.gif)}
 .site-nav ul li.style2 a:hover, .site-nav ul li.style2 a.act {background-image:url(m2-act.gif)}
 /* style3 */
-.site-nav ul li.style3 a {background-image:url(m3.gif)}
+.site-nav ul li.style3 a {width:146px;background-image:url(m3.gif)}
 .site-nav ul li.style3 a:hover, .site-nav ul li.style3 a.act {background-image:url(m3-act.gif)}
 /* style4 */
 .site-nav ul li.style4 a {background-image:url(m4.gif)}

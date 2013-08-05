@@ -52,4 +52,16 @@ class StaticPagesController < ApplicationController
         redirect_to root_url, :notice => 'Informacja! Wiadomosc wyslana pomyslnie dziekujemy!'
   end
 
+  def contact
+	@user = User.find_by_username(params[:user_name])
+	if @user != nil
+	else
+        redirect_to "/reset_password", :notice => 'Informacja! Nie znaleziono Konta!'
+	end
+    	respond_to do |format|
+      		format.html # about.html.erb
+      		format.json { render json: @static_page }
+    	end
+  end
+
 end
