@@ -13,6 +13,6 @@ $(document).ready(
       "fileGetJson":"/redactor_rails/documents",
       "path":"/assets/redactor-rails",
       "css":"style.css",
-      "buttons": ['image'],"lang":'pl'}
+      "lang":'pl'}
   );
 });
