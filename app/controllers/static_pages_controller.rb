@@ -59,13 +59,14 @@ class StaticPagesController < ApplicationController
 
 	if @user != nil
 		if (@user.pesel == @form_pesel) && (@user.born == @form_born)
-        	redirect_to "/resethasla", :notice => "Gratulacje! Wszystko ok!"
+		  @nowehaslo = SecureRandom.base64(8).tr('+/=lIO0', 'pqrsxyz')
+        	  redirect_to "/resethasla", :notice => "Gratulacje! Wszystko ok!"
 		else
-        	redirect_to "/resethasla", :notice => 'Uwaga! Podane dane sa nieprawidlowe!'
+        	  redirect_to "/resethasla", :notice => 'Uwaga! Podane dane sa nieprawidlowe!'
 		end
         
 	else
-        redirect_to "/resethasla", :notice => 'Informacja! Nie znaleziono Konta lub podane dane sa niekompletne!'
+          redirect_to "/resethasla", :notice => 'Informacja! Nie znaleziono Konta lub podane dane sa niekompletne!'
 	end
   end
 
