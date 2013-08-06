@@ -35,7 +35,7 @@ class StaticPagesController < ApplicationController
       		format.json { render json: @static_page }
     	end
 	else
-  	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnie&#324;!'
+  	  redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnie&#324;!'
   	end
     else
         redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
@@ -47,9 +47,13 @@ class StaticPagesController < ApplicationController
 	@email = params[:contact_email]
 	@message = params[:contact_message]
 
-	ContactMailer.message_sender(@name,@email,@message).deliver
+	if @name != "" && @email != "" && @message != ""
+		ContactMailer.message_sender(@name,@email,@message).deliver
+		redirect_to root_url, :notice => 'Informacja! Wiadomo&#347;&#263; wys&#322;ana pomy&#347;lnie dzi&#281;kujemy!'
+	else
+          redirect_to root_url, :notice => 'Uwaga! Podane dane s&#261; niekompletne!'
+	end
 
-        redirect_to root_url, :notice => 'Informacja! Wiadomosc wyslana pomyslnie dziekujemy!'
   end
 
   def reset_pass
@@ -60,13 +64,13 @@ class StaticPagesController < ApplicationController
 	if @user != nil
 		if (@user.pesel == @form_pesel) && (@user.born == @form_born)
 		  @nowehaslo = SecureRandom.base64(8).tr('+/=lIO0', 'pqrsxyz')
-        	  redirect_to "/resethasla", :notice => "Gratulacje! Wszystko ok!"
+        	  redirect_to "/resethasla", :notice => "Gratulacje! Nowe has&#322;o zosta&#322;o wys&#322;ane na maila!"
 		else
-        	  redirect_to "/resethasla", :notice => 'Uwaga! Podane dane sa nieprawidlowe!'
+        	  redirect_to "/resethasla", :notice => 'Uwaga! Podane dane s&#261; nieprawid&#322;owe!'
 		end
         
 	else
-          redirect_to "/resethasla", :notice => 'Informacja! Nie znaleziono Konta lub podane dane sa niekompletne!'
+          redirect_to "/resethasla", :notice => 'Informacja! Nie znaleziono Konta lub podane dane s&#261; niekompletne!'
 	end
   end
 
