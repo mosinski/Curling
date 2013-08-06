@@ -52,16 +52,29 @@ class StaticPagesController < ApplicationController
         redirect_to root_url, :notice => 'Informacja! Wiadomosc wyslana pomyslnie dziekujemy!'
   end
 
-  def contact
+  def reset_pass
 	@user = User.find_by_username(params[:user_name])
+        @form_born = convert_date(params[:user], :born)
+	@form_pesel = params[:user_pesel]
+
 	if @user != nil
+		if (@user.pesel == @form_pesel) && (@user.born == @form_born)
+        	redirect_to "/resethasla", :notice => "Gratulacje! Wszystko ok!"
+		else
+        	redirect_to "/resethasla", :notice => 'Uwaga! Podane dane sa nieprawidlowe!'
+		end
+        
 	else
-        redirect_to "/reset_password", :notice => 'Informacja! Nie znaleziono Konta!'
+        redirect_to "/resethasla", :notice => 'Informacja! Nie znaleziono Konta lub podane dane sa niekompletne!'
 	end
-    	respond_to do |format|
-      		format.html # about.html.erb
-      		format.json { render json: @static_page }
-    	end
   end
+
+  private
+ 
+  def convert_date(hash, date_symbol_or_string)
+    attribute = date_symbol_or_string.to_s
+    return Date.new(hash[attribute + '(1i)'].to_i, hash[attribute + '(2i)'].to_i, hash[attribute + '(3i)'].to_i)   
+  end
+
 
 end

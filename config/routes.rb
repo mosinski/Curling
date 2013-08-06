@@ -18,11 +18,12 @@ match 'rejestracja' => 'users#new', :as => :rejestracja
 match 'about' => 'static_pages_#about'
 match 'kontakt' => 'static_pages_#kontakt'
 match 'galeria' => 'static_pages_#galeria'
+match 'resethasla' => 'static_pages#resethasla'
 match 'admin_panel' => 'static_pages_#admin_panel'
 match '/dashboards/add_comment' => 'dashboards#add_comment'
 match 'destroy_comment/:id' => 'dashboards#destroy_comment', :as => 'destroy_comment'
 match '/static_pages/contact' => 'static_pages#contact'
-match 'reset_password' => 'static_pages#reset_password'
+match '/static_pages/reset_pass' => 'static_pages#reset_pass'
 root :to => "static_pages_#start"
 
 match 'potwierdz/:id' => 'users#potwierdz', :as => 'potwierdz'
