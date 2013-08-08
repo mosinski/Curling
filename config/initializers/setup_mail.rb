@@ -1,6 +1,6 @@
 ActionMailer::Base.smtp_settings = {  
   :address              => "s4.masternet.pl",  
-  :port                 => 465,
+  :port                 => 587,
   :user_name            => "admin@m1l05z.pl",  
   :password             => "Zi3lonych0mik",  
   :authentication       => "plain",  
