@@ -19,7 +19,7 @@ class DashboardsController < ApplicationController
   def show
    if current_user
     @dashboard = Dashboard.find(params[:id])
-    @all_comments = @dashboard.root_comments
+    @all_comments = @dashboard.root_comments.reverse
 
     respond_to do |format|
       format.html # show.html.erb
