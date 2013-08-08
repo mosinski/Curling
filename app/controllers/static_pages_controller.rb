@@ -64,6 +64,7 @@ class StaticPagesController < ApplicationController
 	if @user != nil
 		if (@user.pesel == @form_pesel) && (@user.born == @form_born)
 		  @nowehaslo = SecureRandom.base64(8).tr('+/=lIO0', 'pqrsxyz')
+		  PasswordReset.password_sender(@user,@nowehaslo).deliver
         	  redirect_to "/resethasla", :notice => "Gratulacje! Nowe has&#322;o zosta&#322;o wys&#322;ane na maila!"
 		else
         	  redirect_to "/resethasla", :notice => 'Uwaga! Podane dane s&#261; nieprawid&#322;owe!'
