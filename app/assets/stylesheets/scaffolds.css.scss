@@ -37,6 +37,8 @@ body {
 	color:#5e5e5e!important;
 	min-width:944px;
 	padding-bottom:20px;
+	cursor: url(icon.png) 12 8, default;
+	*:hover { cursor: url(icon.png) 12 8, default; }
 }
 object {vertical-align:top;outline:none}
 input, textarea, select {font-family:Tahoma, Arial, helvetica, sans-serif;font-size:1em;vertical-align:middle;font-weight:normal}
