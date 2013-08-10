@@ -1,4 +1,10 @@
 GIT
+  remote: git://github.com/galetahub/simple-captcha.git
+  revision: e99cc7e8bf6b8cf8f03878c657ae7d1e6efe7c58
+  specs:
+    simple_captcha (0.1.5)
+
+GIT
   remote: git://github.com/jongilbraith/simple-private-messages.git
   revision: 7ba7d3c9f7670ef3bddfc90390a49556a94f7013
   specs:
@@ -176,6 +182,7 @@ DEPENDENCIES
   redactor-rails
   sass-rails (~> 3.2.3)
   simple-private-messages (= 0.0.0)!
+  simple_captcha!
   sqlite3
   therubyracer
   thin

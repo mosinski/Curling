@@ -43,6 +43,7 @@ class StaticPagesController < ApplicationController
   end
 
   def contact
+    if simple_captcha_valid?
 	@name = params[:contact_name]
 	@email = params[:contact_email]
 	@message = params[:contact_message]
@@ -51,8 +52,11 @@ class StaticPagesController < ApplicationController
 		ContactMailer.message_sender(@name,@email,@message).deliver
 		redirect_to root_url, :notice => 'Informacja! Wiadomo&#347;&#263; wys&#322;ana pomy&#347;lnie dzi&#281;kujemy!'
 	else
-          redirect_to root_url, :notice => 'Uwaga! Podane dane s&#261; niekompletne!'
+          redirect_to "/kontakt", :notice => 'Uwaga! Podane dane s&#261; niekompletne!'
 	end
+    else
+  	redirect_to "/kontakt", :notice => 'Uwaga! Podany kod z obrazka jest niepoprawny!'
+    end
 
   end
 

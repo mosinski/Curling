@@ -8,6 +8,11 @@
   <%= csrf_meta_tags %>
   <%= redactor_lang('pl') %>
 </head>
+<script type="text/javascript">
+ /*<![CDATA[*/
+ jQuery(document).ready(function() {jQuery(".abtlikebox").hover(function() {jQuery(this).stop().animate({right: "0"}, "medium");}, function() {jQuery(this).stop().animate({right: "-250"}, "medium");}, 500);});
+ /*]]>*/
+ </script>
 <body>
 <div id="main">
 <!-- HEADER -->
@@ -38,6 +43,14 @@
 			</a>
 		</div>
 	</div>
+<!-- FB LIKE BOX -->
+
+<div class="abtlikebox">
+     <div>
+     <iframe src="http://www.facebook.com/plugins/likebox.php?href=https://www.facebook.com/pages/Gda%C5%84sk-Curling-Club/158911320799558&amp;width=245&amp;colorscheme=light&amp;show_faces=true&amp;border_color=white&amp;connections=9&amp;stream=false&amp;header=false&amp;height=270" scrolling="no" frameborder="0" scrolling="no" style="border: white; overflow: hidden; height: 270px; width: 245px;background:#fafafa;"></iframe>
+     </div>
+ </div>
+
 <!-- CONTENT -->
 	<div id="content">
 		<div class="wrapper">
@@ -139,6 +152,7 @@
 						</div>
 					</div>
 				</div>
+				<br>
 				<div class="box">
 					<div class="border-top">
 						<div class="left-top-corner">
@@ -165,6 +179,24 @@
 									<%= link_to("http://www.gak.gda.pl/", "target"=>"_blank") do %>
 										<%= image_tag("gak.jpg") %>
 									<% end %>
+									</center>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<br>
+				<div class="box">
+					<div class="border-top">
+						<div class="left-top-corner">
+							<div class="right-top-corner">
+								<div class="inner">
+									<h3>Linki:</h3>
+									<center>
+									<%= link_to("http://www.curlingcalendar.com/", "target"=>"_blank") do %>
+										<%= image_tag("cc.png") %>
+									<% end %>
+									<br /><br />
 									</center>
 								</div>
 							</div>

@@ -223,3 +223,9 @@ en:
         email: "E-mail"
         password: "Hasło"
         remember_me: "Pamiętaj mnie"
+  simple_captcha:
+    placeholder: ""
+    label: "(wpisz kod z obrazka)"
+    message:
+      default: "Secret Code did not match with the Image"
+      user: "The secret Image and code were different"

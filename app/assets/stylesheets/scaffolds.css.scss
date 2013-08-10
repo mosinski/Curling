@@ -512,3 +512,40 @@ text-shadow: -1px 0px black, 0px 1px white, 1px 0px black, 0px -1px black;
   border-color: rgb(149, 59, 57);
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 6px rgb(213, 147, 146);
 }
+
+.abtlikebox {
+  background: url("http://4.bp.blogspot.com/-mMtB2ANqowQ/T6es-PuSR2I/AAAAAAAAAjM/LDamrUnMJJc/s320/fb1-right.png") no-repeat scroll left center transparent !important; 
+  float: right;
+  height: 270px;
+  padding: 0 5px 0 46px;
+  width: 245px;
+  z-index:  99999;
+  position:fixed;
+  right:-250px;
+  top:20%;
+}
+
+.abtlikebox div{ 
+  padding: 0; 
+  margin-right:-8px; 
+  border:4px solid  #3b5998; 
+  background:#fafafa;
+}
+
+.abtlikebox span{
+  bottom: 4px;
+  font: 8px "lucida grande",tahoma,verdana,arial,sans-serif;
+  position: absolute;
+  right: 6px;
+  text-align: right;
+  z-index: 99999;
+}
+
+.abtlikebox span a{
+  color: gray;
+  text-decoration:none;
+}
+
+.abtlikebox span a:hover{
+  text-decoration:underline;
+}

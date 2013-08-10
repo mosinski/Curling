@@ -22,6 +22,12 @@
 		    <%= text_area_tag :contact_message, nil, :rows => 8, :class => "span5", :placeholder => "Treść wiadomości którą chcesz przesłać do nas." %>
                 </div>  
             </div>  
+            <div class="control-group">  
+                <label class="control-label" for="input3"></label>  
+                <div class="controls">
+		    <%= show_simple_captcha %>
+		</div>  
+            </div> 
             <div class="form-actions" style="width:100%;margin-left:80px;padding-left: 120px;">
                 <button type="submit" class="btn btn-primary">Wyślij wiadomość</button>  
             </div>  
