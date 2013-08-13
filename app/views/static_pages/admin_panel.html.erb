@@ -4,10 +4,16 @@
 				<div class="box1">
 					<div class="inner">
 					<h3>Użytkowników: <%= @users.count %><br>
-					    Użytkowników niepotwierdzonych: <%= @users_waiting.count %></h3>
+					    Użytkowników niepotwierdzonych: <%= @users_waiting.count %><br><br>
+					    Aktualności Klubowych: <%= @dashboard.count %><br>
+					    Aktualności Ogólnych: <%= @news.count %></h3>
 					<hr>
 					<%= link_to new_dashboard_path, :class => "btn btn-large btn-inverse" do %>
-						<i class="icon-bullhorn"></i> Notatka Klubowa
+						<i class="icon-bullhorn"></i> Aktualność Klubowa
+					<% end %>
+
+					<%= link_to new_news_path, :class => "btn btn-large btn-inverse" do %>
+						<i class="icon-bullhorn"></i> Aktualność Ogólna
 					<% end %>
 					</div>
 				</div>

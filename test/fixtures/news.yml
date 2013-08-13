@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  tytul: MyText
+  tekst_pl: MyText
+  tekst_en: MyText
+  termin: 2013-08-12
+
+two:
+  tytul: MyText
+  tekst_pl: MyText
+  tekst_en: MyText
+  termin: 2013-08-12

@@ -1,8 +1,11 @@
   <% if @dashboard.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@dashboard.errors.count, "error") %> prohibited this dashboard from being saved:</h2>
-
-      <ul>
+    <% if  (@dashboard.errors.count) == 1  %>
+      <h4>Aktualmność klubowa nie została stworzona z powodu jednego błędu</h4>
+    <% elsif (@dashboard.errors.count) > 1 %>
+        <h4>Aktualmność klubowa nie została stworzona z powodu <%= @dashboard.errors.count %> błędów</h4>
+    <% end %>
+      <ul style="background:none repeat scroll 0% 0% rgb(245, 245, 245);padding:10px;">
       <% @dashboard.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>

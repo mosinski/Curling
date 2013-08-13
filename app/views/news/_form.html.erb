@@ -1,0 +1,36 @@
+  <% if @news.errors.any? %>
+    <div id="error_explanation">
+    <% if  (@news.errors.count) == 1  %>
+      <h4>Aktualmność ogólna nie została stworzona z powodu jednego błędu</h4>
+    <% elsif (@news.errors.count) > 1 %>
+        <h4>Aktualmność ogólna nie została stworzona z powodu <%= @news.errors.count %> błędów</h4>
+    <% end %>
+      <ul style="background:none repeat scroll 0% 0% rgb(245, 245, 245);padding:10px;">
+      <% @news.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.text_field :tytul, :placeholder => "Tytuł Aktualności  Ogólnej", "style" => "width:97%" %>
+  </div>
+<br />
+  <div class="field">
+    <%= f.label "Treść Aktualności Ogólnej w języku Polskim:", "style"=>"font-weight:bold" %>
+    <%= f.text_area :tekst_pl, :class => "redactor", :rows => 100, :cols => 120 %>
+  </div>
+<br />
+  <div class="field">
+    <%= f.label "Treść Aktualności Ogólnej w języku Angielskim:", "style"=>"font-weight:bold" %>
+    <%= f.text_area :tekst_en, :class => "redactor", :rows => 100, :cols => 120 %>
+  </div>
+<br />
+<div class="controls">
+	<div class="field input-prepend">
+    	    	<%= f.label "Termin Aktualności Ogólnej", "style"=>"font-weight:bold" %>
+  		<span class="add-on"><i class="icon-calendar"></i></span>
+    		<%= f.date_select :termin, :order => [:day, :month, :year], :start_year => 2000, :end_year => Time.now.year+1 %>
+	</div>
+</div>

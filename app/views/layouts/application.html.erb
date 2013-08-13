@@ -8,12 +8,10 @@
   <%= csrf_meta_tags %>
   <%= redactor_lang('pl') %>
 </head>
-<script type="text/javascript">
- /*<![CDATA[*/
- jQuery(document).ready(function() {jQuery(".abtlikebox").hover(function() {jQuery(this).stop().animate({right: "0"}, "medium");}, function() {jQuery(this).stop().animate({right: "-250"}, "medium");}, 500);});
- /*]]>*/
- </script>
+
 <body>
+<div class="rotate">
+</div>
 <div id="main">
 <!-- HEADER -->
 	<div id="header">	
@@ -26,7 +24,7 @@
           				<li><a tabindex="-1" href="sitemap.html">Dojazd</a></li>
         </ul>
 				</li>
-				<li class="style3"><a href="articles.html"><span>Aktualności</span></a></li>
+				<li class="style3"><a href="/news"><span>Aktualności</span></a></li>
 				<li class="style5"><a href="sitemap.html"><span>Galeria</span></a></li>
 				<li class="style4"><a href="/kontakt"><span>Kontakt</span></a></li>
 			</ul>
@@ -197,6 +195,10 @@
 										<%= image_tag("cc.png") %>
 									<% end %>
 									<br /><br />
+									<%= link_to("http://bracelet-by-sis.art-madam.pl/", "target"=>"_blank") do %>
+										<%= image_tag("bracelet-by-sis.jpg", "style"=>"width:90px;height:90px;",:class=>"img-rounded") %>
+									<% end %>
+									<br /><br />
 									</center>
 								</div>
 							</div>
@@ -227,6 +229,8 @@
 			</div>
 		</div>
 	</div>
+</div>
+<div class="circle">
 </div>
 </body>
 </html>

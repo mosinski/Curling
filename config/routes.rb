@@ -1,5 +1,8 @@
 Osp::Application.routes.draw do
 
+  resources :news
+
+
   mount RedactorRails::Engine => '/redactor_rails' 
 
   resources :users do

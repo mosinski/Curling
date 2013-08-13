@@ -1,0 +1,34 @@
+<% if current_user %>
+	<h3>Aktualności Ogólne</h3>
+<% else %>
+	<h3>Aktualności</h3>
+<% end %>
+				<ul class="list3">
+				<% if @news.count == 0 %>
+				<br><br>
+				<pre>Brak Aktualności ..</pre>
+				<% else %>
+				<% @news.each do |news| %>
+					<li><span><em><%= image_tag("icon4.gif") %></em></span><b><%= link_to news.tytul, news %></b><%= strip_tags(news.tekst_pl[0..300])+"..." %><br />
+
+					<div class="dashboard_data">
+					<i class="icon-calendar"></i> Opublikowano: <%= news.created_at.strftime("%d.%m.%Y %H:%M") %> <i class="icon-comment"></i> <%= news.comment_threads.count %>
+					</div>
+
+					<div style="float:right;">
+					<%= link_to news, :class => "btn btn-small" do %>
+  						 Czytaj więcej »
+					<% end %>
+    				<% if current_user.role == "admin" %>
+					<%= link_to edit_news_path(news), :class => "btn btn-small btn-inverse" do %>
+  						<i class="icon-edit"></i> Edytuj
+					<% end %>
+					<%= link_to news, :confirm => "Czy napewno chcesz usunąć aktualność ogólną #{news.tytul}?", :method => :delete, :class => "btn btn-small btn-danger" do %>
+  						<i class="icon-trash"></i> Usuń
+					<% end %>
+				<% end %>
+					</div>
+					</li>
+				<% end %>
+				<% end %>
+				</ul>

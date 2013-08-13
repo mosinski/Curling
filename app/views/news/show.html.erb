@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Tytul:</b>
+  <%= @news.tytul %>
+</p>
+
+<p>
+  <b>Tekst pl:</b>
+  <%= @news.tekst_pl %>
+</p>
+
+<p>
+  <b>Tekst en:</b>
+  <%= @news.tekst_en %>
+</p>
+
+<p>
+  <b>Termin:</b>
+  <%= @news.termin %>
+</p>
+
+
+<%= link_to 'Edit', edit_news_path(@news) %> |
+<%= link_to 'Back', news_index_path %>

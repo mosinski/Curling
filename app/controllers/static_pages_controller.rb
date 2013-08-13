@@ -29,6 +29,8 @@ class StaticPagesController < ApplicationController
     	if current_user.role == "admin"
     	@users = User.find_all_by_potwierdzenie(1)
     	@users_waiting = User.find_all_by_potwierdzenie(0)
+    	@news = News.all
+	@dashboard = Dashboard.all
 
     	respond_to do |format|
       		format.html # about.html.erb
