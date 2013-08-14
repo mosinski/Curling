@@ -122,6 +122,7 @@
 					<% end %>
 					</li>
 
+					<% if current_user.role == "admin" %>
 					<% if current_page?("/admin_panel") %>
 					<li class="active">
 					<% else %>
@@ -129,6 +130,7 @@
 					<% end %>
 					<%= link_to "/admin_panel" do %>
 					<i class="icon-wrench"></i> Ustawienia
+					<% end %>
 					<% end %>
 					</li>
     				</ul>

@@ -18,13 +18,13 @@ class DashboardsController < ApplicationController
   # GET /dashboards/1.json
   def show
    if current_user
-    @dashboard = Dashboard.find(params[:id])
-    @all_comments = @dashboard.root_comments.reverse
+    	@dashboard = Dashboard.find(params[:id])
+    	@all_comments = @dashboard.root_comments.reverse
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @dashboard }
-    end
+    	respond_to do |format|
+      		format.html # show.html.erb
+      		format.json { render json: @dashboard }
+    	end
    else
         redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
    end
@@ -34,11 +34,15 @@ class DashboardsController < ApplicationController
   # GET /dashboards/new.json
   def new
    if current_user
-    @dashboard = Dashboard.new
+    if current_user.role == "admin"
+    	@dashboard = Dashboard.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @dashboard }
+    	respond_to do |format|
+      		format.html # new.html.erb
+      		format.json { render json: @dashboard }
+    	end
+    else
+  	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnie&#324;!'
     end
    else
         redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
@@ -48,7 +52,11 @@ class DashboardsController < ApplicationController
   # GET /dashboards/1/edit
   def edit
    if current_user
-    @dashboard = Dashboard.find(params[:id])
+    if current_user.role == "admin"
+    	@dashboard = Dashboard.find(params[:id])
+    else
+  	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnie&#324;!'
+    end
    else
         redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
    end
@@ -58,16 +66,20 @@ class DashboardsController < ApplicationController
   # POST /dashboards.json
   def create
    if current_user
+    if current_user.role == "admin"
     @dashboard = Dashboard.new(params[:dashboard])
 
-    respond_to do |format|
-      if @dashboard.save
-        format.html { redirect_to @dashboard, notice: 'Gratulacje! Stworzono notatke' }
-        format.json { render json: @dashboard, status: :created, location: @dashboard }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @dashboard.errors, status: :unprocessable_entity }
-      end
+    	respond_to do |format|
+      	  if @dashboard.save
+        	format.html { redirect_to @dashboard, notice: 'Gratulacje! Stworzono notatke' }
+        	format.json { render json: @dashboard, status: :created, location: @dashboard }
+      	  else
+        	format.html { render action: "new" }
+        	format.json { render json: @dashboard.errors, status: :unprocessable_entity }
+      	  end
+    	end
+    else
+  	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnie&#324;!'
     end
    else
         redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
@@ -78,16 +90,20 @@ class DashboardsController < ApplicationController
   # PUT /dashboards/1.json
   def update
    if current_user
+    if current_user.role == "admin"
     @dashboard = Dashboard.find(params[:id])
 
-    respond_to do |format|
-      if @dashboard.update_attributes(params[:dashboard])
-        format.html { redirect_to @dashboard, notice: 'Gratulacje! Zaktualizowano notatke' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @dashboard.errors, status: :unprocessable_entity }
-      end
+    	respond_to do |format|
+      	  if @dashboard.update_attributes(params[:dashboard])
+        	format.html { redirect_to @dashboard, notice: 'Gratulacje! Zaktualizowano Aktualno&#347;&#263; Klubow&#261;' }
+        	format.json { head :no_content }
+      	  else
+        	format.html { render action: "edit" }
+        	format.json { render json: @dashboard.errors, status: :unprocessable_entity }
+      	  end
+    	end
+    else
+  	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnie&#324;!'
     end
    else
         redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
@@ -98,12 +114,16 @@ class DashboardsController < ApplicationController
   # DELETE /dashboards/1.json
   def destroy
    if current_user
-    @dashboard = Dashboard.find(params[:id])
-    @dashboard.destroy
+    if current_user.role == "admin"
+    	@dashboard = Dashboard.find(params[:id])
+    	@dashboard.destroy
 
-    respond_to do |format|
-      format.html { redirect_to dashboards_url }
-      format.json { head :no_content }
+    	respond_to do |format|
+      	  format.html { redirect_to dashboards_url }
+      	  format.json { head :no_content }
+    	end
+    else
+  	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnie&#324;!'
     end
    else
         redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'

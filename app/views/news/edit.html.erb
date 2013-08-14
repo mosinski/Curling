@@ -1,6 +1,11 @@
-<h1>Editing news</h1>
+<h3>Edycja Aktualności Ogólnej</h3>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @news %> |
-<%= link_to 'Back', news_index_path %>
+<%= form_for @news, :html => { :multipart => true } do |f| %>
+<%= render partial: 'form', locals: { f: f } %>
+<br />
+<div class="actions">
+    <button type="submit" class="btn btn-primary">
+	<i class="icon-check"></i> Aktualizuj Aktualność Ogólną
+    </button>
+  </div>
+<% end %>
