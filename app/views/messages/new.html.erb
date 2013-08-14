@@ -1,3 +1,19 @@
+ <% if @message.errors.any? %>
+    <div id="error_explanation">
+    <% if  (@message.errors.count) == 1  %>
+      <h4>Wiadomość nie została wysłana z powodu jednego błędu</h4>
+    <% elsif (@message.errors.count) > 1 %>
+        <h4>Wiadomość nie została wysłana z powodu <%= @message.errors.count %> błędów</h4>
+    <% end %>
+      <ul style="background:none repeat scroll 0% 0% rgb(245, 245, 245);padding:10px;">
+      <% @message.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    <hr>
+    </div>
+  <% end %>
+
 <div class="span6">
 <%= form_for @message, :url => user_messages_path(@user) do |f| %>
   <p style="display:none;">

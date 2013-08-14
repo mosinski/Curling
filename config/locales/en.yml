@@ -200,8 +200,16 @@ en:
         email:                 'E-mail'
         name_surname:          'Imię i Nazwisko'
         remember_me:           'zapamiętaj mnie'
+      message:
+        body:                  'Treść Wiadomości'
     errors:
+      models:
+        message:
+          attributes:
+            body:
+              too_short: "jest za krótka (przynajmniej %{count} znak)"
       <<: *errors
+
   authlogic:
     error_messages:
       login_blank: "nie może być pusta"

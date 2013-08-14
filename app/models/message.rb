@@ -6,6 +6,6 @@ class Message < ActiveRecord::Base
   # uncomment it if using it or you can remove it if not
   attr_accessor :to
 
-  validates :body, allow_blank: false
+  validates :body, length: { minimum: 1 }, allow_blank: false
   
 end
