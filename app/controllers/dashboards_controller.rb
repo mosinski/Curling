@@ -131,6 +131,7 @@ class DashboardsController < ApplicationController
   end
 
   def add_comment
+   if current_user
     @dashboard = Dashboard.find(params[:id])
     @user_who_commented = current_user
     @comment_reply = params[:parrent_id]
@@ -143,22 +144,26 @@ class DashboardsController < ApplicationController
     end
     
     redirect_to @dashboard, :notice => 'Gratulacje! Dodano nowy komentarz!'
+   else
+    redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
+   end
   end
 
   def destroy_comment
     if current_user
-       if (current_user.role == 'admin')
-    @comment = Comment.find(params[:id])
+      if (current_user.role == 'admin')
+    	@comment = Comment.find(params[:id])
 
-    if @comment.has_children?
-    @comment.children.each {|r| r.destroy}
-    end
-    @comment.destroy
+    	if @comment.has_children?
+    		@comment.children.each {|r| r.destroy}
+    	end
 
-    redirect_to :back, :notice => 'Informacja! Usuni&#281;to komentarz/e!'
-	else
+   	@comment.destroy
+    	redirect_to :back, :notice => 'Informacja! Usuni&#281;to komentarz/e!'
+
+      else
   	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnie&#324;!'
-  	end
+      end
     else
         redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
     end
