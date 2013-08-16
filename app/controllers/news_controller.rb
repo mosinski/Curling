@@ -124,17 +124,31 @@ class NewsController < ApplicationController
 
   def add_comment
     @news = News.find(params[:id])
-    @user_who_commented = current_user
-    @comment_reply = params[:parrent_id]
-    @comment = Comment.build_from( @news, @user_who_commented.id, params[:komentarz] )
-    @comment.save
 
-    if @comment_reply != nil && @comment_reply != ""
-    @parent = Comment.find(@comment_reply)
-    @comment.move_to_child_of(@parent)
-    end
+    if params[:komentarz] != nil && params[:komentarz] != ""
+
+    	if current_user
+    		@user_who_commented = current_user
+		@comment_body = params[:komentarz]
+    	else
+		@user_who_commented = User.find_by_username("Gosc")
+		@comment_body = params[:guest_name]+"\n"
+		@comment_body += params[:komentarz]
+    	end
+
+    	@comment_reply = params[:parrent_id]
+    	@comment = Comment.build_from( @news, @user_who_commented.id, @comment_body )
+    	@comment.save
+
+    	if @comment_reply != nil && @comment_reply != ""
+    		@parent = Comment.find(@comment_reply)
+    		@comment.move_to_child_of(@parent)
+    	end
     
-    redirect_to @news, :notice => 'Gratulacje! Dodano nowy komentarz!'
+    	redirect_to @news, :notice => 'Gratulacje! Dodano nowy komentarz!'
+    else 
+    	redirect_to @news, :notice => 'Uwaga! Nie podano tre&#347;ci komentarza!'
+    end
   end
 
   def destroy_comment

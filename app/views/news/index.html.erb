@@ -19,7 +19,7 @@
 					<%= link_to news, :class => "btn btn-small" do %>
   						 Czytaj więcej »
 					<% end %>
-    				<% if current_user.role == "admin" %>
+    				<% if current_user && current_user.role == "admin" %>
 					<%= link_to edit_news_path(news), :class => "btn btn-small btn-inverse" do %>
   						<i class="icon-edit"></i> Edytuj
 					<% end %>
