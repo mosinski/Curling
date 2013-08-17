@@ -125,7 +125,8 @@ class NewsController < ApplicationController
   def add_comment
     @news = News.find(params[:id])
 
-    if params[:komentarz] != nil && params[:komentarz] != ""
+    if (current_user && params[:komentarz] != nil && params[:komentarz] != "") ||
+       (params[:guest_name] != nil && params[:guest_name] != "" && params[:komentarz] != nil && params[:komentarz] != "")
 
     	if current_user
     		@user_who_commented = current_user
@@ -147,7 +148,7 @@ class NewsController < ApplicationController
     
     	redirect_to @news, :notice => 'Gratulacje! Dodano nowy komentarz!'
     else 
-    	redirect_to @news, :notice => 'Uwaga! Nie podano tre&#347;ci komentarza!'
+    	redirect_to @news, :notice => 'Uwaga! Nie podano tre&#347;ci komentarza lub nick-u!'
     end
   end
 
