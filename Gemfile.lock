@@ -97,6 +97,7 @@ GEM
     mini_magick (3.6.0)
       subexec (~> 0.2.1)
     multi_json (1.7.7)
+    obscenity (1.0.2)
     orm_adapter (0.4.0)
     pg (0.15.1)
     polyglot (0.3.3)
@@ -177,6 +178,7 @@ DEPENDENCIES
   jquery-rails
   less-rails-bootstrap
   mini_magick
+  obscenity
   pg
   rails (= 3.2.11)
   redactor-rails

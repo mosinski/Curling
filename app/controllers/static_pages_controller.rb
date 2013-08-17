@@ -1,6 +1,7 @@
 class StaticPagesController < ApplicationController
 
  def start
+    @news_last = News.all.last(3)
 
     respond_to do |format|
       format.html # start.html.erb

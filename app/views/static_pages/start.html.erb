@@ -8,9 +8,9 @@
 					<div class="inner">
 						<h3>Aktualności</h3>
 						<ul class="list1">
-							<li><b><a href="#">Winter Olympic Sports</a></b>The Winter Olympic Sports are categorized into three main categories: ice sports; alpine, skiing and snowboarding events; Nordic events. In each of these sports there are more events. Here you will learn everything about them.</li>
-							<li><b><a href="#">About Winter Olympics Template</a></b>Free 1024/768 Optimized Website Template from Templates.com. We really hope that you will like this template and use it for your website.</li>
-							<li><b><a href="#">Winter Olympics</a></b>The Winter Olympics is filled with reckless moments, some of which lead to victory. Find the latest information and reviews in this <a href="article.html">sample article.</a></li>
+							<% @news_last.each do |news| %>
+							<li><b><%= link_to news.tytul, news %></b><%= strip_tags(news.tekst_pl[0..300])+"..." %></li>
+							<% end %>
 						</ul>
 					</div>
 				</div>

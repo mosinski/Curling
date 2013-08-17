@@ -24,7 +24,7 @@
         <% end %>
 
 	<br />
- 	<%= comment.body %>
+ 	<%= Obscenity.sanitize(comment.body) %>
  </div>
 </div>
  <% if comment.has_children? %>
@@ -32,7 +32,7 @@
     	  <% @user_children = User.find(children.user_id) %>
     		<div class="comment">
  			<div class="comment_reply_user">
-				<%= children.body %> - 
+				<%= Obscenity.sanitize(children.body) %> - 
 				<%= link_to @user_children.username, @user_children, "style"=>"font-weight:bold;" %> <%=I18n.l comment.created_at, :format => :short %>
 				<% if current_user.role == "admin" %>
 				<%= link_to({:controller => "dashboards", :action => "destroy_comment", :id => children.id}, {:confirm => "Czy napewno chcesz usunąć komentarz użytkownika #{@user_children.username}?"}) do %>

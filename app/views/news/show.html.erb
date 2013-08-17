@@ -31,9 +31,9 @@
 
 	<br />
 	<% if @user.potwierdzenie == 0 %>
-		<%= comment.body.sub(@user.username, '') %>
+		<%= Obscenity.sanitize(comment.body.sub(@user.username, '')) %>
 	<% else %>
- 		<%= comment.body %>
+ 		<%= Obscenity.sanitize(comment.body) %>
 	<% end %>
  </div>
 </div>
@@ -46,9 +46,9 @@
     		<div class="comment">
  			<div class="comment_reply_user">
 				<% if @user_children.potwierdzenie == 0 %>
-					<%= children.body.sub(@user_children.username, '') %> -
+					<%= Obscenity.sanitize(children.body.sub(@user_children.username, '')) %> -
 				<% else %>
-					<%= children.body %> -
+					<%= Obscenity.sanitize(children.body) %> -
 		 	  	<% end %> 
 				<%= link_to @user_children.username, @user_children, "style"=>"font-weight:bold;" %> <%=I18n.l comment.created_at, :format => :short %>
 				<% if current_user && current_user.role == "admin" %>
