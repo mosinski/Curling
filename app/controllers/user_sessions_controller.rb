@@ -5,7 +5,7 @@ class UserSessionsController < ApplicationController
 # GET /user_sessions/new.xml
 def new
   if current_user
-	redirect_to users_path, :notice => 'Informacja! Jeste&#347; ju&#380; zalogowany!'
+	redirect_to root_path, :notice => 'Informacja! Jeste&#347; ju&#380; zalogowany!'
   else
 	@user_session = UserSession.new
  

@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class StaticPagesController < ApplicationController
 
  def start
@@ -24,6 +25,18 @@ class StaticPagesController < ApplicationController
       format.json { render json: @static_page }
     end
   end
+
+ def resethasla
+    if current_user
+        redirect_to root_url, :notice => 'Informacja! <br>Aktualnie jesteś zalogowany na konto<br>Wyloguj się!'
+    else
+    	respond_to do |format|
+      		format.html # resethasla.html.erb
+      		format.json { render json: @static_page }
+    	end
+    end
+  end
+
 
  def admin_panel
     if current_user
@@ -74,7 +87,7 @@ class StaticPagesController < ApplicationController
 		  PasswordReset.password_sender(@user,@nowehaslo).deliver
 		  @user.password = @nowehaslo
 		  @user.password_confirmation = @nowehaslo
-		  @user.save
+		  @user.save_without_session_maintenance 
         	  redirect_to "/resethasla", :notice => "Gratulacje! Nowe has&#322;o zosta&#322;o wys&#322;ane na maila!"
 		else
         	  redirect_to "/resethasla", :notice => 'Uwaga! Podane dane s&#261; nieprawid&#322;owe!'
