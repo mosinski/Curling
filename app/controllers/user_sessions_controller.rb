@@ -1,5 +1,6 @@
+# encoding: UTF-8
 class UserSessionsController < ApplicationController
- 
+
 # GET /user_sessions/new
 # GET /user_sessions/new.xml
 def new
@@ -25,7 +26,7 @@ def create
 	 if @user_session.save
 	  @username = User.find_by_username(current_user.username)
 	  if @username.potwierdzenie == 1
-	   format.html { redirect_to(root_url, :notice => "Informacja! U&#380;ytkownik zalogowany") }
+	   format.html { redirect_to(root_url, :notice => "Informacja! Użytkownik zalogowany") }
 	   format.xml { render :xml => @user_session, :status => :created, :location => @user_session }
           else
 	   @user_session = UserSession.find

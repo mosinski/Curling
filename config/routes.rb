@@ -1,5 +1,8 @@
 Osp::Application.routes.draw do
 
+  resources :media
+
+
   resources :news
 
 

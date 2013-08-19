@@ -1,0 +1,33 @@
+<%= form_for(@medium) do |f| %>
+  <% if @medium.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@medium.errors.count, "error") %> prohibited this medium from being saved:</h2>
+
+      <ul>
+      <% @medium.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+	<div class="field input-prepend" style="width:100%!important;display:inline-block;">
+    		<%= f.label :tytul %>
+		<span class="add-on"><i class="icon-align-justify"></i></span><%= f.text_field :tytul, :placeholder => "np. gdansk.pl - Turniej AMBER STONE BALTIC CUP 2012", "style" => "width:80%;" %>
+	</div>
+
+
+<div class="controls">
+	<div class="field input-prepend" style="width:80%!important;">
+    		<%= f.label :url %>
+		<span class="add-on"><i class="icon-globe"></i></span>
+    		<%= f.text_field :url, :placeholder => "Adres strony z informacją o klubie", "style" => "width:100%;" %>
+	</div>
+</div>
+
+
+  <div class="actions">
+   <button class="btn btn-large btn-block btn-primary" type="submit">Dodaj</button>
+  </div>
+<% end %>

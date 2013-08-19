@@ -1,0 +1,25 @@
+<h3><i class="icon-list-alt"></i> Media o nas</h3>
+
+<% @media.each do |medium| %>
+  <div style="margin-bottom:10px;">
+    <span class="label label-info"><%=I18n.l medium.created_at, :format => :mini %></span>
+    <i class="icon-hand-right"></i> 
+    <%= link_to medium.tytul, medium.url, "target"=>"_blank" %>
+
+    <% if current_user && current_user.role == "admin" %>
+    <%= link_to edit_medium_path(medium), :class => "btn btn-mini btn-success" do %>
+	<i class="icon-edit"></i> Edytuj
+    <% end %>
+    <%= link_to medium, :confirm => "Czy napewno chcesz usunąć wpis media o nas: #{medium.tytul}?", :method => :delete, :class => "btn btn-mini btn-danger" do %>
+	<i class="icon-trash"></i> Usuń
+    <% end %>
+    <% end %>
+  </div>
+<% end %>
+
+<br />
+<hr>
+
+   <% if current_user && current_user.role == "admin" %>
+	<%= render 'form' %>
+   <% end %>

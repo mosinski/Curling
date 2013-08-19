@@ -3,18 +3,27 @@ class MessagesController < ApplicationController
   before_filter :set_user
   
   def index
+   if current_user
     if params[:mailbox] == "sent"
       @messages = current_user.sent_messages
     else
       @messages = current_user.received_messages
     end
+   else
+        redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
+   end
   end
   
   def show
+   if current_user
     @message = Message.read_message(params[:id], current_user)
+   else
+        redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
+   end
   end
   
   def new
+   if current_user
     @message = Message.new
 
     if params[:reply_to]
@@ -26,9 +35,13 @@ class MessagesController < ApplicationController
         @message.body = "\n\n_________________[Poprzednia Wiadomosc]_________________\n\n #{@reply_to.body}"
       end
     end
+   else
+        redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
+   end
   end
   
   def create
+   if current_user
     @message = Message.new(params[:message])
     @message.sender = current_user
     @message.recipient = User.find_by_username(params[:message][:to])
@@ -38,9 +51,13 @@ class MessagesController < ApplicationController
     else
       render :action => :new
     end
+   else
+        redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
+   end
   end
   
   def delete_selected
+   if current_user
     if request.post?
       if params[:delete]
         params[:delete].each { |id|
@@ -51,6 +68,9 @@ class MessagesController < ApplicationController
       end
       redirect_to :back
     end
+   else
+        redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
+   end
   end
   
   private

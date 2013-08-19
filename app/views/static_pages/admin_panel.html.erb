@@ -3,10 +3,10 @@
 				</div>
 				<div class="box1">
 					<div class="inner">
-					<h3>Użytkowników: <%= @users.count %><br>
-					    Użytkowników niepotwierdzonych: <%= @users_waiting.count %><br><br>
-					    Aktualności Klubowych: <%= @dashboard.count %><br>
-					    Aktualności Ogólnych: <%= @news.count %></h3>
+					<h3>Użytkowników: <span class="badge badge-info licznik"><%= @users.count %></span><br>
+					    Użytkowników niepotwierdzonych: <span class="badge badge-info licznik"><%= @users_waiting.count %></span><br><br>
+					    Aktualności Klubowych: <span class="badge badge-info licznik"><%= @dashboard.count %></span><br>
+					    Aktualności Ogólnych: <span class="badge badge-info licznik"><%= @news.count %></span></h3>
 					<hr>
 					<%= link_to new_dashboard_path, :class => "btn btn-large btn-inverse" do %>
 						<i class="icon-bullhorn"></i> Aktualność Klubowa
