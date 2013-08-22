@@ -108,7 +108,7 @@
     					<li>
 					<% end %>
 					<%= link_to users_path do %>
-					<i class="icon-user"></i> Użytkownicy
+					<i class="icon-group"></i> Użytkownicy
 					<% end %>
 					</li>
 
@@ -224,8 +224,8 @@
 				<i class="icon-user"></i> <%= link_to current_user.username, user_path(current_user.id) %> |
 				<i class="icon-off"></i> <%= link_to "Wyloguj", :logout %>
 			<% else %>
-				<%= link_to "Logowanie", :login %> |
-				<%= link_to "Rejestracja", new_user_path %>
+				<i class="icon-signin"></i> <%= link_to "Logowanie", :login %> |
+				<i class="icon-edit"></i> <%= link_to "Rejestracja", new_user_path %>
 			<% end %>
 			Projekt: <%= link_to "Miłosz Osiński" , "http://m1l05z.pl", "target"=>"_blank" %> 
 			</div>

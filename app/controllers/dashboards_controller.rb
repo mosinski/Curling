@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class DashboardsController < ApplicationController
   # GET /dashboards
   # GET /dashboards.json
@@ -71,7 +72,7 @@ class DashboardsController < ApplicationController
 
     	respond_to do |format|
       	  if @dashboard.save
-        	format.html { redirect_to @dashboard, notice: 'Gratulacje! Stworzono notatke' }
+        	format.html { redirect_to @dashboard, notice: 'Gratulacje! Stworzono Aktualno&#347;&#263; Klubow&#261;' }
         	format.json { render json: @dashboard, status: :created, location: @dashboard }
       	  else
         	format.html { render action: "new" }
