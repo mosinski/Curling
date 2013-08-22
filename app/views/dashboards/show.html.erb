@@ -15,7 +15,7 @@
 
  <div class="comment_user">
 	<u><%= link_to @user.username, @user, "style"=>"font-weight:bold;" %> <%=I18n.l comment.created_at, :format => :long %></u> |
-	<button id=<%= comment.id %> class="comment_reply" title="<%= @user.username %>"> Odpowiedź </button>
+	<button id=<%= comment.id %> class="comment_reply btn btn-mini" title="<%= @user.username %>"><i class="icon-reply"></i></button>
 
 	<% if current_user.role == "admin" %>
 	<%= link_to({:controller => "dashboards", :action => "destroy_comment", :id => comment.id}, {:confirm => "Czy napewno chcesz usunąć komentarz użytkownika #{@user.username}? \nZostaną również usunięte wszystkie odpowiedzi na ten komentarz."}) do %>
