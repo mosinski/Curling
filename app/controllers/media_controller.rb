@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class MediaController < ApplicationController
   # GET /media
   # GET /media.json
@@ -33,7 +34,7 @@ class MediaController < ApplicationController
 
     respond_to do |format|
       if @medium.save
-        format.html { redirect_to media_path, notice: 'Medium was successfully created.' }
+        format.html { redirect_to media_path, notice: 'Informacja! Link w Media o Nas został pomyślnie stworzony' }
         format.json { render json: @medium, status: :created, location: @medium }
       else
         format.html { render action: "new" }
@@ -57,7 +58,7 @@ class MediaController < ApplicationController
 
     respond_to do |format|
       if @medium.update_attributes(params[:medium])
-        format.html { redirect_to @medium, notice: 'Medium was successfully updated.' }
+        format.html { redirect_to @medium, notice: 'Informacja! Link w Media o Nas został pomyślnie zaktualizowany' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
