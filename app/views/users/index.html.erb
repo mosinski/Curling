@@ -17,7 +17,9 @@
 <% @users.each do |user| %>
 <% if user.username != "superuser" && user.username != "Gosc"  %>
 <tr>
-<td><%= user.username %></td>
+<td>
+<%= link_to user.username, user, :rel => "popover", "data-placement" => "right", "data-html" => "true", "data-content" => "<img src='#{user.avatar}' />" %>
+</td>
 <td align="center"><%= user.email %></td>
 <td align="center">
 <b>
