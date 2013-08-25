@@ -54,3 +54,11 @@ jQuery(document).ready(function() {
   });
 });
 
+
+$('a[rel=popover]').popover({
+  html: true,
+  trigger: 'hover',
+  placement: 'right'
+});
+
+
