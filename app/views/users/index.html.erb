@@ -18,7 +18,7 @@
 <% if user.username != "superuser" && user.username != "Gosc"  %>
 <tr>
 <td>
-<%= link_to user.username, user, :rel => "popover", "data-content" => "<img src='#{user.avatar}' />" %>
+<%= link_to user.username,'', :rel => "popover", "data-img" => user.avatar %>
 </td>
 <td align="center"><%= user.email %></td>
 <td align="center">
