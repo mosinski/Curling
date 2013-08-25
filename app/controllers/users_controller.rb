@@ -1,4 +1,6 @@
+# encoding: UTF-8
 class UsersController < ApplicationController
+require 'net/ftp'
 
   def index
    if current_user
@@ -128,4 +130,36 @@ class UsersController < ApplicationController
     end
     redirect_to users_path, :notice => 'Informacja! U&#380;ytkownik zosta&#322; odwo&#322;any'	
   end
+
+  def upload_avatar
+    @user = User.find(params[:id])
+    file = params[:file]
+    if file != nil && file.original_filename.end_with?('.jpg','.JPG','.png','.PNG','.gif','.GIF')
+    file.original_filename = file.original_filename.gsub(/\s+/, "")
+    if file.size < 100.kilobytes
+    ftp = Net::FTP.new('FTP.gdanskcurlingclub.pl')
+    ftp.passive = true
+    ftp.login(user = "avatars@gdanskcurlingclub.pl", passwd = ENV['ftp_avatar_password'])
+    ftp.storbinary("STOR " + file.original_filename, StringIO.new(file.read), Net::FTP::DEFAULT_BLOCKSIZE)
+    ftp.quit()
+    @user.avatar = "http://avatars.gdanskcurlingclub.pl/"+file.original_filename
+    @user.save_without_session_maintenance
+    redirect_to @user, :notice => 'Gratulacje!<br>Avatar został zmieniony !'
+    else
+    redirect_to @user, :notice => 'Informacja!<br>Avatar jest za duże max 100KB !'
+    end
+    else
+    redirect_to @user, :notice => 'Informacja!<br>Nie wybrano zdjęcia lub rozszerzenie jest niepoprawne!'
+    end
+    
+  end
+
+  def reset_avatar
+    @user = User.find(params[:id])
+    @user.avatar = "/avatar.jpg"
+    @user.save_without_session_maintenance
+
+    redirect_to @user, :notice => 'Informacja! Avatar zresetowany'
+  end
+
 end

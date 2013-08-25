@@ -51,7 +51,6 @@ module Osp
     config.assets.paths << "#{Rails.root}/app/assets/fonts"
     config.assets.precompile += %w( .svg .eot .woff .ttf )
     config.assets.precompile += ["redactor-rails/*"]
-    config.encoding = "utf-8"
 
     # Enable the asset pipeline
     config.assets.enabled = true

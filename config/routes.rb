@@ -36,7 +36,8 @@ root :to => "static_pages_#start"
 
 match 'potwierdz/:id' => 'users#potwierdz', :as => 'potwierdz'
 match 'odwolaj/:id' => 'users#odwolaj', :as => 'odwolaj'
-
+match 'reset_avatar/:id' => 'users#reset_avatar', :as => 'reset_avatar'
+match 'upload_avatar/:id' => 'users#upload_avatar', :as => 'upload_avatar'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
