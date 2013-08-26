@@ -21,7 +21,7 @@
 <tr>
 <td>
 <%= link_to user.username,'', :rel => "popover", "data-img" => user.avatar %>
-<%= link_to (user.username), user, :rel => "popover", "data-original-title" => user.username, "data-placement" => "right", "data-html" => "true", "data-content" => "działa" %>
+<%= link_to (user.username), user, :class=> "notice_link", :rel => "popover", "data-original-title" => user.username, "data-placement" => "right", "data-html" => "true", "data-content" => "działa" %>
 </td>
 <td align="center"><%= user.email %></td>
 <td align="center">
