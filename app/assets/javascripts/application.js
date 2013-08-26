@@ -54,11 +54,3 @@ jQuery(document).ready(function() {
 });
 
 
-$(".notice_link").hover(function () {
-  $('.notice_link').popover('show');
-},
-function (){
-  $('.notice_link').popover('hide');
-});
-
-
