@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require bootstrap-tooltip.js
+//= require bootstrap-popover.js
 //= require_tree .
 //= require redactor-rails/redactor.min
 
@@ -53,4 +55,9 @@ jQuery(document).ready(function() {
   });
 });
 
-
+$(".notice_link").hover(function () {
+  $('.notice_link').popover('show');
+},
+function (){
+  $('.notice_link').popover('hide');
+});
