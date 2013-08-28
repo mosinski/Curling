@@ -66,7 +66,11 @@
 				</div>
 				</div>
 				<% end %>
-			<div align="right" style="margin-top: 5px;">Odwiedzin: <a href="http://www.web-tools.pl/" title="monitoring pozycji"><img src="http://www.darmowe-liczniki.web-tools.pl/licznik-11-89155-stat.png" alt="monitoring pozycji" border="0" style="margin:2px 30px 0 0;" /></a> Dzisiaj: <%= I18n.l Time.now, :format => "%A, %d %B, %Y" %></div>
+			<div align="right" style="margin-top: 5px;">
+<!-- www.DarmowyLicznik.pl -->
+<div style="padding:0px;font-size:9px;font-family:Verdana;text-align:center;"><a href="http://www.darmowylicznik.pl/" title="Darmowy licznik odwiedzin" target="_blank"><img src="http://www.darmowylicznik.pl/licznik.php?id=87850" alt="Darmowy licznik odwiedzin" style="border:0px; width:100px; height:20px;"></a><script language="JavaScript">var adpol='<counter absolute;top:-1000px;">';var adpol2=adpol.replace('counter','div style="position:'); document.write(adpol2);</script><script language="JavaScript"> document.write('</div>') </script></div>
+<!-- END www.DarmowyLicznik.pl -->
+Dzisiaj: <%= I18n.l Time.now, :format => "%A, %d %B, %Y" %></div>
 			<div class="col-1">
 			  <% if current_user %>
 			    <div class="tabbable tabs-left adminpanel">
