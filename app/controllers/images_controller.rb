@@ -58,7 +58,7 @@ require 'net/ftp'
 		if @zdjecia == 0
     		  ftp = Net::FTP.new('FTP.gdanskcurlingclub.pl')
         	  ftp.passive = true
-    		  ftp.login(user = "images@gdanskcurlingclub.pl", passwd = "1mag35")
+    		  ftp.login(user = "images@gdanskcurlingclub.pl", passwd = ENV['ftp_images_password')
     		  ftp.storbinary("STOR " + file.original_filename, StringIO.new(file.read), Net::FTP::DEFAULT_BLOCKSIZE)
     		  ftp.quit()
     		  
