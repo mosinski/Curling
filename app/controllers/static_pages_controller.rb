@@ -11,7 +11,7 @@ class StaticPagesController < ApplicationController
   end
 
  def galeria
-   
+    @albums = Album.order("termin DESC").all
     respond_to do |format|
       format.html # galeria.html.erb
       format.json { render json: @static_page }

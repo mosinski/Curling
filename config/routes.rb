@@ -1,5 +1,11 @@
 Osp::Application.routes.draw do
 
+  resources :albums
+
+
+  resources :images
+
+
   resources :media
 
 

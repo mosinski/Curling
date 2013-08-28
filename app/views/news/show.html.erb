@@ -4,6 +4,11 @@
   <%= @news.tekst_pl.html_safe %>
 </div>
 
+<% if @album != nil %>
+<%= link_to @album,:class => "btn btn-small btn-primary","style"=>"float:right;" do %>
+	<i class="icon-picture"></i> Przejdź do Albumu »
+<% end %>
+<% end %>
 <hr>
 
 <% @all_comments.each do |comment| %>
@@ -24,7 +29,7 @@
 	<button id=<%= comment.id %> class="comment_reply btn btn-mini" title="<%= @user.username %>"><i class="icon-reply"></i></button>
 
 	<% if current_user && current_user.role == "admin" %>
-	<%= link_to({:controller => "news", :action => "destroy_comment", :id => comment.id}, {:confirm => "Czy napewno chcesz usunąć komentarz użytkownika #{@user.username}? \nZostaną również usunięte wszystkie odpowiedzi na ten komentarz."}) do %>
+	<%= link_to({:controller => "news", :action => "destroy_comment", :id => comment.id}, {:confirm => "Czy napewno chcesz usunąć komentarz użytkownika #{@user.username}? \nZostaną również usunięte wszystkie odpowiedzi na ten komentarz.", :class => "btn btn-small"}) do %>
   		<i class="icon-trash" style="float:right;"></i>
 	<% end %>
         <% end %>
@@ -90,7 +95,65 @@
 	<i class="icon-share-alt"></i> Wróć do listy
 <% end %>
 
+<% if current_user && current_user.role == "admin" %>
+    <%= link_to "#image_upload", "data-toggle"=>"modal",:class => "btn btn-small btn-primary" do %>
+	<i class="icon-picture"></i> Dodaj Zdjęcie
+    <% end %>
+<% end %>
+
+<div id="image_upload" class="modal hide fade">
+            <div class="modal-header">
+              <a class="close" data-dismiss="modal">
+		<i class="icon-remove-circle"></i>
+	      </a>
+              <h3>Dodawanie Zdjęcia do Aktualności Ogólnej</h3>
+            </div>
+            <div class="modal-body">
+<center>
+<%= form_tag({:controller => "images", :action => "create"}, :method => :post, :multipart => true) do %>
+	<%= text_field_tag :przydzial, "news", "style"=>"display:none"%>
+	<%= text_field_tag :przydzial_id, @news.id, "style"=>"display:none"%>
+	<%= image_tag("spacer.gif", :class=>"img-polaroid",:id=>"ftk",:width=>"170px;") %>
+	<br>
+	<span class="label label-info" style="margin:10px;">
+		** Rozmiar zdjęcia nie wiekszy niż 2MB
+	</span>
+	<br>
+	<%= text_area_tag :opis,nil, "style"=>"width:80%", :placeholder => "Krótki opis do zdjęcia..." %>
+</center>
+            </div>
+            <div class="modal-footer" id="stopka_image_add">
+            	<div>
+  		   <div class="myfileupload-buttonbar">
+     			<label class="myui-button" style="float:left;">
+        		  <span class="btn btn-success">
+			  <i class="icon-folder-open-alt"></i> 
+			  Wybierz Zdjęcie
+			  </span>
+			  <%= file_field_tag "file", "style"=>"height:40px;display:none;", "onchange"=>"readURL(this);" %>
+     			</label>
+  		   </div>
+		</div>
+		
+            	<%= button_tag(type: "submit", class: "btn btn-primary", :id=>"start") do %>
+    			<i class="icon-upload icon-white"></i> Dodaj Zdjęcie
+  		<% end %>
+            </div>
+<% end %>
+</div>
+
 <script>
+     function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#ftk').attr('src', e.target.result).width(170).height(170);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
  $(".comment_reply").click(function () {
   var text = this.id
   var parent = this.title

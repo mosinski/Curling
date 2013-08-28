@@ -4,7 +4,8 @@ class NewsController < ApplicationController
   # GET /news.json
   def index
     @news = News.all
-
+    @albumy_z_news = Album.find_all_by_przydzial("news")
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @news }
@@ -15,6 +16,8 @@ class NewsController < ApplicationController
   # GET /news/1.json
   def show
     @news = News.find(params[:id])
+    @albumy_z_news = Album.find_all_by_przydzial("news")
+    @album = @albumy_z_news.detect{|w| w.przydzial_id == @news.id}
     @all_comments = @news.root_comments.reverse
 
     respond_to do |format|
@@ -155,7 +158,7 @@ class NewsController < ApplicationController
 
   def destroy_comment
     if current_user
-      if (current_user.role == 'admin')
+      if current_user.role == 'admin'
     	@comment = Comment.find(params[:id])
 
     	if @comment.has_children?

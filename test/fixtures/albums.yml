@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  tytul: MyString
+  przydzial: MyString
+  przydzial_id: 1
+
+two:
+  tytul: MyString
+  przydzial: MyString
+  przydzial_id: 1

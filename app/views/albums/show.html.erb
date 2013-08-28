@@ -1,0 +1,76 @@
+<h3><i class="icon-book"></i> Album <%= @album.tytul %></h3>
+
+<% @zdjecia.each do |zdjecie| %>
+
+<a class="fancybox" href="http://images.gdanskcurlingclub.pl/<%= zdjecie.nazwa %>" title="<%= zdjecie.opis %>" target="_blank">
+<%= image_tag("http://images.gdanskcurlingclub.pl/#{zdjecie.nazwa}", :class => "img-polaroid album_zdjecie") %>
+</a>
+
+<% end %>
+
+
+<div>
+<%= link_to  "/galeria", :class => "btn btn-small btn-primary" do %>
+	<i class="icon-share-alt"></i> Wróć do listy albumów
+<% end %>
+
+<% if current_user && current_user.role == "admin" %>
+<%= link_to "#image_upload", "data-toggle"=>"modal",:class => "btn btn-small btn-primary" do %>
+	<i class="icon-picture"></i> Dodaj Zdjęcie
+<% end %>
+<% end %>
+</div>
+
+<div id="image_upload" class="modal hide fade">
+            <div class="modal-header">
+              <a class="close" data-dismiss="modal">
+		<i class="icon-remove-circle"></i>
+	      </a>
+              <h3>Dodawanie Zdjęcia do Albumu</h3>
+            </div>
+            <div class="modal-body">
+<center>
+<%= form_tag({:controller => "images", :action => "create"}, :method => :post, :multipart => true) do %>
+	<%= text_field_tag :przydzial, @album.przydzial, "style"=>"display:none"%>
+	<%= text_field_tag :przydzial_id, @album.przydzial_id, "style"=>"display:none"%>
+	<%= image_tag("spacer.gif", :class=>"img-polaroid",:id=>"ftk",:width=>"170px;") %>
+	<br>
+	<span class="label label-info" style="margin:10px;">
+		** Rozmiar zdjęcia nie wiekszy niż 2MB
+	</span>
+	<br>
+	<%= text_area_tag :opis,nil, "style"=>"width:80%", :placeholder => "Krótki opis do zdjęcia..." %>
+</center>
+            </div>
+            <div class="modal-footer" id="stopka_image_add">
+            	<div>
+  		   <div class="myfileupload-buttonbar">
+     			<label class="myui-button" style="float:left;">
+        		  <span class="btn btn-success">
+			  <i class="icon-folder-open-alt"></i> 
+			  Wybierz Zdjęcie
+			  </span>
+			  <%= file_field_tag "file", "style"=>"height:40px;display:none;", "onchange"=>"readURL(this);" %>
+     			</label>
+  		   </div>
+		</div>
+		
+            	<%= button_tag(type: "submit", class: "btn btn-primary", :id=>"start") do %>
+    			<i class="icon-upload icon-white"></i> Dodaj Zdjęcie
+  		<% end %>
+            </div>
+<% end %>
+</div>
+
+<script>
+     function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#ftk').attr('src', e.target.result).width(170).height(170);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+</script>

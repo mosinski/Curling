@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130818174634) do
+ActiveRecord::Schema.define(:version => 20130827111846) do
+
+  create_table "albums", :force => true do |t|
+    t.string   "tytul"
+    t.string   "przydzial"
+    t.integer  "przydzial_id"
+    t.date     "termin"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "comments", :force => true do |t|
     t.integer  "commentable_id",   :default => 0
@@ -33,6 +42,14 @@ ActiveRecord::Schema.define(:version => 20130818174634) do
   create_table "dashboards", :force => true do |t|
     t.string   "tytul"
     t.text     "tekst"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "images", :force => true do |t|
+    t.string   "nazwa"
+    t.text     "opis"
+    t.integer  "nr_albumu"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
