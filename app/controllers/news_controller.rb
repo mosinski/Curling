@@ -144,6 +144,9 @@ class NewsController < ApplicationController
 		@comment_body += params[:komentarz]
     	end
 
+	if (params[:guest_name] != "Administrator") && (params[:guest_name] != "administrator") && (params[:guest_name] != "Moderator") && (params[:guest_name] != "moderator")
+	if @comment_body.length < 500
+	
     	@comment_reply = params[:parrent_id]
     	@comment = Comment.build_from( @news, @user_who_commented.id, @comment_body )
     	@comment.save
@@ -152,8 +155,14 @@ class NewsController < ApplicationController
     		@parent = Comment.find(@comment_reply)
     		@comment.move_to_child_of(@parent)
     	end
-    
+    	
     	redirect_to @news, :notice => 'Gratulacje! Dodano nowy komentarz!'
+    	else
+    	redirect_to @news, :notice => 'Uwaga! Za długa treść komentarza!'
+    	end
+    	else
+       	redirect_to @news, :notice => 'Uwaga! Niedozwolony Nick!'
+    	end
     else 
     	redirect_to @news, :notice => 'Uwaga! Nie podano tre&#347;ci komentarza lub nick-u!'
     end
