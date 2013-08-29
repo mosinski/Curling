@@ -6,7 +6,9 @@
 					<h3>Użytkowników: <span class="badge badge-info licznik"><%= @users.count -1 %></span><br>
 					    Użytkowników niepotwierdzonych: <span class="badge badge-info licznik"><%= @users_waiting.count -1 %></span><br><br>
 					    Aktualności Klubowych: <span class="badge badge-info licznik"><%= @dashboard.count %></span><br>
-					    Aktualności Ogólnych: <span class="badge badge-info licznik"><%= @news.count %></span></h3>
+					    Aktualności Ogólnych: <span class="badge badge-info licznik"><%= @news.count %></span><br><br>
+					    Albumów: <span class="badge badge-info licznik"><%= @albums.count %></span><br>
+					    Zdjęć: <span class="badge badge-info licznik"><%= @images.count %></span></h3>
 					<hr>
 					<%= link_to new_dashboard_path, :class => "btn btn-large btn-inverse" do %>
 						<i class="icon-bullhorn"></i> Aktualność Klubowa

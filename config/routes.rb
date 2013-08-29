@@ -6,10 +6,6 @@ Osp::Application.routes.draw do
   resources :images
 
 
-  resources :media
-
-
-  resources :news
 
 
   mount RedactorRails::Engine => '/redactor_rails' 
@@ -22,7 +18,7 @@ Osp::Application.routes.draw do
              end
            end
 
-resources :user_sessions, :dashboards, :static_pages
+resources :user_sessions, :dashboards, :static_pages, :news, :media
 match 'login' => 'user_sessions#new', :as => :login
 match 'logout' => 'user_sessions#destroy', :as => :logout
 match 'logowanie' => 'user_sessions#new', :as => :login
@@ -32,6 +28,7 @@ match 'kontakt' => 'static_pages_#kontakt'
 match 'galeria' => 'static_pages_#galeria'
 match 'resethasla' => 'static_pages#resethasla'
 match 'admin_panel' => 'static_pages_#admin_panel'
+match 'rss_comments' => 'static_pages_#rss_comments'
 match '/dashboards/add_comment' => 'dashboards#add_comment'
 match '/news/add_comment' => 'news#add_comment'
 match '/dashboards/destroy_comment/:id' => 'dashboards#destroy_comment', :as => 'destroy_comment'

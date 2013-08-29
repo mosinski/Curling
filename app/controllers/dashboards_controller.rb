@@ -9,6 +9,8 @@ class DashboardsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @dashboards }
+      format.atom     # index.atom.builder
+      format.xml  { render :xml => @dashboards } 
     end
    else
         redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'

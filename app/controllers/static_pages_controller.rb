@@ -12,6 +12,7 @@ class StaticPagesController < ApplicationController
 
  def galeria
     @albums = Album.order("termin DESC").all
+    
     respond_to do |format|
       format.html # galeria.html.erb
       format.json { render json: @static_page }
@@ -23,6 +24,19 @@ class StaticPagesController < ApplicationController
     respond_to do |format|
       format.html # about.html.erb
       format.json { render json: @static_page }
+    end
+  end
+  
+  def rss_comments
+    @news = News.all
+    @komentarze = []
+    @news.each {|r| @komentarze += r.comment_threads }
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @komentarze }
+      format.atom     # index.atom.builder
+      format.xml  { render :xml => @komentarze }  
     end
   end
 
@@ -45,6 +59,8 @@ class StaticPagesController < ApplicationController
     	@users_waiting = User.find_all_by_potwierdzenie(0)
     	@news = News.all
 	@dashboard = Dashboard.all
+	@albums = Album.all
+	@images = Image.all
 
     	respond_to do |format|
       		format.html # about.html.erb
@@ -104,6 +120,5 @@ class StaticPagesController < ApplicationController
     attribute = date_symbol_or_string.to_s
     return Date.new(hash[attribute + '(1i)'].to_i, hash[attribute + '(2i)'].to_i, hash[attribute + '(3i)'].to_i)   
   end
-
 
 end

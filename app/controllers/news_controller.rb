@@ -9,6 +9,8 @@ class NewsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @news }
+      format.atom     # index.atom.builder
+      format.xml  { render :xml => @news }  
     end
   end
 
@@ -25,6 +27,7 @@ class NewsController < ApplicationController
       format.json { render json: @news }
     end
   end
+ 
 
   # GET /news/new
   # GET /news/new.json
