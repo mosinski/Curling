@@ -31,6 +31,7 @@ class StaticPagesController < ApplicationController
     @news = News.all
     @komentarze = []
     @news.each {|r| @komentarze += r.comment_threads }
+    @users = User.all
 
     respond_to do |format|
       format.html # show.html.erb
