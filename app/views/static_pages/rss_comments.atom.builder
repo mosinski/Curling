@@ -3,7 +3,7 @@ atom_feed do |feed|
   feed.updated @komentarze.first.created_at
   @komentarze.each do |komentarz|
     feed.entry komentarz, {:url => "/#{komentarz.commentable_type.downcase}/#{komentarz.commentable_id}"} do |entry|
-      if komentarz.user_id == 2
+      if komentarz.user_id == 3
       entry.title komentarz.body.lines.first+"(Gość)"
       entry.content komentarz.body.sub(komentarz.body.lines.first, ''), :type => 'html'
       else
