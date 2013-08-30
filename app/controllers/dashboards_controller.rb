@@ -119,14 +119,16 @@ class DashboardsController < ApplicationController
    if current_user
     if current_user.role == "admin"
     	@dashboard = Dashboard.find(params[:id])
+    	@all_comments = @dashboard.comment_threads
+    	@all_comments.each {|r| r.destroy }
     	@dashboard.destroy
 
     	respond_to do |format|
-      	  format.html { redirect_to dashboards_url }
+      	  format.html { redirect_to dashboards_url, :notice => 'Informacja! Usunięto Aktualność Klubową wraz z wszystkimi komentarzami!' }
       	  format.json { head :no_content }
     	end
     else
-  	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnie&#324;!'
+  	redirect_to root_url, :notice => 'Informacja! Nie masz uprawnie&#324;!'
     end
    else
         redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
@@ -136,6 +138,7 @@ class DashboardsController < ApplicationController
   def add_comment
    if current_user
     @dashboard = Dashboard.find(params[:id])
+    if params[:komentarz] != nil && params[:komentarz].length < 500
     @user_who_commented = current_user
     @comment_reply = params[:parrent_id]
     @comment = Comment.build_from( @dashboard, @user_who_commented.id, params[:komentarz] )
@@ -147,6 +150,9 @@ class DashboardsController < ApplicationController
     end
     
     redirect_to @dashboard, :notice => 'Gratulacje! Dodano nowy komentarz!'
+    else
+    redirect_to @dashboard, :notice => 'Uwaga! Niewłaściwa długość treści komentarza! Dopuszczalna od 1 do 500 znaków.'
+    end
    else
     redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
    end

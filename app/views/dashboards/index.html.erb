@@ -19,7 +19,7 @@
 					<%= link_to edit_dashboard_path(dashboard), :class => "btn btn-small btn-inverse" do %>
   						<i class="icon-edit"></i> Edytuj
 					<% end %>
-					<%= link_to dashboard, :confirm => "Czy napewno chcesz usunąć aktualność klubową #{dashboard.tytul}?", :method => :delete, :class => "btn btn-small btn-danger" do %>
+					<%= link_to dashboard, :confirm => "Czy napewno chcesz usunąć aktualność klubową '#{dashboard.tytul}' wraz z wszystkimi komentarzami?", :method => :delete, :class => "btn btn-small btn-danger" do %>
   						<i class="icon-trash"></i> Usuń
 					<% end %>
 				<% end %>

@@ -25,7 +25,7 @@
 					<%= link_to edit_news_path(news), :class => "btn btn-small btn-inverse" do %>
   						<i class="icon-edit"></i> Edytuj
 					<% end %>
-					<%= link_to news, :confirm => "Czy napewno chcesz usunąć aktualność ogólną #{news.tytul}?", :method => :delete, :class => "btn btn-small btn-danger" do %>
+					<%= link_to news, :confirm => "Czy napewno chcesz usunąć aktualność ogólną '#{news.tytul}' wraz z wszystkimi komentarzami?", :method => :delete, :class => "btn btn-small btn-danger" do %>
   						<i class="icon-trash"></i> Usuń
 					<% end %>
 				<% end %>

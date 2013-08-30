@@ -115,10 +115,12 @@ class NewsController < ApplicationController
    if current_user
     if current_user.role == "admin"
     	@news = News.find(params[:id])
+    	@all_comments = @news.comment_threads
+    	@all_comments.each {|r| r.destroy }
     	@news.destroy
 
     	respond_to do |format|
-      	  format.html { redirect_to news_index_url }
+      	  format.html { redirect_to news_index_url, :notice => 'Informacja! Usunięto Aktualność Ogólną wraz z wszystkimi komentarzami!' }
       	  format.json { head :no_content }
     	end
     else
