@@ -6,6 +6,12 @@
 <%= image_tag("http://images.gdanskcurlingclub.pl/#{zdjecie.nazwa}", :class => "img-polaroid album_zdjecie") %>
 </a>
 
+<% if current_user && current_user.role == "admin" %>
+<%= link_to zdjecie, method: :delete, data: { confirm: "Czy napewno chcesz usunąć zdjecie '#{zdjecie.nazwa}'?" }, :class => "btn btn-mini image_del" do %>
+	<i class="icon-trash"></i>
+<% end %>
+<% end %>
+
 <% end %>
 
 
