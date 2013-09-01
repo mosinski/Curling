@@ -76,3 +76,14 @@ $(document).ready(function() {
 	}
      });
 });
+
+$("#user_password").pwdstr("#password_time");
+  setInterval(function() {
+     if($("#password_time").is(":empty")||$("#user_password").val() == ''){
+	$(".password_oblicz").hide('fast');
+     }
+     else{
+	$(".password_oblicz").show('fast');
+     }
+  return
+}, 1500);

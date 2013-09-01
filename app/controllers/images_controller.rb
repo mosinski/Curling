@@ -63,12 +63,20 @@ require 'net/ftp'
   end
 
   def destroy
-    @image = Image.find(params[:id])
-    @image.destroy
+    if current_user
+       if current_user.role=="admin"
+    	@image = Image.find(params[:id])
+    	@image.destroy
 
-    respond_to do |format|
-      format.html { redirect_to "/galeria", notice: 'Gratulacje! Zdjęcie zostało usunięte!' }
-      format.json { head :no_content }
+    	respond_to do |format|
+      		format.html { redirect_to "/galeria", notice: 'Gratulacje! Zdjęcie zostało usunięte!' }
+      		format.json { head :no_content }
+    	end
+	else
+  	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnień!'
+  	end
+    else
+        redirect_to :login, :notice => 'Informacja! Zaloguj się aby obejrzeć!'
     end
   end
 end
