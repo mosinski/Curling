@@ -61,3 +61,18 @@ $(".notice_link").hover(function () {
 function (){
   $('.notice_link').popover('hide');
 });
+
+$(document).ready(function() {
+  $(".fancybox")
+     .attr('rel', 'gallery')
+     .fancybox({
+	beforeShow: function () {
+	/* Add watermark */
+	  $('<div class="watermark"></div>')
+	  .bind("contextmenu", function (e) {
+		return false; /* Disables right click */
+	  })
+	.prependTo( $.fancybox.inner );   
+	}
+     });
+});
