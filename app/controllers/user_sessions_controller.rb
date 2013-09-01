@@ -1,8 +1,6 @@
 # encoding: UTF-8
 class UserSessionsController < ApplicationController
 
-# GET /user_sessions/new
-# GET /user_sessions/new.xml
 def new
   if current_user
 	redirect_to root_path, :notice => 'Informacja! Jeste&#347; ju&#380; zalogowany!'
@@ -16,8 +14,6 @@ def new
   end
 end
  
-# POST /user_sessions
-# POST /user_sessions.xml
 def create
   @user_session = UserSession.new(params[:user_session])
   
@@ -41,12 +37,10 @@ def create
 	end
 end
  
-# DELETE /user_sessions/1
-# DELETE /user_sessions/1.xml
 def destroy
-@user_session = UserSession.find
-@user_session.destroy
-reset_session
+  @user_session = UserSession.find
+  @user_session.destroy if @user_session != nil
+  reset_session
  
 	respond_to do |format|
 	   format.html { redirect_to(root_url, :notice => 'Informacja! U&#380;ytkownik wylogowany') }
