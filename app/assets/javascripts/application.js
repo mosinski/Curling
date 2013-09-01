@@ -77,7 +77,9 @@ $(document).ready(function() {
      });
 });
 
+jQuery(document).ready(function() {
 $("#user_password").pwdstr("#password_time");
+
   setInterval(function() {
      if($("#password_time").is(":empty")||$("#user_password").val() == ''){
 	$(".password_oblicz").hide('fast');
@@ -87,3 +89,4 @@ $("#user_password").pwdstr("#password_time");
      }
   return
 }, 1500);
+});
