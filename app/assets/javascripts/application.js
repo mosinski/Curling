@@ -13,10 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require bootstrap-tooltip.js
-//= require bootstrap-popover.js
-//= require_tree .
-//= require redactor-rails/redactor.min
+//= require bootstrap/
+//= require fancybox/jquery.fancybox
+//= require pwdstr/pwdstr
+//= require redactor-rails/
 
 jQuery(document).ready(function() {
   return jQuery(".abtlikebox").hover((function() {

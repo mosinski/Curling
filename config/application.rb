@@ -51,6 +51,9 @@ module Osp
     config.assets.paths << "#{Rails.root}/app/assets/fonts"
     config.assets.precompile += %w( .svg .eot .woff .ttf )
     config.assets.precompile += ["redactor-rails/*"]
+    config.assets.precompile += ["bootstrap/*"]
+    config.assets.precompile += ["fancybox/*"]
+    config.assets.precompile += ["pwdstr/*"]
 
     # Enable the asset pipeline
     config.assets.enabled = true
