@@ -71,9 +71,13 @@ class DashboardsController < ApplicationController
    if current_user
     if current_user.role == "admin"
     @dashboard = Dashboard.new(params[:dashboard])
+    @users = User.all
 
     	respond_to do |format|
       	  if @dashboard.save
+      	   	@users.each do |user|
+      	  	  UsersNewsletter.users_newsletter_sender(user, @dashboard).deliver
+      	  	end
         	format.html { redirect_to @dashboard, notice: 'Gratulacje! Stworzono Aktualno&#347;&#263; Klubow&#261;' }
         	format.json { render json: @dashboard, status: :created, location: @dashboard }
       	  else
