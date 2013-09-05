@@ -12,7 +12,7 @@ class StaticPagesController < ApplicationController
   end
 
  def galeria
-    @albums = Album.paginate(:page => params[:page], :per_page => 6)
+    @albums = Album.paginate(:page => params[:page], :per_page => 5)
 
     
     respond_to do |format|
