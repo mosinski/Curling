@@ -1,8 +1,25 @@
 <h3><%= @news.tytul %></h3>
 
-<div class="redactor_editor">
-  <%= @news.tekst_pl.html_safe %>
+<div class="tekst_pl">
+  <div class="redactor_editor">
+    <%= @news.tekst_pl.html_safe %>
+  </div>
 </div>
+
+<div class="tekst_en", style="display:none;">
+  <div class="redactor_editor">
+    <%= @news.tekst_en.html_safe %>
+  </div>
+</div>
+
+<div class="language" style="float:right;">
+<%= image_tag("flag_pl.png", "style"=> "display:none;", :id => "flag_pl", :class=>"btn btn-mini") %>
+
+<% if @news.tekst_en.size > 15 %>
+	<%= image_tag("flag_en.png", :id => "flag_en", :class=>"btn btn-mini") %>
+<% end %>
+</div>
+<br>
 
 <% if @album != nil %>
 <%= link_to @album,:class => "btn btn-small btn-primary","style"=>"float:right;" do %>

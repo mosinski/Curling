@@ -94,14 +94,14 @@ $("#user_password").pwdstr("#password_time");
 $(document).ready(function() {
   $("img#flag_en").click(function() {
     $( this ).hide("slow");
-    $(".tournament_pl").hide("slow");
-    $(".tournament_en").show(500);
+    $(".tekst_pl").hide("slow");
+    $(".tekst_en").show(500);
     $("img#flag_pl").show(500);
   });
     $("img#flag_pl").click(function() {
     $( this ).hide("slow");
-    $(".tournament_en").hide("slow");
-    $(".tournament_pl").show(500);
+    $(".tekst_en").hide("slow");
+    $(".tekst_pl").show(500);
     $("img#flag_en").show(500);
   });
 });
