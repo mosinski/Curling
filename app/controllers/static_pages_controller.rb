@@ -12,7 +12,8 @@ class StaticPagesController < ApplicationController
   end
 
  def galeria
-    @albums = Album.order("termin DESC").all
+    @albums = Album.paginate(:page => params[:page], :per_page => 6)
+
     
     respond_to do |format|
       format.html # galeria.html.erb
