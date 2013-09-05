@@ -1,0 +1,37 @@
+  <% if @tournament.errors.any? %>
+    <div id="error_explanation">
+    <% if  (@tournament.errors.count) == 1  %>
+      <h4>Turniej klubowy nie został stworzony z powodu jednego błędu</h4>
+    <% elsif (@tournament.errors.count) > 1 %>
+        <h4>Turniej klubowy nie został stworzony z powodu <%= @tournament.errors.count %> błędów</h4>
+    <% end %>
+      <ul style="background:none repeat scroll 0% 0% rgb(245, 245, 245);padding:10px;">
+      <% @tournament.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+      <br>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.text_field :nazwa, :placeholder => "Nazwa Turnieju Klubowego", "style" => "width:97%" %>
+  </div>
+  <div class="field" style="display:inline-block;">
+    <i class="icon-flag-alt"></i> <%= f.label "Otwarcie Turnieju", :class=>"tournament_label" %>
+    <%= f.date_select :termin_start, :order => [:day, :month, :year], :start_year => 2000, :end_year => Time.now.year+1 %>
+  </div>
+  <div class="field" style="display:inline-block;float:right;">
+    <i class="icon-flag-checkered"></i> <%= f.label "Zakończenie Turnieju" %>
+    <%= f.date_select :termin_end, :order => [:day, :month, :year], :start_year => 2000, :end_year => Time.now.year+1 %>
+  </div>
+  <hr>
+  <div class="field">
+    <%= f.label "Opis Turnieju w języku Polskim" %>
+    <%= f.text_area :opis_pl, :class => "redactor", :rows => 100, :cols => 120 %>
+  </div>
+  <br>
+  <div class="field">
+    <%= f.label "Opis Turnieju w języku Angielskiem" %>
+    <%= f.text_area :opis_en, :class => "redactor", :rows => 100, :cols => 120 %>
+  </div>

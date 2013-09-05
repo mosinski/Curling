@@ -1,0 +1,51 @@
+<h3><i class="icon-trophy"></i> <%= @tournament.nazwa %> (<%= distance_of_time_in_words(@tournament.termin_start, @tournament.termin_end)  %>)</h3>
+<div class="tournament_pl">
+<p>
+<div style="display:inline-block">
+  <i class="icon-flag-alt"></i> <b>Start:</b>
+  <%=I18n.l @tournament.termin_start, :format => "%d %B %Y" %>
+</div>
+
+<div style="display:inline-block;float:right;">
+  <i class="icon-flag-checkered"></i> <b>Koniec:</b>
+  <%=I18n.l @tournament.termin_end, :format => "%d %B %Y" %>
+</div>
+</p>
+
+<div class="redactor_editor">
+  <%= @tournament.opis_pl.html_safe %>
+</div> 
+</div>
+
+<div class="tournament_en", style="display:none;">
+<p>
+<div style="display:inline-block">
+  <i class="icon-flag-alt"></i> <b>Start:</b>
+  <%= @tournament.termin_start.strftime("%d %B %Y") %>
+</div>
+<div style="display:inline-block;float:right;">
+  <i class="icon-flag-checkered"></i> <b>End:</b>
+  <%= @tournament.termin_end.strftime("%d %B %Y") %>
+</div>
+</p>
+
+<div class="redactor_editor">
+  <%= @tournament.opis_en.html_safe %>
+</div>
+
+</div>
+
+<div class="language" style="float:right;">
+<%= image_tag("flag_pl.png", "style"=> "display:none;", :id => "flag_pl", :class=>"btn btn-mini") %>
+
+<% if @tournament.opis_en.size > 15 %>
+	<%= image_tag("flag_en.png", :id => "flag_en", :class=>"btn btn-mini") %>
+<% end %>
+</div>
+<br>
+
+<% if current_user && current_user.role=="admin" %>
+<%= link_to edit_tournament_path(@tournament),:class => "btn btn-small btn-primary" do %>
+	<i class="icon-share-alt"></i> Edytuj Turniej Klubowy
+<% end %>
+<% end %>

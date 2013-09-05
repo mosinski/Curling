@@ -2,7 +2,13 @@
 				   <div class="page-header">  
 					<h2>Witaj!</h2>
 				   </div>
-					<p>Wszystkie informacje o aktualnym turnieju znajdziesz tutaj >></p>
+				   <% if @tournament_last.present? && @tournament_last.termin_end >= DateTime.now %>
+					<p align="center">
+					<%= link_to @tournament_last, :class => "btn btn-large btn-primary" do %>
+						<i class="icon-double-angle-right"></i> Info: <%= @tournament_last.nazwa %> <i class="icon-double-angle-left"></i>
+					<% end %>
+					</p>
+				   <% end %>
 				</div>
 
 				<div class="box1">

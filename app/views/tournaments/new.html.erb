@@ -1,0 +1,11 @@
+<h3><i class="icon-trophy"></i> Nowy Turniej Klubowy</h3>
+
+<%= form_for @tournament, :html => { :multipart => true } do |f| %>
+<%= render partial: 'form', locals: { f: f } %>
+<br />
+<div class="actions">
+     <button type="submit" class="btn btn-primary">
+  	<i class="icon-check"></i> Stwórz Turniej Klubowy
+     </button>
+</div>
+<% end %>

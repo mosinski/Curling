@@ -3,6 +3,7 @@ class StaticPagesController < ApplicationController
 
  def start
     @news_last = News.all.last(3)
+    @tournament_last = Tournament.last
 
     respond_to do |format|
       format.html # start.html.erb

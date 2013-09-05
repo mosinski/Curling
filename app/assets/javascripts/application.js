@@ -90,3 +90,18 @@ $("#user_password").pwdstr("#password_time");
   return
 }, 1500);
 });
+
+$(document).ready(function() {
+  $("img#flag_en").click(function() {
+    $( this ).hide("slow");
+    $(".tournament_pl").hide("slow");
+    $(".tournament_en").show(500);
+    $("img#flag_pl").show(500);
+  });
+    $("img#flag_pl").click(function() {
+    $( this ).hide("slow");
+    $(".tournament_en").hide("slow");
+    $(".tournament_pl").show(500);
+    $("img#flag_en").show(500);
+  });
+});

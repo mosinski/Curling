@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nazwa: MyString
+  termin_start: 2013-09-03
+  termin_end: 2013-09-03
+  opis: MyText
+
+two:
+  nazwa: MyString
+  termin_start: 2013-09-03
+  termin_end: 2013-09-03
+  opis: MyText
