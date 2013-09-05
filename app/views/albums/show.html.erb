@@ -25,6 +25,10 @@
 	<i class="icon-picture"></i> Dodaj Zdjęcie
 <% end %>
 <% end %>
+<br />
+<div id="blog-pager" class="blog-pager">
+<%= will_paginate @zdjecia, :container => false %>
+</div>
 </div>
 
 <div id="image_upload" class="modal hide fade">

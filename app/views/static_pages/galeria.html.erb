@@ -44,9 +44,9 @@ Termin: <%= album.termin.strftime("%d-%m-%Y") %>
 </div>
 
 <% end %>
-<% if @albums.count > 5 %>
-<div class="pagination">
-   <%= will_paginate @albums, :container => false %>
-</div>
+<% if @albums.count > 6 %>
+  <div id="blog-pager" class="blog-pager">
+    <%= will_paginate @albums, :container => false %>
+  </div>
 <% end %>
 <% end %>
