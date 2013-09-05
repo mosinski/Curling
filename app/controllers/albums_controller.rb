@@ -1,10 +1,9 @@
 # encoding: UTF-8
 class AlbumsController < ApplicationController
-require 'will_paginate/array'
 
   def show
     @album = Album.find(params[:id])
-    @zdjecia = Image.find_all_by_nr_albumu(@album.id).paginate(:page => params[:page], :per_page => 30)
+    @zdjecia = Image.paginate(:page => params[:page], :per_page => 30, :conditions => ['nr_albumu like :q', q: @album.id])
 
     respond_to do |format|
       format.html # show.html.erb
