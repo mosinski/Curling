@@ -4,7 +4,7 @@ class AlbumsController < ApplicationController
 
   def show
     @album = Album.find(params[:id])
-    @zdjecia = Image.find_all_by_nr_albumu(@album.id).paginate(:page => params[:page], :per_page => 30)
+    @zdjecia = Image.find_all_by_nr_albumu(@album.id).paginate :page => params[:page], :per_page => 30
 
     respond_to do |format|
       format.html # show.html.erb
