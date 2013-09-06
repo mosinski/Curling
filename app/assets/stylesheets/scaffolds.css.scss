@@ -76,12 +76,7 @@ img {border:0;vertical-align:top;text-align:left}
 #contacts-form a {color:#092972}
 #contacts-form .alignright {padding-top:15px}
 /* LISTS */
-ul {
-  list-style-type:square;
-}
-ol {
-  list-style:decimal;
-}
+ul, ol {list-style:none}
 .banner-list {position:absolute;left:0;top:150px;width:346px}
 .banner-list ul li {width:100%;overflow:hidden;vertical-align:top;background:url(banner-tail.gif) repeat-x left top #e1efff}
 .banner-list ul li a {color:#363636;text-decoration:none;height:109px;display:block;cursor:pointer;background-repeat:no-repeat;background-position:22px 7px}
@@ -774,4 +769,13 @@ text-shadow: -1px 0px black, 0px 1px white, 1px 0px black, 0px -1px black;
 .pagination {
   height: 36px;
   margin: 18px 0;
+}
+
+.redactor_editor {
+ul {
+  list-style-type:square;
+}
+ol {
+  list-style:decimal;
+}
 }
