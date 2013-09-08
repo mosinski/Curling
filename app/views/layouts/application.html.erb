@@ -23,7 +23,7 @@
 				<li class="style2 dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><span>O Klubie</span></a>
 				<ul class="dropdown-menu">
           				<li><%= link_to 'Media o Nas', media_path, "tabindex"=>"-1" %></li>
-          				<li><a tabindex="-1" href="sitemap.html">Dojazd</a></li>
+          				<li><a tabindex="-1" data-toggle="modal" href="#dojazd">Dojazd</a></li>
         </ul>
 				</li>
 				<li class="style3"><a href="/news"><span>Aktualności</span></a></li>
@@ -294,6 +294,26 @@
 	</div>
 </div>
 <div class="circle">
+</div>
+<div id="dojazd" class="modal hide fade">
+   <div class="modal-body">
+   <a class="close" data-dismiss="modal"><i class="icon-remove-sign"></i></a>
+     <div class="row-fluid">
+	<div class="span8">
+	<iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.pl/maps?q=gda%C5%84sk+hala+olivia+lodowisko&amp;ie=UTF8&amp;hl=pl&amp;hq=gda%C5%84sk+hala+olivia+lodowisko&amp;hnear=&amp;radius=15000&amp;t=m&amp;ll=54.401297,18.572002&amp;spn=0.006295,0.006295&amp;output=embed"></iframe>
+	</div>
+	<div class="span4">
+	  <h2><i class="icon-map-marker"></i></h2>
+	  <address>
+	    <strong>Gdańsk Curling Club</strong><br>
+		al. Grunwaldzka 470<br>
+		(Lodowisko w Hali Oliwii)<br>
+		80-309 Gdańsk<br>
+		<abbr title="Phone"><i class="icon-phone"></i>:</abbr> 602-230-045
+	    </address>
+	</div>
+     </div>
+  </div>
 </div>
 </body>
 </html>
