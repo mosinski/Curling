@@ -3,7 +3,7 @@ class MediaController < ApplicationController
   # GET /media
   # GET /media.json
   def index
-    @media = Medium.all
+    @media = Medium.all.order(:created_at).reverse
     @medium = Medium.new
 
     respond_to do |format|
