@@ -158,7 +158,7 @@ class DashboardsController < ApplicationController
     redirect_to @dashboard, :notice => 'Uwaga! Niewłaściwa długość treści komentarza! Dopuszczalna od 1 do 500 znaków.'
     end
    else
-    redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
+    redirect_to :login, :notice => 'Informacja! Zaloguj się aby obejrzeć!'
    end
   end
 
@@ -172,13 +172,13 @@ class DashboardsController < ApplicationController
     	end
 
    	@comment.destroy
-    	redirect_to :back, :notice => 'Informacja! Usuni&#281;to komentarz/e!'
+    	redirect_to :back, :notice => 'Informacja! Usunięto komentarz/e!'
 
       else
-  	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnie&#324;!'
+  	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnień!'
       end
     else
-        redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
+        redirect_to :login, :notice => 'Informacja! Zaloguj się aby obejrzeć!'
     end
   end
 
