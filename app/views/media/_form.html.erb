@@ -1,8 +1,11 @@
-<%= form_for(@medium) do |f| %>
+
   <% if @medium.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@medium.errors.count, "error") %> prohibited this medium from being saved:</h2>
-
+    <% if  (@medium.errors.count) == 1  %>
+      <h4>Link nie został dodany z powodu jednego błędu</h4>
+    <% elsif (@medium.errors.count) > 1 %>
+        <h4>Link nie został dodany z powodu <%= @medium.errors.count %> błędów</h4>
+    <% end %>
       <ul>
       <% @medium.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -30,4 +33,3 @@
   <div class="actions">
    <button class="btn btn-large btn-block btn-primary" type="submit">Dodaj</button>
   </div>
-<% end %>

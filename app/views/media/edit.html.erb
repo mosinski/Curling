@@ -1,6 +1,11 @@
-<h1>Editing medium</h1>
+<h3>Edycja Linku</h3>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @medium %> |
-<%= link_to 'Back', media_path %>
+<%= form_for @medium, :html => { :multipart => true } do |f| %>
+<%= render partial: 'form', locals: { f: f } %>
+<br />
+<div class="actions">
+    <button type="submit" class="btn btn-primary">
+	<i class="icon-check"></i> Aktualizuj Link
+    </button>
+  </div>
+<% end %>
