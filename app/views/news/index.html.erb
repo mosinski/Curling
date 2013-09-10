@@ -11,7 +11,7 @@
 				<% @news.each do |news| %>
 				   <% @album = @albumy_z_news.detect{|w| w.przydzial_id == news.id} %>
 				   <% @liczba_zdjec = Image.find_all_by_nr_albumu(@album.id) if @album != nil %>
-					<li><span><em><%= image_tag("icon4.gif") %></em></span><b><%= link_to news.tytul, news %></b><%= strip_tags(news.tekst_pl[0..300]).gsub(/&nbsp;/i," ")+"..." %><br />
+					<li><span><em><%= image_tag("icon4.gif") %></em></span><b><%= link_to news.tytul, news %></b><%= (strip_tags(news.tekst_pl))[0..300]+"..." %><br />
 
 					<div class="dashboard_data">
 					<i class="icon-calendar"></i> Opublikowano: <%= news.created_at.strftime("%d.%m.%Y %H:%M") %> <i class="icon-comments-alt"></i> <%= news.comment_threads.count %>  <i class="icon-picture"></i> <%= (@liczba_zdjec.count if @album != nil)||"0" %>

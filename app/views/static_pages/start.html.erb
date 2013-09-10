@@ -16,7 +16,7 @@
 						<h3>Ostatnio Dodane Aktualności </h3>
 						<ul class="list1">
 							<% @news_last.each do |news| %>
-							<li><b><%= link_to news.tytul, news %></b><%= strip_tags(news.tekst_pl[0..300]).gsub(/&nbsp;/i," ").gsub("\r\n"," ")+"..." %></li>
+							<li><b><%= link_to news.tytul, news %></b><%= (strip_tags(news.tekst_pl))[0..300]+"..." %></li>
 							<% end %>
 						</ul>
 					</div>
