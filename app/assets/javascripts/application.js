@@ -16,7 +16,6 @@
 //= require bootstrap/
 //= require fancybox/jquery.fancybox
 //= require pwdstr/pwdstr
-//= require redactor-rails/
 
 jQuery(document).ready(function() {
   return jQuery(".abtlikebox").hover((function() {

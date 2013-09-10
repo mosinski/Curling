@@ -1,3 +1,4 @@
+<%= tinymce_assets %>
   <% if @dashboard.errors.any? %>
     <div id="error_explanation">
     <% if  (@dashboard.errors.count) == 1  %>
@@ -18,5 +19,7 @@
   </div>
 
   <div class="field">
-    <%= f.text_area :tekst, :class => "redactor", :rows => 100, :cols => 120 %>
+    <%= f.text_area :tekst, :class => "tinymce", :rows => 10, :cols => 12 %>
   </div>
+  
+<%= tinymce :language => "pl", :entity_encoding => "raw" %>

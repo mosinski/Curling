@@ -1,3 +1,4 @@
+<%= tinymce_assets %>
   <% if @news.errors.any? %>
     <div id="error_explanation">
     <% if  (@news.errors.count) == 1  %>
@@ -19,12 +20,12 @@
 <br />
   <div class="field">
     <%= f.label "Treść Aktualności Ogólnej w języku Polskim:", "style"=>"font-weight:bold" %>
-    <%= f.text_area :tekst_pl, :class => "redactor", :rows => 100, :cols => 120 %>
+    <%= f.text_area :tekst_pl, :class => "tinymce", :rows => 10, :cols => 12 %>
   </div>
 <br />
   <div class="field">
     <%= f.label "Treść Aktualności Ogólnej w języku Angielskim:", "style"=>"font-weight:bold" %>
-    <%= f.text_area :tekst_en, :class => "redactor", :rows => 100, :cols => 120 %>
+    <%= f.text_area :tekst_en, :class => "tinymce", :rows => 10, :cols => 12 %>
   </div>
 <br />
 <div class="controls">
@@ -34,3 +35,5 @@
     		<%= f.date_select :termin, :order => [:day, :month, :year], :start_year => 2000, :end_year => Time.now.year+1 %>
 	</div>
 </div>
+
+<%= tinymce :language => "pl", :entity_encoding => "raw" %>

@@ -1,3 +1,4 @@
+<%= tinymce_assets %>
   <% if @tournament.errors.any? %>
     <div id="error_explanation">
     <% if  (@tournament.errors.count) == 1  %>
@@ -28,10 +29,12 @@
   <hr>
   <div class="field">
     <%= f.label "Opis Turnieju w języku Polskim" %>
-    <%= f.text_area :opis_pl, :class => "redactor", :rows => 100, :cols => 120 %>
+    <%= f.text_area :opis_pl, :class => "tinymce", :rows => 10, :cols => 12 %>
   </div>
   <br>
   <div class="field">
     <%= f.label "Opis Turnieju w języku Angielskiem" %>
-    <%= f.text_area :opis_en, :class => "redactor", :rows => 100, :cols => 120 %>
+    <%= f.text_area :opis_en, :class => "tinymce", :rows => 10, :cols => 12 %>
   </div>
+  
+<%= tinymce :language => "pl", :entity_encoding => "raw" %>
