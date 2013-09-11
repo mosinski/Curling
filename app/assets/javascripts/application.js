@@ -16,6 +16,9 @@
 //= require bootstrap/
 //= require fancybox/jquery.fancybox
 //= require pwdstr/pwdstr
+//= require 3dlinks
+//= require scrolltopcontrol
+
 
 jQuery(document).ready(function() {
   return jQuery(".abtlikebox").hover((function() {

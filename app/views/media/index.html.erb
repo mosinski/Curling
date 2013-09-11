@@ -4,7 +4,7 @@
   <div style="margin-bottom:10px;">
     <span class="label label-info"><%=I18n.l medium.created_at, :format => :mini %></span>
     <i class="icon-hand-right"></i> 
-    <%= link_to medium.tytul, medium.url, "target"=>"_blank" %>
+    <%= link_to medium.tytul, medium.url, "target"=>"_blank", :class=>"rlink" %>
 
     <% if current_user && current_user.role == "admin" %>
     <%= link_to edit_medium_path(medium), :class => "btn btn-mini btn-success" do %>

@@ -779,3 +779,80 @@ ol {
   list-style:decimal;
 }
 }
+
+.go-to-top {
+  right: 5px;
+  width: 38px;
+  height: 34px;
+  background: none repeat scroll 0% 0% rgb(254, 254, 254);
+  border-width: 1px 0px 1px 1px;
+  border-style: solid none solid solid;
+  border-color: rgb(225, 225, 225) -moz-use-text-color rgb(225, 225, 225) rgb(225, 225, 225);
+  -moz-border-top-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  border-image: none;
+  border-radius: 3px 0px 0px 3px;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25);
+  opacity: 1;
+  transition: opacity 0.3s linear 0s;
+  z-index: 1000;
+}
+
+.go-to-top i{
+margin-left:12px;
+margin-top:6px;
+position:absolute;
+}
+
+.roll {
+    display: inline-block;
+    overflow: hidden;
+
+    vertical-align: top;
+
+    -webkit-perspective: 400px;
+       -moz-perspective: 400px;
+
+    -webkit-perspective-origin: 50% 50%;
+       -moz-perspective-origin: 50% 50%;
+}
+.roll span {
+    display: block;
+    position: relative;
+    padding: 0 2px;
+
+    -webkit-transition: all 400ms ease;
+       -moz-transition: all 400ms ease;
+    
+    -webkit-transform-origin: 50% 0%;
+       -moz-transform-origin: 50% 0%;
+    
+    -webkit-transform-style: preserve-3d;
+       -moz-transform-style: preserve-3d;
+}
+.roll:hover span {
+        background: #111;
+
+        -webkit-transform: translate3d( 0px, 0px, -30px ) rotateX( 90deg );
+           -moz-transform: translate3d( 0px, 0px, -30px ) rotateX( 90deg );
+    }
+.roll span:after {
+    content: attr(data-title);
+
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 0 2px;
+
+    color: #fff;
+    background: hsl(206, 80%, 30%);
+
+    -webkit-transform-origin: 50% 0%;
+       -moz-transform-origin: 50% 0%;
+
+    -webkit-transform: translate3d( 0px, 105%, 0px ) rotateX( -90deg );
+       -moz-transform: translate3d( 0px, 105%, 0px ) rotateX( -90deg );
+}
