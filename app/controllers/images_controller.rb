@@ -15,6 +15,7 @@ require 'net/ftp'
 		@album = @albumy_przydzialu.detect{|w| w.przydzial_id == @przydzial.id}
 		
 		if file != nil && file.original_filename.end_with?('.jpg','.JPG','.png','.PNG','.gif','.GIF')
+		if file.size < 200.kilobytes
 		file.original_filename = file.original_filename.gsub(/\s+/, "")
 		@zdjecia = Image.find_all_by_nazwa(file.original_filename).count
 		if @zdjecia == 0
@@ -51,6 +52,9 @@ require 'net/ftp'
 		else
 		  redirect_to @przydzial, :notice => 'Uwaga! Zdjęcie o takiej nazwie już jest w bazie!'
 		end
+		else
+    		  redirect_to @user, :notice => 'Informacja!<br>Zdjęcie jest za duże max 200KB !'
+    		end
 		else
 		  redirect_to @przydzial, :notice => 'Uwaga! Nie wybrano zdjęcia z komputera lub rozszerzenie jest nieprawidłowe!'
 		end

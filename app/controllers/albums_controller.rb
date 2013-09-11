@@ -24,10 +24,10 @@ class AlbumsController < ApplicationController
     	end
     		
     else
-  	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnie&#324;!'
+  	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnień!'
     end
    else
-        redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
+        redirect_to :login, :notice => 'Informacja! Zaloguj się aby obejrzeć!'
    end
   end
 
@@ -37,10 +37,10 @@ class AlbumsController < ApplicationController
     if current_user.role == "admin"
    	@album = Album.find(params[:id])
     else
-  	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnie&#324;!'
+  	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnień!'
     end
    else
-        redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
+        redirect_to :login, :notice => 'Informacja! Zaloguj się aby obejrzeć!'
    end
   end
 
@@ -62,10 +62,10 @@ class AlbumsController < ApplicationController
       end
     end
     else
-  	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnie&#324;!'
+  	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnień!'
     end
    else
-        redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
+        redirect_to :login, :notice => 'Informacja! Zaloguj się aby obejrzeć!'
    end
   end
 
@@ -88,10 +88,10 @@ class AlbumsController < ApplicationController
     end
     
     else
-  	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnie&#324;!'
+  	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnień!'
     end
    else
-        redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
+        redirect_to :login, :notice => 'Informacja! Zaloguj się aby obejrzeć!'
    end
   end
 
@@ -112,10 +112,10 @@ class AlbumsController < ApplicationController
     end
     
     else
-  	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnie&#324;!'
+  	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnień!'
     end
    else
-        redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
+        redirect_to :login, :notice => 'Informacja! Zaloguj się aby obejrzeć!'
    end
   end
 end
