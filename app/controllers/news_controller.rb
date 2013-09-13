@@ -4,7 +4,7 @@ class NewsController < ApplicationController
   # GET /news.json
   def index
     @news = News.all
-    @albumy_z_news = Album.find_all_by_przydzial("news")
+    @albumy_z_news = Album.find_all_by_przydzial("news").reverse
     
     respond_to do |format|
       format.html # index.html.erb

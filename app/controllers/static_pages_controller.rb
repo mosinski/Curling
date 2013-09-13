@@ -2,7 +2,7 @@
 class StaticPagesController < ApplicationController
 
  def start
-    @news_last = News.all.last(3)
+    @news_last = News.all.last(3).reverse
     @tournament_last = Tournament.last
 
     respond_to do |format|
