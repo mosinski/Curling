@@ -31,15 +31,18 @@ class StaticPagesController < ApplicationController
   
   def rss_comments
     @news = News.all
-    @komentarze = []
-    @news.each {|r| @komentarze += r.comment_threads }
+    @komentarze = Comment.find_all_by_commentable_type("News")
     @users = User.all
 
     respond_to do |format|
+      if @komentarze.present?
       format.html # show.html.erb
       format.json { render json: @komentarze }
       format.atom     # index.atom.builder
       format.xml  { render :xml => @komentarze }  
+      else
+      redirect to root_url, :notice "Informacja! <br>Aktualnie brak komentarzy do wyświetlenia ;("
+      end
     end
   end
 
