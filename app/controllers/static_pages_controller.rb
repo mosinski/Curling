@@ -41,7 +41,7 @@ class StaticPagesController < ApplicationController
       format.atom     # index.atom.builder
       format.xml  { render :xml => @komentarze }  
       else
-      redirect to root_url, :notice "Informacja! <br>Aktualnie brak komentarzy do wyświetlenia ;("
+      redirect to root_url, :notice => "Informacja! <br>Aktualnie brak komentarzy do wyświetlenia ;("
       end
     end
   end
