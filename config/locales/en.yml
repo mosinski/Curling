@@ -102,8 +102,8 @@ en:
   navi_news: "News"
   navi_gallery: "Gallery"
   navi_contact: "Contact"
-  sign_in: "Sign In"
-  register: "Register"
+  sign_in: "Log In"
+  register: "Sign Up"
   today: "Today"
   visits: "Visits"
   read_more: "Read More"
@@ -111,6 +111,17 @@ en:
   subscribe: "Subscribe"
   sponsors: "Our Sponsors"
   comments: "Comments"
+  back_to_list: "back to list"
+  go_to_album : "Go to Image Album"
+  contact:
+    info: "If you have questions or suggestions, use the form below and let us know."
+    name: "Name"
+    your_name: "Your Name"
+    email: "E-mail"
+    your_email: "Your E-mail adress"
+    message: "Message"
+    your_message: "Text of your message to us"
+    send: "Send Message"
   links: "Links"
   errors: &errors
     format: ! '%{attribute} %{message}'
@@ -233,6 +244,9 @@ en:
         email:                 'E-mail'
         name_surname:          'Name and Surname'
         remember_me:           'Remember Me'
+        born:                  'Born'
+        pesel:                 'Social Security Number'
+        register:              'Sign up'
       message:
         body:                  'Message Body'
     errors:
@@ -251,6 +265,7 @@ en:
         email: "E-mail"
         password: "Password"
         remember_me: "Remember Me"
+        login: "Sign In"
   simple_captcha:
     placeholder: ""
     label: "(write code from image)"

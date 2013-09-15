@@ -1,5 +1,5 @@
 <div class="page-header">  
-	<h3><i class="icon-edit-sign"></i> Rejestracja</h3>
+	<h3><i class="icon-edit-sign"></i> <%= t 'register' %></h3>
 </div>
 
 <%= form_for @user, :html => { :multipart => true } do |f| %>
@@ -7,7 +7,7 @@
 
 <div class="actions">
      <button type="submit" class="btn btn-primary">
-  	<i class="icon-check"></i> Zarejestruj
+  	<i class="icon-check"></i> <%= f.label :register, "style"=>"display:inline" %>
      </button>
 </div>
 <% end %>

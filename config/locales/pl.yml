@@ -86,7 +86,18 @@ pl:
   subscribe: "Zapisz się Teraz"
   sponsors: "Nasi Sponsorzy"
   comments: "Komentarze"
+  back_to_list: "wróć do listy"
+  go_to_album : "Przejdź do Albumu"
   links: "Linki"
+  contact:
+    info: "Jeśli masz pytania lub sugestie, użyj formularza poniżej i napisz do nas."
+    name: "Imię"
+    your_name: "Twoje Imię"
+    email: "E-mail"
+    your_email: "Twój adres email"
+    message: "Wiadomość"
+    your_message: "Treść wiadomości którą chcesz przesłać do nas"
+    send: "Wyślij wiadomość"
   will_paginate:
     previous_label: "«"
     next_label: "»"
@@ -212,6 +223,9 @@ pl:
         email:                 'E-mail'
         name_surname:          'Imię i Nazwisko'
         remember_me:           'zapamiętaj mnie'
+        born:                  'Data Urodzenia'
+        pesel:                 'Pesel'
+        register:              'Zarejestruj'
       message:
         body:                  'Treść Wiadomości'
     errors:
@@ -239,10 +253,11 @@ pl:
       user_session:
     attributes:
       user_session:
-        username: "Nazwa użytkownika"
+        username: "Nazwa Użytkownika"
         email: "E-mail"
         password: "Hasło"
-        remember_me: "Pamiętaj mnie"
+        remember_me: "Zapamiętaj mnie"
+        login: "Zaloguj"
   simple_captcha:
     placeholder: ""
     label: "(wpisz kod z obrazka)"

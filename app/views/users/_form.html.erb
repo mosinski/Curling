@@ -15,7 +15,7 @@
 
 <div class="controls">
 	<div class="field input-prepend">
-  		<%= f.label :Nazwa_Użytkownika %>
+  		<%= f.label :username %>
   		<span class="add-on"><i class="icon-user"></i></span>
   		<%= f.text_field :username, :placeholder => "jkowalski" %>
 	</div>
@@ -23,7 +23,7 @@
 
 <div class="controls">
 	<div class="field input-prepend">
-  		<%= f.label :Imię_i_Nazwisko %>
+  		<%= f.label :name_surname %>
   		<span class="add-on"><i class="icon-user"></i></span>
   		<%= f.text_field :name_surname, :placeholder => "Jan Kowalski" %>
 	</div>
@@ -31,7 +31,7 @@
 
 <div class="controls">
 	<div class="field input-prepend">
-    		<%= f.label :Data_urodzenia %>
+    		<%= f.label :born %>
   		<span class="add-on"><i class="icon-calendar"></i></span>
     		<%= f.date_select :born, :order => [:day, :month, :year], :start_year => 1920, :end_year => Time.now.year, "style" => "width:50px"  %>
 	</div>
@@ -55,7 +55,7 @@
 
 <div class="controls">
 	<div class="field input-prepend">
-  		<%= f.label :hasło %>
+  		<%= f.label :password %>
   		<span class="add-on"><i class="icon-lock"></i></span>
 		<%= f.password_field :password, :placeholder => "******" %>
 	</div>
@@ -67,7 +67,7 @@
 
 <div class="controls">
 	<div class="field input-prepend">
-  		<%= f.label :Potwierdź_hasło %>
+  		<%= f.label :password_confirmation %>
   		<span class="add-on"><i class="icon-lock"></i></span>
 		<%= f.password_field :password_confirmation, :placeholder => "******" %>
 	</div>

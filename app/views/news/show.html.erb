@@ -14,7 +14,7 @@
 
 <% if @album != nil %>
 <%= link_to @album,:class => "btn btn-small btn-primary","style"=>"float:right;" do %>
-	<i class="icon-picture"></i> Przejdź do Albumu »
+	<i class="icon-picture"></i> <%= t 'go_to_album' %> »
 <% end %>
 <% end %>
 <hr>
@@ -100,7 +100,7 @@
 </div>
 
 <%= link_to "/news",:class => "btn btn-small btn-primary" do %>
-	<i class="icon-share-alt"></i> Wróć do listy
+	<i class="icon-share-alt"></i> <%= t 'back_to_list' %>
 <% end %>
 
 <% if current_user && current_user.role == "admin" %>

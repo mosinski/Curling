@@ -1,25 +1,25 @@
         <div class="page-header">  
             <h2><i class="icon-envelope-alt"></i> <%= t 'navi_contact' %></h2>  
         </div>  
-	<h4>Jeśli masz pytania lub sugestie, użyj formularza poniżej i napisz do nas. </h4>
+	<h4><%= t 'contact.info' %></h4>
 
 	<%= form_tag({controller: "static_pages", action: "contact"},{:class => "form-horizontal", "style" => "margin-left:-100px;"}) do %>
             <div class="control-group">  
-                <label class="control-label" for="input1">Imię</label>  
+                <label class="control-label" for="input1"><%= t 'contact.name' %></label>  
                 <div class="controls"> 
-		    <%= text_field_tag :contact_name, nil,:placeholder => "Twoję imię" %>
+		    <%= text_field_tag :contact_name, nil,:placeholder => t('contact.your_name') %>
                 </div>  
             </div>  
             <div class="control-group">  
-                <label class="control-label" for="input2">Email</label>  
+                <label class="control-label" for="input2"><%= t 'contact.email' %></label>  
                 <div class="controls">  
-		    <%= text_field_tag :contact_email, nil,:placeholder => "Twój adres email" %>
+		    <%= text_field_tag :contact_email, nil,:placeholder => t('contact.your_email') %>
                 </div>  
             </div>  
             <div class="control-group">  
-                <label class="control-label" for="input3">Wiadomość</label>  
+                <label class="control-label" for="input3"><%= t 'contact.message' %></label>  
                 <div class="controls"> 
-		    <%= text_area_tag :contact_message, nil, :rows => 8, :class => "span5", :placeholder => "Treść wiadomości którą chcesz przesłać do nas." %>
+		    <%= text_area_tag :contact_message, nil, :rows => 8, :class => "span5", :placeholder => t('contact.your_message') %>
                 </div>  
             </div>  
             <div class="control-group">  
@@ -30,7 +30,7 @@
             </div> 
             <div class="form-actions" style="width:100%;margin-left:80px;padding-left: 120px;">
                 <button type="submit" class="btn btn-primary">
-		  <i class="icon-check"></i>  Wyślij wiadomość
+		  <i class="icon-check"></i>  <%= t 'contact.send' %>
 		</button>  
             </div>  
 	<% end %>
