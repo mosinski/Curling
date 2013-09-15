@@ -94,16 +94,12 @@ $("#user_password").pwdstr("#password_time");
 });
 
 $(document).ready(function() {
-  $("img#flag_en").click(function() {
-    $( this ).hide("slow");
-    $(".tekst_pl").hide("slow");
-    $(".tekst_en").show(500);
-    $("img#flag_pl").show(500);
+  $("a.list_show").click(function() {
+    var parentId = jQuery(this).attr("id");
+    $("div#"+parentId).slideDown("slow");
   });
-    $("img#flag_pl").click(function() {
-    $( this ).hide("slow");
-    $(".tekst_en").hide("slow");
-    $(".tekst_pl").show(500);
-    $("img#flag_en").show(500);
+  $("a.list_hide").click(function() {
+    var parentId = jQuery(this).attr("id");
+    $("div#"+parentId ).slideUp();
   });
 });

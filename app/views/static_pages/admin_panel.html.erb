@@ -1,32 +1,308 @@
-				<div class="indent">
-					<h2><i class="icon-wrench"></i> Panel Administratora</h2>
-				</div>
-				<div class="box1">
-					<div class="inner">
-					<h3>Użytkowników: <span class="badge badge-info licznik"><%= @users.count -1 %></span><br>
-					    Użytkowników niepotwierdzonych: <span class="badge badge-info licznik"><%= @users_waiting.count -1 %></span><br><br>
-					    Aktualności Klubowych: <span class="badge badge-info licznik"><%= @dashboard.count %></span><br>
-					    Aktualności Ogólnych: <span class="badge badge-info licznik"><%= @news.count %></span><br><br>
-					    Albumów: <span class="badge badge-info licznik"><%= @albums.count %></span><br>
-					    Zdjęć: <span class="badge badge-info licznik"><%= @images.count %></span></h3>
-					<hr>
-					<%= link_to new_dashboard_path, :class => "btn btn-large btn-inverse" do %>
-						<i class="icon-bullhorn"></i> Aktualność Klubowa
-					<% end %>
+<div class="indent">
+	<h2><i class="icon-wrench"></i> Panel Administratora</h2>
+</div>
+				
 
-					<%= link_to new_news_path, :class => "btn btn-large btn-inverse" do %>
-						<i class="icon-bullhorn"></i> Aktualność Ogólna
-					<% end %>
-					<br><br>
-					<%= link_to media_path, :class => "btn btn-large btn-primary" do %>
-						<i class="icon-external-link"></i> Media o Nas
-					<% end %>
-					<%= link_to new_album_path, :class => "btn btn-large btn-primary" do %>
-						<i class="icon-picture"></i> Nowy Album
-					<% end %>
-					<%= link_to new_tournament_path, :class => "btn btn-large btn-primary" do %>
-						<i class="icon-trophy"></i> Nowy Turniej
-					<% end %>
-					</div>
-				</div>
+<div class="accordion box1" id="accordion2">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+	<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+	  <h3><i class="icon-bullhorn"></i> Aktualności</h3>
+	</a>
+    </div>
+    
+    <div id="collapseOne" class="accordion-body collapse">
+	<div class="accordion-inner">
+	  <div class="alert alert-info">
+            <strong><i class="icon-info-sign"></i></strong><br>
+            <center>
+            Aktualności Ogólnych: <span class="badge badge-info"><%= @news.count %></span>
+            Aktualności Klubowych: <span class="badge badge-info"><%= @dashboard.count %></span>
+            <br><br>
+            Komentarze w Aktualnościach Ogólnych: <span class="badge badge-info"><%= @news_comments.count %></span>
+            Komentarze w Aktualnościach Klubowych: <span class="badge badge-info"><%= @dashboard_comments.count %></span>
+            </center>
+          </div>
+	  
+	  <%= link_to new_news_path, :class => "btn btn-success" do %>
+		<i class="icon-bookmark"></i> Nowa Aktualność Ogólna
+	  <% end %>
+	  
+          <%= link_to new_dashboard_path, :class => "btn btn-success", "style" => "float:right" do %>
+		<i class="icon-pushpin"></i> Nowa Aktualność Klubowa
+	  <% end %>
+	  
+	</div>
+    </div>
+  </div>
+  
+  <div class="accordion-group">
+    <div class="accordion-heading">
+	<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+	  <h3><i class="icon-group"></i> Użytkownicy</h3>
+	</a>
+    </div>
+    
+    <div id="collapseTwo" class="accordion-body collapse">
+	<div class="accordion-inner">
+	  <div class="alert alert-info">
+            <strong><i class="icon-info-sign"></i></strong><br>
+            <center>
+            Użytkowników: <span class="badge badge-info"><%= (@users.count if @users != nil) || "0" %></span>
+            Użytkowników niepotwierdzonych: <span class="badge badge-info"><%= (@users_waiting.count if @users_waiting != nil) || "0" %></span>
+            <br><br>
+            Zalogowanych dziś użytkowników: <span class="badge badge-info"><%= @users_login.count %></span>
+            </center>
+          </div>
+	  
+	  <%= link_to users_path, :class => "btn btn-success" do %>
+		<i class="icon-user"></i> Lista Użytkowników
+	  <% end %>
+
+	  <% if @users_waiting.present? %>
+          <a class="btn btn-success list_show" id="users_waiting" style="float:right" >
+		<i class="icon-eye-close"></i> Lista Użytkowników Niepotwierdzonych
+	  </a>
+	  
+	  <div id="users_waiting" style="display:none;">
+	  <a class="list_hide" id="users_waiting" style="position:absolute;right:15px;margin-top:5px;" >
+		<i class="icon-remove-sign"></i>
+	  </a>
+	    <center>
+	        <table class="table table-hover">
+		<thead>
+		<tr>
+		<th>Nick</th>
+		<th></th>
+		</tr>
+		</thead>
+		<% @users_waiting.each do |user| %>
+		<tr>
+		<td>
+		<%= link_to (user.username), user, :class=> "notice_link", :rel => "popover", "data-placement" => "right", "data-html" => "true", "data-content" => "<img src='#{user.avatar}' style='width:50px;height:50px;' />", "data-trigger"=>"hover" %>
+		</td>
+		<td>
+		<%= link_to({:controller => "users", :action => "potwierdz", :id => user.id}, {:confirm => "Czy napewno chcesz potwierdzić użytkownika #{user.username}? \nZostanie wysłany do niego mail z informacją o potwierdzeniu.",:class => "btn btn-small btn-success"}) do %>
+		  	<i class="icon-thumbs-up"></i> Potwierdź
+		<% end %>
+		</td>
+		</tr>
+		<% end %>
+		</table>
+	    </center>
+	  </div>
+	  <% end %>
+	</div>
+    </div>
+  </div>
+  
+  <div class="accordion-group">
+    <div class="accordion-heading">
+	<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTree">
+	  <h3><i class="icon-picture"></i> Albumy</h3>
+	</a>
+    </div>
+    
+    <div id="collapseTree" class="accordion-body collapse">
+	<div class="accordion-inner">
+	  <div class="alert alert-info">
+            <strong><i class="icon-info-sign"></i></strong><br>
+            <center>
+            Albumów: <span class="badge badge-info"><%= @albums.count %></span>
+            Zdjęć: <span class="badge badge-info"><%= @images.count %></span>
+            </center>
+          </div>
+	  
+	  <%= link_to new_album_path, :class => "btn btn-success" do %>
+		<i class="icon-picture"></i> Nowy Album
+	  <% end %>
+
+	  <% if @albums.present? %>
+          <a class="btn btn-success list_show" id="albums" style="float:right" >
+		<i class="icon-picture"></i> Lista Albumów
+	  </a>
+	  
+	  <div id="albums" style="display:none;">
+	  <a class="list_hide" id="albums" style="position:absolute;right:15px;margin-top:5px;" >
+		<i class="icon-remove-sign"></i>
+	  </a>
+	    <center>
+	        <table class="table table-hover">
+		<thead>
+		<tr>
+		<th>Nazwa Albumu</th>
+		<th></th>
+		</tr>
+		</thead>
+		<% @albums.each do |album| %>
+		<% @numer = Image.find_all_by_nr_albumu(album.id).count %>
+		<tr>
+		<td>
+		<%= link_to "#{album.tytul} - #{@numer} zdjęć", album %>
+		</td>
+		<td>
+		<%= link_to edit_album_path(album), :class => "btn btn-mini" do %>
+			<i class="icon-edit"></i>
+		<% end %>
+		<%= link_to album, method: :delete, data: { confirm: "Czy napewno chcesz usunąć album '#{album.tytul}' z wszystkimi zdjęciami?" }, :class => "btn btn-mini" do %>
+			<i class="icon-remove-circle"></i>
+		<% end %>
+		</td>
+		</tr>
+		<% end %>
+		</table>
+	      </center>
+	  </div>
+	  
+	  <% end %>
+	  
+	</div>
+    </div>
+  </div>
+  
+  <div class="accordion-group">
+    <div class="accordion-heading">
+	<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">
+	  <h3><i class="icon-external-link"></i> Media o Nas</h3>
+	</a>
+    </div>
+    
+    <div id="collapseFour" class="accordion-body collapse">
+	<div class="accordion-inner">
+	  <div class="alert alert-info">
+            <strong><i class="icon-info-sign"></i></strong><br>
+            <center>
+            Ilość Linków: <span class="badge badge-info"><%= @media.count %></span>
+            </center>
+          </div>
+	  
+	  <%= link_to media_path, :class => "btn btn-success" do %>
+		<i class="icon-external-link"></i> Nowy Link Media o Nas
+	  <% end %>
+
+	  <% if @media.present? %>
+          <a class="btn btn-success list_show" id="media" style="float:right" >
+		<i class="icon-external-link"></i> Lista Linków Media o Nas
+	  </a>
+	  
+	  <div id="media" style="display:none;">
+	  <a class="list_hide" id="media" style="position:absolute;right:15px; margin-top:5px;" >
+		<i class="icon-remove-sign"></i>
+	  </a>
+	    <center>
+	        <table class="table table-hover">
+		<thead>
+		<tr>
+		<th>Tytuł Linku</th>
+		<th></th>
+		</tr>
+		</thead>
+		<% @media.each do |medium| %>
+		<tr>
+		<td>
+		<%= link_to medium.tytul, medium.url, "target"=>"_blank" %>
+		</td>
+		<td>
+		<%= link_to edit_medium_path(medium), :class => "btn btn-mini" do %>
+			<i class="icon-edit"></i>
+    		<% end %>
+    		<%= link_to medium, :confirm => "Czy napewno chcesz usunąć wpis media o nas: #{medium.tytul}?", :method => :delete, :class => "btn btn-mini" do %>
+			<i class="icon-trash"></i>
+    		<% end %>
+		</td>
+		</tr>
+		<% end %>
+		</table>
+	    </center>
+	  </div>
+	  
+	  <% end %>
+	  
+	</div>
+    </div>
+  </div>
+  
+  <div class="accordion-group">
+    <div class="accordion-heading">
+	<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFive">
+	  <h3><i class="icon-trophy"></i> Turnieje</h3>
+	</a>
+    </div>
+    
+    <div id="collapseFive" class="accordion-body collapse">
+	<div class="accordion-inner">
+	  <div class="alert alert-info">
+            <strong><i class="icon-info-sign"></i></strong><br>
+            <center>
+            Ilość Turniejów: <span class="badge badge-info"><%= @tournaments.count %></span>
+            </center>
+          </div>
+	  
+	  <%= link_to new_tournament_path, :class => "btn btn-success" do %>
+		<i class="icon-trophy"></i> Nowy Turniej
+	  <% end %>
+	  
+	  <% if @tournaments.present? %>
+          <a class="btn btn-success list_show" id="tournaments" style="float:right" >
+		<i class="icon-trophy"></i> Lista Turniejów
+	  </a>
+	  
+	  <div id="tournaments" style="display:none;">
+	  <a class="list_hide" id="tournaments" style="position:absolute;right:15px; margin-top:5px;" >
+		<i class="icon-remove-sign"></i>
+	  </a>
+	    <center>
+	        <table class="table table-hover">
+		<thead>
+		<tr>
+		<th>Nazwa Turnieju</th>
+		<th></th>
+		</tr>
+		</thead>
+		<% @tournaments.each do |tournament| %>
+		<tr>
+		<td>
+		<%= link_to tournament.nazwa, tournament, "target"=>"_blank" %>
+		</td>
+		<td>
+		<%= link_to edit_tournament_path(tournament), :class => "btn btn-mini" do %>
+			<i class="icon-edit"></i>
+    		<% end %>
+    		<%= link_to tournament, :confirm => "Czy napewno chcesz usunąć turniej: #{tournament.nazwa}?", :method => :delete, :class => "btn btn-mini" do %>
+			<i class="icon-trash"></i>
+    		<% end %>
+		</td>
+		</tr>
+		<% end %>
+		</table>
+	    </center>
+	  </div>
+	  
+	  <% end %>
+	  
+	</div>
+    </div>
+  </div>
+  
+  <div class="accordion-group">
+    <div class="accordion-heading">
+	<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseSix">
+	  <h3><i class="icon-inbox"></i> Baza Mailingowa</h3>
+	</a>
+    </div>
+    
+    <div id="collapseSix" class="accordion-body collapse">
+	<div class="accordion-inner">
+	  <div class="alert alert-info">
+            <strong><i class="icon-info-sign"></i></strong><br>
+            <center>
+            Ilość Pozycji w bazie: <span class="badge badge-info"><i class="icon-spinner icon-spin"></i></span>
+            </center>
+          </div>
+	</div>
+    </div>
+  </div>
+  
+</div>
+</div>
 

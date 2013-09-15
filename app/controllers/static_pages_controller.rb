@@ -34,15 +34,15 @@ class StaticPagesController < ApplicationController
     @komentarze = Comment.find_all_by_commentable_type("News")
     @users = User.all
 
-    respond_to do |format|
-      if @komentarze.present?
-      format.html # show.html.erb
-      format.json { render json: @komentarze }
-      format.atom     # index.atom.builder
-      format.xml  { render :xml => @komentarze }  
-      else
+    if @komentarze.present?
+    	respond_to do |format|
+      	  format.html # show.html.erb
+      	  format.json { render json: @komentarze }
+      	  format.atom     # index.atom.builder
+      	  format.xml  { render :xml => @komentarze }  
+    	end
+    else
       redirect_to root_url, :notice => "Informacja! <br>Aktualnie brak komentarzy do wyświetlenia ;("
-      end
     end
   end
 
@@ -61,12 +61,17 @@ class StaticPagesController < ApplicationController
  def admin_panel
     if current_user
     	if current_user.role == "admin"
-    	@users = User.find_all_by_potwierdzenie(1)
-    	@users_waiting = User.find_all_by_potwierdzenie(0)
+    	@users = User.find_all_by_potwierdzenie(1).select {|s| s.role != "admin"}
+    	@users_waiting = User.find_all_by_potwierdzenie(0).select {|s| s.username != "Gosc"}
+    	@users_login = User.all.select {|s| s.login_count > 0 && s.last_login_at != nil && s.last_login_at.strftime("%Y-%m-%d") == Time.now.strftime("%Y-%m-%d")}
     	@news = News.all
+    	@news_comments = Comment.find_all_by_commentable_type("News")
 	@dashboard = Dashboard.all
+    	@dashboard_comments = Comment.find_all_by_commentable_type("Dashboard")
 	@albums = Album.all
 	@images = Image.all
+	@media = Medium.all
+	@tournaments = Tournament.all
 
     	respond_to do |format|
       		format.html # about.html.erb
