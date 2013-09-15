@@ -19,7 +19,7 @@
 		<div class="site-nav">
 			<ul>
 				<li class="style1"><a href="/" class="act"><span>Start</span></a></li>
-				<li class="style2 dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><span>O Klubie</span></a>
+				<li class="style2 dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><span><%= t 'navi_about' %></span></a>
 				<ul class="dropdown-menu">
           				<li><%= link_to 'Media o Nas', media_path, "tabindex"=>"-1" %></li>
           				<% if current_user %>
@@ -27,9 +27,9 @@
           				<% end %>
         </ul>
 				</li>
-				<li class="style3"><a href="/news"><span>Aktualności</span></a></li>
-				<li class="style5"><a href="/galeria"><span>Galeria</span></a></li>
-				<li class="style4"><a href="/kontakt"><span>Kontakt</span></a></li>
+				<li class="style3"><a href="/news"><span><%= t 'navi_news' %></span></a></li>
+				<li class="style5"><a href="/galeria"><span><%= t 'navi_gallery' %></span></a></li>
+				<li class="style4"><a href="/kontakt"><span><%= t 'navi_contact' %></span></a></li>
 			</ul>
 		</div>
 		<div class="logo">
@@ -72,7 +72,7 @@
 			<div align="right" style="margin-top: 5px;">
 			<div style="display:inline;float:left;margin-left:8px;">
 			<%= link_to '/news.atom', :class => "btn btn-mini btn-warning" do %>
-				<i class="icon-rss"></i> Aktualności
+				<i class="icon-rss"></i> <%= t 'navi_news' %>
 			<% end %>
 			
 			<% if current_user %>
@@ -87,9 +87,21 @@
 
 			
 			</div>
-			<div style="display:inline-block;width:200px;margin-right:10px;">Odwiedzin: <img src="http://www.darmowylicznik.pl/licznik.php?id=87854" alt="Darmowy licznik odwiedzin" style="border:0px; width:100px; height:20px;margin:-2px -35px;"><script language="JavaScript">var adpol='<counter absolute;top:-1000px;">';var adpol2=adpol.replace('counter','div style="position:'); document.write(adpol2);</script><script language="JavaScript"> document.write('</div>') </script>
+			<% if I18n.locale == I18n.default_locale %>
+   				  <%= image_tag("flag_pl.png", :class=>"btn btn-mini disabled") %>
+  				<%= link_to :locale=>'en' do %>
+  				  <%= image_tag("flag_en.png", :class=>"btn btn-mini") %>
+  				<% end %>
+
+			<% else %>
+  				<%= link_to :locale=>'pl' do %>
+  				  <%= image_tag("flag_pl.png", :class=>"btn btn-mini") %>
+  				<% end %>
+   				  <%= image_tag("flag_en.png", :class=>"btn btn-mini disabled") %>
+			<% end %>
+			<div style="display:inline-block;width:200px;margin-right:10px;"><%= t 'visits' %>: <img src="http://www.darmowylicznik.pl/licznik.php?id=87854" alt="Darmowy licznik odwiedzin" style="border:0px; width:100px; height:20px;margin:-2px -35px;"><script language="JavaScript">var adpol='<counter absolute;top:-1000px;">';var adpol2=adpol.replace('counter','div style="position:'); document.write(adpol2);</script><script language="JavaScript"> document.write('</div>') </script>
 			</div>
-			Dzisiaj: <%= I18n.l Time.now, :format => "%A, %d %B, %Y" %></div>
+			<%= t 'today' %>: <%= I18n.l Time.now, :format => "%A, %d %B, %Y" %></div>
 			<br>
 			<div class="col-1" style="margin-top:-10px">
 			  <% if current_user %>
@@ -177,7 +189,7 @@
 									</div>
 									<br />
 									<button class="btn btn-large btn-primary">
-								Zapisz się Teraz <i class="icon-exclamation"></i>
+								<%= t 'subscribe' %> <i class="icon-exclamation"></i>
 									</button>	
 									<br><br	>
 								</div>
@@ -208,7 +220,7 @@
 						<div class="left-top-corner">
 							<div class="right-top-corner">
 								<div class="inner">
-									<h3>Nasi Sponsorzy:</h3>
+									<h3><%= t 'sponsors' %>:</h3>
 									<a class="info-box" data-placement="top" rel="tooltip" title="Aby dołączyć do listy sponsorów napisz do nas przez zakładkę 'KONTAKT'">
 									<i class="icon-question-sign"></i>
 									</a>
@@ -244,7 +256,7 @@
 						<div class="left-top-corner">
 							<div class="right-top-corner">
 								<div class="inner">
-									<h3>Linki:</h3>
+									<h3><%= t 'links' %>:</h3>
 									<a class="info-box" data-placement="top" rel="tooltip" title="Aby dodać do listy link swojej strony? Napisz do nas przez zakładkę 'KONTAKT'">
 									<i class="icon-question-sign"></i>
 									</a>
@@ -284,8 +296,14 @@
 				<i class="icon-user"></i> <%= link_to current_user.username, user_path(current_user.id) %> |
 				<i class="icon-off"></i> <%= link_to "Wyloguj", :logout %>
 			<% else %>
-				<i class="icon-signin"></i> <%= link_to "Logowanie", :login %> |
-				<i class="icon-edit"></i> <%= link_to "Rejestracja", new_user_path %>
+				<i class="icon-signin"></i> 
+				 <%= link_to :login do %>
+				 	<%= t 'sign_in' %>
+				 <% end %> |
+				<i class="icon-edit"></i>
+				 <%= link_to new_user_path do %>
+				 	<%= t 'register' %>
+				 <% end %>
 			<% end %>
 			</div>
 			<div class="fright">

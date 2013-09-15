@@ -2,23 +2,14 @@
 
 <div class="tekst_pl">
   <div class="redactor_editor">
-    <%= @news.tekst_pl.html_safe %>
+  <% if (I18n.locale == I18n.default_locale) || (I18n.locale != I18n.default_locale && @news.tekst_en.size < 15) %>
+    <%= raw(@news.tekst_pl) %>
+  <% else %>
+      <%= raw(@news.tekst_en) %>
+  <% end %>
   </div>
 </div>
 
-<div class="tekst_en", style="display:none;">
-  <div class="redactor_editor">
-    <%= @news.tekst_en.html_safe %>
-  </div>
-</div>
-
-<div class="language" style="float:right;">
-<%= image_tag("flag_pl.png", "style"=> "display:none;", :id => "flag_pl", :class=>"btn btn-mini") %>
-
-<% if @news.tekst_en.size > 15 %>
-	<%= image_tag("flag_en.png", :id => "flag_en", :class=>"btn btn-mini") %>
-<% end %>
-</div>
 <br>
 
 <% if @album != nil %>
@@ -112,11 +103,11 @@
 	<i class="icon-share-alt"></i> Wróć do listy
 <% end %>
 
+<% if current_user && current_user.role == "admin" %>
 <%= link_to edit_news_path(@news),:class => "btn btn-small btn-primary" do %>
 	<i class="icon-edit"></i> Edytuj
 <% end %>
 
-<% if current_user && current_user.role == "admin" %>
     <%= link_to "#image_upload", "data-toggle"=>"modal",:class => "btn btn-small btn-primary" do %>
 	<i class="icon-picture"></i> Dodaj Zdjęcie
     <% end %>
@@ -137,7 +128,7 @@
 	<%= image_tag("spacer.gif", :class=>"img-polaroid",:id=>"ftk",:width=>"170px;") %>
 	<br>
 	<span class="label label-info" style="margin:10px;">
-		** Rozmiar zdjęcia nie wiekszy niż 200kB
+		** Rozmiar zdjęcia nie wiekszy niż 200 kB
 	</span>
 	<br>
 	<%= text_area_tag :opis,nil, "style"=>"width:80%", :placeholder => "Krótki opis do zdjęcia..." %>

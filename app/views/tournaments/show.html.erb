@@ -1,6 +1,5 @@
 <h3><i class="icon-trophy"></i> <%= @tournament.nazwa %> (<%= distance_of_time_in_words(@tournament.termin_start, @tournament.termin_end+1) %>)</h3>
 
-<div class="tekst_pl">
 <p>
   <div style="display:inline-block">
     <i class="icon-flag-alt"></i> <b>Start:</b>
@@ -14,35 +13,13 @@
 </p>
 
   <div class="redactor_editor">
-    <%= @tournament.opis_pl.html_safe %>
+    <% if (I18n.locale == I18n.default_locale) || (I18n.locale != I18n.default_locale && @tournament.opis_en.size < 15) %>
+      <%= raw(@tournament.opis_pl) %>
+    <% else %>
+      <%= raw(@tournament.opis_en) %>
+    <% end %>
   </div> 
-</div>
 
-<div class="tekst_en", style="display:none;">
-<p>
-  <div style="display:inline-block">
-    <i class="icon-flag-alt"></i> <b>Start:</b>
-    <%= @tournament.termin_start.strftime("%d %B %Y") %>
-  </div>
-  
-  <div style="display:inline-block;float:right;">
-    <i class="icon-flag-checkered"></i> <b>End:</b>
-    <%= @tournament.termin_end.strftime("%d %B %Y") %>
-  </div>
-</p>
-
-  <div class="redactor_editor">
-    <%= @tournament.opis_en.html_safe %>
-  </div>
-</div>
-
-<div class="language" style="float:right;">
-<%= image_tag("flag_pl.png", "style"=> "display:none;", :id => "flag_pl", :class=>"btn btn-mini") %>
-
-<% if @tournament.opis_en.size > 15 %>
-	<%= image_tag("flag_en.png", :id => "flag_en", :class=>"btn btn-mini") %>
-<% end %>
-</div>
 <br>
 
 <% if current_user && current_user.role=="admin" %>
