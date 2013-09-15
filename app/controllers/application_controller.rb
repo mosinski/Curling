@@ -2,6 +2,19 @@ class ApplicationController < ActionController::Base
   include SimpleCaptcha::ControllerHelpers
   protect_from_forgery
 
+  before_filter :set_locale
+
+  def set_locale
+    session[:locale] = params[:locale] if params[:locale]
+
+    I18n.locale = session[:locale] || I18n.default_locale
+  end
+  
+  def default_url_options(options={})
+    logger.debug "default_url_options is passed options: #{options.inspect}\n"
+  { locale: I18n.locale }
+  end
+
   helper_method :current_user
   private
     def current_user_session
