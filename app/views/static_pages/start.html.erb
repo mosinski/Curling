@@ -1,6 +1,6 @@
 				<div class="indent">
 				   <div class="page-header">  
-					<h2>Witaj!</h2>
+					<h2><%= t 'hello' %>!</h2>
 				   </div>
 				   <% if @tournament_last.present? && @tournament_last.termin_end >= DateTime.now %>
 					<p align="center">
@@ -13,10 +13,16 @@
 
 				<div class="box1">
 					<div class="inner">
-						<h3>Ostatnio Dodane Aktualności </h3>
+						<h3><%= t 'last_news' %></h3>
 						<ul class="list1">
 							<% @news_last.each do |news| %>
-							<li><b><%= link_to news.tytul, news %></b><%= (strip_tags(news.tekst_pl))[0..300]+"..." %></li>
+							<li><b><%= link_to news.tytul, news %></b>
+				        		<% if (I18n.locale == I18n.default_locale) || (I18n.locale != I18n.default_locale && news.tekst_en.size < 15) %>
+							<%= (strip_tags(news.tekst_pl))[0..300]+"..." %></li>
+							<% else %>
+							<%= (strip_tags(news.tekst_en))[0..300]+"..." %></li>
+							<% end %>
+							
 							<% end %>
 						</ul>
 					</div>

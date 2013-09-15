@@ -96,20 +96,21 @@ en:
       second: Seconds
       year: Year
   hello: "Hello!"
-  last_news : "Recently Added News"
-  navi_about : "About"
+  last_news: "Recently Added News"
+  navi_about: "About"
   navi_media : "Media About Us"
-  navi_news : "News"
-  navi_gallery : "Gallery"
-  navi_contact : "Contact"
-  sign_in : "Sign In"
-  register : "Register"
+  navi_news: "News"
+  navi_gallery: "Gallery"
+  navi_contact: "Contact"
+  sign_in: "Sign In"
+  register: "Register"
   today: "Today"
   visits: "Visits"
   read_more: "Read More"
   public: "Published"
   subscribe: "Subscribe"
   sponsors: "Our Sponsors"
+  comments: "Comments"
   links: "Links"
   errors: &errors
     format: ! '%{attribute} %{message}'

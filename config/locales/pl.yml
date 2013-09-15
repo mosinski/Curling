@@ -85,6 +85,7 @@ pl:
   public: "Opublikowano"
   subscribe: "Zapisz się Teraz"
   sponsors: "Nasi Sponsorzy"
+  comments: "Komentarze"
   links: "Linki"
   will_paginate:
     previous_label: "«"

@@ -21,7 +21,10 @@
 				<li class="style1"><a href="/" class="act"><span>Start</span></a></li>
 				<li class="style2 dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><span><%= t 'navi_about' %></span></a>
 				<ul class="dropdown-menu">
-          				<li><%= link_to 'Media o Nas', media_path, "tabindex"=>"-1" %></li>
+          				<li><%= link_to media_path, "tabindex"=>"-1" do %>
+          				<%= t 'navi_media' %>
+          				<% end %>
+          				</li>
           				<% if current_user %>
           				<li><a tabindex="-1" data-toggle="modal" href="#dojazd">Dojazd</a></li>
           				<% end %>
