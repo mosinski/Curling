@@ -83,7 +83,6 @@ pl:
   visits: "Odwiedzin"
   read_more: "Czytaj więcej"
   public: "Opublikowano"
-  subscribe: "Zapisz się Teraz"
   sponsors: "Nasi Sponsorzy"
   comments: "Komentarze"
   back_to_list: "wróć do listy"
@@ -98,6 +97,9 @@ pl:
     message: "Wiadomość"
     your_message: "Treść wiadomości którą chcesz przesłać do nas"
     send: "Wyślij wiadomość"
+  newsletter:
+    placeholder: "twój@email.pl"
+    submit: "Zapisz się Teraz"
   will_paginate:
     previous_label: "«"
     next_label: "»"

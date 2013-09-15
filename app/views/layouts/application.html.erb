@@ -91,16 +91,16 @@
 			
 			</div>
 			<% if I18n.locale == I18n.default_locale %>
-   				  <%= image_tag("flag_pl.png", :class=>"btn btn-mini disabled") %>
+   				  <%= image_tag("flag_pl.png", :class=>"btn btn-mini disabled", :title => "Polski") %>
   				<%= link_to :locale=>'en' do %>
-  				  <%= image_tag("flag_en.png", :class=>"btn btn-mini") %>
+  				  <%= image_tag("flag_en.png", :class=>"btn btn-mini", :title => "English") %>
   				<% end %>
 
 			<% else %>
   				<%= link_to :locale=>'pl' do %>
-  				  <%= image_tag("flag_pl.png", :class=>"btn btn-mini") %>
+  				  <%= image_tag("flag_pl.png", :class=>"btn btn-mini", :title => "Polski") %>
   				<% end %>
-   				  <%= image_tag("flag_en.png", :class=>"btn btn-mini disabled") %>
+   				  <%= image_tag("flag_en.png", :class=>"btn btn-mini disabled", :title => "English") %>
 			<% end %>
 			<div style="display:inline-block;width:200px;margin-right:10px;"><%= t 'visits' %>: <img src="http://www.darmowylicznik.pl/licznik.php?id=87854" alt="Darmowy licznik odwiedzin" style="border:0px; width:100px; height:20px;margin:-2px -35px;"><script language="JavaScript">var adpol='<counter absolute;top:-1000px;">';var adpol2=adpol.replace('counter','div style="position:'); document.write(adpol2);</script><script language="JavaScript"> document.write('</div>') </script>
 			</div>
@@ -188,11 +188,11 @@
 								<div class="center text-center">
 									
  									<div class="input-prepend"><span class="add-on"><i class="icon-envelope-alt"></i></span>
-									<input type="text" id="" name="" placeholder="twój@email.com">
+									<input type="text" id="" name="" placeholder="<%= t('newsletter.placeholder') %>">
 									</div>
 									<br />
 									<button class="btn btn-large btn-primary">
-								<%= t 'subscribe' %> <i class="icon-exclamation"></i>
+								<%= t 'newsletter.submit' %> <i class="icon-exclamation"></i>
 									</button>	
 									<br><br	>
 								</div>
