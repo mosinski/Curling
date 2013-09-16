@@ -17,7 +17,7 @@
 
 <div>
 <%= link_to  "/galeria", :class => "btn btn-small btn-primary" do %>
-	<i class="icon-share-alt"></i> Wróć do listy albumów
+	<i class="icon-share-alt"></i> <%= t 'back_to_list' %>
 <% end %>
 
 <% if current_user && current_user.role == "admin" %>

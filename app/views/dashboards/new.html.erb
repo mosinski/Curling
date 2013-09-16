@@ -1,4 +1,12 @@
 <h3><i class="icon-pushpin"></i>  Nowa Aktualność Klubowa</h3>
+<div class="alert alert-info">
+    <strong><i class="icon-info-sign"></i></strong>
+    <button type="button" class="close" data-dismiss="alert"><i class="icon-remove-circle"></i></button>
+    <br>
+    <center>
+   	Pamiętaj że Aktualność Klubową widoczna jest <b>tylko</b> dla zalogowanych użytkowników i <b>tylko</b> zalogowani użytkownicy mogą ją skomentować.
+    </center>
+</div>
 
 <%= form_for @dashboard, :html => { :multipart => true } do |f| %>
 <%= render partial: 'form', locals: { f: f } %>
