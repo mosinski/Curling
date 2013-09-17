@@ -112,6 +112,7 @@ en:
   comments: "Comments"
   back_to_list: "back to list"
   go_to_album : "Go to Image Album"
+  games: "Curling Games"
   links: "Links"
   contact:
     info: "If you have questions or suggestions, use the form below and let us know."
@@ -122,6 +123,11 @@ en:
     message: "Message"
     your_message: "Text of your message to us"
     send: "Send Message"
+  tooltip:
+    newsletter: "Enter your e-mail, subscribe to our newsletter and stay up to date!"
+    sponsors: "To join the list of sponsors please contact us via the 'Contact'"
+    links: "To add a link of your website to list write to us through the 'CONTACT'"
+    games: "Here is a set of curling online games to enrich dreary winter evening"
   newsletter:
     placeholder: "your@email.com"
     submit: "Subscribe"

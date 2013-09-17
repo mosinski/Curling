@@ -88,6 +88,7 @@ pl:
   back_to_list: "wróć do listy"
   go_to_album : "Przejdź do Albumu"
   links: "Linki"
+  games: "Gry Curlingowe"
   contact:
     info: "Jeśli masz pytania lub sugestie, użyj formularza poniżej i napisz do nas."
     name: "Imię"
@@ -97,6 +98,11 @@ pl:
     message: "Wiadomość"
     your_message: "Treść wiadomości którą chcesz przesłać do nas"
     send: "Wyślij wiadomość"
+  tooltip:
+    newsletter: "Wpisz swojego maila, zapisz się do naszego newslettera i bądź na bieżąco!"
+    sponsors: "Aby dołączyć do listy sponsorów napisz do nas przez zakładkę 'KONTAKT'"
+    links: "Aby dodać do listy link swojej strony? Napisz do nas przez zakładkę 'KONTAKT'"
+    games: "Oto zestaw curlingowych gier online które umilą ponury zimowy wieczór"
   newsletter:
     placeholder: "twój@email.pl"
     submit: "Zapisz się Teraz"

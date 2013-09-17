@@ -182,7 +182,7 @@
 							<div class="right-top-corner">
 								<div class="inner">
 								<h3>Newsletter:</h3>
-								<a class="info-box" data-placement="top" rel="tooltip" title="Wpisz swojego maila, zapisz się do naszego newslettera i bądź na bieżąco!">
+								<a class="info-box" data-placement="top" rel="tooltip" title="<%= t('tooltip.newsletter') %>">
 								<i class="icon-question-sign"></i>
 								</a>
 								<div class="center text-center">
@@ -224,7 +224,7 @@
 							<div class="right-top-corner">
 								<div class="inner">
 									<h3><%= t 'sponsors' %>:</h3>
-									<a class="info-box" data-placement="top" rel="tooltip" title="Aby dołączyć do listy sponsorów napisz do nas przez zakładkę 'KONTAKT'">
+									<a class="info-box" data-placement="top" rel="tooltip" title="<%= t('tooltip.sponsors') %>">
 									<i class="icon-question-sign"></i>
 									</a>
 									<center>
@@ -260,7 +260,7 @@
 							<div class="right-top-corner">
 								<div class="inner">
 									<h3><%= t 'links' %>:</h3>
-									<a class="info-box" data-placement="top" rel="tooltip" title="Aby dodać do listy link swojej strony? Napisz do nas przez zakładkę 'KONTAKT'">
+									<a class="info-box" data-placement="top" rel="tooltip" title="<%= t('tooltip.links') %>">
 									<i class="icon-question-sign"></i>
 									</a>
 									<center>
@@ -274,6 +274,35 @@
 									<br /><br />
 									<%= link_to("http://bracelet-by-sis.art-madam.pl/", "target"=>"_blank") do %>
 										<%= image_tag("bracelet-by-sis.jpg", "style"=>"width:90px;height:90px;",:class=>"img-rounded") %>
+									<% end %>
+									<br /><br />
+									</center>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<br>
+				<div class="box">
+					<div class="border-top">
+						<div class="left-top-corner">
+							<div class="right-top-corner">
+								<div class="inner">
+									<h3><%= t 'games' %>:</h3>
+									<a class="info-box" data-placement="top" rel="tooltip" title="<%= t('tooltip.games') %>">
+									<i class="icon-question-sign"></i>
+									</a>
+									<center>
+									<%= link_to("http://www.cbc.ca/littlemosque/curling/game.html", "target"=>"_blank") do %>
+										<%= image_tag("icon4.gif") %><br>Let's Currrrl
+									<% end %>
+									<br /><br />
+									<%= link_to("http://www.kongregate.com/games/hotshotcurling/curling-simulation", "target"=>"_blank") do %>
+										<%= image_tag("icon4.gif") %><br>Curling simulation
+									<% end %>
+									<br /><br />
+									<%= link_to("http://gryonline.focus.pl/game,play,139.html", "target"=>"_blank") do %>
+										<%= image_tag("icon4.gif") %><br>Virtual Curling
 									<% end %>
 									<br /><br />
 									</center>
