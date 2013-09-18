@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class MessagesController < ApplicationController
   
   before_filter :set_user
@@ -10,7 +11,7 @@ class MessagesController < ApplicationController
       @messages = current_user.received_messages
     end
    else
-        redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
+        redirect_to :login, :notice => t('errors.messages.login_to_see')
    end
   end
   
@@ -18,7 +19,7 @@ class MessagesController < ApplicationController
    if current_user
     @message = Message.read_message(params[:id], current_user)
    else
-        redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
+        redirect_to :login, :notice => t('errors.messages.login_to_see')
    end
   end
   
@@ -36,7 +37,7 @@ class MessagesController < ApplicationController
       end
     end
    else
-        redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
+        redirect_to :login, :notice => t('errors.messages.login_to_see')
    end
   end
   
@@ -52,7 +53,7 @@ class MessagesController < ApplicationController
       render :action => :new
     end
    else
-        redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
+        redirect_to :login, :notice => t('errors.messages.login_to_see')
    end
   end
   

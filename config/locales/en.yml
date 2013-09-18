@@ -102,6 +102,7 @@ en:
   navi_news: "News"
   navi_gallery: "Gallery"
   navi_contact: "Contact"
+  navi_access : "Access"
   sign_in: "Log In"
   register: "Sign Up"
   today: "Today"
@@ -151,6 +152,7 @@ en:
       not_a_number: is not a number
       not_an_integer: must be an integer
       odd: must be odd
+      login_to_see: "Informacja! Log in to see this page!"
       record_invalid: ! 'Validation failed: %{errors}'
       restrict_dependent_destroy:
         one: "Cannot delete record because a dependent %{record} exists"

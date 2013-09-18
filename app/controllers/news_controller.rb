@@ -44,7 +44,7 @@ class NewsController < ApplicationController
   	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnie&#324;!'
     end
    else
-        redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
+        redirect_to :login, :notice => t('errors.messages.login_to_see')
    end
   end
 
@@ -57,7 +57,7 @@ class NewsController < ApplicationController
   	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnie&#324;!'
     end
    else
-        redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
+        redirect_to :login, :notice => t('errors.messages.login_to_see')
    end
   end
 
@@ -81,7 +81,7 @@ class NewsController < ApplicationController
   	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnie&#324;!'
     end
    else
-        redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
+        redirect_to :login, :notice => t('errors.messages.login_to_see')
    end
   end
 
@@ -105,7 +105,7 @@ class NewsController < ApplicationController
   	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnie&#324;!'
     end
    else
-        redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
+        redirect_to :login, :notice => t('errors.messages.login_to_see')
    end
   end
 
@@ -127,7 +127,7 @@ class NewsController < ApplicationController
   	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnie&#324;!'
     end
    else
-        redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
+        redirect_to :login, :notice => t('errors.messages.login_to_see')
    end
   end
 
@@ -186,7 +186,7 @@ class NewsController < ApplicationController
   	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnie&#324;!'
       end
     else
-        redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
+        redirect_to :login, :notice => t('errors.messages.login_to_see')
     end
   end
 end

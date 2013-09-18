@@ -15,7 +15,7 @@ class TournamentsController < ApplicationController
   	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnień!'
     end
    else
-        redirect_to :login, :notice => 'Informacja! Zaloguj się aby obejrzeć!'
+        redirect_to :login, :notice => t('errors.messages.login_to_see')
    end
   end
 
@@ -45,7 +45,7 @@ class TournamentsController < ApplicationController
   	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnień!'
     end
    else
-        redirect_to :login, :notice => 'Informacja! Zaloguj się aby obejrzeć!'
+        redirect_to :login, :notice => t('errors.messages.login_to_see')
    end
   end
 
@@ -58,7 +58,7 @@ class TournamentsController < ApplicationController
   	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnień!'
     end
    else
-        redirect_to :login, :notice => 'Informacja! Zaloguj się aby obejrzeć!'
+        redirect_to :login, :notice => t('errors.messages.login_to_see')
    end
   end
 
@@ -82,8 +82,7 @@ class TournamentsController < ApplicationController
   	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnień!'
     end
    else
-        redirect_to :login, :notice => 'Informacja! Zaloguj się aby obejrzeć!'
-   end
+        redirect_to :login, :notice => t('errors.messages.login_to_see')
   end
 
   # PUT /tournaments/1
@@ -106,7 +105,7 @@ class TournamentsController < ApplicationController
   	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnień!'
     end
    else
-        redirect_to :login, :notice => 'Informacja! Zaloguj się aby obejrzeć!'
+        redirect_to :login, :notice => t('errors.messages.login_to_see')
    end
   end
 
@@ -126,7 +125,7 @@ class TournamentsController < ApplicationController
   	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnień!'
     end
    else
-        redirect_to :login, :notice => 'Informacja! Zaloguj się aby obejrzeć!'
+        redirect_to :login, :notice => t('errors.messages.login_to_see')
    end
   end
 end
