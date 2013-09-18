@@ -12,7 +12,7 @@ class TournamentsController < ApplicationController
       format.json { render json: @tournaments }
     end
     else
-  	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnień!'
+  	redirect_to root_url, :notice => t('errors.messages.permissions')
     end
    else
         redirect_to :login, :notice => t('errors.messages.login_to_see')
@@ -42,7 +42,7 @@ class TournamentsController < ApplicationController
       format.json { render json: @tournament }
     end
     else
-  	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnień!'
+  	redirect_to root_url, :notice => t('errors.messages.permissions')
     end
    else
         redirect_to :login, :notice => t('errors.messages.login_to_see')
@@ -55,7 +55,7 @@ class TournamentsController < ApplicationController
     if current_user.role == "admin"
     @tournament = Tournament.find(params[:id])
     else
-  	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnień!'
+  	redirect_to root_url, :notice => t('errors.messages.permissions')
     end
    else
         redirect_to :login, :notice => t('errors.messages.login_to_see')
@@ -79,7 +79,7 @@ class TournamentsController < ApplicationController
       end
     end
     else
-  	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnień!'
+  	redirect_to root_url, :notice => t('errors.messages.permissions')
     end
    else
         redirect_to :login, :notice => t('errors.messages.login_to_see')
@@ -102,7 +102,7 @@ class TournamentsController < ApplicationController
       end
     end
     else
-  	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnień!'
+  	redirect_to root_url, :notice => t('errors.messages.permissions')
     end
    else
         redirect_to :login, :notice => t('errors.messages.login_to_see')
@@ -122,7 +122,7 @@ class TournamentsController < ApplicationController
       format.json { head :no_content }
     end
     else
-  	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnień!'
+  	redirect_to root_url, :notice => t('errors.messages.permissions')
     end
    else
         redirect_to :login, :notice => t('errors.messages.login_to_see')

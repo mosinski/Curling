@@ -41,7 +41,7 @@ class NewsController < ApplicationController
       	  format.json { render json: @news }
     	end
     else
-  	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnie&#324;!'
+  	redirect_to root_url, :notice => t('errors.messages.permissions')
     end
    else
         redirect_to :login, :notice => t('errors.messages.login_to_see')
@@ -54,7 +54,7 @@ class NewsController < ApplicationController
     if current_user.role == "admin"
     	@news = News.find(params[:id])
     else
-  	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnie&#324;!'
+  	redirect_to root_url, :notice => t('errors.messages.permissions')
     end
    else
         redirect_to :login, :notice => t('errors.messages.login_to_see')
@@ -78,7 +78,7 @@ class NewsController < ApplicationController
       	  end
     	end
     else
-  	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnie&#324;!'
+  	redirect_to root_url, :notice => t('errors.messages.permissions')
     end
    else
         redirect_to :login, :notice => t('errors.messages.login_to_see')
@@ -102,7 +102,7 @@ class NewsController < ApplicationController
       	  end
     	end
     else
-  	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnie&#324;!'
+  	redirect_to root_url, :notice => t('errors.messages.permissions')
     end
    else
         redirect_to :login, :notice => t('errors.messages.login_to_see')
@@ -124,7 +124,7 @@ class NewsController < ApplicationController
       	  format.json { head :no_content }
     	end
     else
-  	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnie&#324;!'
+  	redirect_to root_url, :notice => t('errors.messages.permissions')
     end
    else
         redirect_to :login, :notice => t('errors.messages.login_to_see')
@@ -166,7 +166,7 @@ class NewsController < ApplicationController
        	redirect_to @news, :notice => 'Uwaga! Niedozwolony Nick!'
     	end
     else 
-    	redirect_to @news, :notice => 'Uwaga! Nie podano tre&#347;ci komentarza lub nick-u!'
+    	redirect_to @news, :notice => 'Uwaga! Nie podano treści komentarza lub nick-u!'
     end
   end
 
@@ -180,10 +180,10 @@ class NewsController < ApplicationController
     	end
 
     	@comment.destroy
-    	redirect_to :back, :notice => 'Informacja! Usuni&#281;to komentarz/e!'
+    	redirect_to :back, :notice => 'Informacja! Usunięto komentarz/e!'
 
       else
-  	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnie&#324;!'
+  	redirect_to root_url, :notice => t('errors.messages.permissions')
       end
     else
         redirect_to :login, :notice => t('errors.messages.login_to_see')

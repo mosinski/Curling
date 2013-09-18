@@ -24,10 +24,10 @@ class AlbumsController < ApplicationController
     	end
     		
     else
-  	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnień!'
+  	redirect_to root_url, :notice => t('errors.messages.permissions')
     end
    else
-        redirect_to :login, :notice => 'Informacja! Zaloguj się aby obejrzeć!'
+        redirect_to :login, :notice => t('errors.messages.login_to_see')
    end
   end
 
@@ -37,10 +37,10 @@ class AlbumsController < ApplicationController
     if current_user.role == "admin"
    	@album = Album.find(params[:id])
     else
-  	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnień!'
+  	redirect_to root_url, :notice => t('errors.messages.permissions')
     end
    else
-        redirect_to :login, :notice => 'Informacja! Zaloguj się aby obejrzeć!'
+        redirect_to :login, :notice => t('errors.messages.login_to_see')
    end
   end
 
@@ -62,10 +62,10 @@ class AlbumsController < ApplicationController
       end
     end
     else
-  	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnień!'
+  	redirect_to root_url, :notice => t('errors.messages.permissions')
     end
    else
-        redirect_to :login, :notice => 'Informacja! Zaloguj się aby obejrzeć!'
+        redirect_to :login, :notice => t('errors.messages.login_to_see')
    end
   end
 
@@ -88,10 +88,10 @@ class AlbumsController < ApplicationController
     end
     
     else
-  	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnień!'
+  	redirect_to root_url, :notice => t('errors.messages.permissions')
     end
    else
-        redirect_to :login, :notice => 'Informacja! Zaloguj się aby obejrzeć!'
+        redirect_to :login, :notice => t('errors.messages.login_to_see')
    end
   end
 
@@ -112,10 +112,10 @@ class AlbumsController < ApplicationController
     end
     
     else
-  	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnień!'
+  	redirect_to root_url, :notice => t('errors.messages.permissions')
     end
    else
-        redirect_to :login, :notice => 'Informacja! Zaloguj się aby obejrzeć!'
+        redirect_to :login, :notice => t('errors.messages.login_to_see')
    end
   end
 end

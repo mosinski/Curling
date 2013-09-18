@@ -59,10 +59,10 @@ require 'net/ftp'
 		  redirect_to @przydzial, :notice => 'Uwaga! Nie wybrano zdjęcia z komputera lub rozszerzenie jest nieprawidłowe!'
 		end
 	else
-  	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnień!'
+  	redirect_to root_url, :notice => t('errors.messages.permissions')
   	end
     else
-        redirect_to :login, :notice => 'Informacja! Zaloguj się aby obejrzeć!'
+        redirect_to :login, :notice => t('errors.messages.login_to_see')
     end
   end
 
@@ -77,10 +77,10 @@ require 'net/ftp'
       		format.json { head :no_content }
     	end
 	else
-  	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnień!'
+  	redirect_to root_url, :notice => t('errors.messages.permissions')
   	end
     else
-        redirect_to :login, :notice => 'Informacja! Zaloguj się aby obejrzeć!'
+        redirect_to :login, :notice => t('errors.messages.login_to_see')
     end
   end
 end

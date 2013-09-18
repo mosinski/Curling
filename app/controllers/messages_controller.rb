@@ -48,7 +48,7 @@ class MessagesController < ApplicationController
     @message.recipient = User.find_by_username(params[:message][:to])
 
     if @message.save
-      redirect_to user_messages_path(current_user), :notice => 'Gratulacje! Wiadomo&#347;&#263; zosta&#322;a wys&#322;ana!'
+      redirect_to user_messages_path(current_user), :notice => 'Gratulacje! Wiadomość została wysłana!'
     else
       render :action => :new
     end
@@ -65,12 +65,12 @@ class MessagesController < ApplicationController
           @message = Message.find(:first, :conditions => ["messages.id = ? AND (sender_id = ? OR recipient_id = ?)", id, @user, @user])
           @message.mark_deleted(@user) unless @message.nil?
         }
-      flash[:notice] = "Gratulacje! Wiadomo&#347;&#263; zosta&#322;a usuni&#281;ta!"
+      flash[:notice] = "Gratulacje! Wiadomość została usunięta!"
       end
       redirect_to :back
     end
    else
-        redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
+        redirect_to :login, :notice => t('errors.messages.login_to_see')
    end
   end
   

@@ -147,6 +147,7 @@ pl:
       too_short: jest za krótkie (przynajmniej %{count} znaki)
       wrong_length: ma nieprawidłową długość (powinna wynosić %{count} znaków)
       login_to_see: "Informacja! Zaloguj się aby obejrzeć!"
+      permissions: "Uwaga! You are not allowed!"
     template:
       body: ! 'Błędy dotyczą następujących pól:'
       header:

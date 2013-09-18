@@ -13,7 +13,7 @@ class DashboardsController < ApplicationController
       format.xml  { render :xml => @dashboards } 
     end
    else
-        redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
+        redirect_to :login, :notice => t('errors.messages.login_to_see')
    end
   end
 
@@ -29,7 +29,7 @@ class DashboardsController < ApplicationController
       		format.json { render json: @dashboard }
     	end
    else
-        redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
+        redirect_to :login, :notice => t('errors.messages.login_to_see')
    end
   end
 
@@ -45,10 +45,10 @@ class DashboardsController < ApplicationController
       		format.json { render json: @dashboard }
     	end
     else
-  	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnie&#324;!'
+  	redirect_to root_url, :notice => t('errors.messages.permissions')
     end
    else
-        redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
+        redirect_to :login, :notice => t('errors.messages.login_to_see')
    end
   end
 
@@ -58,10 +58,10 @@ class DashboardsController < ApplicationController
     if current_user.role == "admin"
     	@dashboard = Dashboard.find(params[:id])
     else
-  	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnie&#324;!'
+  	redirect_to root_url, :notice => t('errors.messages.permissions')
     end
    else
-        redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
+        redirect_to :login, :notice => t('errors.messages.login_to_see')
    end
   end
 
@@ -86,10 +86,10 @@ class DashboardsController < ApplicationController
       	  end
     	end
     else
-  	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnie&#324;!'
+  	redirect_to root_url, :notice => t('errors.messages.permissions')
     end
    else
-        redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
+        redirect_to :login, :notice => t('errors.messages.login_to_see')
    end
   end
 
@@ -110,10 +110,10 @@ class DashboardsController < ApplicationController
       	  end
     	end
     else
-  	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnie&#324;!'
+  	redirect_to root_url, :notice => t('errors.messages.permissions')
     end
    else
-        redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
+        redirect_to :login, :notice => t('errors.messages.login_to_see')
    end
   end
 
@@ -132,10 +132,10 @@ class DashboardsController < ApplicationController
       	  format.json { head :no_content }
     	end
     else
-  	redirect_to root_url, :notice => 'Informacja! Nie masz uprawnie&#324;!'
+  	redirect_to root_url, :notice => t('errors.messages.permissions')
     end
    else
-        redirect_to :login, :notice => 'Informacja! Zaloguj si&#281; aby obejrze&#263;!'
+        redirect_to :login, :notice => t('errors.messages.login_to_see')
    end
   end
 
@@ -158,7 +158,7 @@ class DashboardsController < ApplicationController
     redirect_to @dashboard, :notice => 'Uwaga! Niewłaściwa długość treści komentarza! Dopuszczalna od 1 do 500 znaków.'
     end
    else
-    redirect_to :login, :notice => 'Informacja! Zaloguj się aby obejrzeć!'
+    redirect_to :login, :notice => t('errors.messages.login_to_see')
    end
   end
 
@@ -175,10 +175,10 @@ class DashboardsController < ApplicationController
     	redirect_to :back, :notice => 'Informacja! Usunięto komentarz/e!'
 
       else
-  	redirect_to root_url, :notice => 'Uwaga! Nie masz uprawnień!'
+  	redirect_to root_url, :notice => t('errors.messages.permissions')
       end
     else
-        redirect_to :login, :notice => 'Informacja! Zaloguj się aby obejrzeć!'
+        redirect_to :login, :notice => t('errors.messages.login_to_see')
     end
   end
 
