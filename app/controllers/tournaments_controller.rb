@@ -83,6 +83,7 @@ class TournamentsController < ApplicationController
     end
    else
         redirect_to :login, :notice => t('errors.messages.login_to_see')
+   end
   end
 
   # PUT /tournaments/1
