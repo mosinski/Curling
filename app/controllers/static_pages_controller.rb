@@ -22,7 +22,14 @@ class StaticPagesController < ApplicationController
   end
 
  def about
-
+    @about = About.last
+    
+    if @about == nil
+     @about = About.create
+     @about.tekst_pl = ""
+     @about.tekst_en = ""
+     @about.save
+    end
     respond_to do |format|
       format.html # about.html.erb
       format.json { render json: @static_page }
@@ -72,6 +79,14 @@ class StaticPagesController < ApplicationController
 	@images = Image.all
 	@media = Medium.all
 	@tournaments = Tournament.all
+	@about = About.last
+	
+	if @about == nil
+    	 @about = About.create
+    	 @about.tekst_pl = ""
+    	 @about.tekst_en = ""
+    	 @about.save
+    	end
 
     	respond_to do |format|
       		format.html # about.html.erb

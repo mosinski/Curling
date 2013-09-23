@@ -303,6 +303,36 @@
     </div>
   </div>
   
+  <div class="accordion-group">
+    <div class="accordion-heading" style="border-left: 4px solid #C0C0C0;">
+	<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseSeven">
+	  <h3><i class="icon-info-sign"></i> O Nas </h3>
+	</a>
+    </div>
+    
+    <div id="collapseSeven" class="accordion-body collapse">
+	<div class="accordion-inner">
+	  <div class="alert alert-info">
+            <strong><i class="icon-info-sign"></i></strong><br>
+            <center>
+            Długość opisu w języku Polskim: <span class="badge badge-info"><%= (@about.tekst_pl.size if @about.tekst_pl != nil) || "0" %></span> znaków.
+            <br>
+            Długość opisu w języku Angielskim: <span class="badge badge-info"><%= (@about.tekst_en.size if @about.tekst_pl != nil) || "0" %></span> znaków.
+            </center>
+          </div>
+          <% if @about != nil %>
+          <%= link_to "/about", :class => "btn btn-success" do %>
+		<i class="icon-eye-open"></i> Zobacz Opis
+	  <% end %>
+	  
+	  <%= link_to edit_about_path(@about), :class => "btn btn-success", "style" => "float:right" do %>
+		<i class="icon-edit"></i> Edytuj Opis
+	  <% end %>
+	  <% end %>
+	</div>
+    </div>
+  </div>
+  
 </div>
 </div>
 

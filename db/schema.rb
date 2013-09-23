@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130903203522) do
+ActiveRecord::Schema.define(:version => 20130923203806) do
+
+  create_table "abouts", :force => true do |t|
+    t.text     "tekst_pl"
+    t.text     "tekst_en"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "albums", :force => true do |t|
     t.string   "tytul"

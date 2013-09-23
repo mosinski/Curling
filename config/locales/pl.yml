@@ -78,6 +78,7 @@ pl:
   navi_gallery : "Galeria"
   navi_contact : "Kontakt"
   navi_access : "Dojazd"
+  navi_about : "O nas"
   sign_in : "Logowanie"
   register : "Rejestracja"
   today: "Dziś"
