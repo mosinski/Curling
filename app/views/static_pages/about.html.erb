@@ -1,4 +1,4 @@
-<h3><%= t 'navi_about' %></h3>
+<h3><%= t 'navi_about_info' %></h3>
   <% if (I18n.locale == I18n.default_locale) || (I18n.locale != I18n.default_locale && @about.tekst_en.size < 15) %>
     <%= raw(@about.tekst_pl) %>
   <% else %>
