@@ -6,14 +6,14 @@ class DashboardsController < ApplicationController
    if current_user
     @dashboards = Dashboard.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @dashboards }
-      if params[:format] == "atom" && @dashboards.present?
-      format.atom     # index.atom.builder
-      format.xml  { render :xml => @dashboards } 
-      else
+    if params[:format] == "atom" && @dashboards.empty?
       redirect_to root_url, :notice => "Informacja! <br>Aktualnie brak Aktualności Klubowych do wyświetlenia ;("
+    else
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @dashboards }
+        format.atom     # index.atom.builder
+        format.xml  { render :xml => @dashboards } 
       end
     end
    else
