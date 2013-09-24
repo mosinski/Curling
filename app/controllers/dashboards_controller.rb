@@ -9,12 +9,12 @@ class DashboardsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @dashboards }
-      if @dashboards.present?
+      if params[:format] == "atom" && @dashboards.present?
       format.atom     # index.atom.builder
+      format.xml  { render :xml => @dashboards } 
       else
       redirect_to root_url, :notice => "Informacja! <br>Aktualnie brak Aktualności Klubowych do wyświetlenia ;("
       end
-      format.xml  { render :xml => @dashboards } 
     end
    else
         redirect_to :login, :notice => t('errors.messages.login_to_see')
