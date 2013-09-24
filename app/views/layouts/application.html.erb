@@ -64,11 +64,11 @@
 		<div class="wrapper">
 				<% if notice %>
 				<div class="notice">
-				<% if notice.match(/Uwaga!/) %>
+				<% if (notice.match(/Uwaga!/))||(notice.match(/Warning!/)) %>
 				<div class="alert alert-error">
-				<% elsif notice.match(/Gratulacje!/) %>
+				<% elsif (notice.match(/Gratulacje!/))||(notice.match(/Congratulations!/)) %>
 				<div class="alert alert-success">
-				<% elsif notice.match(/Informacja!/) %>
+				<% elsif (notice.match(/Informacja!/))||(notice.match(/Information!/)) %>
 				<div class="alert alert-info">
 				<% end %>
 				    <button type="button" class="close" data-dismiss="alert"><i class="icon-remove-circle"></i></button>

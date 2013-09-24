@@ -20,7 +20,7 @@ class AboutsController < ApplicationController
 
        respond_to do |format|
          if @about.update_attributes(params[:about])
-           format.html { redirect_to @about, notice: "Gratulacje! Strona 'O nas' pomyślnie zaktualizowana'" }
+           format.html { redirect_to "/about", notice: "Gratulacje! Strona 'O nas' pomyślnie zaktualizowana'" }
            format.json { head :no_content }
          else
            format.html { render action: "edit" }

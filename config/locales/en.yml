@@ -153,8 +153,8 @@ en:
       not_a_number: is not a number
       not_an_integer: must be an integer
       odd: must be odd
-      login_to_see: "Informacja! Log in to see this page!"
-      permissions: "Uwaga! Nie masz uprawnień!"
+      login_to_see: "Information! Log in to see this page!"
+      permissions: "Warning! You are not authorized!"
       record_invalid: ! 'Validation failed: %{errors}'
       restrict_dependent_destroy:
         one: "Cannot delete record because a dependent %{record} exists"
