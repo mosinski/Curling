@@ -19,19 +19,6 @@
 //= require 3dlinks
 //= require scrolltopcontrol
 
-
-jQuery(document).ready(function() {
-  return jQuery(".abtlikebox").hover((function() {
-    return jQuery(this).stop().animate({
-      right: "0"
-    }, "medium");
-  }), (function() {
-    return jQuery(this).stop().animate({
-      right: "-250"
-    }, "medium");
-  }), 500);
-});
-
 jQuery(document).ready(function() {
   var interval, rotation, viewportHeight, viewportWidth;
   rotation = 0;

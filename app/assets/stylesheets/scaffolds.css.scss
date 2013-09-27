@@ -519,17 +519,16 @@ text-shadow: -1px 0px black, 0px 1px white, 1px 0px black, 0px -1px black;
   height: 270px;
   padding: 0 5px 0 46px;
   width: 245px;
-  z-index:  99999;
+  z-index:  99998;
   position:fixed;
   right:-250px;
   top:20%;
+  transition: 1s;
 }
 
-.abtlikebox div{ 
-  padding: 0; 
-  margin-right:-8px; 
-  border:4px solid  #3b5998; 
-  background:#fafafa;
+.abtlikebox:hover{
+  right:0px;
+  transition: 1s;
 }
 
 .abtlikebox span{
@@ -549,6 +548,32 @@ text-shadow: -1px 0px black, 0px 1px white, 1px 0px black, 0px -1px black;
 .abtlikebox span a:hover{
   text-decoration:underline;
 }
+
+.abtgbox {
+  background: url("/assets/g-right.png") no-repeat scroll left center transparent !important; 
+  float: right;
+  height: 130px;
+  padding: 0 5px 0 46px;
+  width: 273px;
+  z-index:  99999;
+  position:fixed;
+  right:-278px;
+  top: 8%;
+  transition: 1s;
+}
+
+.abtgbox div{ 
+  padding: 0; 
+  margin-right:-8px; 
+  border:4px solid rgb(228, 111, 97); 
+  background:#fafafa;
+}
+
+.abtgbox:hover {
+  right:0px;
+  transition: 1s;
+}
+
 .rotate {
   background: url(stone.png);
   color: #FFF;
