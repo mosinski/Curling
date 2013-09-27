@@ -44,9 +44,9 @@ require 'net/ftp'
 		      @image.nr_albumu = @album.id
 		      @image.save
 		
-		      @udane.increment!
+		      @udane += 1
 		   else
-		      @nieudane.increment!
+		      @nieudane += 1
 		   end
 		end
 		   ftp.quit()
