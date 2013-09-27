@@ -50,7 +50,6 @@ require 'net/ftp'
 		   end
 		end
 		   ftp.quit()
-		end
 
     		  respond_to do |format|
     		    if @udane > 0
