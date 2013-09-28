@@ -1,17 +1,33 @@
 <h3><i class="icon-book"></i> Album <%= @album.tytul %></h3>
 
+<%= form_tag destroy_multiple_images_path, method: :delete do %>
+
 <% @zdjecia.each do |zdjecie| %>
 
+<div style="display: inline-block;">
 <a class="fancybox" href="http://images.gdanskcurlingclub.pl/<%= zdjecie.nazwa %>" title="<%= zdjecie.opis %>" target="_blank">
 <%= image_tag("http://images.gdanskcurlingclub.pl/#{zdjecie.nazwa}", :class => "img-polaroid album_zdjecie") %>
 </a>
 
-<% if current_user && current_user.role == "admin" %>
-<%= link_to zdjecie, method: :delete, data: { confirm: "Czy napewno chcesz usunąć zdjecie '#{zdjecie.nazwa}'?" }, :class => "btn btn-mini image_del" do %>
-	<i class="icon-trash"></i>
-<% end %>
+  <% if current_user && current_user.role == "admin" %>
+  
+       <%= check_box_tag "images[]", zdjecie.id, false, :class => "image_check_del" %>
+       
+       <%= link_to zdjecie, method: :delete, data: { confirm: "Czy napewno chcesz usunąć zdjecie '#{zdjecie.nazwa}'?" }, :class => "btn btn-mini image_del" do %>
+	    <i class="icon-trash"></i>
+       <% end %>
+       
+  <% end %>
+</div>
 <% end %>
 
+  <% if current_user && current_user.role == "admin" %>
+  <div>
+     <button type="submit" class="btn btn-primary">
+  	<i class="icon-check"></i> Usuń Zaznaczone
+     </button>
+  </div>
+  <% end %>
 <% end %>
 
 

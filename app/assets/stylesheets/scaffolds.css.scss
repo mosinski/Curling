@@ -668,8 +668,15 @@ text-shadow: -1px 0px black, 0px 1px white, 1px 0px black, 0px -1px black;
 }
 
 .image_del {
-  position: absolute;
-  margin-left: -27px;
+  position: relative;
+  float: right;
+  right: 26px;
+}
+
+.image_check_del {
+  position: relative;
+  float: left;
+  left: 18px;
 }
 
 #password_time {

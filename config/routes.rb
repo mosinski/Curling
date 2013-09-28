@@ -1,17 +1,21 @@
 Osp::Application.routes.draw do
 
-  resources :abouts
+resources :users do
+    resources :messages do
+          collection do
+              post :delete_selected
+          end
+    end
+end
+  
+resources :images do
+    collection do
+      delete 'destroy_multiple'
+    end
+end
 
-
-  resources :users do
-             resources :messages do
-               collection do
-                 post :delete_selected
-               end
-             end
-           end
-
-resources :user_sessions, :dashboards, :static_pages, :news, :media, :images, :albums, :tournaments
+resources :user_sessions, :dashboards, :static_pages, :news, :media
+resources :abouts, :albums, :tournaments
 match 'login' => 'user_sessions#new', :as => :login
 match 'logout' => 'user_sessions#destroy', :as => :logout
 match 'logowanie' => 'user_sessions#new', :as => :login

@@ -53,9 +53,9 @@ require 'net/ftp'
 
     		  respond_to do |format|
     		    if @udane > 0
-        		format.html { redirect_to @przydzial, notice: 'Gratulacje!<br>Dodano: #{@udane} zdjęć<br>Niepowodznie dodania: #{@nieudane} zdjęć' }
+        		format.html { redirect_to @przydzial, notice: "Gratulacje!<br>Dodano: #{@udane} zdjęć<br>Niepowodznie dodania: #{@nieudane} zdjęć" }
         	    else
-        		format.html { redirect_to @przydzial, notice: 'Uwaga!<br> Niepowodznie dodania zdjęć<br>Nieudanych: #{@nieudane}' }
+        		format.html { redirect_to @przydzial, notice: "Uwaga!<br> Niepowodznie dodania zdjęć<br>Nieudanych: #{@nieudane}" }
         	    end
     		  end
 
@@ -80,6 +80,25 @@ require 'net/ftp'
       		format.html { redirect_to "/galeria", notice: 'Gratulacje! Zdjęcie zostało usunięte!' }
       		format.json { head :no_content }
     	end
+	else
+  	redirect_to root_url, :notice => t('errors.messages.permissions')
+  	end
+    else
+        redirect_to :login, :notice => t('errors.messages.login_to_see')
+    end
+  end
+  
+  def destroy_multiple
+    if current_user
+       if current_user.role=="admin"
+       
+    	Image.destroy(params[:images])
+
+    	respond_to do |format|
+       		format.html { redirect_to "/galeria", notice: 'Gratulacje! Zdjęcia zostały usunięte!' }
+       		format.json { head :no_content }
+     	end
+     	
 	else
   	redirect_to root_url, :notice => t('errors.messages.permissions')
   	end
