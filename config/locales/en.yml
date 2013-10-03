@@ -97,6 +97,7 @@ en:
       year: Year
   hello: "Hello!"
   last_news: "Recently Added News"
+  last_images : "Recently Added Images"
   navi_about: "About"
   navi_media : "Media About Us"
   navi_news: "News"

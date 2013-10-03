@@ -72,6 +72,7 @@ pl:
   # tłumaczenia widoków
   hello: "Witaj!"
   last_news : "Ostatnio Dodane Aktualności"
+  last_images : "Ostatnio Dodane Zdjęcia"
   navi_about : "O klubie"
   navi_media : "Media o Nas"
   navi_news : "Aktualności"

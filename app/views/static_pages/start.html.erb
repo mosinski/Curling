@@ -27,4 +27,19 @@
 						</ul>
 					</div>
 				</div>
+				
+				<div class="box2">
+					<div class="inner">
+						<h3><%= t 'last_images' %></h3>
+						<ul class="list1">
+							<% @images_last.each do |image| %>
+							<li>
+							<%= link_to("/galeria") do %>
+							<%= image_tag("http://images.gdanskcurlingclub.pl/#{image.nazwa}", "style"=>"height:115px;width:175px;") %>
+							<% end %>
+							</li>
+							<% end %>
+						</ul>
+					</div>
+				</div>
 
