@@ -27,13 +27,13 @@
 						</ul>
 					</div>
 				</div>
-				
-				<div class="box2">
+				<br><br>
+				<div class="box1">
 					<div class="inner">
 						<h3><%= t 'last_images' %></h3>
-						<ul class="list1">
+						<ul style="margin-left: 5px;">
 							<% @images_last.each do |image| %>
-							<li>
+							<li style="display:inline-block;">
 							<%= link_to("/galeria") do %>
 							<%= image_tag("http://images.gdanskcurlingclub.pl/#{image.nazwa}", "style"=>"height:115px;width:175px;") %>
 							<% end %>
