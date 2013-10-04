@@ -18,12 +18,12 @@
 <% end %>
 <% end %>
 <center>
-Komentarze: <%= @all_comments.count %>
+<%= t 'comments' %>: <%= @all_comments.count %>
 </center>
 <hr>
 
 <% if @all_comments.count == 0 %>
-  Brak komentarzy. Bądź pierwszy! Wyraź swoją opinię! 
+<%= t 'comments_not_yet' %>
 <% end %>
 
 <% @all_comments.each do |comment| %>

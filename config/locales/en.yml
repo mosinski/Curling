@@ -113,6 +113,7 @@ en:
   public: "Published"
   sponsors: "Our Sponsors"
   comments: "Comments"
+  comments_not_yet: "No comments yet. Be the first! Have your say!"
   back_to_list: "back to list"
   go_to_album : "Go to Image Album"
   games: "Curling Games"

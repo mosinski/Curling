@@ -88,6 +88,7 @@ pl:
   public: "Opublikowano"
   sponsors: "Nasi Sponsorzy"
   comments: "Komentarze"
+  comments_not_yet: "Brak komentarzy. Bądź pierwszy! Wyraź swoją opinię!"
   back_to_list: "wróć do listy"
   go_to_album : "Przejdź do Albumu"
   links: "Linki"
