@@ -23,12 +23,11 @@
 	asset-url('MyriadPro-Regular.ttf', font) format('truetype'), 
 	asset-url('MyriadPro-Regular.svg', font) format('svg');
 }
-* {
-	margin:0;
-	padding:0}
+
 html {
 	min-width:944px !important;
 }
+
 body {
 	background:url(background.jpg) repeat-x;
 	font-family:Tahoma, Arial, helvetica, sans-serif !important;
@@ -40,11 +39,33 @@ body {
 	cursor: url(icon.png) 12 8, default;
 	*:hover { cursor: url(icon.png) 12 8, default; }
 }
-object {vertical-align:top;outline:none}
-input, textarea, select {font-family:Tahoma, Arial, helvetica, sans-serif;font-size:1em;vertical-align:middle;font-weight:normal}
-fieldset {border:0}
-p {margin:0;padding:0}
-img {border:0;vertical-align:top;text-align:left}
+
+object {
+  vertical-align:top;
+  outline:none
+}
+
+input, textarea, select {
+  font-family:Tahoma, Arial, helvetica, sans-serif;
+  font-size:1em;
+  vertical-align:middle;
+  font-weight:normal
+}
+
+fieldset {
+  border:0;
+}
+
+p {
+  margin:0;
+  padding:0
+}
+
+img {
+  border:0;
+  vertical-align:top;
+  text-align:left
+}
 /* GLOBAL */
 #header, #content, #footer {font-size:0.75em;width:944px;margin:0 auto}
 .col-1, .col-2, .col-3 {float:left}
