@@ -948,3 +948,11 @@ ol {
 .search-query:focus + button {
   z-index: 3;
 }
+
+#drop_zone {
+  border: 2px dashed rgb(187, 187, 187);
+  border-radius: 5px 5px 5px 5px;
+  padding: 25px;
+  text-align: center;
+  color: rgb(187, 187, 187);
+}
