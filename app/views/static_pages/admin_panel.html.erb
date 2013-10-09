@@ -296,9 +296,60 @@
 	  <div class="alert alert-info">
             <strong><i class="icon-info-sign"></i></strong><br>
             <center>
-            Ilość Pozycji w bazie: <span class="badge badge-info"><i class="icon-spinner icon-spin"></i></span>
+            Ilość Pozycji w bazie: <span class="badge badge-info"><%= @teams_emails.count %></span>
             </center>
           </div>
+	  <%= link_to new_teams_email_path, :class => "btn btn-success" do %>
+		<i class="icon-expand-alt"></i> Dodaj Drużynę do Bazy
+	  <% end %>
+	  
+	  <% if @teams_emails.present? %>
+          <a class="btn btn-success list_show" id="teams_emails" style="float:right" >
+		<i class="icon-ellipsis-vertical"></i> Lista
+	  </a>
+	  
+	  <div id="teams_emails" style="display:none;">
+	  <a class="list_hide" id="teams_emails" style="position:absolute;right:15px; margin-top:5px;" >
+		<i class="icon-remove-sign"></i>
+	  </a>
+	    <center>
+	        <table class="table table-hover">
+		<thead>
+		<tr>
+		<th><i class="icon-check"></i></th>
+		<th>Nazwa Drużyny</th>
+		<th>Osoba Kontaktowa</th>
+		<th></th>
+		</tr>
+		</thead>
+		<% @teams_emails.each do |team| %>
+		<tr>
+		<td><%= check_box_tag "teams[]", team.id, false %></td>
+		<td><%= team.nazwa+"("+team.email+")" %></td>
+		<td><%= team.osoba_kontaktowa %></td>
+		<td>
+		<%= link_to edit_teams_email_path(team), :class => "btn btn-mini" do %>
+			<i class="icon-edit"></i>
+    		<% end %>
+    		<%= link_to team, :confirm => "Czy napewno chcesz usunąć druzyne: #{team.nazwa} z bazy?", :method => :delete, :class => "btn btn-mini" do %>
+			<i class="icon-trash"></i>
+    		<% end %>
+    		<%= link_to team, :class => "btn btn-success btn-small", "style" => "display:none;" do %>
+    			<i class="icon-envelope-alt"></i>
+    		<% end %>
+		</td>
+		</tr>
+		<% end %>
+		</table>
+	    </center>
+	        <button class="btn btn-success btn-small" >
+    		  <i class="icon-check"></i> <i class="icon-envelope-alt"></i>
+    		</button>
+	        <button class="btn btn-danger btn-small" >
+    		  <i class="icon-check"></i> <i class="icon-trash"></i>
+    		</button>
+	  </div>
+	  <% end %>
 	</div>
     </div>
   </div>

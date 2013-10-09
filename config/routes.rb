@@ -15,7 +15,7 @@ resources :images do
 end
 
 resources :user_sessions, :dashboards, :static_pages, :news, :media
-resources :abouts, :albums, :tournaments
+resources :abouts, :albums, :tournaments, :teams_emails
 match 'login' => 'user_sessions#new', :as => :login
 match 'logout' => 'user_sessions#destroy', :as => :logout
 match 'logowanie' => 'user_sessions#new', :as => :login

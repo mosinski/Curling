@@ -1,0 +1,43 @@
+  <% if @teams_email.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@teams_email.errors.count, "error") %> prohibited this teams_email from being saved:</h2>
+
+      <ul>
+      <% @teams_email.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="controls">
+	<div class="field input-prepend">
+    	  <%= f.label "Nazwa Drużyny" %>
+    	  <span class="add-on"><i class="icon-tag"></i></span>
+    	  <%= f.text_field :nazwa %>
+    	</div>
+</div>
+
+<div class="controls">
+	<div class="field input-prepend">
+    	  <%= f.label "Email Drużyny" %>
+  	  <span class="add-on">@</span>
+    	  <%= f.text_field :email %>
+    	</div>
+</div>
+
+<div class="controls">
+	<div class="field input-prepend">
+    	  <%= f.label "Osoba Kontaktowa" %>
+  	  <span class="add-on"><i class="icon-user"></i></span>
+    	  <%= f.text_field :osoba_kontaktowa %>
+    	</div>
+</div>
+
+<div class="controls">
+	<div class="field input-prepend">
+    	  <%= f.label "Kraj" %>
+  	  <span class="add-on"><i class="icon-globe"></i></span>
+    	  <%= f.text_field :kraj %>
+  	</div>
+</div>

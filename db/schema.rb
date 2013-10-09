@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130923203806) do
+ActiveRecord::Schema.define(:version => 20131009180041) do
 
   create_table "abouts", :force => true do |t|
     t.text     "tekst_pl"
@@ -97,6 +97,15 @@ ActiveRecord::Schema.define(:version => 20130923203806) do
   end
 
   add_index "simple_captcha_data", ["key"], :name => "idx_key"
+
+  create_table "teams_emails", :force => true do |t|
+    t.string   "nazwa"
+    t.string   "email"
+    t.string   "osoba_kontaktowa"
+    t.string   "kraj"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
 
   create_table "tournaments", :force => true do |t|
     t.string   "nazwa"

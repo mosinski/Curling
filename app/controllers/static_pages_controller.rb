@@ -81,6 +81,7 @@ class StaticPagesController < ApplicationController
 	@media = Medium.all
 	@tournaments = Tournament.all
 	@about = About.last
+	@teams_emails = TeamsEmail.all
 	
 	if @about == nil
     	 @about = About.create

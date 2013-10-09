@@ -1,0 +1,12 @@
+<h3><i class="icon-tags"></i> Edytucja Drużyny #{@teams_email.name}</h3>
+
+
+<%= form_for @teams_email, :html => { :multipart => true } do |f| %>
+<%= render partial: 'form', locals: { f: f } %>
+<br />
+<div class="actions">
+    <button type="submit" class="btn btn-primary">
+	<i class="icon-check"></i> Aktualizuj Drużyne: #{@teams_email.name}
+    </button>
+  </div>
+<% end %>
