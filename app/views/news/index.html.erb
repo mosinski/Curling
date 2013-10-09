@@ -18,7 +18,7 @@
 				<% @news.each do |news| %>
 				   <% @album = @albumy_z_news.detect{|w| w.przydzial_id == news.id} %>
 				   <% @liczba_zdjec = Image.find_all_by_nr_albumu(@album.id) if @album != nil %>
-					<li style="background:url("http://a.wpimg.pl/a/i/supersport/2012/line.png") repeat-x scroll 0px 5% transparent;"><span><em><%= image_tag("icon4.gif") %></em></span><b><%= link_to news.tytul, news %></b>
+					<li style="background:url('http://a.wpimg.pl/a/i/supersport/2012/line.png') repeat-x scroll 0px 5% transparent;"><span><em><%= image_tag("icon4.gif") %></em></span><b><%= link_to news.tytul, news %></b>
 				        <% if (I18n.locale == I18n.default_locale) || (I18n.locale != I18n.default_locale && news.tekst_en.size < 15) %>
 					<%= (strip_tags(news.tekst_pl))[0..300]+"..." %>
 					<% else %>
