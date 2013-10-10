@@ -1,10 +1,18 @@
 <h3><%= @dashboard.tytul %></h3>
 
 <div class="redactor_editor">
-  <%= @dashboard.tekst.html_safe %>
+  <%= raw(@dashboard.tekst) %>
 </div>
 
+<center>
+<%= t 'comments' %>: <%= @all_comments.count %>
+</center>
+
 <hr>
+
+<% if @all_comments.count == 0 %>
+<%= t 'comments_not_yet' %>
+<% end %>
 
 <% @all_comments.each do |comment| %>
  <% @user = User.find(comment.user_id) %>
