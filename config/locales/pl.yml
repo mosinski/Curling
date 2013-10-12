@@ -149,8 +149,8 @@ pl:
       too_long: jest za długie (maksymalnie %{count} znaków)
       too_short: jest za krótkie (przynajmniej %{count} znaki)
       wrong_length: ma nieprawidłową długość (powinna wynosić %{count} znaków)
-      login_to_see: "Informacja! Ta strona jest dostępna <u>tylko</u> dla zalogowanych!<br>Przejdź do: <a href='/logowanie'>Logowanie</a> lub <a href='/rejestracja'>Rejestracja</a>"
-      permissions: "Uwaga! Nie masz uprawnień!"
+      login_to_see: "<b>Informacja!</b> Ta strona jest dostępna <u>tylko</u> dla zalogowanych! Przejdź do: <a href='/logowanie'>Logowanie</a> lub <a href='/rejestracja'>Rejestracja</a>"
+      permissions: "<b>Uwaga!</b> Nie masz uprawnień!"
     template:
       body: ! 'Błędy dotyczą następujących pól:'
       header:
