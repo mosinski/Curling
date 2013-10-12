@@ -155,8 +155,8 @@ en:
       not_a_number: is not a number
       not_an_integer: must be an integer
       odd: must be odd
-      login_to_see: "<b>Information!</b> This page is available <u>only</u> for registered users! Visit: <a href='/logowanie'>Log In</a> or <a href='/rejestracja'>Sign Up</a>"
-      permissions: "<b>Warning!</b> You are not authorized!"
+      login_to_see: "<big>Information!</big>    This page is available <u>only</u> for registered users! Visit: <a href='/logowanie'>Log In</a> or <a href='/rejestracja'>Sign Up</a>"
+      permissions: "<big>Warning!</big>    You are not authorized!"
       record_invalid: ! 'Validation failed: %{errors}'
       restrict_dependent_destroy:
         one: "Cannot delete record because a dependent %{record} exists"
