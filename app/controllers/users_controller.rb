@@ -115,20 +115,36 @@ require 'net/ftp'
   end
 
   def potwierdz
-    @user = User.find(params[:id])
-    if @user.potwierdzenie == 0 && current_user.role == "admin"
-    @user.increment!(:potwierdzenie)
-    ConfirmationMailer.confirmation_sender(@user).deliver
+    if current_user
+    	if current_user.role == "admin"
+	    @user = User.find(params[:id])
+	    if @user.potwierdzenie == 0 && current_user.role == "admin"
+	    @user.increment!(:potwierdzenie)
+	    ConfirmationMailer.confirmation_sender(@user).deliver
+	    end
+	    redirect_to users_path, :notice => 'Informacja! Użytkownik został potwierdzony'
+	else
+  	    redirect_to root_url, :notice => t('errors.messages.permissions')
+  	end
+    else
+        redirect_to :login, :notice => t('errors.messages.login_to_see')
     end
-    redirect_to users_path, :notice => 'Informacja! Użytkownik został potwierdzony'
   end
 
   def odwolaj
-    @user = User.find(params[:id])
-    if @user.potwierdzenie == 1 && current_user.role == "admin"
-    @user.decrement!(:potwierdzenie)
+    if current_user
+    	if current_user.role == "admin"
+	    @user = User.find(params[:id])
+	    if @user.potwierdzenie == 1 && current_user.role == "admin"
+	    @user.decrement!(:potwierdzenie)
+	    end
+	    redirect_to users_path, :notice => 'Informacja! Użytkownik został odwołany'
+	else
+  	    redirect_to root_url, :notice => t('errors.messages.permissions')
+  	end
+    else
+        redirect_to :login, :notice => t('errors.messages.login_to_see')
     end
-    redirect_to users_path, :notice => 'Informacja! Użytkownik został odwołany'	
   end
 
   def upload_avatar
