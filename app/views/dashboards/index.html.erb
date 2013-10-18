@@ -35,7 +35,7 @@
 				<% end %>
 				<% end %>
 				</ul>
-<% if @dashboards.count > 30 %>
+<% if @dashboards.count > 10 %>
   <div id="blog-pager" class="blog-pager">
     <%= will_paginate @news, :container => false %>
   </div>
