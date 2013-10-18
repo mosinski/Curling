@@ -7,6 +7,6 @@ class Dashboard < ActiveRecord::Base
   
   def self.search(search, page)
   paginate :per_page => 10, :page => page,
-           :conditions => ['tytul like :q or tekst :q', q: "%#{search}%"], :order => 'created_at'
+           :conditions => ['tytul like :q or tekst like :q', q: "%#{search}%"], :order => 'created_at'
   end
 end
