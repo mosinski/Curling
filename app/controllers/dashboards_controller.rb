@@ -4,7 +4,7 @@ class DashboardsController < ApplicationController
   # GET /dashboards.json
   def index
    if current_user
-    @dashboards = Dashboard.all
+    @dashboards = Dashboard.paginate(:page => params[:page], :per_page => 10, :order => 'created_at DESC').search(params[:search], params[:page])
 
     if params[:format] == "atom" && @dashboards.empty?
       redirect_to root_url, :notice => "Informacja! <br>Aktualnie brak Aktualności Klubowych do wyświetlenia ;("
