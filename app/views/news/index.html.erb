@@ -48,7 +48,7 @@
 				<% end %>
 				</ul>
 
-<% if @news.count > 10 %>
+<% if @news.count > 30 %>
   <div id="blog-pager" class="blog-pager">
     <%= will_paginate @news, :container => false %>
   </div>

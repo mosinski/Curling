@@ -3,7 +3,7 @@ class NewsController < ApplicationController
   # GET /news
   # GET /news.json
   def index
-    @news = News.paginate(:page => params[:page], :per_page => 30, :order => 'created_at DESC').search(params[:search], params[:page])
+    @news = News.paginate(:page => params[:page], :per_page => 10, :order => 'created_at DESC').search(params[:search], params[:page])
     @albumy_z_news = Album.find_all_by_przydzial("news")
     
     respond_to do |format|
