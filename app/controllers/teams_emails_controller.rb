@@ -10,10 +10,10 @@ class TeamsEmailsController < ApplicationController
       format.json { render json: @teams_email }
     end
     else
-  	redirect_to root_url, :notice => t('errors.messages.permissions')
+  	redirect_to root_url, flash: {error: t('errors.messages.permissions')}
     end
    else
-        redirect_to :login, :notice => t('errors.messages.login_to_see')
+        redirect_to :login, flash: {notice: t('errors.messages.login_to_see')}
    end
   end
 
@@ -22,10 +22,10 @@ class TeamsEmailsController < ApplicationController
     if current_user.role == "admin"
     @teams_email = TeamsEmail.find(params[:id])
     else
-  	redirect_to root_url, :notice => t('errors.messages.permissions')
+  	redirect_to root_url, flash: {error: t('errors.messages.permissions')}
     end
    else
-        redirect_to :login, :notice => t('errors.messages.login_to_see')
+        redirect_to :login, flash: {notice: t('errors.messages.login_to_see')}
    end
   end
 
@@ -36,7 +36,7 @@ class TeamsEmailsController < ApplicationController
 
     respond_to do |format|
       if @teams_email.save
-        format.html { redirect_to root_url, notice: "Gratulacje! Drużyna '#{@teams_email.nazwa}' pomyślnie dodana do listy." }
+        format.html { redirect_to root_url, flash: {success: "Gratulacje! Drużyna '#{@teams_email.nazwa}' pomyślnie dodana do listy."}}
         format.json { render json: @teams_email, status: :created, location: @teams_email }
       else
         format.html { render action: "new" }
@@ -44,10 +44,10 @@ class TeamsEmailsController < ApplicationController
       end
     end
     else
-  	redirect_to root_url, :notice => t('errors.messages.permissions')
+  	redirect_to root_url, flash: {error: t('errors.messages.permissions')}
     end
    else
-        redirect_to :login, :notice => t('errors.messages.login_to_see')
+        redirect_to :login, flash: {notice: t('errors.messages.login_to_see')}
    end
   end
 
@@ -58,7 +58,7 @@ class TeamsEmailsController < ApplicationController
 
     respond_to do |format|
       if @teams_email.update_attributes(params[:teams_email])
-        format.html { redirect_to root_url, notice: "Gratulacje! Drużyna '#{@team_email.nazwa}' pomyślnie zaktualizowana." }
+        format.html { redirect_to root_url, flash: {success: "Gratulacje! Drużyna '#{@team_email.nazwa}' pomyślnie zaktualizowana."}}
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -66,10 +66,10 @@ class TeamsEmailsController < ApplicationController
       end
     end
     else
-  	redirect_to root_url, :notice => t('errors.messages.permissions')
+  	redirect_to root_url, flash: {error: t('errors.messages.permissions')}
     end
    else
-        redirect_to :login, :notice => t('errors.messages.login_to_see')
+        redirect_to :login, flash: {notice: t('errors.messages.login_to_see')}
    end
   end
 
@@ -80,14 +80,14 @@ class TeamsEmailsController < ApplicationController
     @teams_email.destroy
 
     respond_to do |format|
-      format.html { redirect_to root_url, notice: "Gratulacje! Pomyślnie usunięto drużynę." }
+      format.html { redirect_to root_url, flash: {success: "Gratulacje! Pomyślnie usunięto drużynę."}}
       format.json { head :no_content }
     end
     else
-  	redirect_to root_url, :notice => t('errors.messages.permissions')
+  	redirect_to root_url, flash: {error: t('errors.messages.permissions')}
     end
    else
-        redirect_to :login, :notice => t('errors.messages.login_to_see')
+        redirect_to :login, flash: {notice: t('errors.messages.login_to_see')}
    end
   end
 end

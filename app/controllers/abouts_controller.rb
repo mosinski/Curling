@@ -6,10 +6,10 @@ class AboutsController < ApplicationController
     if current_user.role == "admin"
       @about = About.find(params[:id])
     else
-  	redirect_to root_url, :notice => t('errors.messages.permissions')
+  	redirect_to root_url, flash: {error: t('errors.messages.permissions')}
     end
    else
-        redirect_to :login, :notice => t('errors.messages.login_to_see')
+        redirect_to :login, flash: {notice: t('errors.messages.login_to_see')}
    end
   end
 
@@ -20,7 +20,7 @@ class AboutsController < ApplicationController
 
        respond_to do |format|
          if @about.update_attributes(params[:about])
-           format.html { redirect_to "/about", notice: "Gratulacje! Strona 'O nas' pomyślnie zaktualizowana'" }
+           format.html { redirect_to "/about", flash: {success: "Gratulacje! Strona 'O nas' pomyślnie zaktualizowana'"}}
            format.json { head :no_content }
          else
            format.html { render action: "edit" }
@@ -28,10 +28,10 @@ class AboutsController < ApplicationController
          end
        end
     else
-  	redirect_to root_url, :notice => t('errors.messages.permissions')
+  	redirect_to root_url, flash: {error: t('errors.messages.permissions')}
     end
    else
-        redirect_to :login, :notice => t('errors.messages.login_to_see')
+        redirect_to :login, flash: {notice: t('errors.messages.login_to_see')}
    end
   end
 

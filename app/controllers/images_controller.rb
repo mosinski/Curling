@@ -53,20 +53,20 @@ require 'net/ftp'
 
     		  respond_to do |format|
     		    if @udane > 0
-        		format.html { redirect_to @przydzial, notice: "Gratulacje!<br>Dodano: #{@udane} zdjęć<br>Niepowodznie dodania: #{@nieudane} zdjęć" }
+        		format.html { redirect_to @przydzial, flash: {success: "Gratulacje!<br>Dodano: #{@udane} zdjęć<br>Niepowodznie dodania: #{@nieudane} zdjęć"}}
         	    else
-        		format.html { redirect_to @przydzial, notice: "Uwaga!<br> Niepowodznie dodania zdjęć<br>Nieudanych: #{@nieudane}" }
+        		format.html { redirect_to @przydzial, flash: {error: "Uwaga!<br> Niepowodznie dodania zdjęć<br>Nieudanych: #{@nieudane}"}}
         	    end
     		  end
 
 		else
-		  redirect_to @przydzial, :notice => 'Uwaga! Nie wybrano zdjęcia z komputera!'
+		  redirect_to @przydzial, flash: {error: 'Uwaga! Nie wybrano zdjęcia z komputera!'}
 		end
 	else
-  	redirect_to root_url, :notice => t('errors.messages.permissions')
+  	redirect_to root_url, flash: {error: t('errors.messages.permissions')}
   	end
     else
-        redirect_to :login, :notice => t('errors.messages.login_to_see')
+        redirect_to :login, flash: {notice: t('errors.messages.login_to_see')}
     end
   end
 
@@ -77,14 +77,14 @@ require 'net/ftp'
     	@image.destroy
 
     	respond_to do |format|
-      		format.html { redirect_to "/galeria", notice: 'Gratulacje! Zdjęcie zostało usunięte!' }
+      		format.html { redirect_to "/galeria", flash: {success: 'Gratulacje! Zdjęcie zostało usunięte!'}}
       		format.json { head :no_content }
     	end
 	else
-  	redirect_to root_url, :notice => t('errors.messages.permissions')
+  	redirect_to root_url, flash: {error: t('errors.messages.permissions')}
   	end
     else
-        redirect_to :login, :notice => t('errors.messages.login_to_see')
+        redirect_to :login, flash: {notice: t('errors.messages.login_to_see')}
     end
   end
   
@@ -95,15 +95,15 @@ require 'net/ftp'
     	Image.destroy(params[:images])
 
     	respond_to do |format|
-       		format.html { redirect_to "/galeria", notice: 'Gratulacje! Zdjęcia zostały usunięte!' }
+       		format.html { redirect_to "/galeria", flash: {success: 'Gratulacje! Zdjęcia zostały usunięte!'}}
        		format.json { head :no_content }
      	end
      	
 	else
-  	redirect_to root_url, :notice => t('errors.messages.permissions')
+  	redirect_to root_url, flash: {error: t('errors.messages.permissions')}
   	end
     else
-        redirect_to :login, :notice => t('errors.messages.login_to_see')
+        redirect_to :login, flash: {notice: t('errors.messages.login_to_see')}
     end
   end
 end

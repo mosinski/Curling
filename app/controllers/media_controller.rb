@@ -18,10 +18,10 @@ class MediaController < ApplicationController
     if current_user.role == "admin"
     	@medium = Medium.find(params[:id])
     else
-  	redirect_to root_url, :notice => t('errors.messages.permissions')
+  	redirect_to root_url, flash: {error: t('errors.messages.permissions')}
     end
    else
-        redirect_to :login, :notice => t('errors.messages.login_to_see')
+        redirect_to :login, flash: {notice: t('errors.messages.login_to_see')}
    end
   end
 
@@ -34,7 +34,7 @@ class MediaController < ApplicationController
 
     respond_to do |format|
       if @medium.save
-        format.html { redirect_to media_path, notice: 'Informacja! Link w Media o Nas został pomyślnie stworzony' }
+        format.html { redirect_to media_path, flash: {notice: 'Informacja! Link w Media o Nas został pomyślnie stworzony'}}
         format.json { render json: @medium, status: :created, location: @medium }
       else
         format.html { render action: "new" }
@@ -42,10 +42,10 @@ class MediaController < ApplicationController
       end
     end
     else
-  	redirect_to root_url, :notice => t('errors.messages.permissions')
+  	redirect_to root_url, flash: {error: t('errors.messages.permissions')}
     end
    else
-        redirect_to :login, :notice => t('errors.messages.login_to_see')
+        redirect_to :login, flash: {notice: t('errors.messages.login_to_see')}
    end
   end
 
@@ -58,7 +58,7 @@ class MediaController < ApplicationController
 
     respond_to do |format|
       if @medium.update_attributes(params[:medium])
-        format.html { redirect_to media_path, notice: 'Informacja! Link w Media o Nas został pomyślnie zaktualizowany' }
+        format.html { redirect_to media_path, flash: {notice: 'Informacja! Link w Media o Nas został pomyślnie zaktualizowany'}}
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -66,10 +66,10 @@ class MediaController < ApplicationController
       end
     end
     else
-  	redirect_to root_url, :notice => t('errors.messages.permissions')
+  	redirect_to root_url, flash: {error: t('errors.messages.permissions')}
     end
    else
-        redirect_to :login, :notice => t('errors.messages.login_to_see')
+        redirect_to :login, flash: {notice: t('errors.messages.login_to_see')}
    end
   end
 
@@ -82,14 +82,14 @@ class MediaController < ApplicationController
     @medium.destroy
 
     respond_to do |format|
-      format.html { redirect_to media_url, notice: 'Gratulacje! Usunięto link w Media o Nas.'  }
+      format.html { redirect_to media_url, flash: {success: 'Gratulacje! Usunięto link w Media o Nas.'}}
       format.json { head :no_content }
     end
   end
     else
-  	redirect_to root_url, :notice => t('errors.messages.permissions')
+  	redirect_to root_url, flash: {error: t('errors.messages.permissions')}
     end
    else
-        redirect_to :login, :notice => t('errors.messages.login_to_see')
+        redirect_to :login, flash: {notice: t('errors.messages.login_to_see')}
    end
 end

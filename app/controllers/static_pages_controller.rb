@@ -50,13 +50,13 @@ class StaticPagesController < ApplicationController
       	  format.xml  { render :xml => @komentarze }  
     	end
     else
-      redirect_to root_url, :notice => "Informacja! <br>Aktualnie brak komentarzy do wyświetlenia ;("
+      redirect_to root_url, flash: {notice: "Informacja! <br>Aktualnie brak komentarzy do wyświetlenia ;("}
     end
   end
 
  def resethasla
     if current_user
-        redirect_to root_url, :notice => 'Informacja! <br>Aktualnie jesteś zalogowany na konto<br>Wyloguj się!'
+        redirect_to root_url, flash: {notice: 'Informacja! <br>Aktualnie jesteś zalogowany na konto<br>Wyloguj się!'}
     else
     	respond_to do |format|
       		format.html # resethasla.html.erb
@@ -95,10 +95,10 @@ class StaticPagesController < ApplicationController
       		format.json { render json: @static_page }
     	end
 	else
-  	  redirect_to root_url, :notice => t('errors.messages.permissions')
+  	  redirect_to root_url, flash: {error: t('errors.messages.permissions')}
   	end
     else
-        redirect_to :login, :notice => t('errors.messages.login_to_see')
+        redirect_to :login, flash: {notice: t('errors.messages.login_to_see')}
     end
   end
 
@@ -110,12 +110,12 @@ class StaticPagesController < ApplicationController
 
 	if @name != "" && @email != "" && @message != ""
 		ContactMailer.message_sender(@name,@email,@message).deliver
-		redirect_to root_url, :notice => 'Informacja! Wiadomość wysłana pomyślnie dziękujemy!'
+		redirect_to root_url, flash: {notice: 'Informacja! Wiadomość wysłana pomyślnie dziękujemy!'}
 	else
-          redirect_to "/kontakt", :notice => 'Uwaga! Podane dane są niekompletne!'
+          redirect_to "/kontakt", flash: {error: 'Uwaga! Podane dane są niekompletne!'}
 	end
     else
-  	redirect_to "/kontakt", :notice => 'Uwaga! Podany kod z obrazka jest niepoprawny!'
+  	redirect_to "/kontakt", flash: {error: 'Uwaga! Podany kod z obrazka jest niepoprawny!'}
     end
 
   end
@@ -132,13 +132,13 @@ class StaticPagesController < ApplicationController
 		  @user.password = @nowehaslo
 		  @user.password_confirmation = @nowehaslo
 		  @user.save_without_session_maintenance 
-        	  redirect_to "/resethasla", :notice => "Gratulacje! Nowe hasło zostało wysłane na maila!"
+        	  redirect_to "/resethasla", flash: {success: "Gratulacje! Nowe hasło zostało wysłane na maila!"}
 		else
-        	  redirect_to "/resethasla", :notice => 'Uwaga! Podane dane są nieprawidłowe!'
+        	  redirect_to "/resethasla", flash: {error: 'Uwaga! Podane dane są nieprawidłowe!'}
 		end
         
 	else
-          redirect_to "/resethasla", :notice => 'Informacja! Nie znaleziono Konta lub podane dane są niekompletne!'
+          redirect_to "/resethasla", flash: {notice: 'Informacja! Nie znaleziono Konta lub podane dane są niekompletne!'}
 	end
   end
 

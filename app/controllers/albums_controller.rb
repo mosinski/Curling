@@ -24,10 +24,10 @@ class AlbumsController < ApplicationController
     	end
     		
     else
-  	redirect_to root_url, :notice => t('errors.messages.permissions')
+  	redirect_to root_url, flash: {error: t('errors.messages.permissions')}
     end
    else
-        redirect_to :login, :notice => t('errors.messages.login_to_see')
+        redirect_to :login, flash: {notice: t('errors.messages.login_to_see')}
    end
   end
 
@@ -37,10 +37,10 @@ class AlbumsController < ApplicationController
     if current_user.role == "admin"
    	@album = Album.find(params[:id])
     else
-  	redirect_to root_url, :notice => t('errors.messages.permissions')
+  	redirect_to root_url, flash: {error: t('errors.messages.permissions')}
     end
    else
-        redirect_to :login, :notice => t('errors.messages.login_to_see')
+        redirect_to :login, flash: {notice: t('errors.messages.login_to_see')}
    end
   end
 
@@ -54,7 +54,7 @@ class AlbumsController < ApplicationController
       if @album.save
           @album.przydzial_id = @album.id
           @album.save
-        format.html { redirect_to @album, notice: "Gratulacje! Stworzono nowy album '#{@album.tytul}'" }
+        format.html { redirect_to @album, flash: {success: "Gratulacje! Stworzono nowy album '#{@album.tytul}'"}}
         format.json { render json: @album, status: :created, location: @album }
       else
         format.html { render action: "new" }
@@ -62,10 +62,10 @@ class AlbumsController < ApplicationController
       end
     end
     else
-  	redirect_to root_url, :notice => t('errors.messages.permissions')
+  	redirect_to root_url, flash: {error: t('errors.messages.permissions')}
     end
    else
-        redirect_to :login, :notice => t('errors.messages.login_to_see')
+        redirect_to :login, flash: {notice: t('errors.messages.login_to_see')}
    end
   end
 
@@ -79,7 +79,7 @@ class AlbumsController < ApplicationController
 
     respond_to do |format|
       if @album.update_attributes(params[:album])
-        format.html { redirect_to @album, notice: "Gratulacje! Zaktualizowano album '#{@album.tytul}" }
+        format.html { redirect_to @album, flash: {success: "Gratulacje! Zaktualizowano album '#{@album.tytul}"}}
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -88,10 +88,10 @@ class AlbumsController < ApplicationController
     end
     
     else
-  	redirect_to root_url, :notice => t('errors.messages.permissions')
+  	redirect_to root_url, flash: {error: t('errors.messages.permissions')}
     end
    else
-        redirect_to :login, :notice => t('errors.messages.login_to_see')
+        redirect_to :login, flash: {notice: t('errors.messages.login_to_see')}
    end
   end
 
@@ -107,15 +107,15 @@ class AlbumsController < ApplicationController
     @album.destroy
 
     respond_to do |format|
-      format.html { redirect_to "/galeria", :notice => 'Gratulacje! Usunięto Album wraz z wszystkimi zdjęciami!'}
+      format.html { redirect_to "/galeria", flash: {success: 'Gratulacje! Usunięto Album wraz z wszystkimi zdjęciami!'}}
       format.json { head :no_content }
     end
     
     else
-  	redirect_to root_url, :notice => t('errors.messages.permissions')
+  	redirect_to root_url, flash: {error: t('errors.messages.permissions')}
     end
    else
-        redirect_to :login, :notice => t('errors.messages.login_to_see')
+        redirect_to :login, flash: {notice: t('errors.messages.login_to_see')}
    end
   end
 end

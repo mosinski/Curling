@@ -41,10 +41,10 @@ class NewsController < ApplicationController
       	  format.json { render json: @news }
     	end
     else
-  	redirect_to root_url, :notice => t('errors.messages.permissions')
+  	redirect_to root_url, flash: {error: t('errors.messages.permissions')}
     end
    else
-        redirect_to :login, :notice => t('errors.messages.login_to_see')
+        redirect_to :login, flash: {notice: t('errors.messages.login_to_see')}
    end
   end
 
@@ -54,10 +54,10 @@ class NewsController < ApplicationController
     if current_user.role == "admin"
     	@news = News.find(params[:id])
     else
-  	redirect_to root_url, :notice => t('errors.messages.permissions')
+  	redirect_to root_url, flash: {error: t('errors.messages.permissions')}
     end
    else
-        redirect_to :login, :notice => t('errors.messages.login_to_see')
+        redirect_to :login, flash: {notice: t('errors.messages.login_to_see')}
    end
   end
 
@@ -70,7 +70,7 @@ class NewsController < ApplicationController
 
     	respond_to do |format|
       	  if @news.save
-        	format.html { redirect_to @news, notice: 'Gratulacje! Stworzono Aktualność Ogólną' }
+        	format.html { redirect_to @news, flash: {success: 'Gratulacje! Stworzono Aktualność Ogólną'}}
         	format.json { render json: @news, status: :created, location: @news }
       	  else
         	format.html { render action: "new" }
@@ -78,10 +78,10 @@ class NewsController < ApplicationController
       	  end
     	end
     else
-  	redirect_to root_url, :notice => t('errors.messages.permissions')
+  	redirect_to root_url, flash: {error: t('errors.messages.permissions')}
     end
    else
-        redirect_to :login, :notice => t('errors.messages.login_to_see')
+        redirect_to :login, flash: {notice: t('errors.messages.login_to_see')}
    end
   end
 
@@ -94,7 +94,7 @@ class NewsController < ApplicationController
 
     	respond_to do |format|
       	  if @news.update_attributes(params[:news])
-        	format.html { redirect_to @news, notice: 'Gratulacje! Zaktualizowano Aktualność Ogólną' }
+        	format.html { redirect_to @news, flash: {success: 'Gratulacje! Zaktualizowano Aktualność Ogólną'}}
         	format.json { head :no_content }
       	  else
         	format.html { render action: "edit" }
@@ -102,10 +102,10 @@ class NewsController < ApplicationController
       	  end
     	end
     else
-  	redirect_to root_url, :notice => t('errors.messages.permissions')
+  	redirect_to root_url, flash: {error: t('errors.messages.permissions')}
     end
    else
-        redirect_to :login, :notice => t('errors.messages.login_to_see')
+        redirect_to :login, flash: {notice: t('errors.messages.login_to_see')}
    end
   end
 
@@ -120,14 +120,14 @@ class NewsController < ApplicationController
     	@news.destroy
 
     	respond_to do |format|
-      	  format.html { redirect_to news_index_url, :notice => 'Informacja! Usunięto Aktualność Ogólną wraz z wszystkimi komentarzami!' }
+      	  format.html { redirect_to news_index_url, flash: {notice: 'Informacja! Usunięto Aktualność Ogólną wraz z wszystkimi komentarzami!'}}
       	  format.json { head :no_content }
     	end
     else
-  	redirect_to root_url, :notice => t('errors.messages.permissions')
+  	redirect_to root_url, flash: {error: t('errors.messages.permissions')}
     end
    else
-        redirect_to :login, :notice => t('errors.messages.login_to_see')
+        redirect_to :login, flash: {notice: t('errors.messages.login_to_see')}
    end
   end
 
@@ -158,15 +158,15 @@ class NewsController < ApplicationController
     		@comment.move_to_child_of(@parent)
     	end
     	
-    	redirect_to @news, :notice => 'Gratulacje! Dodano nowy komentarz!'
+    	redirect_to @news, flash: {success: 'Gratulacje! Dodano nowy komentarz!'}
     	else
-    	redirect_to @news, :notice => 'Uwaga! Za długa treść komentarza!'
+    	redirect_to @news, flash: {error: 'Uwaga! Za długa treść komentarza!'}
     	end
     	else
-       	redirect_to @news, :notice => 'Uwaga! Niedozwolony Nick!'
+       	redirect_to @news, flash: {error: 'Uwaga! Niedozwolony Nick!'}
     	end
     else 
-    	redirect_to @news, :notice => 'Uwaga! Nie podano treści komentarza lub nick-u!'
+    	redirect_to @news, flash: {error: 'Uwaga! Nie podano treści komentarza lub nick-u!'}
     end
   end
 
@@ -180,13 +180,13 @@ class NewsController < ApplicationController
     	end
 
     	@comment.destroy
-    	redirect_to :back, :notice => 'Informacja! Usunięto komentarz/e!'
+    	redirect_to :back, flash: {notice: 'Informacja! Usunięto komentarz/e!'}
 
       else
-  	redirect_to root_url, :notice => t('errors.messages.permissions')
+  	redirect_to root_url, flash: {error: t('errors.messages.permissions')}
       end
     else
-        redirect_to :login, :notice => t('errors.messages.login_to_see')
+        redirect_to :login, flash: {notice: t('errors.messages.login_to_see')}
     end
   end
 end

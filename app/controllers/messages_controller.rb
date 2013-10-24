@@ -11,7 +11,7 @@ class MessagesController < ApplicationController
       @messages = current_user.received_messages
     end
    else
-        redirect_to :login, :notice => t('errors.messages.login_to_see')
+        redirect_to :login, flash: {notice: t('errors.messages.login_to_see')}
    end
   end
   
@@ -19,7 +19,7 @@ class MessagesController < ApplicationController
    if current_user
     @message = Message.read_message(params[:id], current_user)
    else
-        redirect_to :login, :notice => t('errors.messages.login_to_see')
+        redirect_to :login, flash: {notice: t('errors.messages.login_to_see')}
    end
   end
   
@@ -37,7 +37,7 @@ class MessagesController < ApplicationController
       end
     end
    else
-        redirect_to :login, :notice => t('errors.messages.login_to_see')
+        redirect_to :login, flash: {notice: t('errors.messages.login_to_see')}
    end
   end
   
@@ -48,12 +48,12 @@ class MessagesController < ApplicationController
     @message.recipient = User.find_by_username(params[:message][:to])
 
     if @message.save
-      redirect_to user_messages_path(current_user), :notice => 'Gratulacje! Wiadomość została wysłana!'
+      redirect_to user_messages_path(current_user), flash: {success: 'Gratulacje! Wiadomość została wysłana!'}
     else
       render :action => :new
     end
    else
-        redirect_to :login, :notice => t('errors.messages.login_to_see')
+        redirect_to :login, flash: {notice: t('errors.messages.login_to_see')}
    end
   end
   
@@ -65,12 +65,12 @@ class MessagesController < ApplicationController
           @message = Message.find(:first, :conditions => ["messages.id = ? AND (sender_id = ? OR recipient_id = ?)", id, @user, @user])
           @message.mark_deleted(@user) unless @message.nil?
         }
-      flash[:notice] = "Gratulacje! Wiadomość została usunięta!"
+      flash: {success: "Gratulacje! Wiadomość została usunięta!"}
       end
       redirect_to :back
     end
    else
-        redirect_to :login, :notice => t('errors.messages.login_to_see')
+        redirect_to :login, flash: {notice: t('errors.messages.login_to_see')}
    end
   end
   

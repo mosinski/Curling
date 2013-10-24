@@ -7,7 +7,7 @@ class DashboardsController < ApplicationController
     @dashboards = Dashboard.paginate(:page => params[:page], :per_page => 10, :order => 'created_at DESC').search(params[:search], params[:page])
 
     if params[:format] == "atom" && @dashboards.empty?
-      redirect_to root_url, :notice => "Informacja! <br>Aktualnie brak Aktualności Klubowych do wyświetlenia ;("
+      redirect_to root_url, flash: {notice: "Informacja! <br>Aktualnie brak Aktualności Klubowych do wyświetlenia ;("}
     else
       respond_to do |format|
         format.html # index.html.erb
@@ -17,7 +17,7 @@ class DashboardsController < ApplicationController
       end
     end
    else
-        redirect_to :login, :notice => t('errors.messages.login_to_see')
+        redirect_to :login, flash: {notice: t('errors.messages.login_to_see')}
    end
   end
 
@@ -33,7 +33,7 @@ class DashboardsController < ApplicationController
       		format.json { render json: @dashboard }
     	end
    else
-        redirect_to :login, :notice => t('errors.messages.login_to_see')
+        redirect_to :login, flash: {notice: t('errors.messages.login_to_see')}
    end
   end
 
@@ -49,10 +49,10 @@ class DashboardsController < ApplicationController
       		format.json { render json: @dashboard }
     	end
     else
-  	redirect_to root_url, :notice => t('errors.messages.permissions')
+  	redirect_to root_url, flash: {error: t('errors.messages.permissions')}
     end
    else
-        redirect_to :login, :notice => t('errors.messages.login_to_see')
+        redirect_to :login, flash: {notice: t('errors.messages.login_to_see')}
    end
   end
 
@@ -62,10 +62,10 @@ class DashboardsController < ApplicationController
     if current_user.role == "admin"
     	@dashboard = Dashboard.find(params[:id])
     else
-  	redirect_to root_url, :notice => t('errors.messages.permissions')
+  	redirect_to root_url, flash: {error: t('errors.messages.permissions')}
     end
    else
-        redirect_to :login, :notice => t('errors.messages.login_to_see')
+        redirect_to :login, flash: {notice: t('errors.messages.login_to_see')}
    end
   end
 
@@ -82,7 +82,7 @@ class DashboardsController < ApplicationController
       	   	@users.each do |user|
       	  	  UsersNewsletter.users_newsletter_sender(user, @dashboard).deliver
       	  	end
-        	format.html { redirect_to @dashboard, notice: 'Gratulacje! Stworzono Aktualno&#347;&#263; Klubow&#261;' }
+        	format.html { redirect_to @dashboard, flash: {success: 'Gratulacje! Stworzono Aktualność Klubową'}}
         	format.json { render json: @dashboard, status: :created, location: @dashboard }
       	  else
         	format.html { render action: "new" }
@@ -90,10 +90,10 @@ class DashboardsController < ApplicationController
       	  end
     	end
     else
-  	redirect_to root_url, :notice => t('errors.messages.permissions')
+  	redirect_to root_url, flash: {error: t('errors.messages.permissions')}
     end
    else
-        redirect_to :login, :notice => t('errors.messages.login_to_see')
+        redirect_to :login, flash: {notice: t('errors.messages.login_to_see')}
    end
   end
 
@@ -106,7 +106,7 @@ class DashboardsController < ApplicationController
 
     	respond_to do |format|
       	  if @dashboard.update_attributes(params[:dashboard])
-        	format.html { redirect_to @dashboard, notice: 'Gratulacje! Zaktualizowano Aktualno&#347;&#263; Klubow&#261;' }
+        	format.html { redirect_to @dashboard, flash: {success: 'Gratulacje! Zaktualizowano Aktualność Klubową'}}
         	format.json { head :no_content }
       	  else
         	format.html { render action: "edit" }
@@ -114,10 +114,10 @@ class DashboardsController < ApplicationController
       	  end
     	end
     else
-  	redirect_to root_url, :notice => t('errors.messages.permissions')
+  	redirect_to root_url, flash: {error: t('errors.messages.permissions')}
     end
    else
-        redirect_to :login, :notice => t('errors.messages.login_to_see')
+        redirect_to :login, flash: {notice: t('errors.messages.login_to_see')}
    end
   end
 
@@ -132,14 +132,14 @@ class DashboardsController < ApplicationController
     	@dashboard.destroy
 
     	respond_to do |format|
-      	  format.html { redirect_to dashboards_url, :notice => 'Informacja! Usunięto Aktualność Klubową wraz z wszystkimi komentarzami!' }
+      	  format.html { redirect_to dashboards_url, flash: {notice: 'Informacja! Usunięto Aktualność Klubową wraz z wszystkimi komentarzami!'}}
       	  format.json { head :no_content }
     	end
     else
-  	redirect_to root_url, :notice => t('errors.messages.permissions')
+  	redirect_to root_url, flash: {error: t('errors.messages.permissions')}
     end
    else
-        redirect_to :login, :notice => t('errors.messages.login_to_see')
+        redirect_to :login, flash: {notice: t('errors.messages.login_to_see')}
    end
   end
 
@@ -157,12 +157,12 @@ class DashboardsController < ApplicationController
     @comment.move_to_child_of(@parent)
     end
     
-    redirect_to @dashboard, :notice => 'Gratulacje! Dodano nowy komentarz!'
+    redirect_to @dashboard, flash: {success: 'Gratulacje! Dodano nowy komentarz!'}
     else
-    redirect_to @dashboard, :notice => 'Uwaga! Niewłaściwa długość treści komentarza! Dopuszczalna od 1 do 500 znaków.'
+    redirect_to @dashboard, flash: {error: 'Uwaga! Niewłaściwa długość treści komentarza! Dopuszczalna od 1 do 500 znaków.'}
     end
    else
-    redirect_to :login, :notice => t('errors.messages.login_to_see')
+    redirect_to :login, flash: {notice: t('errors.messages.login_to_see')}
    end
   end
 
@@ -176,13 +176,13 @@ class DashboardsController < ApplicationController
     	end
 
    	@comment.destroy
-    	redirect_to :back, :notice => 'Informacja! Usunięto komentarz/e!'
+    	redirect_to :back, flash: {notice: 'Informacja! Usunięto komentarz/e!'}
 
       else
-  	redirect_to root_url, :notice => t('errors.messages.permissions')
+  	redirect_to root_url, flash: {error: t('errors.messages.permissions')}
       end
     else
-        redirect_to :login, :notice => t('errors.messages.login_to_see')
+        redirect_to :login, flash: {notice: t('errors.messages.login_to_see')}
     end
   end
 

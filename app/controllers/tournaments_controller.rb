@@ -12,10 +12,10 @@ class TournamentsController < ApplicationController
       format.json { render json: @tournaments }
     end
     else
-  	redirect_to root_url, :notice => t('errors.messages.permissions')
+  	redirect_to root_url, flash: {error: t('errors.messages.permissions')}
     end
    else
-        redirect_to :login, :notice => t('errors.messages.login_to_see')
+        redirect_to :login, flash: {notice: t('errors.messages.login_to_see')}
    end
   end
 
@@ -42,10 +42,10 @@ class TournamentsController < ApplicationController
       format.json { render json: @tournament }
     end
     else
-  	redirect_to root_url, :notice => t('errors.messages.permissions')
+  	redirect_to root_url, flash: {error: t('errors.messages.permissions')}
     end
    else
-        redirect_to :login, :notice => t('errors.messages.login_to_see')
+        redirect_to :login, flash: {notice: t('errors.messages.login_to_see')}
    end
   end
 
@@ -55,10 +55,10 @@ class TournamentsController < ApplicationController
     if current_user.role == "admin"
     @tournament = Tournament.find(params[:id])
     else
-  	redirect_to root_url, :notice => t('errors.messages.permissions')
+  	redirect_to root_url, flash: {error: t('errors.messages.permissions')}
     end
    else
-        redirect_to :login, :notice => t('errors.messages.login_to_see')
+        redirect_to :login, flash: {notice: t('errors.messages.login_to_see')}
    end
   end
 
@@ -71,7 +71,7 @@ class TournamentsController < ApplicationController
 
     respond_to do |format|
       if @tournament.save
-        format.html { redirect_to @tournament, notice: "Gratulacje! Turniej: '#{@tournament.nazwa}' dodany pomyślnie!" }
+        format.html { redirect_to @tournament, flash: {success: "Gratulacje! Turniej: '#{@tournament.nazwa}' dodany pomyślnie!"} }
         format.json { render json: @tournament, status: :created, location: @tournament }
       else
         format.html { render action: "new" }
@@ -79,10 +79,10 @@ class TournamentsController < ApplicationController
       end
     end
     else
-  	redirect_to root_url, :notice => t('errors.messages.permissions')
+  	redirect_to root_url, flash: {error: t('errors.messages.permissions')}
     end
    else
-        redirect_to :login, :notice => t('errors.messages.login_to_see')
+        redirect_to :login, flash: {notice: t('errors.messages.login_to_see')}
    end
   end
 
@@ -95,7 +95,7 @@ class TournamentsController < ApplicationController
 
     respond_to do |format|
       if @tournament.update_attributes(params[:tournament])
-        format.html { redirect_to @tournament, notice: "Gratulacje! Turniej: '#{@tournament.nazwa}' pomyślnie zaktualizowany!" }
+        format.html { redirect_to @tournament, flash: {success: "Gratulacje! Turniej: '#{@tournament.nazwa}' pomyślnie zaktualizowany!"}}
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -103,10 +103,10 @@ class TournamentsController < ApplicationController
       end
     end
     else
-  	redirect_to root_url, :notice => t('errors.messages.permissions')
+  	redirect_to root_url, flash: {error: t('errors.messages.permissions')}
     end
    else
-        redirect_to :login, :notice => t('errors.messages.login_to_see')
+        redirect_to :login, flash: {notice: t('errors.messages.login_to_see')}
    end
   end
 
@@ -123,10 +123,10 @@ class TournamentsController < ApplicationController
       format.json { head :no_content }
     end
     else
-  	redirect_to root_url, :notice => t('errors.messages.permissions')
+  	redirect_to root_url, flash: {error: t('errors.messages.permissions')}
     end
    else
-        redirect_to :login, :notice => t('errors.messages.login_to_see')
+        redirect_to :login, flash: {notice: t('errors.messages.login_to_see')}
    end
   end
 end
