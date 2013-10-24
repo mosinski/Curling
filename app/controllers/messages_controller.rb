@@ -64,8 +64,8 @@ class MessagesController < ApplicationController
         params[:delete].each { |id|
           @message = Message.find(:first, :conditions => ["messages.id = ? AND (sender_id = ? OR recipient_id = ?)", id, @user, @user])
           @message.mark_deleted(@user) unless @message.nil?
-        },
-      flash: {success: "Gratulacje! Wiadomość została usunięta!"}
+        }
+      flash[:success] = "Gratulacje! Wiadomość została usunięta!"
       end
       redirect_to :back
     end
