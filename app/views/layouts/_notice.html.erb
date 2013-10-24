@@ -1,0 +1,8 @@
+<div class="notice">
+  <% flash.each do |key, value| %>
+    <div data-alert="alert" class="<%= flash_class(key) %> fade in">
+       <button type="button" class="close" data-dismiss="alert"><i class="icon-remove-circle"></i></button>
+      <strong><%= value.html_safe %></strong>
+    </div>
+  <% end %>
+</div>
