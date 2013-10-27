@@ -16,9 +16,14 @@
       <%= link_to user, :class => "btn btn-primary icon pull-right", "title" => "Pokaż" do %>
   	 <i class="icon-eye-open"></i>
       <% end %>
-      <h4><%= link_to user.username , user %></h4>
-      <small><b><i class="icon-envelope"></i> Email: </b><%= user.email %></small> 
-      <div class="btn-group"> 
+      <% if current_user.username != user.username %>
+	<%= link_to new_user_message_path(user), :class => "btn btn-success", "title" => "Wyślij Wiadomość" do %>
+		<i class="icon-envelope"></i>
+	<% end %>
+      <% end %>
+      <h3><%= link_to user.username , user %></h3>
+      <small><b><i class="icon-envelope"></i></b> <%= user.email %></small> 
+      <div class="btn-group" style="display:block!important"> 
 	    <% if user.potwierdzenie == 1 && current_user.role == "admin" && user.role != "admin" %>
 		<%= link_to({:controller => "users", :action => "odwolaj", :id => user.id}, {:class => "btn btn-danger", "title"=>"Odwołaj"}) do %>
 	  		<i class="icon-thumbs-down"></i>
@@ -36,12 +41,6 @@
 	    <% if current_user.role == "admin" && user.role != "admin" %>
 		<%= link_to user, :confirm => "Czy napewno chcesz usunąć użytkownika #{user.username}?", :method => :delete, :class => "btn btn-danger", "title" => "Usuń" do %>
 	  		<i class="icon-trash"></i>
-		<% end %>
-	    <% end %>
-
-	    <% if current_user.username != user.username %>
-		<%= link_to new_user_message_path(user), :class => "btn btn-success", "title" => "Wyślij Wiadomość" do %>
-			<i class="icon-envelope"></i>
 		<% end %>
 	    <% end %>
       </div>
