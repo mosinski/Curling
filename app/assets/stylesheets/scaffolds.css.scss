@@ -925,7 +925,7 @@ ol {
   padding-right: 3px;
   padding-right: 4px \9;
   padding-left: 3px;
-  padding-left: 4px \9;
+  paddinbox1g-left: 4px \9;
   margin-bottom: 0;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -958,15 +958,33 @@ ol {
 }
 
 #slideshow { 
-    margin: 10px auto; 
-    position: relative; 
-    width: 220px; 
-    height: 160px; 
+  margin: 10px auto; 
+  position: relative; 
+  width: 220px; 
+  height: 160px; 
 }
 
 #slideshow > div { 
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    text-align: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.box1 > div.inner > ul > li {
+  overflow:hidden;
+}
+
+.box1 > div.inner > ul > li > div.caption {
+    position:absolute;
+    top:0;
+    right:0;
+    background:rgba(66, 139, 202, 0.75);
+    width:100%;
+    height:100%;
+    padding:2%;
+    display: none;
+    text-align:center;
+    color:#fff !important;
+    z-index:2;
 }

@@ -34,7 +34,12 @@
 						<ul style="margin-left: 5px;">
 							<% @images_last.each do |image| %>
 							<li style="display:inline-block;">
-							<%= link_to("/galeria") do %>
+							<div class="caption">
+                    					  <h4><%= image.nazwa %></h4>
+                    					  <p><%= image.opis %></p>
+                    					  <p><a href="http://images.gdanskcurlingclub.pl/#{image.nazwa}" class="label label-danger fancybox" rel="tooltip" title="Powiększ" target="_blank">Zoom</a>
+                    					  <a href="/albums/#{image.nr_albumu}" class="label label-default" rel="tooltip" title="Przejdź do albumu">Album</a></p>
+                					</div>
 							<%= image_tag("http://images.gdanskcurlingclub.pl/#{image.nazwa}", "style"=>"height:115px;width:175px;") %>
 							<% end %>
 							</li>

@@ -89,6 +89,15 @@ $(document).ready(function() {
     var parentId = jQuery(this).attr("id");
     $("div#"+parentId ).slideUp();
   });
+  
+  $('.box1 > div.inner > ul > li').hover(
+        function(){
+            $(this).find('.caption').slideDown(250); //.fadeIn(250)
+        },
+        function(){
+            $(this).find('.caption').slideUp(250); //.fadeOut(205)
+        }
+    ); 
 });
 
 jQuery(document).ready(function() {
