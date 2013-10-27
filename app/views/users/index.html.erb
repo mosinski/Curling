@@ -17,7 +17,8 @@
   	 <i class="icon-eye-open"></i>
       <% end %>
       <% if current_user.username != user.username %>
-	<%= link_to new_user_message_path(user), :class => "btn btn-success", "title" => "Wyślij Wiadomość" do %>
+      <br>
+	<%= link_to new_user_message_path(user), :class => "btn btn-success icon pull-right", "title" => "Wyślij Wiadomość" do %>
 		<i class="icon-envelope"></i>
 	<% end %>
       <% end %>
