@@ -39,7 +39,7 @@ class StaticPagesController < ApplicationController
   
   def rss_comments
     @news = News.all
-    @komentarze = Comment.find_all_by_commentable_type("News")
+    @komentarze = Comment.find_all_by_commentable_type("News").reverse
     @users = User.all
 
     if @komentarze.present?
