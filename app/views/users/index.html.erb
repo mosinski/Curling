@@ -35,7 +35,7 @@
       <% end %>
 
       <h3><%= link_to user.name_surname , user %></h3>
-      <small><i class="icon-gift"></i> <%=I18n.l @user.born, :format => "%d %B %Y" %></small><br>
+      <small><i class="icon-gift"></i> <%=I18n.l user.born, :format => "%d %B %Y" %></small><br>
       <small><i class="icon-envelope"></i> <%= user.email %></small> 
       <div class="btn-group" style="display:block!important"> 
 	    <% if user.potwierdzenie == 1 && current_user.role == "admin" && user.role != "admin" %>
