@@ -7,13 +7,18 @@
   </div>
 <% end %>
 
+<% if @users.count == 0 %>
+  <br><br>
+  <pre>Brak Użytkowników ..</pre>
+<% else %>
+
 <table class="table table-hover">
 <thead>
 <tr>
 
 </tr>
 </thead>
- 
+
 <% @users.each do |user| %>
 <% if user.username != "superuser" && user.username != "Gosc"  %>
 <tr>
@@ -30,7 +35,8 @@
       <% end %>
 
       <h3><%= link_to user.name_surname , user %></h3>
-      <small><b><i class="icon-envelope"></i></b> <%= user.email %></small> 
+      <small><i class="icon-gift"></i> <%=I18n.l @user.born, :format => "%d %B %Y" %></small><br>
+      <small><i class="icon-envelope"></i> <%= user.email %></small> 
       <div class="btn-group" style="display:block!important"> 
 	    <% if user.potwierdzenie == 1 && current_user.role == "admin" && user.role != "admin" %>
 		<%= link_to({:controller => "users", :action => "odwolaj", :id => user.id}, {:class => "btn btn-danger", "title"=>"Odwołaj"}) do %>
@@ -58,6 +64,7 @@
 <% end %>
 <% end %>
 </table>
+<% end %>
 
 <% if @users.count > 9 %>
   <div id="blog-pager" class="blog-pager">
