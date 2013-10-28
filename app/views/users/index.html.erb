@@ -1,5 +1,12 @@
 <h3><i class="icon-user"></i> Lista Użytkowników</h3>
- 
+
+<%= form_tag request.path, :method => 'get', :id=>"custom-search-form", :class=>"form-search form-horizontal pull-right" do %>
+  <div class="input-append">
+  	<%= text_field_tag :search, params[:search], :class=>"search-query", :placeholder=>"Szukaj.." %>
+	<button type="submit" class="btn"><i class="icon-search"></i></button>
+  </div>
+<% end %>
+
 <table class="table table-hover">
 <thead>
 <tr>
@@ -51,3 +58,9 @@
 <% end %>
 <% end %>
 </table>
+
+<% if @users.count > 9 %>
+  <div id="blog-pager" class="blog-pager">
+    <%= will_paginate @users, :container => false %>
+  </div>
+<% end %>
