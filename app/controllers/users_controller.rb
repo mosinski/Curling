@@ -4,7 +4,7 @@ require 'net/ftp'
 
   def index
    if current_user
-    @users = User.all
+    @users = User.paginate(:page => params[:page], :per_page => 9, :order => 'potwierdzenie').search(params[:search], params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
