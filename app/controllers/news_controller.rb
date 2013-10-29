@@ -20,7 +20,7 @@ class NewsController < ApplicationController
     @news = News.find(params[:id])
     @albumy_z_news = Album.find_all_by_przydzial("news")
     @album = @albumy_z_news.detect{|w| w.przydzial_id == @news.id}
-    @all_comments = @news.root_comments.reverse
+    @all_comments = @news.root_comments
 
     respond_to do |format|
       format.html # show.html.erb
