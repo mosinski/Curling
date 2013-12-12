@@ -1,75 +1,89 @@
- <% if @user.errors.any? %>
-    <div id="error_explanation">
+<% if @user.errors.any? %>
+  <div id="error_explanation">
     <% if  (@user.errors.count) == 1  %>
       <h4>Użytkownik nie został stworzony z powodu jednego błędu</h4>
     <% elsif (@user.errors.count) > 1 %>
-        <h4>Użytkownik nie został stworzony z powodu <%= @user.errors.count %> błędów</h4>
+      <h4>Użytkownik nie został stworzony z powodu <%= @user.errors.count %> błędów</h4>
     <% end %>
-      <ul style="background:none repeat scroll 0% 0% rgb(245, 245, 245);padding:10px;">
+    <ul style="background:none repeat scroll 0% 0% rgb(245, 245, 245);padding:10px;">
       <% @user.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
-      </ul>
+    </ul>
+  </div>
+<% end %>
+
+<div class="control-group">
+  <%= f.label :username, class: "control-label" %>
+  <div class="controls">
+    <div class="field input-prepend">
+      <span class="add-on"><i class="icon-user"></i></span>
+      <%= f.text_field :username, :placeholder => "jkowalski" %>
     </div>
-  <% end %>
-
-<div class="controls">
-	<div class="field input-prepend">
-  		<%= f.label :username %>
-  		<span class="add-on"><i class="icon-user"></i></span>
-  		<%= f.text_field :username, :placeholder => "jkowalski" %>
-	</div>
+  </div>
 </div>
 
-<div class="controls">
-	<div class="field input-prepend">
-  		<%= f.label :name_surname %>
-  		<span class="add-on"><i class="icon-user"></i></span>
-  		<%= f.text_field :name_surname, :placeholder => "Jan Kowalski" %>
-	</div>
+<div class="control-group">
+  <%= f.label :name_surname, class: "control-label" %>
+  <div class="controls">
+    <div class="field input-prepend">
+      <span class="add-on"><i class="icon-user"></i></span>
+      <%= f.text_field :name_surname, :placeholder => "Jan Kowalski" %>
+    </div>
+  </div>
 </div>
 
-<div class="controls">
-	<div class="field input-prepend">
-    		<%= f.label :born %>
-  		<span class="add-on"><i class="icon-calendar"></i></span>
-    		<%= f.date_select :born, :order => [:day, :month, :year], :start_year => 1920, :end_year => Time.now.year, "style" => "width:50px"  %>
-	</div>
+<div class="control-group">
+  <%= f.label :born, class: "control-label" %>
+  <div class="controls">
+    <div class="field input-prepend">
+      <span class="add-on"><i class="icon-calendar"></i></span>
+      <%= f.date_select :born, :order => [:day, :month, :year], :start_year => 1920, :end_year => Time.now.year, "style" => "width:50px"  %>
+    </div>
+  </div>
 </div>
 
-<div class="controls">
-	<div class="field input-prepend">
-  		<%= f.label :email %>
-  		<span class="add-on">@</span>
-		<%= f.text_field :email, :placeholder => "jkowalski@gmail.com" %>
-	</div>
+<div class="control-group">
+  <%= f.label :email, class: "control-label" %>
+  <div class="controls">
+    <div class="field input-prepend">
+      <span class="add-on">@</span>
+      <%= f.text_field :email, :placeholder => "jkowalski@gmail.com" %>
+    </div>
+  </div>
 </div>
 
-<div class="controls">
-	<div class="field input-prepend">
-  		<%= f.label :pesel %>
-  		<span class="add-on"><i class="icon-map-marker"></i></span>
-  		<%= f.number_field :pesel, :placeholder => "88062542184" %>
-	</div>
+<div class="control-group">
+  <%= f.label :pesel, class: "control-label" %>
+  <div class="controls">
+    <div class="field input-prepend">
+      <span class="add-on"><i class="icon-map-marker"></i></span>
+      <%= f.number_field :pesel, :placeholder => "88062542184" %>
+    </div>
+  </div>
 </div>
 
-<div class="controls">
-	<div class="field input-prepend">
-  		<%= f.label :password %>
-  		<span class="add-on"><i class="icon-lock"></i></span>
-		<%= f.password_field :password, :placeholder => "******" %>
-	</div>
+<div class="control-group">
+  <%= f.label :password, class: "control-label" %>
+  <div class="controls">
+    <div class="field input-prepend">
+      <span class="add-on"><i class="icon-lock"></i></span>
+      <%= f.password_field :password, :placeholder => "******" %>
+    </div>
+  </div>
 </div>
 
 <div class="password_oblicz">
-	<span id="password_time"></span>
+  <span id="password_time"></span>
 </div>
 
-<div class="controls">
-	<div class="field input-prepend">
-  		<%= f.label :password_confirmation %>
-  		<span class="add-on"><i class="icon-lock"></i></span>
-		<%= f.password_field :password_confirmation, :placeholder => "******" %>
-	</div>
+<div class="control-group">
+  <%= f.label :password_confirmation, class: "control-label" %>
+  <div class="controls">
+    <div class="field input-prepend">
+      <span class="add-on"><i class="icon-lock"></i></span>
+      <%= f.password_field :password_confirmation, :placeholder => "******" %>
+    </div>
+  </div>
 </div>
 <br />

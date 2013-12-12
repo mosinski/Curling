@@ -1,12 +1,12 @@
 <div class="home">
-        <div class="page-header">  
-		<h3><i class="icon-signin"></i> <%= t 'sign_in' %></h3>
-	</div>
+  <div class="page-header">  
+    <h3><i class="icon-signin"></i> <%= t 'sign_in' %></h3>
+  </div>
 
-	<%= render 'form' %>
+  <%= render 'form' %>
 
-<div class="actions" style="border-top:1px solid rgb(238, 238, 238); width:300px;padding:5px;">
-Zapomniałeś hasła? <%= link_to "Kliknij aby zresetować hasło", "/resethasla/" %> <br>
-Nie masz konta? <%= link_to "Kliknij aby się zarejestrować", new_user_path %>
-</div>
+  <div class="actions" style="border-top:1px solid rgb(238, 238, 238); width:300px;padding:5px;">
+    Zapomniałeś hasła? <%= link_to "Kliknij aby zresetować hasło", "/resethasla/" %> <br>
+    Nie masz konta? <%= link_to "Kliknij aby się zarejestrować", new_user_path %>
+  </div>
 </div>

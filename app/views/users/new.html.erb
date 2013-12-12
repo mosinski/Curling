@@ -2,13 +2,19 @@
 	<h3><i class="icon-edit-sign"></i> <%= t 'register' %></h3>
 </div>
 
-<%= form_for @user, :html => { :multipart => true } do |f| %>
+<%= form_for @user, :html => { multipart: true, class: "form-horizontal" } do |f| %>
 <%= render partial: 'form', locals: { f: f } %>
 
-<div class="actions">
-     <button type="submit" class="btn btn-primary">
-  	<i class="icon-check"></i> <%= f.label :register, "style"=>"display:inline" %>
-     </button>
+<div class="control-group">
+  <div class="controls">
+    <button type="submit" class="btn btn-primary">
+      <i class="icon-check"></i>
+      <%= f.label :register, "style"=>"display:inline" %>
+    </button>
+    <button type="reset" class="btn btn-default btn-sm">
+      Wyczyść formularz
+    </button>
+  </div>
 </div>
 <% end %>
 
