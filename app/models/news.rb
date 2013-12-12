@@ -7,6 +7,6 @@ class News < ActiveRecord::Base
   
   def self.search(search, page)
   paginate :per_page => 10, :page => page,
-           :conditions => ['tytul like :q or tekst_pl like :q or tekst_en like :q', q: "%#{search}%"], :order => 'termin'
+           :conditions => ['tytul ILIKE :q or tekst_pl ILIKE :q or tekst_en ILIKE :q', q: "%#{search}%"], :order => 'termin'
   end
 end
