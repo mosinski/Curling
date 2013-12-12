@@ -8,6 +8,6 @@ class User < ActiveRecord::Base
   
   def self.search(search, page)
   paginate :per_page => 9, :page => page,
-           :conditions => ['username like :q or name_surname like :q or email like :q', q: "%#{search}%"], :order => 'name_surname'
+           :conditions => ['username ILIKE :q or name_surname ILIKE :q or email ILIKE :q', q: "%#{search}%"], :order => 'name_surname'
   end
 end
