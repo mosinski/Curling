@@ -2,16 +2,16 @@
   <div class="page-header">  
     <h3><i class="icon-signin"></i> <%= t 'sign_in' %></h3>
   </div>
-  
-  <a class="btn btn-block btn-social btn-facebook">
+
+  <%= link_to "/auth/facebook", class: "btn btn-block btn-social btn-facebook" do %>
     <i class="icon icon-facebook"></i> Szybkie logowanie przez Facebook-a
-  </a>
+  <% end %>
   <br>
   <div class="login-or">
     <hr class="hr-or">
     <span class="span-or">lub</span>
   </div>
-      
+
   <%= render 'form' %>
 
   <div class="actions" style="border-top:1px solid rgb(238, 238, 238); width:300px;padding:5px;">

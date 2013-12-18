@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131009180041) do
+ActiveRecord::Schema.define(:version => 20131217232332) do
 
   create_table "abouts", :force => true do |t|
     t.text     "tekst_pl"
@@ -143,6 +143,7 @@ ActiveRecord::Schema.define(:version => 20131009180041) do
     t.datetime "last_login_at"
     t.string   "current_login_ip"
     t.string   "last_login_ip"
+    t.string   "facebook_id"
   end
 
 end
