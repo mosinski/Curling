@@ -344,7 +344,7 @@
 			<div class="fleft">Copyright © 2013 gdanskcurlingclub.pl</div>
 			<div align="center" style="display:inline-block;width:55%;">
 			<% if current_user %>
-				<i class="icon-user"></i> <%= link_to current_user.username, user_path(current_user.id) %> |
+				<i class="icon-user"></i> <%= link_to current_user.username, edit_user_path(current_user.id) %> |
 				<i class="icon-off"></i> <%= link_to "Wyloguj", :logout %>
 			<% else %>
 				<i class="icon-signin"></i> 
