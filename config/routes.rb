@@ -1,17 +1,23 @@
 Osp::Application.routes.draw do
 
-resources :users do
-    resources :messages do
-          collection do
-              post :delete_selected
-          end
-    end
+constraints(host: /^www\./i) do
+  match '(*any)' => redirect { |params, request|
+    URI.parse(request.url).tap { |uri| uri.host.sub!(/^www\./i, '') }.to_s
+  }
 end
-  
-resources :images do
+
+resources :users do
+  resources :messages do
     collection do
-      delete 'destroy_multiple'
+      post :delete_selected
     end
+  end
+end
+
+resources :images do
+  collection do
+    delete 'destroy_multiple'
+  end
 end
 
 resources :user_sessions, :dashboards, :static_pages, :news, :media

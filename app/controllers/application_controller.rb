@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :set_locale
-  before_filter :check_uri
 
   def set_locale
     session[:locale] = params[:locale] if params[:locale]
@@ -14,12 +13,6 @@ class ApplicationController < ActionController::Base
   def default_url_options(options={})
     logger.debug "default_url_options is passed options: #{options.inspect}\n"
     { locale: I18n.locale }
-  end
-
-  def check_uri
-    if /^www/.match(request.host)
-      redirect_to request.protocol + request.host_with_port[4..-1] + request.request_uri
-    end
   end
 
   helper_method :current_user
