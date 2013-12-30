@@ -20,7 +20,7 @@
 			<ul>
 				<li class="style1"><a href="/" class="act"><span>Start</span></a></li>
 				<li class="style2 dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><span><%= t 'navi_about' %></span></a>
-				<ul class="dropdown-menu">
+        			<ul class="dropdown-menu">
           				<li>
           				<%= link_to media_path,"tabindex"=>"-1" do %>
           				  <%= t 'navi_media' %>
@@ -264,6 +264,11 @@
 									<div>
 									<%= link_to("http://www.malinowyogrod.pl/‎", "target"=>"_blank") do %>
 										<%= image_tag("malinowy.jpg") %>
+									<% end %>
+									</div>
+									<div>
+									<%= link_to("http://www.bzwbk.pl/", "target"=>"_blank") do %>
+										<%= image_tag("BZWBK.jpg") %>
 									<% end %>
 									</div>
 									</div>
