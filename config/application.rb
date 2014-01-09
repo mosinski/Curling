@@ -54,6 +54,7 @@ module Osp
     config.assets.precompile += ["bootstrap/*"]
     config.assets.precompile += ["fancybox/*"]
     config.assets.precompile += ["pwdstr/*"]
+    config.assets.precompile += ["share/*"]
 
     # Enable the asset pipeline
     config.assets.enabled = true

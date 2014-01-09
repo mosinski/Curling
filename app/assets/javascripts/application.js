@@ -18,6 +18,7 @@
 //= require pwdstr/pwdstr
 //= require 3dlinks
 //= require scrolltopcontrol
+//= require share/share.min
 
 jQuery(document).ready(function() {
   var interval, rotation, viewportHeight, viewportWidth;

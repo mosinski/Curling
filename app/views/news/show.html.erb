@@ -13,10 +13,12 @@
 <br>
 
 <% if @album != nil %>
-<%= link_to @album,:class => "btn btn-small btn-primary","style"=>"float:right;" do %>
-	<i class="icon-picture"></i> <%= t 'go_to_album' %> »
+  <%= link_to @album,:class => "btn btn-small btn-primary","style"=>"float:right;" do %>
+    <i class="icon-picture"></i> <%= t 'go_to_album' %> »
+  <% end %>
 <% end %>
-<% end %>
+
+<div class="share_me"></div>
 
 <center>
 <%= t 'comments' %>: <%= @all_comments.count %>
@@ -182,4 +184,8 @@
   $("#parrent_id").val(text);
   $("p#comment_reply_username").text('Odpowiadasz na komentarz: ' + parent);
 });
+
+$('.share_me').share({
+ button_text: 'Udostępnij',
+})
 </script>
