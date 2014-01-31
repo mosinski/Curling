@@ -1,9 +1,11 @@
-<% share_title @news.tytul %>
-<% share_url news_url(@news) %>
-<% if (I18n.locale == I18n.default_locale) || (I18n.locale != I18n.default_locale && @news.tekst_en.size < 15) %>
-  <% share_description strip_tags(@news.tekst_pl).html_safe %>
-<% else %>
-  <% share_description strip_tags(@news.tekst_en).html_safe %>
+<% content_for :facebook do %>
+  <meta property="og:title" content="<%= @news.tytul %>" />
+  <meta property="og:url" content="<%= news_url(@news) %>" />
+  <% if (I18n.locale == I18n.default_locale) || (I18n.locale != I18n.default_locale && @news.tekst_en.size < 15) %>
+    <meta property="og:description" content="<%= strip_tags(@news.tekst_pl).html_safe %>" />
+  <% else %>
+    <meta property="og:description" content="<%= strip_tags(@news.tekst_en).html_safe %>" />
+  <% end %>
 <% end %>
 
 <h3><%= @news.tytul %></h3>

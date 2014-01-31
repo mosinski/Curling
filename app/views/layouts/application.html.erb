@@ -10,12 +10,10 @@
   <%= csrf_meta_tags %>
 
   <meta property="fb:app_id" content="239206996247022" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="<%= yield(:og_title) %>" />
   <meta property="og:site_name" content="Gdańsk Curling Club"/>
-  <meta property="og:url" content="<%= yield(:og_url) %>" />
   <meta property="og:image" content="/logo.gif" />
-  <meta property="og:description" content="<%= yield(:og_description) %>" />
+  <meta property="og:type" content="website" />
+  <%= yield :facebook %>
 </head>
 
 <body>
