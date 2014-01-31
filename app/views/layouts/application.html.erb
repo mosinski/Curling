@@ -11,7 +11,7 @@
 
   <meta property="fb:app_id" content="239206996247022" />
   <meta property="og:site_name" content="Gdańsk Curling Club"/>
-  <meta property="og:image" content="<%= image_url('logo.gif').split("?")[0] %>" />
+  <meta property="og:image" content="<%= root_url.split("/?")[0] + asset_path('logo.gif') %>" />
   <meta property="og:type" content="website" />
   <%= yield :facebook %>
 </head>
