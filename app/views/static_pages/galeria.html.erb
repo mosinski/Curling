@@ -1,52 +1,50 @@
 <h3><i class="icon-picture"></i> <%= t 'navi_gallery' %></h3>
 
 <% if @albums.empty? %>
-<pre>Brak Albumów ..</pre>
+  <pre><%= t 'empty_gallery' %></pre>
 <% else %>
-<% @albums.each do |album| %>
+  <% @albums.each do |album| %>
+    <% @fotki = Image.find_all_by_nr_albumu(album.id).first(5) %>
+    <% @numer = Image.find_all_by_nr_albumu(album.id).count %>
 
-<% @fotki = Image.find_all_by_nr_albumu(album.id).first(5) %>
-<% @numer = Image.find_all_by_nr_albumu(album.id).count %>
-
-<% if current_user && current_user.role == "admin" %>
-<div class="album_przyciski" style="float:right">
-<%= link_to edit_album_path(album), :class => "btn btn-mini" do %>
-	<i class="icon-edit"></i>
-<% end %>
-<br>
-<%= link_to album, method: :delete, data: { confirm: "Czy napewno chcesz usunąć album '#{album.tytul}' z wszystkimi zdjęciami?" }, :class => "btn btn-mini" do %>
-	<i class="icon-remove-circle"></i>
-<% end %>
-</div>
-<% end %>
-
-<div class="album_list" style="background:url(http://images.gdanskcurlingclub.pl/<%= @fotki.first.nazwa if @fotki.first != nil %>); background-size: 100%;" onclick="location.href = '/albums/<%= album.id %>'" %>
-Opublikowano: <%= album.created_at.strftime("%H:%M %d-%m-%Y") %>
-Termin: <%= album.termin.strftime("%d-%m-%Y") %>
-
-  <div class="album_inside">
-  
-	<div style="display: block;">
-	    <%= album.tytul[0..45] %> (<%= @numer  %>
-		<% if @numer == 1 %>
-		   zdjęcie
-		<% elsif @numer == 2 || @numer == 3 || @numer == 4 %>
-		   zdjęcia
-		<% else %>
-		   zdjęć
-		<% end %>)
-	</div>
-	
-    <% @fotki.each do |fotka| %>
-  	<%= image_tag("http://images.gdanskcurlingclub.pl/#{fotka.nazwa}", :class=>"img-rounded", "style"=>"margin-right:5px") %>
+    <% if current_user && current_user.role == "admin" %>
+      <div class="album_przyciski" style="float:right">
+        <%= link_to edit_album_path(album), :class => "btn btn-mini" do %>
+          <i class="icon-edit"></i>
+        <% end %>
+        <br>
+        <%= link_to album, method: :delete, data: { confirm: "Czy napewno chcesz usunąć album '#{album.tytul}' z wszystkimi zdjęciami?" }, :class => "btn btn-mini" do %>
+          <i class="icon-remove-circle"></i>
+        <% end %>
+      </div>
     <% end %>
-  </div>
-</div>
 
-<% end %>
-<% if @albums.count > 6 %>
-  <div id="blog-pager" class="blog-pager">
-    <%= will_paginate @albums, :container => false %>
-  </div>
-<% end %>
+    <div class="album_list" style="background:url(http://images.gdanskcurlingclub.pl/<%= @fotki.first.nazwa if @fotki.first != nil %>); background-size: 100%;" onclick="location.href = '/albums/<%= album.id %>'" %>
+    Opublikowano: <%= album.created_at.strftime("%H:%M %d-%m-%Y") %>
+    Termin: <%= album.termin.strftime("%d-%m-%Y") %>
+
+      <div class="album_inside">
+        <div style="display: block;">
+          <%= album.tytul[0..45] %> (<%= @numer  %>
+          <% if @numer == 1 %>
+             zdjęcie
+          <% elsif @numer == 2 || @numer == 3 || @numer == 4 %>
+             zdjęcia
+          <% else %>
+             zdjęć
+          <% end %>)
+        </div>
+
+        <% @fotki.each do |fotka| %>
+          <%= image_tag("http://images.gdanskcurlingclub.pl/#{fotka.nazwa}", :class=>"img-rounded", "style"=>"margin-right:5px") %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @albums.count > 6 %>
+    <div id="blog-pager" class="blog-pager">
+      <%= will_paginate @albums, :container => false %>
+    </div>
+  <% end %>
 <% end %>
