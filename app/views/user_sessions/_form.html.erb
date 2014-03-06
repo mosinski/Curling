@@ -46,9 +46,9 @@
         <%= f.label :remember_me %>
       </label>
 
-      <button type="submit" class="btn btn-primary">
-        <i class="icon-ok"></i> <%= f.label :login, "style"=>"display:inline" %>
-      </button>
+      <%= button_tag(type: "submit", class: "btn btn-primary") do %>
+        <i class="icon-ok"></i> <%= f.label :login, "style"=>"display:inline", "onclick" => "document.getElementById('new_user_session').submit()" %>
+      <% end %>
     </div>
   </div>
 <% end %>
