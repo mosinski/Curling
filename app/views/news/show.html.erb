@@ -1,6 +1,6 @@
 <% content_for :facebook do %>
-<meta property="og:title" content="<%= @news.tytul %>" />
-<meta property="og:url" content="<%= news_url(@news).split("?")[0] %>" />
+  <meta property="og:title" content="<%= @news.tytul %>" />
+  <meta property="og:url" content="<%= news_url(@news).split("?")[0] %>" />
   <% if (I18n.locale == I18n.default_locale) || (I18n.locale != I18n.default_locale && @news.tekst_en.size < 15) %>
     <meta property="og:description" content="<%= strip_tags(@news.tekst_pl).html_safe %>" />
   <% else %>
@@ -15,7 +15,7 @@
   <% if (I18n.locale == I18n.default_locale) || (I18n.locale != I18n.default_locale && @news.tekst_en.size < 15) %>
     <%= raw(@news.tekst_pl) %>
   <% else %>
-      <%= raw(@news.tekst_en) %>
+    <%= raw(@news.tekst_en) %>
   <% end %>
   </div>
 </div>
@@ -28,166 +28,169 @@
   <% end %>
 <% end %>
 
-<div class="share_me"></div>
+<div class="share_me" style="inline-block"></div>
 
 <center>
-<%= t 'comments' %>: <%= @all_comments.count %>
+  <%= t 'comments' %>: <%= @all_comments.count %>
 </center>
 
 <hr>
 
 <% if @all_comments.count == 0 %>
-<%= t 'comments_not_yet' %>
+  <%= t 'comments_not_yet' %>
 <% end %>
 
 <% @all_comments.each do |comment| %>
- <% @user = User.find(comment.user_id) %>
+  <% @user = User.find(comment.user_id) %>
 
- <% if @user.potwierdzenie == 0 %>
- 	<% @user.username = comment.body.lines.first %>
- <% end %>
-
-<div class="comment">
-
- <div class="comment_avatar">
- 	<%= image_tag(@user.avatar, "style" => "margin:5px;width:50px;height:50px;") %>
- </div>
-
- <div class="comment_user">
-	<u><%= link_to @user.username, @user, "style"=>"font-weight:bold;" %> <%=I18n.l comment.created_at, :format => :long %></u> |
-	<button id=<%= comment.id %> class="comment_reply btn btn-mini" title="<%= @user.username %>"><i class="icon-reply"></i></button>
-
-	<% if current_user && current_user.role == "admin" %>
-	<%= link_to({:controller => "news", :action => "destroy_comment", :id => comment.id}, {:confirm => "Czy napewno chcesz usunąć komentarz użytkownika #{@user.username}? \nZostaną również usunięte wszystkie odpowiedzi na ten komentarz.", :class => "btn btn-small"}) do %>
-  		<i class="icon-trash" style="float:right;"></i>
-	<% end %>
-        <% end %>
-
-	<br />
-	<% if @user.potwierdzenie == 0 %>
-		<%= Obscenity.sanitize(comment.body.sub(@user.username, '')) %>
-	<% else %>
- 		<%= Obscenity.sanitize(comment.body) %>
-	<% end %>
- </div>
-</div>
- <% if comment.has_children? %>
- 	<% comment.children.each do |children| %>
-    	  <% @user_children = User.find(children.user_id) %>
- 	  <% if @user_children.potwierdzenie == 0 %>
- 		<% @user_children.username = children.body.lines.first %>
- 	  <% end %>
-    		<div class="comment">
- 			<div class="comment_reply_user">
-				<% if @user_children.potwierdzenie == 0 %>
-					<%= Obscenity.sanitize(children.body.sub(@user_children.username, '')) %> -
-				<% else %>
-					<%= Obscenity.sanitize(children.body) %> -
-		 	  	<% end %> 
-				<%= link_to @user_children.username, @user_children, "style"=>"font-weight:bold;" %> <%=I18n.l comment.created_at, :format => :short %>
-				<% if current_user && current_user.role == "admin" %>
-				<%= link_to({:controller => "news", :action => "destroy_comment", :id => children.id}, {:confirm => "Czy napewno chcesz usunąć komentarz użytkownika #{@user_children.username}?"}) do %>
-  		<i class="icon-remove-circle" style="float:right;"></i>
-				<% end %>
-				<% end %>
- 			</div>
-    		</div>
-  	<% end %>
+  <% if @user.potwierdzenie == 0 %>
+    <% @user.username = comment.body.lines.first %>
   <% end %>
 
+  <div class="comment">
+    <div class="comment_avatar">
+      <%= image_tag(@user.avatar, "style" => "margin:5px;width:50px;height:50px;") %>
+    </div>
+
+    <div class="comment_user">
+      <u><%= link_to @user.username, @user, "style"=>"font-weight:bold;" %> <%=I18n.l comment.created_at, :format => :long %></u> |
+      <button id=<%= comment.id %> class="comment_reply btn btn-mini" title="<%= @user.username %>"><i class="icon-reply"></i></button>
+
+      <% if current_user && current_user.role == "admin" %>
+        <%= link_to({:controller => "news", :action => "destroy_comment", :id => comment.id}, {:confirm => "Czy napewno chcesz usunąć komentarz użytkownika #{@user.username}? \nZostaną również usunięte wszystkie odpowiedzi na ten komentarz.", :class => "btn btn-small"}) do %>
+          <i class="icon-trash" style="float:right;"></i>
+        <% end %>
+      <% end %>
+
+      <br />
+      <% if @user.potwierdzenie == 0 %>
+        <%= Obscenity.sanitize(comment.body.sub(@user.username, '')) %>
+      <% else %>
+        <%= Obscenity.sanitize(comment.body) %>
+      <% end %>
+    </div>
+  </div>
+  <% if comment.has_children? %>
+    <% comment.children.each do |children| %>
+      <% @user_children = User.find(children.user_id) %>
+
+      <% if @user_children.potwierdzenie == 0 %>
+        <% @user_children.username = children.body.lines.first %>
+      <% end %>
+
+      <div class="comment">
+        <div class="comment_reply_user">
+          <% if @user_children.potwierdzenie == 0 %>
+            <%= Obscenity.sanitize(children.body.sub(@user_children.username, '')) %> -
+          <% else %>
+            <%= Obscenity.sanitize(children.body) %> -
+          <% end %>
+          <%= link_to @user_children.username, @user_children, "style"=>"font-weight:bold;" %> <%=I18n.l comment.created_at, :format => :short %>
+          <% if current_user && current_user.role == "admin" %>
+            <%= link_to({:controller => "news", :action => "destroy_comment", :id => children.id}, {:confirm => "Czy napewno chcesz usunąć komentarz użytkownika #{@user_children.username}?"}) do %>
+              <i class="icon-remove-circle" style="float:right;"></i>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
 <% end %>
 
 <hr>
+
 <p id="comment_reply_username"></p>
 <div class="comment">
-<%= form_tag({controller: "news", action: "add_comment"}) do %>
-  <%= hidden_field_tag "id", @news.id %>
-  <%= hidden_field_tag "parrent_id" %>
+  <%= form_tag({controller: "news", action: "add_comment"}) do %>
+    <%= hidden_field_tag "id", @news.id %>
+    <%= hidden_field_tag "parrent_id" %>
 
-  <% if current_user %>
-  <%= image_tag(current_user.avatar, :class => "img-rounded", :width => "70", "style" => "margin:5px;") %>
-  <% else %>
-  <div>
-  <%= label_tag "Nick", nil, "style" => "display:inline-block;width:80px;text-align:right;font-size:17px;" %>
-  <%= text_field_tag "guest_name",nil, "style" => "display:inline-block;" %>
-  </div>
-  <%= image_tag("/avatar.jpg", :class => "img-rounded", "style" => "margin:5px;width:70px;height:70px;") %>
+    <% if current_user %>
+      <%= image_tag(current_user.avatar, :class => "img-rounded", :width => "70", "style" => "margin:5px;") %>
+    <% else %>
+      <div>
+        <%= label_tag "Nick", nil, "style" => "display:inline-block;width:80px;text-align:right;font-size:17px;" %>
+        <%= text_field_tag "guest_name",nil, "style" => "display:inline-block;" %>
+      </div>
+      <%= image_tag("/avatar.jpg", :class => "img-rounded", "style" => "margin:5px;width:70px;height:70px;") %>
+    <% end %>
+
+    <%= text_area_tag :komentarz, nil, :rows => 3, "style" => "width:60%;" %>
+
+    <button type="submit" class="btn btn-large btn-success">
+      <h1><i class="icon-comment"></i></h1>
+    </button>
   <% end %>
-  <%= text_area_tag :komentarz, nil, :rows => 3, "style" => "width:60%;" %>
-  <button type="submit" class="btn btn-large btn-success">
-  	<h1><i class="icon-comment"></i></h1>
-     </button>
-<% end %>
 </div>
 
 <%= link_to "/news",:class => "btn btn-small btn-primary" do %>
-	<i class="icon-share-alt"></i> <%= t 'back_to_list' %>
+  <i class="icon-share-alt"></i> <%= t 'back_to_list' %>
 <% end %>
 
 <% if current_user && current_user.role == "admin" %>
-<%= link_to edit_news_path(@news),:class => "btn btn-small btn-primary" do %>
-	<i class="icon-edit"></i> Edytuj
-<% end %>
+  <%= link_to edit_news_path(@news),:class => "btn btn-small btn-primary" do %>
+    <i class="icon-edit"></i> Edytuj
+  <% end %>
 
-    <%= link_to "#image_upload", "data-toggle"=>"modal",:class => "btn btn-small btn-primary" do %>
-	<i class="icon-picture"></i> Dodaj Zdjęcie
-    <% end %>
+  <%= link_to "#image_upload", "data-toggle"=>"modal",:class => "btn btn-small btn-primary" do %>
+    <i class="icon-picture"></i> Dodaj Zdjęcie
+  <% end %>
 <% end %>
 
 <div id="image_upload" class="modal hide fade">
-            <div class="modal-header">
-              <a class="close" data-dismiss="modal">
-		<i class="icon-remove-circle"></i>
-	      </a>
-              <h3>Dodawanie Zdjęcia do Aktualności Ogólnej</h3>
-            </div>
-            <div class="modal-body">
-<center>
-<%= form_tag({:controller => "images", :action => "create"}, :method => :post, :multipart => true) do %>
-	<%= text_field_tag :przydzial, "news", "style"=>"display:none"%>
-	<%= text_field_tag :przydzial_id, @news.id, "style"=>"display:none"%>
-	<%= image_tag("spacer.gif", :class=>"img-polaroid",:id=>"ftk",:width=>"170px;") %>
-	<br>
-	<span class="label label-info" style="margin:10px;">
-		** Rozmiar zdjęcia nie wiekszy niż 200 kB
-	</span>
-	<br>
-	<%= text_area_tag :opis,nil, "style"=>"width:80%", :placeholder => "Krótki opis do zdjęcia..." %>
-</center>
-            </div>
-            <div class="modal-footer" id="stopka_image_add">
-            	<div>
-  		   <div class="myfileupload-buttonbar">
-     			<label class="myui-button" style="float:left;">
-        		  <span class="btn btn-success">
-			  <i class="icon-folder-open-alt"></i> 
-			  Wybierz Zdjęcie
-			  </span>
-			  <%= file_field_tag "file", "style"=>"height:40px;display:none;", "onchange"=>"readURL(this);" %>
-     			</label>
-  		   </div>
-		</div>
-		
-            	<%= button_tag(type: "submit", class: "btn btn-primary", :id=>"start") do %>
-    			<i class="icon-upload icon-white"></i> Dodaj Zdjęcie
-  		<% end %>
-            </div>
-<% end %>
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">
+      <i class="icon-remove-circle"></i>
+    </a>
+    <h3>Dodawanie Zdjęcia do Aktualności Ogólnej</h3>
+  </div>
+  <div class="modal-body">
+    <center>
+      <%= form_tag({:controller => "images", :action => "create"}, :method => :post, :multipart => true) do %>
+        <%= text_field_tag :przydzial, "news", "style"=>"display:none"%>
+        <%= text_field_tag :przydzial_id, @news.id, "style"=>"display:none"%>
+        <%= image_tag("spacer.gif", :class=>"img-polaroid",:id=>"ftk",:width=>"170px;") %>
+        <br>
+        <span class="label label-info" style="margin:10px;">
+          ** Rozmiar zdjęcia nie wiekszy niż 200 kB
+        </span>
+        <br>
+        <%= text_area_tag :opis,nil, "style"=>"width:80%", :placeholder => "Krótki opis do zdjęcia..." %>
+    </center>
+  </div>
+  <div class="modal-footer" id="stopka_image_add">
+    <div>
+      <div class="myfileupload-buttonbar">
+        <label class="myui-button" style="float:left;">
+          <span class="btn btn-success">
+            <i class="icon-folder-open-alt"></i>
+            Wybierz Zdjęcie
+          </span>
+          <%= file_field_tag "file", "style"=>"height:40px;display:none;", "onchange"=>"readURL(this);" %>
+        </label>
+      </div>
+    </div>
+
+        <%= button_tag(type: "submit", class: "btn btn-primary", :id=>"start") do %>
+          <i class="icon-upload icon-white"></i> Dodaj Zdjęcie
+        <% end %>
+  </div>
+      <% end %>
 </div>
 
 <script>
-     function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
+function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
 
-                reader.onload = function (e) {
-                    $('#ftk').attr('src', e.target.result).width(170).height(170);
-                };
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
+    reader.onload = function (e) {
+      $('#ftk').attr('src', e.target.result).width(170).height(170);
+    };
+    reader.readAsDataURL(input.files[0]);
+  }
+}
 
- $(".comment_reply").click(function () {
+$(".comment_reply").click(function () {
   var text = this.id
   var parent = this.title
 
@@ -196,6 +199,6 @@
 });
 
 $('.share_me').share({
- button_text: 'Udostępnij',
+  button_text: 'Udostępnij',
 })
 </script>
