@@ -28,11 +28,13 @@
   <% end %>
 <% end %>
 
-<div class="share_me" style="inline-block"></div>
+<div style="display:block">
+  <div class="share_me"></div>
 
-<center>
-  <%= t 'comments' %>: <%= @all_comments.count %>
-</center>
+  <center style="inline-block">
+    <%= t 'comments' %>: <%= @all_comments.count %>
+  </center>
+</div>
 
 <hr>
 
