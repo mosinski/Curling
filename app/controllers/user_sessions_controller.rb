@@ -22,16 +22,13 @@ class UserSessionsController < ApplicationController
         @username = User.find_by_username(current_user.username)
         if @username.potwierdzenie == 1
           format.html { redirect_to(root_url,  flash: {success: "Informacja! Użytkownik zalogowany"}) }
-          format.xml { render :xml => @user_session, :status => :created, :location => @user_session }
         else
           @user_session = UserSession.find
           @user_session.destroy
           format.html { redirect_to(root_url, flash: {notice: "<h4>Uwaga!</h4> Użytkownik <u>niepotwierdzony</u> przez Administratora.<br>O potwierdzeniu zostaniesz poinformowany na maila podanego przy rejestracji."})}
-          format.xml { head :ok }
         end
       else
         format.html { render :action => "new" }
-        format.xml { render :xml => @user_session.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -43,7 +40,6 @@ class UserSessionsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to(root_url, flash: {notice: "Informacja! Użytkownik wylogowany"}) }
-      format.xml { head :ok }
     end
   end
 
