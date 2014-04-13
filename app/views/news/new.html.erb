@@ -1,19 +1,19 @@
 <h3>Nowa Aktualność Ogólna</h3>
 <div class="alert alert-info">
-    <strong><i class="icon-info-sign"></i></strong>
+    <strong><i class="fa fa-info-sign"></i></strong>
     <button type="button" class="close" data-dismiss="alert"><i class="icon-remove-circle"></i></button>
     <br>
     <center>
-   	Pamiętaj że Aktualność Ogólna widoczna jest dla <b>każdego</b> wchodzącego na stronę i <b>każdy</b> może ją skomentować.
+      Pamiętaj że Aktualność Ogólna widoczna jest dla <b>każdego</b> wchodzącego na stronę i <b>każdy</b> może ją skomentować.
     </center>
 </div>
 
 <%= form_for @news, :html => { :multipart => true } do |f| %>
 <%= render partial: 'form', locals: { f: f } %>
-<br />
-<div class="actions">
+  <br />
+  <div class="actions">
     <button type="submit" class="btn btn-primary">
-	<i class="icon-check"></i> Stwórz Aktualność Ogólną
+      <i class="icon-check"></i> Stwórz Aktualność Ogólną
     </button>
   </div>
 <% end %>

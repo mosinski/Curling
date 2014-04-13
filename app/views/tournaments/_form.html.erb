@@ -15,24 +15,32 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.text_field :nazwa, :placeholder => "Nazwa Turnieju Klubowego", "style" => "width:97%" %>
+  <div class="form-group">
+    <div class="col-xs-12">
+      <%= f.text_field :nazwa, :placeholder => "Nazwa Turnieju Klubowego", class: "col-sm-10 form-control" %>
+    </div>
   </div>
-  <div class="field" style="display:inline-block;">
-    <i class="icon-flag-alt"></i> <%= f.label "Otwarcie Turnieju", :class=>"tournament_label" %>
-    <%= f.date_select :termin_start, :order => [:day, :month, :year], :start_year => 2000, :end_year => Time.now.year+1 %>
+  <div class="form-group">
+    <%= f.label "Otwarcie Turnieju", class: "col-sm-3 control-label" %>
+    <div class="input-group col-xs-9">
+      <span class="input-group-addon"><i class="fa fa-flag-o"></i> </span>
+      <%= f.date_select :termin_start, :order => [:day, :month, :year], :start_year => 2000, :end_year => Time.now.year+1, class: "form-control" %>
+    </div>
   </div>
-  <div class="field" style="display:inline-block;float:right;">
-    <i class="icon-flag-checkered"></i> <%= f.label "Zakończenie Turnieju" %>
-    <%= f.date_select :termin_end, :order => [:day, :month, :year], :start_year => 2000, :end_year => Time.now.year+1 %>
+  <div class="form-group">
+    <%= f.label "Zakończenie Turnieju", class: "col-sm-3 control-label" %>
+    <div class="input-group col-xs-9">
+      <span class="input-group-addon"><i class="fa fa-flag-checkered"></i> </span>
+      <%= f.date_select :termin_end, :order => [:day, :month, :year], :start_year => 2000, :end_year => Time.now.year+1, class: "form-control" %>
+    </div>
   </div>
   <hr>
-  <div class="field">
+  <div class="form-group">
     <%= f.label "Opis Turnieju w języku Polskim" %>
     <%= f.text_area :opis_pl, :class => "tinymce", :rows => 10, :cols => 12 %>
   </div>
   <br>
-  <div class="field">
+  <div class="form-group">
     <%= f.label "Opis Turnieju w języku Angielskiem" %>
     <%= f.text_area :opis_en, :class => "tinymce", :rows => 10, :cols => 12 %>
   </div>

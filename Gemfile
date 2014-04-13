@@ -6,18 +6,14 @@ gem 'rails', '3.2.11'
 gem 'sqlite3', group: :development
 gem 'pg', group: :production
 gem 'thin'
-
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
-end
-
+gem 'sass', '~> 3.2.15'
+gem 'sass-rails'
+gem 'coffee-rails'
+gem 'uglifier'
 gem 'jquery-rails'
+gem 'therubyracer'
 gem 'less-rails-bootstrap'
 gem 'twitter-bootstrap-rails'
-
-gem 'therubyracer'
 gem 'authlogic', '~> 3.4.0'
 gem 'scrypt'
 gem 'bcrypt'
@@ -30,3 +26,4 @@ gem 'tinymce-rails'
 gem 'rails_12factor'
 gem 'omniauth-facebook'
 gem 'certified'
+gem 'font-awesome-rails'

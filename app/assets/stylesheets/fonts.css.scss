@@ -1,0 +1,24 @@
+@font-face {
+  font: {
+    family: 'Conv_MarcellusSC-Regular';
+    weight: 'normal';
+    style: 'normal';
+  }
+  src: asset-url('MarcellusSC-Regular.eot', font);
+  src: asset-url('MarcellusSC-Regular.eot', font) format('embedded-opentype'), 
+  asset-url('MarcellusSC-Regular.woff', font) format('woff'), 
+  asset-url('MarcellusSC-Regular.ttf', font) format('truetype'), 
+  asset-url('MarcellusSC-Regular.svg', font) format('svg');
+}
+@font-face {
+  font: {
+    family: 'Myriad-Pro-Regular';
+    weight: 'normal';
+    style: 'normal';
+  }
+  src: asset-url('MyriadPro-Regular.eot', font);
+  src: asset-url('MyriadPro-Regular.eot', font) format('embedded-opentype'), 
+  asset-url('MyriadPro-Regular.woff', font) format('woff'), 
+  asset-url('MyriadPro-Regular.ttf', font) format('truetype'), 
+  asset-url('MyriadPro-Regular.svg', font) format('svg');
+}

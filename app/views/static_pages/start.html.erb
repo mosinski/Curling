@@ -1,49 +1,67 @@
-				<div class="indent">
-				   <div class="page-header">  
-					<h2><%= t 'hello' %></h2>
-				   </div>
-				   <% if @tournament_last.present? && @tournament_last.termin_end >= Date.today %>
-					<p align="center">
-					<%= link_to @tournament_last, :class => "btn btn-large btn-primary" do %>
-						<i class="icon-double-angle-right"></i> Info: <%= @tournament_last.nazwa %> <i class="icon-double-angle-left"></i>
-					<% end %>
-					</p>
-				   <% end %>
-				</div>
+<div class="indent">
+  <div class="page-header">
+    <h2><%= t 'hello' %></h2>
+  </div>
+  <% if @tournament_last.present? && @tournament_last.termin_end >= Date.today %>
+    <p align="center">
+      <%= link_to @tournament_last, :class => "btn btn-lg btn-primary"  do %>
+        <%= @tournament_last.nazwa %>
+      <% end %>
+      <br /> <br />
+      <span class="label label-primary label-lg"><%= t('tournament.left') %></span>
+      <div class="clock" style="margin:3em;"></div>
 
-				<div class="box1">
-					<div class="inner">
-						<h3><%= t 'last_news' %></h3>
-						<ul class="list1">
-							<% @news_last.each do |news| %>
-							<li><b><%= link_to news.tytul, news %></b>
-				        		<% if (I18n.locale == I18n.default_locale) || (I18n.locale != I18n.default_locale && news.tekst_en.size < 15) %>
-							<%= (strip_tags(news.tekst_pl))[0..300]+"..." %></li>
-							<% else %>
-							<%= (strip_tags(news.tekst_en))[0..300]+"..." %></li>
-							<% end %>
-							
-							<% end %>
-						</ul>
-					</div>
-				</div>
-				<br><br>
-				<div class="box1">
-					<div class="inner">
-						<h3><%= t 'last_images' %></h3>
-						<ul style="margin-left: 5px;">
-							<% @images_last.each do |image| %>
-							<li style="display:inline-block;">
-							<div class="caption">
-                    					  <h4><%= image.nazwa %></h4>
-                    					  <p><%= image.opis %></p>
-                    					  <p><a href="http://images.gdanskcurlingclub.pl/<%= image.nazwa %>" class="label label-important fancybox" rel="tooltip" title="Powiększ" target="_blank">Zoom</a>
-                    					  <a href="/albums/<%= image.nr_albumu %>" class="label label-success" rel="tooltip" title="Przejdź do albumu">Album</a></p>
-                					</div>
-							<%= image_tag("http://images.gdanskcurlingclub.pl/#{image.nazwa}", "style"=>"height:115px;width:175px;") %>
-							</li>
-							<% end %>
-						</ul>
-					</div>
-				</div>
+      <script type="text/javascript">
+        var clock;
 
+        $(document).ready(function() {
+          var currentDate = new Date();
+          var turnament = new Date(<%= (@tournament_last.termin_start - 1.month).strftime("%Y,%m,%d") %>);
+          var diff = turnament.getTime() / 1000 - currentDate.getTime() / 1000;
+
+          clock = $('.clock').FlipClock(diff, {
+            clockFace: 'DailyCounter',
+            countdown: true,
+            showSeconds: false
+          });
+        });
+      </script>
+    </p>
+  <% end %>
+</div>
+
+<div class="box1">
+  <div class="inner">
+    <h3><%= t 'last_news' %></h3>
+    <ul class="list1">
+      <% @news_last.each do |news| %>
+        <li><b><%= link_to news.tytul, news %></b>
+      <% if (I18n.locale == I18n.default_locale) || (I18n.locale != I18n.default_locale && news.tekst_en.size < 15) %>
+        <%= (strip_tags(news.tekst_pl))[0..300]+"..." %></li>
+    <% else %>
+        <%= (strip_tags(news.tekst_en))[0..300]+"..." %></li>
+    <% end %>
+
+    <% end %>
+    </ul>
+  </div>
+</div>
+<br><br>
+<div class="box1">
+  <div class="inner">
+    <h3><%= t 'last_images' %></h3>
+    <ul style="margin-left: 5px;">
+      <% @images_last.each do |image| %>
+        <li style="display:inline-block;">
+      <div class="caption">
+        <h4><%= image.nazwa %></h4>
+        <p><%= image.opis %></p>
+        <p><a href="http://images.gdanskcurlingclub.pl/<%= image.nazwa %>" class="label label-important fancybox" rel="tooltip" title="Powiększ" target="_blank">Zoom</a>
+        <a href="/albums/<%= image.nr_albumu %>" class="label label-success" rel="tooltip" title="Przejdź do albumu">Album</a></p>
+      </div>
+      <%= image_tag("http://images.gdanskcurlingclub.pl/#{image.nazwa}", "style"=>"height:115px;width:175px;") %>
+      </li>
+    <% end %>
+    </ul>
+  </div>
+</div>

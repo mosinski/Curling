@@ -1,43 +1,17 @@
-/* TAGS */
-@font-face {
-	font: {
-       	family: 'Conv_MarcellusSC-Regular';
-       	weight: 'normal';
-       	style: 'normal';
-    	}
-	src: asset-url('MarcellusSC-Regular.eot', font);
-	src: asset-url('MarcellusSC-Regular.eot', font) format('embedded-opentype'), 
-	asset-url('MarcellusSC-Regular.woff', font) format('woff'), 
-	asset-url('MarcellusSC-Regular.ttf', font) format('truetype'), 
-	asset-url('MarcellusSC-Regular.svg', font) format('svg');
-}
-@font-face {
-	font: {
-       	family: 'Myriad-Pro-Regular';
-       	weight: 'normal';
-       	style: 'normal';
-    	}
-	src: asset-url('MyriadPro-Regular.eot', font);
-	src: asset-url('MyriadPro-Regular.eot', font) format('embedded-opentype'), 
-	asset-url('MyriadPro-Regular.woff', font) format('woff'), 
-	asset-url('MyriadPro-Regular.ttf', font) format('truetype'), 
-	asset-url('MyriadPro-Regular.svg', font) format('svg');
-}
-
 html {
-	min-width:944px !important;
+  min-width:944px !important;
 }
 
 body {
-	background:url(background.jpg) repeat-x;
-	font-family:Tahoma, Arial, helvetica, sans-serif !important;
-	font-size:100%!important;
-	line-height:1em!important;
-	color:#5e5e5e!important;
-	min-width:944px;
-	padding-bottom:20px;
-	cursor: url(icon.png) 12 8, default;
-	*:hover { cursor: url(icon.png) 12 8, default; }
+  background:url(background.jpg) repeat-x;
+  font-family:Tahoma, Arial, helvetica, sans-serif !important;
+  font-size:100%!important;
+  line-height:1.5em!important;
+  color:#5e5e5e!important;
+  min-width:944px;
+  padding-bottom:20px;
+  cursor: url(icon.png) 12 8, default;
+  *:hover { cursor: url(icon.png) 12 8, default; }
 }
 
 object {
@@ -66,10 +40,9 @@ img {
   vertical-align:top;
   text-align:left
 }
-/* GLOBAL */
-#header, #content, #footer {font-size:0.75em;width:944px;margin:0 auto}
+
+#header, #content, #footer {font-size:12px;width:944px;margin:0 auto}
 .col-1, .col-2, .col-3 {float:left}
-/* ALIGMENT */
 .fleft {float:left}
 .fright {float:right}
 .clear {clear:both}
@@ -112,9 +85,9 @@ ul, ol {list-style:none}
 .banner-list ul li.style2 a {background-image:url(icon2.gif)}
 /* style3 */
 .banner-list ul li.style3 a {background-image:url(icon3.gif)}
-h2, h3 { font-family: Myriad-Pro-Regular!important;}
+h2, h3 { font-family: Myriad-Pro-Regular!important;font-weight:bold;}
 /* */
-.site-nav {position:absolute;left:-20px;top:0}
+.site-nav {position:absolute;left:-35px;top:0}
 .site-nav ul li {font-family: Myriad-Pro-Regular;float:left;font-size:18px;line-height:1.2em;text-transform:uppercase;padding-left:1px}
 .site-nav ul li a {color:#092972;display:block;text-align:center;text-decoration:none;width:119px;height:150px;border-bottom:5px solid #e4edff;background-color:#f1f5ff;background-repeat:no-repeat;background-position:center 28px}
 .site-nav ul li a span {display:block;padding-top:105px}
@@ -173,7 +146,7 @@ p {margin-bottom:17px}
 a {color:#479c23;outline:none}
 a:hover {text-decoration:none}
 h2 {font-size:30px;line-height:1.5em;color:#092972;text-transform:uppercase;margin:-10px 0 10px 0}
-h3 {font-size:20px;line-height:1.2em;text-transform:uppercase;color:#092972;margin-bottom:20px}
+h3 {font-size:20px;line-height:1.2em;text-transform:uppercase;color:#092972;margin-bottom:20px;}
 h4 {font-size:1em;color:#092972;margin-bottom:25px}
 /* BOXES */
 .box {
@@ -446,14 +419,17 @@ text-shadow: -1px 0px black, 0px 1px white, 1px 0px black, 0px -1px black;
 
 #user_born_3i, #news_termin_3i, #album_termin_3i, #tournament_termin_start_3i, #tournament_termin_end_3i{
   width:50px;
+  font-size: 18px;
 }
 
 #user_born_2i, #news_termin_2i, #album_termin_2i, #tournament_termin_start_2i, #tournament_termin_end_2i {
   width:150px;
+  font-size: 18px;
 }
 
 #user_born_1i, #news_termin_1i, #album_termin_1i, #tournament_termin_start_1i, #tournament_termin_end_1i {
   width:70px;
+  font-size: 18px;
 }
 
 .adminpanel {

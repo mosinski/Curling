@@ -3,8 +3,7 @@
 <head>
   <title>Gdańsk Curling Club</title>
   <link href="/stone.png" rel="icon" type="image/x-icon">
-  <script type="text/javascript" src="/whcookies.js"></script>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag "application", :media => "all" %>
   <%= auto_discovery_link_tag(:atom, news_path(:atom)) %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -20,12 +19,11 @@
 <div class="rotate">
 </div>
 <div id="main">
-<!-- HEADER -->
-	<div id="header">	
-		<div class="site-nav">
-			<ul>
-				<li class="style1"><a href="/" class="act"><span>Start</span></a></li>
-				<li class="style2 dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><span><%= t 'navi_about' %></span></a>
+  <div id="header">
+    <div class="site-nav">
+      <ul>
+        <li class="style1"><a href="/" class="act"><span>Start</span></a></li>
+        <li class="style2 dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><span><%= t 'navi_about' %></span></a>
           <ul class="dropdown-menu">
             <li>
               <%= link_to media_path,"tabindex"=>"-1" do %>
@@ -43,68 +41,53 @@
               <% end %>
             </li>
           </ul>
-				</li>
-				<li class="style3"><a href="/news"><span><%= t 'navi_news' %></span></a></li>
-				<li class="style5"><a href="/galeria"><span><%= t 'navi_gallery' %></span></a></li>
-				<li class="style4"><a href="/kontakt"><span><%= t 'navi_contact' %></span></a></li>
-			</ul>
-		</div>
-		<div class="logo">
-			<div class="napis">
-			Gdańsk<br>
-			Curling<br>
-			Club
-			</div>
-			<a href="/">
-				<%= image_tag("logo.gif") %>
-			</a>
-		</div>
-	</div>
-<!-- FB LIKE BOX i Google BOX-->
-  <div class="abtgbox">
-    <div>
-    <div class="g-person" data-width="273" data-href="//plus.google.com/103973029720134167563" data-layout="landscape" data-rel="author">
+        </li>
+        <li class="style3"><a href="/news"><span><%= t 'navi_news' %></span></a></li>
+        <li class="style5"><a href="/galeria"><span><%= t 'navi_gallery' %></span></a></li>
+        <li class="style4"><a href="/kontakt"><span><%= t 'navi_contact' %></span></a></li>
+      </ul>
     </div>
+    <div class="logo">
+      <div class="napis">
+        Gdańsk<br>
+        Curling<br>
+        Club
+      </div>
+      <a href="/">
+        <%= image_tag("logo.gif") %>
+      </a>
     </div>
   </div>
-  <div class="abtlikebox">
-   <div>
-     <iframe src="http://www.facebook.com/plugins/likebox.php?href=https://www.facebook.com/pages/Gda%C5%84sk-Curling-Club/158911320799558&amp;width=245&amp;colorscheme=light&amp;show_faces=true&amp;border_color=white&amp;connections=9&amp;stream=false&amp;header=false&amp;height=270" scrolling="no" frameborder="0" scrolling="no" style="border: white; overflow: hidden; height: 270px; width: 245px;background:#fafafa;"></iframe>
-   </div>
-  </div>
+  <div id="content">
+    <div class="wrapper">
+      <%= render 'layouts/notice' %>
 
-<!-- CONTENT -->
-	<div id="content">
-		<div class="wrapper">
-		
-			<%= render 'layouts/notice' %>
-
-			<div align="right" style="margin-top: 5px;">
+      <div align="right" style="margin-top: 5px;">
         <div style="display:inline;float:left;margin-left:8px;">
-          <%= link_to '/news.atom', :class => "btn btn-mini btn-warning" do %>
-            <i class="icon-rss"></i> <%= t 'navi_news' %>
+          <%= link_to '/news.atom', :class => "btn btn-xs btn-warning" do %>
+            <i class="fa fa-rss"></i> <%= t 'navi_news' %>
           <% end %>
           
           <% if current_user %>
-            <%= link_to '/dashboards.atom', :class => "btn btn-mini btn-warning" do %>
-              <i class="icon-rss"></i> Aktualności Klubowe
+            <%= link_to '/dashboards.atom', :class => "btn btn-xs btn-warning" do %>
+              <i class="fa fa-rss"></i> Aktualności Klubowe
             <% end %>
           <% end %>
           
-          <%= link_to '/rss_comments.atom', :class => "btn btn-mini btn-warning" do %>
-            <i class="icon-rss"></i> <%= t 'comments' %>
+          <%= link_to '/rss_comments.atom', :class => "btn btn-xs btn-warning" do %>
+            <i class="fa fa-rss"></i> <%= t 'comments' %>
           <% end %>
         </div>
         <% if I18n.locale == I18n.default_locale %>
-          <%= image_tag("flag_pl.png", :class=>"btn btn-mini disabled", :title => "Polski") %>
+          <%= image_tag("flag_pl.png", :class=>"btn btn-default btn-xs disabled", :title => "Polski") %>
           <%= link_to :locale=>'en' do %>
-            <%= image_tag("flag_en.png", :class=>"btn btn-mini", :title => "English") %>
+            <%= image_tag("flag_en.png", :class=>"btn btn-default btn-xs", :title => "English") %>
           <% end %>
         <% else %>
           <%= link_to :locale=>'pl' do %>
-            <%= image_tag("flag_pl.png", :class=>"btn btn-mini", :title => "Polski") %>
+            <%= image_tag("flag_pl.png", :class=>"btn btn-default btn-xs", :title => "Polski") %>
           <% end %>
-          <%= image_tag("flag_en.png", :class=>"btn btn-mini disabled", :title => "English") %>
+          <%= image_tag("flag_en.png", :class=>"btn btn-default btn-xs disabled", :title => "English") %>
         <% end %>
         <div style="display:inline-block;width:200px;margin-right:10px;">
           <%= t 'visits' %>: 
@@ -114,11 +97,10 @@
         </div>
         <%= t 'today' %>: <%= I18n.l Time.now, :format => "%A, %d %B, %Y" %>
       </div>
-			<br>
-			<div class="col-1" style="margin-top:-10px">
-        <!-- LOGIN USER SIDE MENU -->
-			  <% if current_user %>
-			    <div class="tabbable tabs-left adminpanel">
+      <br>
+      <div class="col-1" style="margin-top:-10px">
+        <% if current_user %>
+          <div class="tabbable tabs-left adminpanel">
             <ul class="nav nav-tabs">
               <% if current_page?("/") %>
                 <li class="active">
@@ -185,201 +167,206 @@
             </ul>
           </div>
         <% end %>
-        <!-- END LOGIN USER SIDE MENU -->
-				<br>
-				<div class="box">
-					<div class="border-top">
-						<div class="left-top-corner">
-							<div class="right-top-corner">
-								<div class="inner">
-								<h3>Newsletter:</h3>
-								<a class="info-box" data-placement="top" rel="tooltip" title="<%= t('tooltip.newsletter') %>">
-								<i class="icon-question-sign"></i>
-								</a>
-								<div class="center text-center">
-									
- 									<div class="input-prepend"><span class="add-on"><i class="icon-envelope-alt"></i></span>
-									<input type="text" id="" name="" placeholder="<%= t('newsletter.placeholder') %>">
-									</div>
-									<br />
-									<button class="btn btn-large btn-primary">
-								<%= t 'newsletter.submit' %> <i class="icon-exclamation"></i>
-									</button>	
-									<br><br	>
-								</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="box" style="display:none;">
-					<div class="border-top">
-						<div class="left-top-corner">
-							<div class="right-top-corner">
-								<div class="inner">
-									<h3>Kalendarz Imprez:</h3>
-									<ul class="list">
-										<li><b><a href="#">February 15, 2010</a></b>Sed ut perspiciatis unde omnis iste natus	dolorque laudantium aperiam.</li>
-										<li><b><a href="#">February 07, 2010</a></b>Eaque ipsa quae ab illo inventore veritatis explicabo emo enim.</li>
-										<li><b><a href="#">January 31, 2010</a></b>Gpsam voluptatem quia voluptas sit ed quia consequuntur magni dolores eos qui.</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<br>
-				<div class="box">
-					<div class="border-top">
-						<div class="left-top-corner">
-							<div class="right-top-corner">
-								<div class="inner">
-									<h3><%= t 'sponsors' %>:</h3>
-									<a class="info-box" data-placement="top" rel="tooltip" title="<%= t('tooltip.sponsors') %>">
-									<i class="icon-question-sign"></i>
-									</a>
-									<div id="slideshow">
-									<div>
-									<%= link_to("http://www.alebrowar.pl/pl/gosciszewo/", "target"=>"_blank") do %>
-										<%= image_tag("browar.png") %>
-									<% end %>
-									</div>
-									<div>
-									<%= link_to("http://www.media-mag.pl/", "target"=>"_blank") do %>
-										<%= image_tag("mm.jpg") %>
-									<% end %>
-									</div>
-									<div>
-									<%= link_to("http://www.gdansk.pl/", "target"=>"_blank") do %>
-										<%= image_tag("gdansk.jpg") %>
-									<% end %>
-									</div>
-									<div>
-									<%= link_to("http://www.gedanum.pl/", "target"=>"_blank") do %>
-										<%= image_tag("gedanum.jpg") %>
-									<% end %>
-									</div>
-									<div>
-									<%= link_to("http://www.gak.gda.pl/", "target"=>"_blank") do %>
-										<%= image_tag("gak.jpg") %>
-									<% end %>
-									</div>
-									<div>
-									<%= link_to("http://www.zpcbaltyk.pl/", "target"=>"_blank") do %>
-										<%= image_tag("baltyk.jpg") %>
-									<% end %>
-									</div>
-									<div>
-									<%= link_to("http://cukierniawz.pl/", "target"=>"_blank") do %>
-										<%= image_tag("cukiernia.jpg") %>
-									<% end %>
-									</div>
-									<div>
-									<%= link_to("http://www.malinowyogrod.pl/", "target"=>"_blank") do %>
-										<%= image_tag("malinowy.jpg") %>
-									<% end %>
-									</div>
-									<div>
-									<%= link_to("http://www.bzwbk.pl/", "target"=>"_blank") do %>
-										<%= image_tag("BZWBK.jpg") %>
-									<% end %>
-									</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<br>
-				<div class="box">
-					<div class="border-top">
-						<div class="left-top-corner">
-							<div class="right-top-corner">
-								<div class="inner">
-									<h3><%= t 'links' %>:</h3>
-									<a class="info-box" data-placement="top" rel="tooltip" title="<%= t('tooltip.links') %>">
-									<i class="icon-question-sign"></i>
-									</a>
-									<center>
-									<%= link_to("http://www.curlingcalendar.com/", "target"=>"_blank") do %>
-										<%= image_tag("cc.png") %>
-									<% end %>
-									<br /><br />
-									<%= link_to("http://www.pzc.org.pl/", "target"=>"_blank") do %>
-										<%= image_tag("PZC.jpg") %>
-									<% end %>
-									<br /><br />
-									<%= link_to("http://bracelet-by-sis.art-madam.pl/", "target"=>"_blank") do %>
-										<%= image_tag("bracelet-by-sis.jpg", "style"=>"width:90px;height:90px;",:class=>"img-rounded") %>
-									<% end %>
-									<br /><br />
-									</center>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<br>
-				<div class="box">
-					<div class="border-top">
-						<div class="left-top-corner">
-							<div class="right-top-corner">
-								<div class="inner">
-									<h3><%= t 'games' %>:</h3>
-									<a class="info-box" data-placement="top" rel="tooltip" title="<%= t('tooltip.games') %>">
-									<i class="icon-question-sign"></i>
-									</a>
-									<center>
-									<%= link_to("http://www.cbc.ca/littlemosque/curling/game.html", "target"=>"_blank") do %>
-										<%= image_tag("icon4.gif") %><br>Let's Currrrl
-									<% end %>
-									<br /><br />
-									<%= link_to("http://www.kongregate.com/games/hotshotcurling/curling-simulation", "target"=>"_blank") do %>
-										<%= image_tag("icon4.gif") %><br>Curling simulation
-									<% end %>
-									<br /><br />
-									<%= link_to("http://gryonline.focus.pl/game,play,139.html", "target"=>"_blank") do %>
-										<%= image_tag("icon4.gif") %><br>Virtual Curling
-									<% end %>
-									<br /><br />
-									</center>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-2">
-			<br>
-				<%= yield %>
-			</div>
-		</div>
-	</div>
-
-<!-- FOOTER -->
-	<div id="footer">
-		<div class="indent">
-			<div class="fleft">Copyright © 2013 gdanskcurlingclub.pl</div>
-			<div align="center" style="display:inline-block;width:55%;">
-			<% if current_user %>
-				<i class="icon-user"></i> <%= link_to current_user.username, edit_user_path(current_user.id) %> |
-				<i class="icon-off"></i> <%= link_to "Wyloguj", :logout %>
-			<% else %>
-				<i class="icon-signin"></i> 
-				 <%= link_to :login do %>
-				 	<%= t 'sign_in' %>
-				 <% end %> |
-				<i class="icon-edit"></i>
-				 <%= link_to new_user_path do %>
-				 	<%= t 'register' %>
-				 <% end %>
-			<% end %>
-			</div>
-			<div class="fright">
-			Projekt: <%= link_to "Miłosz Osiński" , "http://m1l05z.pl", "target"=>"_blank", :class => "rlink" %> 
-			</div>
-		</div>
-	</div>
+        <br>
+        <div class="box">
+          <div class="border-top">
+            <div class="left-top-corner">
+              <div class="right-top-corner">
+                <div class="inner">
+                  <h3><i class="glyphicon glyphicon-send"></i> Newsletter:</h3>
+                  <a class="info-box" data-placement="top" rel="tooltip" title="<%= t('tooltip.newsletter') %>">
+                    <i class="fa fa-question-circle"></i>
+                  </a>
+                  <div class="center text-center">
+                    <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                      <input type="text" class="form-control" placeholder="<%= t('newsletter.placeholder') %>">
+                    </div>
+                    <br />
+                    <button class="btn btn-large btn-primary">
+                      <%= t 'newsletter.submit' %> <i class="icon-exclamation"></i>
+                    </button>	
+                    <br><br>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="box" style="display:none;">
+          <div class="border-top">
+            <div class="left-top-corner">
+              <div class="right-top-corner">
+                <div class="inner">
+                  <h3>Kalendarz Imprez:</h3>
+                  <ul class="list">
+                    <li><b><a href="#">February 15, 2010</a></b>Sed ut perspiciatis unde omnis iste natus	dolorque laudantium aperiam.</li>
+                    <li><b><a href="#">February 07, 2010</a></b>Eaque ipsa quae ab illo inventore veritatis explicabo emo enim.</li>
+                    <li><b><a href="#">January 31, 2010</a></b>Gpsam voluptatem quia voluptas sit ed quia consequuntur magni dolores eos qui.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="box">
+          <div class="border-top">
+            <div class="left-top-corner">
+              <div class="right-top-corner">
+                <div class="inner">
+                  <h3><i class="glyphicon glyphicon-briefcase"></i> <%= t 'sponsors' %>:</h3>
+                  <a class="info-box" data-placement="top" rel="tooltip" title="<%= t('tooltip.sponsors') %>">
+                    <i class="fa fa-question-circle"></i>
+                  </a>
+                  <div id="slideshow">
+                    <div>
+                      <%= link_to("http://www.alebrowar.pl/pl/gosciszewo/", "target"=>"_blank") do %>
+                        <%= image_tag("browar.png") %>
+                      <% end %>
+                    </div>
+                    <div>
+                      <%= link_to("http://www.media-mag.pl/", "target"=>"_blank") do %>
+                        <%= image_tag("mm.jpg") %>
+                      <% end %>
+                    </div>
+                    <div>
+                      <%= link_to("http://www.gdansk.pl/", "target"=>"_blank") do %>
+                        <%= image_tag("gdansk.jpg") %>
+                      <% end %>
+                    </div>
+                    <div>
+                      <%= link_to("http://www.gedanum.pl/", "target"=>"_blank") do %>
+                        <%= image_tag("gedanum.jpg") %>
+                      <% end %>
+                    </div>
+                    <div>
+                      <%= link_to("http://www.gak.gda.pl/", "target"=>"_blank") do %>
+                        <%= image_tag("gak.jpg") %>
+                      <% end %>
+                    </div>
+                    <div style="margin-left:-20px">
+                      <%= link_to("http://www.zpcbaltyk.pl/", "target"=>"_blank") do %>
+                        <%= image_tag("baltyk.jpg") %>
+                      <% end %>
+                    </div>
+                    <div>
+                      <%= link_to("http://cukierniawz.pl/", "target"=>"_blank") do %>
+                        <%= image_tag("cukiernia.jpg") %>
+                      <% end %>
+                    </div>
+                    <div>
+                      <%= link_to("http://www.malinowyogrod.pl/", "target"=>"_blank") do %>
+                        <%= image_tag("malinowy.jpg") %>
+                      <% end %>
+                    </div>
+                    <div style="margin-left:-15px">
+                      <%= link_to("http://www.bzwbk.pl/", "target"=>"_blank") do %>
+                        <%= image_tag("BZWBK.jpg") %>
+                      <% end %>
+                    </div>
+                    <div>
+                      <%= link_to("http://vipro.pl/", "target"=>"_blank") do %>
+                        <%= image_tag("vipro.png") %>
+                      <% end %>
+                    </div>
+                    <div>
+                      <%= link_to("http://www.radiogdansk.pl/", "target"=>"_blank") do %>
+                        <%= image_tag("RG.jpg") %>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="box">
+          <div class="border-top">
+            <div class="left-top-corner">
+              <div class="right-top-corner">
+                <div class="inner">
+                  <h3><i class="fa fa-external-link-square"></i> <%= t 'links' %>:</h3>
+                  <a class="info-box" data-placement="top" rel="tooltip" title="<%= t('tooltip.links') %>">
+                    <i class="fa fa-question-circle"></i>
+                  </a>
+                  <center>
+                    <%= link_to("http://www.curlingcalendar.com/", "target"=>"_blank") do %>
+                      <%= image_tag("cc.png") %>
+                    <% end %>
+                    <br /><br />
+                    <%= link_to("http://www.pzc.org.pl/", "target"=>"_blank") do %>
+                      <%= image_tag("PZC.jpg") %>
+                    <% end %>
+                    <br /><br />
+                    <%= link_to("http://bracelet-by-sis.art-madam.pl/", "target"=>"_blank") do %>
+                      <%= image_tag("bracelet-by-sis.jpg", "style"=>"width:90px;height:90px;",:class=>"img-rounded") %>
+                    <% end %>
+                    <br /><br />
+                  </center>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="box">
+          <div class="border-top">
+            <div class="left-top-corner">
+              <div class="right-top-corner">
+                <div class="inner">
+                  <h3><i class="fa fa fa-gamepad"></i> <%= t 'games' %>:</h3>
+                  <a class="info-box" data-placement="top" rel="tooltip" title="<%= t('tooltip.games') %>">
+                    <i class="fa fa-question-circle"></i>
+                  </a>
+                  <center>
+                    <%= link_to("http://www.cbc.ca/littlemosque/curling/game.html", "target"=>"_blank") do %>
+                      <%= image_tag("icon4.gif") %><br>Let's Currrrl
+                    <% end %>
+                    <br /><br />
+                    <%= link_to("http://www.kongregate.com/games/hotshotcurling/curling-simulation", "target"=>"_blank") do %>
+                      <%= image_tag("icon4.gif") %><br>Curling simulation
+                    <% end %>
+                    <br /><br />
+                    <%= link_to("http://gryonline.focus.pl/game,play,139.html", "target"=>"_blank") do %>
+                      <%= image_tag("icon4.gif") %><br>Virtual Curling
+                    <% end %>
+                    <br /><br />
+                  </center>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-2">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+  <div id="footer">
+    <div class="indent">
+      <div class="fleft">Copyright © 2013 gdanskcurlingclub.pl</div>
+      <div align="center" style="display:inline-block;width:55%;">
+        <% if current_user %>
+          <i class="fa fa-user"></i> <%= link_to current_user.username, edit_user_path(current_user.id) %> |
+          <i class="fa fa-sign-out"></i> <%= link_to "Wyloguj", :logout %>
+        <% else %>
+          <i class="fa fa-sign-in"></i>
+          <%= link_to :login do %>
+            <%= t 'sign_in' %>
+          <% end %> |
+          <i class="fa fa-edit"></i>
+          <%= link_to new_user_path do %>
+            <%= t 'register' %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="fright">
+        Projekt: <%= link_to "Miłosz Osiński" , "http://m1l05z.pl", "target"=>"_blank", :class => "rlink" %> 
+      </div>
+    </div>
+  </div>
 </div>
 <div class="circle">
 </div>

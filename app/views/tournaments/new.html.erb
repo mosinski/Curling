@@ -1,6 +1,6 @@
 <h3><i class="icon-trophy"></i> Nowy Turniej Klubowy</h3>
 
-<%= form_for @tournament, :html => { :multipart => true } do |f| %>
+<%= form_for @tournament, :html => { :multipart => true, class: "form-horizontal" } do |f| %>
 <%= render partial: 'form', locals: { f: f } %>
 <br />
 <div class="actions">

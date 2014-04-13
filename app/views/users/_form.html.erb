@@ -13,62 +13,62 @@
   </div>
 <% end %>
 
-<div class="control-group">
-  <%= f.label :username, class: "control-label" %>
-  <div class="controls">
-    <div class="field input-prepend">
-      <span class="add-on"><i class="icon-user"></i></span>
-      <%= f.text_field :username, :placeholder => "jkowalski" %>
+<div class="form-group">
+  <%= f.label :username, class: "col-sm-4 control-label" %>
+  <div class="col-sm-8">
+    <div class="input-group col-xs-8">
+      <span class="input-group-addon"><i class="fa fa-user"></i></span>
+      <%= f.text_field :username, placeholder: "jkowalski", class: "form-control" %>
     </div>
   </div>
 </div>
 
-<div class="control-group">
-  <%= f.label :name_surname, class: "control-label" %>
-  <div class="controls">
-    <div class="field input-prepend">
-      <span class="add-on"><i class="icon-user"></i></span>
-      <%= f.text_field :name_surname, :placeholder => "Jan Kowalski" %>
+<div class="form-group">
+  <%= f.label :name_surname, class: "col-sm-4 control-label" %>
+  <div class="col-sm-8">
+    <div class="input-group col-xs-8">
+      <span class="input-group-addon"><i class="fa fa-user"></i></span>
+      <%= f.text_field :name_surname, placeholder: "Jan Kowalski", class: "form-control" %>
     </div>
   </div>
 </div>
 
-<div class="control-group">
-  <%= f.label :born, class: "control-label" %>
-  <div class="controls">
-    <div class="field input-prepend">
-      <span class="add-on"><i class="icon-calendar"></i></span>
-      <%= f.date_select :born, :order => [:day, :month, :year], :start_year => 1920, :end_year => Time.now.year, "style" => "width:50px"  %>
+<div class="form-group">
+  <%= f.label :born, class: "col-sm-4 control-label" %>
+  <div class="col-sm-8">
+    <div class="input-group">
+      <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+      <%= f.date_select :born, order: [:day, :month, :year], start_year: 1920, end_year: Time.now.year, class: "form-control", "style" => "width:50px"  %>
     </div>
   </div>
 </div>
 
-<div class="control-group">
-  <%= f.label :email, class: "control-label" %>
-  <div class="controls">
-    <div class="field input-prepend">
-      <span class="add-on">@</span>
-      <%= f.text_field :email, :placeholder => "jkowalski@gmail.com" %>
+<div class="form-group">
+  <%= f.label :email, class: "col-sm-4 control-label" %>
+  <div class="col-sm-8">
+    <div class="input-group col-xs-8">
+      <span class="input-group-addon">@</span>
+      <%= f.text_field :email, placeholder: "jkowalski@gmail.com", class: "form-control" %>
     </div>
   </div>
 </div>
 
-<div class="control-group">
-  <%= f.label :pesel, class: "control-label" %>
-  <div class="controls">
-    <div class="field input-prepend">
-      <span class="add-on"><i class="icon-map-marker"></i></span>
-      <%= f.number_field :pesel, :placeholder => "88062542184" %>
+<div class="form-group">
+  <%= f.label :pesel, class: "col-sm-4 control-label" %>
+  <div class="col-sm-8">
+    <div class="input-group col-xs-8">
+      <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+      <%= f.number_field :pesel, placeholder: "88062542184", class: "form-control" %>
     </div>
   </div>
 </div>
 
-<div class="control-group">
-  <%= f.label :password, class: "control-label" %>
-  <div class="controls">
-    <div class="field input-prepend">
-      <span class="add-on"><i class="icon-lock"></i></span>
-      <%= f.password_field :password, :placeholder => "******" %>
+<div class="form-group">
+  <%= f.label :password, class: "col-sm-4 control-label" %>
+  <div class="col-sm-8">
+    <div class="input-group col-xs-8">
+      <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+      <%= f.password_field :password, placeholder: "******", class: "form-control" %>
     </div>
   </div>
 </div>
@@ -77,12 +77,12 @@
   <span id="password_time"></span>
 </div>
 
-<div class="control-group">
-  <%= f.label :password_confirmation, class: "control-label" %>
-  <div class="controls">
-    <div class="field input-prepend">
-      <span class="add-on"><i class="icon-lock"></i></span>
-      <%= f.password_field :password_confirmation, :placeholder => "******" %>
+<div class="form-group">
+  <%= f.label :password_confirmation, class: "col-sm-4 control-label" %>
+  <div class="col-sm-8">
+    <div class="input-group col-xs-8">
+      <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+      <%= f.password_field :password_confirmation, placeholder: "******", class: "form-control" %>
     </div>
   </div>
 </div>

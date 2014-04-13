@@ -137,6 +137,8 @@ en:
   newsletter:
     placeholder: "your@email.com"
     submit: "Subscribe"
+  tournament:
+    left: "Do turnieju pozostało:"
   errors: &errors
     format: ! '%{attribute} %{message}'
     messages:

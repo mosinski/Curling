@@ -112,6 +112,8 @@ pl:
   newsletter:
     placeholder: "twój@email.pl"
     submit: "Zapisz się Teraz"
+  tournament:
+    left: "Do turnieju pozostało:"
   will_paginate:
     previous_label: "«"
     next_label: "»"

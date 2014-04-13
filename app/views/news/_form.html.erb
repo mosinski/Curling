@@ -14,26 +14,28 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.text_field :tytul, :placeholder => "Tytuł Aktualności  Ogólnej", "style" => "width:97%" %>
+  <div class="form-group">
+    <%= f.text_field :tytul, :placeholder => "Tytuł Aktualności Ogólnej", "style" => "width:97%", class: "form-control" %>
   </div>
-<br />
+  <br />
   <div class="field">
     <%= f.label "Treść Aktualności Ogólnej w języku Polskim:", "style"=>"font-weight:bold" %>
     <%= f.text_area :tekst_pl, :class => "tinymce", :rows => 10, :cols => 12 %>
   </div>
-<br />
+  <br />
   <div class="field">
     <%= f.label "Treść Aktualności Ogólnej w języku Angielskim:", "style"=>"font-weight:bold" %>
     <%= f.text_area :tekst_en, :class => "tinymce", :rows => 10, :cols => 12 %>
   </div>
-<br />
-<div class="controls">
-	<div class="field input-prepend">
-    	    	<%= f.label "Termin Aktualności Ogólnej", "style"=>"font-weight:bold" %>
-  		<span class="add-on"><i class="icon-calendar"></i></span>
-    		<%= f.date_select :termin, :order => [:day, :month, :year], :start_year => 2000, :end_year => Time.now.year+1 %>
-	</div>
+  <br />
+  <div class="form-group">
+    <%= f.label "Termin Aktualności Ogólnej", "style"=>"font-weight:bold", class: "col-sm-4 control-label" %>
+    <div class="col-sm-8">
+      <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+        <%= f.date_select :termin, :order => [:day, :month, :year], :start_year => 2000, :end_year => Time.now.year+1, class: "form-control" %>
+      </div>
+    </div>
 </div>
 
 <%= tinymce :language => "pl", :entity_encoding => "raw" %>

@@ -18,6 +18,10 @@
 //= require pwdstr/pwdstr
 //= require 3dlinks
 //= require scrolltopcontrol
+//= require whcookies
+//= require base
+//= require flipclock
+//= require dailycounter
 //= require share/share.min
 
 jQuery(document).ready(function() {

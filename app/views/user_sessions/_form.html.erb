@@ -15,39 +15,43 @@
     </div>
   <% end %>
   <br />
-  <div class="control-group">
-    <%= f.label :username, class: "control-label" %>
-    <div class="controls">
-      <div class="field input-prepend">
-        <span class="add-on">
-          <i class="icon-user"></i>
+  <div class="form-group">
+    <%= f.label :username, class: "col-sm-4 control-label" %>
+    <div class="col-sm-8">
+      <div class="input-group col-xs-8">
+        <span class="input-group-addon">
+          <i class="fa fa-user"></i>
         </span>
-        <%= f.text_field :username %>
+        <%= f.text_field :username, class: "form-control" %>
       </div>
     </div>
   </div>
 
-  <div class="control-group">
-    <%= f.label :password, class: "control-label" %>
-    <div class="controls">
-      <div class="field input-prepend">
-        <span class="add-on">
-          <i class="icon-lock"></i>
+  <div class="form-group">
+    <%= f.label :password, class: "col-sm-4 control-label" %>
+    <div class="col-sm-8">
+      <div class="input-group col-xs-8">
+        <span class="input-group-addon">
+          <i class="fa fa-lock"></i>
         </span>
-        <%= f.password_field :password %>
+        <%= f.password_field :password, class: "form-control" %>
       </div>
     </div>
   </div>
-  <br />
-  <div class="control-group">
-    <div class="controls">
+
+  <div class="form-group">
+    <div class="col-sm-offset-4 col-sm-8">
       <label class="checkbox">
         <%= f.check_box :remember_me, :title => 'Zapamiętaj Mnie', :id => 'zapamietaj_mnie' %> 
         <%= f.label :remember_me %>
       </label>
+    </div>
+  </div>
 
+  <div class="form-group">
+    <div class="col-sm-offset-4 col-sm-8">
       <%= button_tag(type: "submit", class: "btn btn-primary") do %>
-        <i class="icon-ok"></i> <%= f.label :login, "style"=>"display:inline", "onclick" => "document.getElementById('new_user_session').submit()" %>
+        <i class="glyphicon glyphicon-check"></i> <%= f.label :login, "style"=>"display:inline", "onclick" => "document.getElementById('new_user_session').submit()" %>
       <% end %>
     </div>
   </div>
