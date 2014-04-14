@@ -3,6 +3,7 @@
 <head>
   <title>Gdańsk Curling Club</title>
   <link href="/stone.png" rel="icon" type="image/x-icon">
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
   <%= stylesheet_link_tag "application", :media => "all" %>
   <%= auto_discovery_link_tag(:atom, news_path(:atom)) %>
   <%= javascript_include_tag "application" %>
@@ -16,16 +17,6 @@
 </head>
 
 <body>
-<div class="abtgbox">
-  <div>
-    <div class="g-person" data-width="273" data-href="//plus.google.com/103973029720134167563" data-layout="landscape" data-rel="author"></div>
-  </div>
-</div>
-<div class="abtlikebox">
-  <div>
-    <iframe src="http://www.facebook.com/plugins/likebox.php?href=https://www.facebook.com/pages/Gda%C5%84sk-Curling-Club/158911320799558&amp;width=245&amp;colorscheme=light&amp;show_faces=true&amp;border_color=white&amp;connections=9&amp;stream=false&amp;header=false&amp;height=270" scrolling="no" frameborder="0" scrolling="no" style="border: white; overflow: hidden; height: 270px; width: 245px;background:#fafafa;"></iframe>
-  </div>
-</div>
 <div class="rotate">
 </div>
 <div id="main">
@@ -41,7 +32,7 @@
               <% end %>
             </li>
             <li>
-              <a tabindex="-1" data-toggle="modal" href="#dojazd">
+              <a data-toggle="modal" href="#dojazd">
                 <%= t 'navi_access' %>
               </a>
             </li>
@@ -66,6 +57,18 @@
       <a href="/">
         <%= image_tag("logo.gif") %>
       </a>
+    </div>
+  </div>
+  <!-- FB LIKE BOX i Google BOX-->
+  <div class="abtgbox">
+    <div>
+      <div class="g-person" data-width="273" data-href="//plus.google.com/103973029720134167563" data-layout="landscape" data-rel="author">
+      </div>
+    </div>
+  </div>
+  <div class="abtlikebox">
+    <div>
+      <iframe src="http://www.facebook.com/plugins/likebox.php?href=https://www.facebook.com/pages/Gda%C5%84sk-Curling-Club/158911320799558&amp;width=245&amp;colorscheme=light&amp;show_faces=true&amp;border_color=white&amp;connections=9&amp;stream=false&amp;header=false&amp;height=270" scrolling="no" frameborder="0" scrolling="no" style="border: white; overflow: hidden; height: 270px; width: 245px;background:#fafafa;"></iframe>
     </div>
   </div>
   <div id="content">
@@ -380,32 +383,19 @@
 </div>
 <div class="circle">
 </div>
-<div id="dojazd" class="modal fade">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-body">
-        <a class="close" data-dismiss="modal"><i class="fa fa-times-circle"></i></a>
-        <div class="row-fluid">
-          <div class="col-md-8">
-            <iframe width="350" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.pl/maps?f=q&amp;source=s_q&amp;hl=pl&amp;geocode=&amp;q=Plac+Zebra%C5%84+ludowych+Gda%C5%84sk&amp;sll=54.361087,18.690027&amp;sspn=0.21885,0.631714&amp;t=h&amp;ie=UTF8&amp;hq=&amp;hnear=Plac+Zebra%C5%84+Ludowych,+Gda%C5%84sk,+pomorskie&amp;ll=54.361282,18.642556&amp;spn=0.006839,0.019741&amp;z=14&amp;output=embed"></iframe>
-          </div>
-          <div class="col-md-4">
-            <h2><i class="fa fa-map-marker"></i></h2>
-            <address>
-              <strong>Gdańsk Curling Club</strong><br>
-              Plac Zebrań Ludowych<br>
-              (Lodowisko Miejskie)<br>
-              80-309 Gdańsk<br>
-              <abbr title="Phone"><i class="fa fa-phone"></i>:</abbr> 602-230-045
-            </address>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render "shared/contact_modal" %>
+<%= render "shared/turnament_modal" %>
 <script type="text/javascript" src="https://apis.google.com/js/plusone.js">
   {lang: 'pl'}
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $('#turnament').modal('show')
+  $("address#map").each(function(){
+    var embed ="<iframe width='100%' height='350' frameborder='0' scrolling='no'  marginheight='0' marginwidth='0' src='https://maps.google.com/maps?&amp;q="+ encodeURIComponent( $(this).text() ) +"&amp;output=embed&amp;z=15&amp;iwloc=near'></iframe>";
+    $(this).html(embed);
+    });
+  });
 </script>
 </body>
 </html>

@@ -150,12 +150,12 @@ h3 {font-size:20px;line-height:1.2em;text-transform:uppercase;color:#092972;marg
 h4 {font-size:1em;color:#092972;margin-bottom:25px}
 /* BOXES */
 .box {
-    background: none repeat scroll 0% 0% rgb(255, 255, 255);
-    width: 100%;
-    border-width: 2px;
-    border-color: rgb(250, 248, 255);
-    border-style: none solid solid;
-    border-radius: 15px 15px 15px 15px;
+  background: none repeat scroll 0% 0% rgb(255, 255, 255);
+  width: 100%;
+  border-width: 2px;
+  border-color: rgb(250, 248, 255);
+  border-style: none solid solid;
+  border-radius: 15px 15px 15px 15px;
 }
 .box .border-top {background:url(border-top.gif) repeat-x left top}
 .box .left-top-corner {background:url(left-top-corner.gif) no-repeat left top}
@@ -178,13 +178,13 @@ h4 {font-size:1em;color:#092972;margin-bottom:25px}
 #footer .indent {padding:37px 102px 0 30px}
 #footer img {position:relative;top:-4px}
 .napis {
-display: inline-block;
-font-family: Conv_MarcellusSC-Regular;
-font-size: 45px;
-line-height: 40px;
-margin-top: 10px;
-color: rgb(9, 41, 114);
-text-shadow: -1px 0px black, 0px 1px white, 1px 0px black, 0px -1px black;
+  display: inline-block;
+  font-family: Conv_MarcellusSC-Regular;
+  font-size: 45px;
+  line-height: 40px;
+  margin-top: 10px;
+  color: rgb(9, 41, 114);
+  text-shadow: -1px 0px black, 0px 1px white, 1px 0px black, 0px -1px black;
 }
 .dropup,
 .dropdown {
@@ -515,7 +515,7 @@ text-shadow: -1px 0px black, 0px 1px white, 1px 0px black, 0px -1px black;
   float: right;
   height: 270px;
   padding: 0 5px 0 46px;
-  width: 245px;
+  width: 296px;
   z-index:  99998;
   position:fixed;
   right:-250px;
@@ -524,7 +524,7 @@ text-shadow: -1px 0px black, 0px 1px white, 1px 0px black, 0px -1px black;
 }
 
 .abtlikebox:hover{
-  right:0px;
+  right:5px;
   transition: 1s;
 }
 
@@ -558,10 +558,10 @@ text-shadow: -1px 0px black, 0px 1px white, 1px 0px black, 0px -1px black;
   float: right;
   height: 130px;
   padding: 0 5px 0 46px;
-  width: 273px;
+  width: 313px;
   z-index:  99999;
   position:fixed;
-  right:-278px;
+  right:-267px;
   top: 8%;
   transition: 1s;
 }
