@@ -10,8 +10,8 @@
       <% if current_user && current_user.role == "admin" %>
          <%= check_box_tag "images[]", zdjecie.id, false, :class => "image_check_del" %>
 
-         <%= link_to zdjecie, method: :delete, data: { confirm: "Czy napewno chcesz usunąć zdjecie '#{zdjecie.nazwa}'?" }, :class => "btn btn-mini image_del" do %>
-            <i class="fa fa-trash"></i>
+         <%= link_to zdjecie, method: :delete, data: { confirm: "Czy napewno chcesz usunąć zdjecie '#{zdjecie.nazwa}'?" }, :class => "btn btn-xs image_del" do %>
+            <i class="fa fa-trash-o"></i>
          <% end %>
       <% end %>
     </div>
@@ -48,7 +48,7 @@
 <div id="image_upload" class="modal hide fade">
   <div class="modal-header">
     <a class="close" data-dismiss="modal">
-      <i class="icon-remove-circle"></i>
+      <i class="fa fa-times-circle"></i>
     </a>
     <h3>Dodawanie Zdjęcia do Albumu</h3>
   </div>

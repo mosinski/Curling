@@ -29,19 +29,19 @@
         <br />
 
         <div class="dashboard_data">
-          <i class="fa fa-calendar"></i> <%= t 'public' %>: <%= news.created_at.strftime("%d.%m.%Y %H:%M") %> <i class="fa fa-comments-o"></i> <%= news.comment_threads.count %>  <i class="fa fa-picture"></i> <%= (@liczba_zdjec.count if @album != nil)||"0" %>
+          <i class="fa fa-calendar"></i> <%= t 'public' %>: <%= news.created_at.strftime("%d.%m.%Y %H:%M") %> <i class="fa fa-comments-o"></i> <%= news.comment_threads.count %>  <i class="fa fa-picture-o"></i> <%= (@liczba_zdjec.count if @album != nil)||"0" %>
         </div>
 
         <div style="float:right;">
-          <%= link_to news, :class => "btn btn-sm" do %>
+          <%= link_to news, :class => "btn btn-sm btn-default" do %>
             <%= t 'read_more' %> »
           <% end %>
           <% if current_user && current_user.role == "admin" %>
-            <%= link_to edit_news_path(news), :class => "btn btn-sm btn-inverse" do %>
+            <%= link_to edit_news_path(news), :class => "btn btn-sm btn-primary" do %>
               <i class="fa fa-edit"></i> Edytuj
             <% end %>
             <%= link_to news, :confirm => "Czy napewno chcesz usunąć aktualność ogólną '#{news.tytul}' wraz z wszystkimi komentarzami?", :method => :delete, :class => "btn btn-small btn-danger" do %>
-              <i class="fa fa-trash"></i> Usuń
+              <i class="fa fa-trash-o"></i> Usuń
             <% end %>
           <% end %>
         </div>
