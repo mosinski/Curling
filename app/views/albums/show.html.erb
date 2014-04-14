@@ -1,4 +1,4 @@
-<h3><i class="icon-book"></i> Album <%= @album.tytul %></h3>
+<h3><i class="fa fa-book"></i> Album <%= @album.tytul %></h3>
 
 <%= form_tag destroy_multiple_images_path, method: :delete do %>
   <% @zdjecia.each do |zdjecie| %>
@@ -10,7 +10,7 @@
       <% if current_user && current_user.role == "admin" %>
          <%= check_box_tag "images[]", zdjecie.id, false, :class => "image_check_del" %>
 
-         <%= link_to zdjecie, method: :delete, data: { confirm: "Czy napewno chcesz usunąć zdjecie '#{zdjecie.nazwa}'?" }, :class => "btn btn-xs image_del" do %>
+         <%= link_to zdjecie, method: :delete, data: { confirm: "Czy napewno chcesz usunąć zdjecie '#{zdjecie.nazwa}'?" }, :class => "btn btn-xs btn-default image_del" do %>
             <i class="fa fa-trash-o"></i>
          <% end %>
       <% end %>
