@@ -19,6 +19,7 @@
 //= require 3dlinks
 //= require scrolltopcontrol
 //= require whcookies
+//= reguire cookies
 //= require base
 //= require flipclock
 //= require dailycounter
@@ -58,17 +59,16 @@ function (){
 
 $(document).ready(function() {
   $(".fancybox")
-     .attr('rel', 'gallery')
-     .fancybox({
-	beforeShow: function () {
-	/* Add watermark */
-	  $('<div class="watermark"></div>')
-	  .bind("contextmenu", function (e) {
-		return false; /* Disables right click */
-	  })
-	.prependTo( $.fancybox.inner );   
-	}
-     });
+  .attr('rel', 'gallery')
+  .fancybox({
+    beforeShow: function () {
+      $('<div class="watermark"></div>')
+      .bind("contextmenu", function (e) {
+        return false;
+      })
+      .prependTo($.fancybox.inner);
+    }
+  });
 });
 
 jQuery(document).ready(function() {
