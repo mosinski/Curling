@@ -11,7 +11,7 @@
 
   <meta property="fb:app_id" content="239206996247022" />
   <meta property="og:site_name" content="Gdańsk Curling Club"/>
-  <meta property="og:image" content="<%= root_url.split("/?")[0] + asset_path('logo.gif') %>" />
+  <meta property="og:image" content="<%= root_url.split("/?")[0] + asset_path('logo_big.jpg') %>" />
   <meta property="og:type" content="website" />
   <%= yield :facebook %>
 </head>
@@ -393,8 +393,8 @@ $(document).ready(function(){
   if ($.cookie('hide_tournament') == undefined) {
     $('#tournament').modal('show')
   }
-  $('#tournament input[type=checkbox]').click(function() {
-    if (this.checked && $.cookie('hide_tournament') != 'yes'){
+  $('#tournament input[type=checkbox],#tournament label').click(function() {
+    if ($('#tournament input[type=checkbox]').is(':checked') && $.cookie('hide_tournament') != 'yes'){
       $.cookie('hide_tournament', 'yes', {expires: 365 });
     } else if ($.cookie('hide_tournament') == 'yes') {
       $.cookie('hide_tournament', null);
