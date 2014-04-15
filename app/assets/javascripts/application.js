@@ -16,10 +16,10 @@
 //= require bootstrap/
 //= require fancybox/jquery.fancybox
 //= require pwdstr/pwdstr
+//= reguire cookies/cookies
 //= require 3dlinks
 //= require scrolltopcontrol
 //= require whcookies
-//= reguire cookies
 //= require base
 //= require flipclock
 //= require dailycounter

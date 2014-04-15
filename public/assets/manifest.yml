@@ -139,6 +139,8 @@ bootstrap/bootstrap-popover.js: bootstrap/bootstrap-popover-dd66af3c59c0a228e3a9
 bootstrap/bootstrap-popover/index.js: bootstrap/bootstrap-popover-dd66af3c59c0a228e3a9742b6296ff8a.js
 bootstrap/bootstrap-tooltip.js: bootstrap/bootstrap-tooltip-de1aff31ae77e428ad19dae2b49d8d9a.js
 bootstrap/bootstrap-tooltip/index.js: bootstrap/bootstrap-tooltip-de1aff31ae77e428ad19dae2b49d8d9a.js
+cookies/cookies.js: cookies/cookies-ef933fb9338c85725519e33d3385a86b.js
+cookies/cookies/index.js: cookies/cookies-ef933fb9338c85725519e33d3385a86b.js
 fancybox/jquery.fancybox.js: fancybox/jquery.fancybox-10ae63e4837fa916e54f654f97a11f41.js
 fancybox/jquery/index.fancybox.js: fancybox/jquery.fancybox-10ae63e4837fa916e54f654f97a11f41.js
 pwdstr/pwdstr.js: pwdstr/pwdstr-9d56d0e321440ccc934db6fed4c5fd5c.js
@@ -157,7 +159,7 @@ fontawesome-webfont.ttf: fontawesome-webfont-4d228e1a1ddd570d6380dcd9b1a11d5c.tt
 fontawesome-webfont/index.ttf: fontawesome-webfont-4d228e1a1ddd570d6380dcd9b1a11d5c.ttf
 fontawesome-webfont.woff: fontawesome-webfont-6cfa562c51325bb1df40b64732dc8699.woff
 fontawesome-webfont/index.woff: fontawesome-webfont-6cfa562c51325bb1df40b64732dc8699.woff
-tinymce.js: tinymce-c21f3a463b2d4fbc80f1d0e6d345665d.js
+tinymce.js: tinymce-003fe36e80ba581fcda296d88f7c8fb2.js
 tinymce/langs/readme.md: tinymce/langs/readme.md
 tinymce/langs/readme/index.md: tinymce/langs/readme/index.md
 tinymce/license.txt: tinymce/license.txt

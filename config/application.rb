@@ -18,6 +18,7 @@ module Osp
     config.assets.precompile += ["redactor-rails/*"]
     config.assets.precompile += ["bootstrap/*"]
     config.assets.precompile += ["fancybox/*"]
+    config.assets.precompile += ["cookies/*"]
     config.assets.precompile += ["pwdstr/*"]
     config.assets.precompile += ["share/*"]
     config.assets.enabled = true
