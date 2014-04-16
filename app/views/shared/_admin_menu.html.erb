@@ -1,0 +1,68 @@
+<% if current_user %>
+  <div class="tabbable tabs-left adminpanel">
+    <ul class="nav nav-tabs">
+      <% if current_page?("/") %>
+        <li class="active">
+      <% else %>
+        <li>
+      <% end %>
+      <a href="/"><i class="fa fa-home"></i> Start</a>
+      </li>
+
+      <% if current_page?(user_messages_path(current_user)) %>
+        <li class="active">
+      <% else %>
+        <li>
+      <% end %>
+      <%= link_to user_messages_path(current_user) do %>
+      <i class="fa fa-inbox"></i> Skrzynka 
+      <% if current_user.unread_messages? %>
+        (<%= current_user.unread_message_count %>)
+        <% end %>
+      <% end %>
+      </li>
+
+      <% if current_page?(user_messages_path(current_user, :mailbox => :sent)) %>
+        <li class="active">
+      <% else %>
+        <li>
+      <% end %>
+      <%= link_to user_messages_path(current_user, :mailbox => :sent) do %>
+        <i class="fa fa-envelope"></i> Wysłane
+      <% end %>
+      </li>
+
+      <% if current_page?("/users") %>
+        <li class="active">
+      <% else %>
+        <li>
+      <% end %>
+      <%= link_to users_path do %>
+        <i class="fa fa-group"></i> Użytkownicy
+      <% end %>
+      </li>
+
+      <% if current_page?(dashboards_path) %>
+        <li class="active">
+      <% else %>
+        <li>
+      <% end %>
+      <%= link_to dashboards_path do %>
+        <i class="fa fa-info-circle"></i> Inf. Klubowe
+      <% end %>
+      </li>
+
+      <% if current_user.role == "admin" %>
+        <% if current_page?("/admin_panel") %>
+          <li class="active">
+        <% else %>
+          <li>
+        <% end %>
+        <%= link_to "/admin_panel" do %>
+          <i class="fa fa-wrench"></i> Ustawienia
+        <% end %>
+      <% end %>
+      </li>
+    </ul>
+  </div>
+<% end %>

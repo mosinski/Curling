@@ -1,13 +1,13 @@
-<h3><i class="icon-trophy"></i> <%= @tournament.nazwa %> (<%= distance_of_time_in_words(@tournament.termin_start, @tournament.termin_end+1) %>)</h3>
+<h3><i class="fa fa-trophy"></i> <%= @tournament.nazwa %> (<%= distance_of_time_in_words(@tournament.termin_start, @tournament.termin_end+1) %>)</h3>
 
 <p>
   <div style="display:inline-block">
-    <i class="icon-flag-alt"></i> <b>Start:</b>
+    <i class="fa fa-flag-o"></i> <b>Start:</b>
     <%=I18n.l @tournament.termin_start, :format => "%d %B %Y" %>
   </div>
 
   <div style="display:inline-block;float:right;">
-    <i class="icon-flag-checkered"></i> <b>Koniec:</b>
+    <i class="fa fa-flag-checkered"></i> <b>Koniec:</b>
     <%=I18n.l @tournament.termin_end, :format => "%d %B %Y" %>
   </div>
 </p>
@@ -23,7 +23,7 @@
 <br>
 
 <% if current_user && current_user.role=="admin" %>
-<%= link_to edit_tournament_path(@tournament),:class => "btn btn-small btn-primary" do %>
-	<i class="icon-share-alt"></i> Edytuj Turniej Klubowy
-<% end %>
+  <%= link_to edit_tournament_path(@tournament),:class => "btn btn-sm btn-primary" do %>
+    <i class="icon-share-alt"></i> Edytuj Turniej Klubowy
+  <% end %>
 <% end %>
