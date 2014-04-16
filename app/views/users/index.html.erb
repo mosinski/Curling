@@ -1,9 +1,9 @@
-<h3><i class="icon-user"></i> Lista Użytkowników</h3>
+<h3><i class="fa fa-user"></i> Lista Użytkowników</h3>
 
 <%= form_tag request.path, :method => 'get', :id=>"custom-search-form", :class=>"form-search form-horizontal pull-right" do %>
   <div class="input-append">
-  	<%= text_field_tag :search, params[:search], :class=>"search-query", :placeholder=>"Szukaj.." %>
-	<button type="submit" class="btn"><i class="icon-search"></i></button>
+    <%= text_field_tag :search, params[:search], :class=>"search-query", :placeholder=>"Szukaj.." %>
+    <button type="submit" class="btn"><i class="fa fa-search"></i></button>
   </div>
 <% end %>
 
@@ -11,59 +11,52 @@
   <br><br>
   <pre>Brak Użytkowników ..</pre>
 <% else %>
+  <table class="table table-hover">
+    <% @users.each do |user| %>
+      <% if user.username != "superuser" && user.username != "Gosc"  %>
+        <tr>
+          <div class="thumbnail clearfix">
+            <img src="<%= user.avatar %>" style="width:128px;height:128px;margin-right:10px" class="pull-left span2 clearfix">
+            <div class="caption" class="pull-left">
+              <%= link_to user, :class => "btn btn-primary pull-right", "title" => "Pokaż" do %>
+                <i class="fa fa-eye"></i>
+              <% end %>
+              <% if current_user.username != user.username %>
+                <%= link_to new_user_message_path(user), :class => "btn btn-success pull-right", "title" => "Wyślij Wiadomość" do %>
+                  <i class="fa fa-envelope"></i>
+                <% end %>
+              <% end %>
 
-<table class="table table-hover">
-<thead>
-<tr>
-
-</tr>
-</thead>
-
-<% @users.each do |user| %>
-<% if user.username != "superuser" && user.username != "Gosc"  %>
-<tr>
-<div class="thumbnail clearfix">
-   <img src="<%= user.avatar %>" style="width:128px;height:128px;margin-right:10px" class="pull-left span2 clearfix">
-   <div class="caption" class="pull-left">
-      <%= link_to user, :class => "btn btn-primary pull-right", "title" => "Pokaż" do %>
-  	 <i class="icon-eye-open"></i>
+              <h3 style="margin-bottom:5px;"><%= link_to user.name_surname , user %></h3>
+              <small><i class="fa fa-gift"></i> <%=I18n.l user.born, :format => "%d %B %Y" %></small><br>
+              <small><i class="fa fa-envelope"></i> <%= user.email %></small>
+              <div class="btn-group" style="display:block!important;margin:5px 0px -5px 0px;">
+                <% if user.potwierdzenie == 1 && current_user.role == "admin" && user.role != "admin" %>
+                  <%= link_to({:controller => "users", :action => "odwolaj", :id => user.id}, {:class => "btn btn-danger", "title"=>"Odwołaj"}) do %>
+                      <i class="fa fa-thumbs-down"></i>
+                  <% end %>
+                <% elsif user.potwierdzenie == 0 && current_user.role == "admin" && user.role != "admin" %> 
+                  <%= link_to({:controller => "users", :action => "potwierdz", :id => user.id}, {:confirm => "Czy napewno chcesz potwierdzić użytkownika #{user.username}? \nZostanie wysłany do niego mail z informacją o potwierdzeniu.",:class => "btn btn-success", "title"=>"Potwierdź"}) do %>
+                      <i class="fa fa-thumbs-up"></i>
+                  <% end %>
+                <% end %>
+                <% if (user.username == current_user.username) || (current_user.role == "admin" && user.role != "admin") %>
+                  <%= link_to edit_user_path(user), :class => "btn btn-inverse", "title" => "Edytuj" do %>
+                      <i class="fa fa-edit"></i>
+                  <% end %>
+                <% end %>
+                <% if current_user.role == "admin" && user.role != "admin" %>
+                  <%= link_to user, :confirm => "Czy napewno chcesz usunąć użytkownika #{user.username}?", :method => :delete, :class => "btn btn-danger", "title" => "Usuń" do %>
+                      <i class="fa fa-trash-o"></i>
+                  <% end %>
+                <% end %>
+                </div>
+             </div>
+          </div>
+        </tr>
       <% end %>
-      <% if current_user.username != user.username %>
-	<%= link_to new_user_message_path(user), :class => "btn btn-success pull-right", "title" => "Wyślij Wiadomość" do %>
-		<i class="icon-envelope"></i>
-	<% end %>
-      <% end %>
-
-      <h3 style="margin-bottom:5px;"><%= link_to user.name_surname , user %></h3>
-      <small><i class="icon-gift"></i> <%=I18n.l user.born, :format => "%d %B %Y" %></small><br>
-      <small><i class="icon-envelope"></i> <%= user.email %></small> 
-      <div class="btn-group" style="display:block!important;margin:5px 0px -5px 0px;"> 
-	    <% if user.potwierdzenie == 1 && current_user.role == "admin" && user.role != "admin" %>
-		<%= link_to({:controller => "users", :action => "odwolaj", :id => user.id}, {:class => "btn btn-danger", "title"=>"Odwołaj"}) do %>
-	  		<i class="icon-thumbs-down"></i>
-		<% end %>
-	    <% elsif user.potwierdzenie == 0 && current_user.role == "admin" && user.role != "admin" %> 
-		<%= link_to({:controller => "users", :action => "potwierdz", :id => user.id}, {:confirm => "Czy napewno chcesz potwierdzić użytkownika #{user.username}? \nZostanie wysłany do niego mail z informacją o potwierdzeniu.",:class => "btn btn-success", "title"=>"Potwierdź"}) do %>
-	  		<i class="icon-thumbs-up"></i>
-		<% end %>
-	    <% end %>
-    	    <% if (user.username == current_user.username) || (current_user.role == "admin" && user.role != "admin") %>
-		<%= link_to edit_user_path(user), :class => "btn btn-inverse", "title" => "Edytuj" do %>
-  			<i class="icon-edit"></i>
-		<% end %>
-    	    <% end %>
-	    <% if current_user.role == "admin" && user.role != "admin" %>
-		<%= link_to user, :confirm => "Czy napewno chcesz usunąć użytkownika #{user.username}?", :method => :delete, :class => "btn btn-danger", "title" => "Usuń" do %>
-	  		<i class="icon-trash"></i>
-		<% end %>
-	    <% end %>
-      </div>
-   </div>
-</div>
-</tr>
-<% end %>
-<% end %>
-</table>
+    <% end %>
+  </table>
 <% end %>
 
 <% if @users.count > 9 %>
