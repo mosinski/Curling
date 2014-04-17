@@ -102,26 +102,34 @@
 <hr>
 
 <p id="comment_reply_username"></p>
-<div class="comment">
+<div class="comment row">
   <%= form_tag({controller: "news", action: "add_comment"}) do %>
     <%= hidden_field_tag "id", @news.id %>
     <%= hidden_field_tag "parrent_id" %>
 
     <% if current_user %>
-      <%= image_tag(current_user.avatar, :class => "img-rounded", :width => "70", "style" => "margin:5px;") %>
+      <%= image_tag(current_user.avatar, :class => "img-rounded col-md-2", :width => "70", "style" => "margin:5px;") %>
     <% else %>
-      <div>
-        <%= label_tag "Nick", nil, "style" => "display:inline-block;width:80px;text-align:right;font-size:17px;" %>
-        <%= text_field_tag "guest_name",nil, "style" => "display:inline-block;" %>
+      <div class="col-md-12">
+        <div class="col-md-2">
+          <%= label_tag "Nick", nil, class: "pull-right", "style" => "display:inline-block;font-size:17px;" %>
+        </div>
+        <div class="col-md-9">
+          <%= text_field_tag "guest_name",nil, class: "pull-left", "style" => "display:inline-block;" %>
+        </div>
       </div>
-      <%= image_tag("/avatar.jpg", :class => "img-rounded", "style" => "margin:5px;width:70px;height:70px;") %>
+      <div class="col-md-2">
+        <%= image_tag("/avatar.jpg", :class => "img-rounded", "style" => "margin:5px;width:70px;height:70px;") %>
+      </div>
     <% end %>
 
-    <%= text_area_tag :komentarz, nil, :rows => 3, "style" => "width:60%;" %>
-
-    <button type="submit" class="btn btn-lg btn-success">
-      <h1><i class="fa fa-comment"></i></h1>
-    </button>
+    <div class="col-md-9">
+      <%= text_area_tag :komentarz, nil, :rows => 3, class: "form-control counted" %>
+      <h6 class="col-md-6" id="counter">500 znaków pozostało</h6>
+      <button type="submit" class="btn btn-sm btn-success pull-right">
+        <i class="fa fa-comment"></i> Dodaj komentarz
+      </button>
+    </div>
   <% end %>
 </div>
 
@@ -201,6 +209,87 @@ $(".comment_reply").click(function () {
 });
 
 $('.share_me').share({
-  button_text: 'Udostępnij',
+  button_text: 'Udostępnij'
 })
+</script>
+
+<script>
+(function($) {
+ $.fn.charCounter = function (max, settings) {
+ max = max || 100;
+ settings = $.extend({
+   container: "<span></span>",
+   classname: "charcounter",
+   format: "(%1 znaków pozostało)",
+   pulse: true,
+   delay: 0
+ }, settings);
+ var p, timeout;
+
+ function count(el, container) {
+ el = $(el);
+ if (el.val().length > max) {
+   el.val(el.val().substring(0, max));
+   if (settings.pulse && !p) {
+     pulse(container, true);
+   };
+ };
+ if (settings.delay > 0) {
+   if (timeout) {
+     window.clearTimeout(timeout);
+   }
+   timeout = window.setTimeout(function () {
+       container.html(settings.format.replace(/%1/, (max - el.val().length)));
+       }, settings.delay);
+ } else {
+   container.html(settings.format.replace(/%1/, (max - el.val().length)));
+ }
+ };
+
+ function pulse(el, again) {
+   if (p) {
+     window.clearTimeout(p);
+     p = null;
+   };
+   el.animate({ opacity: 0.1 }, 100, function () {
+     $(this).animate({ opacity: 1.0 }, 100);
+   });
+   if (again) {
+     p = window.setTimeout(function () { pulse(el) }, 200);
+   };
+ };
+
+ return this.each(function () {
+   var container;
+   if (!settings.container.match(/^<.+>$/)) {
+     container = $(settings.container);
+   } else {
+     $(this).next("." + settings.classname).remove();
+     container = $(settings.container)
+     .insertAfter(this)
+     .addClass(settings.classname);
+   }
+   $(this)
+   .unbind(".charCounter")
+   .bind("keydown.charCounter", function () { count(this, container); })
+   .bind("keypress.charCounter", function () { count(this, container); })
+   .bind("keyup.charCounter", function () { count(this, container); })
+   .bind("focus.charCounter", function () { count(this, container); })
+   .bind("mouseover.charCounter", function () { count(this, container); })
+   .bind("mouseout.charCounter", function () { count(this, container); })
+   .bind("paste.charCounter", function () { 
+     var me = this;
+     setTimeout(function () { count(me, container); }, 10);
+   });
+   if (this.addEventListener) {
+     this.addEventListener('input', function () { count(this, container); }, false);
+   };
+   count(this, container);
+ });
+};
+})(jQuery);
+
+$(function() {
+  $(".counted").charCounter(500,{container: "#counter"});
+});
 </script>
