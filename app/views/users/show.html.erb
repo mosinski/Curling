@@ -1,119 +1,118 @@
-<p style="display:inline">
-<%= image_tag(@user.avatar, :class => "img-polaroid", "style"=>"height:128px; width:128px;") %>
-</p>
+<div class="panel">
+  <%= image_tag(@user.avatar, :class => "pic img-circle") %>
+  <div class="name"><small><%= @user.name_surname %>, <%= @user.username %></small></div>
+  <a href="#" class="btn btn-xs btn-primary pull-right" style="margin:10px;"><span class="glyphicon glyphicon-picture"></span> Zmień tło</a>
+</div>
 
-<h2 style="display:inline-block;margin:80px 0px 30px 20px;width:400px;">
-<%= @user.username %> (<span style="text-transform:none;"><%= @user.name_surname %></span>)
-</h2>
 <% if current_user.username == @user.username %>
-<div style="margin:-45px 0 20px 10px;">
-	<%= link_to "#avatar_upload", "data-toggle"=>"modal", :class=>"btn" do %>
-		<i class="icon-upload-alt"></i> <i class="icon-picture"></i>
-	<% end %>
+  <div style="margin:-45px 0 20px 10px;">
+  <%= link_to "#avatar_upload", "data-toggle"=>"modal", :class=>"btn" do %>
+    <i class="icon-upload-alt"></i> <i class="icon-picture"></i>
+<% end %>
 
-	<%= link_to({:controller => "users", :action => "reset_avatar", :id => @user.id}, {:confirm => "Czy napewno chcesz przywrócić standardowy avatar? \nDotychczasowy avatar konta nie będzie już dostępny.",:class => "btn"}) do %>
-  		<i class="icon-trash"></i> <i class="icon-picture"></i>
-	<% end %>
+  <%= link_to({:controller => "users", :action => "reset_avatar", :id => @user.id}, {:confirm => "Czy napewno chcesz przywrócić standardowy avatar? \nDotychczasowy avatar konta nie będzie już dostępny.",:class => "btn"}) do %>
+    <i class="icon-trash"></i> <i class="icon-picture"></i>
+<% end %>
 
 </div>
 <% end %>
 
-<div class="well">
+<div class="well" style="margin-top:-10px">
+  <div style="margin-top:40px;">
+    <div style="display:inline-block;padding:10px;">
+      <b><i class="icon-envelope"></i> Email:</b>
+      <span class="label label-info"><%= @user.email %></span>
+    </div>
 
-	<div style="display:inline-block;padding:10px;">
-  		<b><i class="icon-envelope"></i> Email:</b>
-  		<span class="label label-info"><%= @user.email %></span>
-	</div>
+    <div style="display:inline-block;padding:10px;">
+      <b><i class="icon-gift"></i> Urodziny:</b>
+      <span class="label label-info"><%=I18n.l @user.born, :format => "%d %B %Y" %></span>
+    </div>
 
-	<div style="display:inline-block;padding:10px;">
-  		<b><i class="icon-gift"></i> Urodziny:</b>
-  		<span class="label label-info"><%=I18n.l @user.born, :format => "%d %B %Y" %></span>
-	</div>
+    <br>
 
-<br>
+    <% if @user.login_count > 0 %>
+      <div style="display:inline-block;padding:10px;">
+        <b><i class="icon-sort"></i> Liczba logowań:</b>
+        <span class="label label-info"><%= @user.login_count %></span>
+      </div>
 
-<% if @user.login_count > 0 %>
-	<div style="display:inline-block;padding:10px;">
-  		<b><i class="icon-sort"></i> Liczba logowań:</b>
-  		<span class="label label-info"><%= @user.login_count %></span>
-	</div>
+      <% if current_user.role == "admin" %>
+        <div style="display:inline-block;padding:10px;">
+          <b><i class="icon-ban-circle"></i> Liczba nieudanych logowań:</b>
+          <span class="label label-info"><%= @user.failed_login_count %></span>
+        </div>
+      <% end %>
 
-	<% if current_user.role == "admin" %>
-	<div style="display:inline-block;padding:10px;">
-  		<b><i class="icon-ban-circle"></i> Liczba nieudanych logowań:</b>
-  		<span class="label label-info"><%= @user.failed_login_count %></span>
-	</div>
-	<% end %>
+      <div style="display:inline-block;padding:10px;">
+        <b><i class="icon-eye-open"></i> Ostatnia aktywność:</b>
+        <span class="label label-info"><%=I18n.l @user.last_request_at, :format => :long   %></span>
+      </div>
 
-	<div style="display:inline-block;padding:10px;">
-  		<b><i class="icon-eye-open"></i> Ostatnia aktywność:</b>
-  		<span class="label label-info"><%=I18n.l @user.last_request_at, :format => :long   %></span>
-	</div>
+      <% if current_user.role == "admin" %>
+        <div style="display:inline-block;padding:10px;">
+          <b><i class="icon-globe"></i> Ostatnia logowanie z IP:</b>
+          <span class="label label-info"><%= @user.last_login_ip %></span>
+        </div>
+      <% end %>
 
-	<% if current_user.role == "admin" %>
-	<div style="display:inline-block;padding:10px;">
-  		<b><i class="icon-globe"></i> Ostatnia logowanie z IP:</b>
-  		<span class="label label-info"><%= @user.last_login_ip %></span>
-	</div>
-	<% end %>
-
-	<div style="display:inline-block;padding:10px;">
-  		<b><i class="icon-comment"></i> Liczba komentarzy:</b>
-  		<span class="label label-info"><%= @comments.count %></span>
-	</div>
-<% end %>
-
+      <div style="display:inline-block;padding:10px;">
+        <b><i class="icon-comment"></i> Liczba komentarzy:</b>
+        <span class="label label-info"><%= @comments.count %></span>
+      </div>
+    <% end %>
+  </div>
 </div>
 
 <%= link_to new_user_message_path(@user), class: "btn btn-primary input-medium pull-left" do %>
-	<i class="icon-share"></i> Wyślij wiadomość
+  <i class="icon-share"></i> Wyślij wiadomość
 <% end %>
 
 <div id="avatar_upload" class="modal hide fade">
-            <div class="modal-header">
-              <a class="close" data-dismiss="modal">
-		<i class="icon-remove-circle"></i>
-	      </a>
-              <h3>Dodawanie Avatara do Profilu</h3>
-            </div>
-            <div class="modal-body">
-<center>
-<%= form_tag({:controller => "users", :action => "upload_avatar"}, :method => :post, :multipart => true) do %>
-	<%= image_tag("spacer.gif", :class=>"img-polaroid",:id=>"ftk",:width=>"170px;") %>
-	<br>
-	<span class="label label-info" style="margin:10px;">
-		** Rozmiar obrazka nie wiekszy niż 100KB
-	</span>
-</center>
-            </div>
-            <div class="modal-footer" id="stopka_image_add">
-            	<div>
-  		   <div class="myfileupload-buttonbar">
-     			<label class="myui-button" style="float:left;">
-        		  <span class="btn btn-success">
-			  <i class="icon-folder-open-alt"></i> 
-			  Wybierz Avatar
-			  </span>
-			  <%= file_field_tag "file", "style"=>"height:40px;display:none;", "onchange"=>"readURL(this);" %>
-     			</label>
-  		   </div>
-		</div>
-		
-            	<%= button_tag(type: "submit", class: "btn btn-primary", :id=>"start") do %>
-    			<i class="icon-upload icon-white"></i> Dodaj Avatar
-  		<% end %>
-            </div>
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">
+      <i class="icon-remove-circle"></i>
+    </a>
+    <h3>Dodawanie Avatara do Profilu</h3>
+  </div>
+  <div class="modal-body">
+    <center>
+      <%= form_tag({:controller => "users", :action => "upload_avatar"}, :method => :post, :multipart => true) do %>
+        <%= image_tag("spacer.gif", :class=>"img-polaroid",:id=>"ftk",:width=>"170px;") %>
+      <br>
+      <span class="label label-info" style="margin:10px;">
+        ** Rozmiar obrazka nie wiekszy niż 100KB
+      </span>
+    </center>
+  </div>
+  <div class="modal-footer" id="stopka_image_add">
+    <div>
+      <div class="myfileupload-buttonbar">
+        <label class="myui-button" style="float:left;">
+          <span class="btn btn-success">
+            <i class="icon-folder-open-alt"></i> 
+            Wybierz Avatar
+          </span>
+          <%= file_field_tag "file", "style"=>"height:40px;display:none;", "onchange"=>"readURL(this);" %>
+        </label>
+      </div>
+    </div>
+
+    <%= button_tag(type: "submit", class: "btn btn-primary", :id=>"start") do %>
+      <i class="icon-upload icon-white"></i> Dodaj Avatar
+  <% end %>
+  </div>
 <% end %>
 </div>
 <script>
-     function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
+function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
 
-                reader.onload = function (e) {
-                    $('#ftk').attr('src', e.target.result).width(170).height(170);
-                };
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
+    reader.onload = function (e) {
+      $('#ftk').attr('src', e.target.result).width(170).height(170);
+    };
+    reader.readAsDataURL(input.files[0]);
+  }
+}
 </script>

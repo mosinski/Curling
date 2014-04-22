@@ -1065,3 +1065,21 @@ ol {
 }
 a.clickable { color: inherit; }
 a.clickable:hover { text-decoration:none; }
+
+.pic {
+  margin-top:50px; 
+  width:120px;
+  margin-left:20px;
+  margin-bottom:-60px;
+}
+
+.panel {
+  background-image:url("http://teamglarus.gl3366.ch/wp-content/uploads/Hintergrund_3_1.jpg"); 
+}
+
+.name {
+  position:absolute;
+  padding-left:150px;
+  padding-top:5px;
+  font-size:30px;
+}
