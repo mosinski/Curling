@@ -10,6 +10,6 @@ class User < ActiveRecord::Base
   
   def self.search(search, page)
   paginate :per_page => 9, :page => page,
-           :conditions => ['username ILIKE :q or name_surname ILIKE :q or email ILIKE :q', q: "%#{search}%"], :order => 'name_surname'
+           :conditions => ['username LIKE :q or name_surname LIKE :q or email LIKE :q', q: "%#{search}%"], :order => 'name_surname'
   end
 end

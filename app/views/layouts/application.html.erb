@@ -323,14 +323,14 @@
 </script>
 <script type="text/javascript">
 $(document).ready(function(){
-  if ($.cookie('hide_tournament') == undefined) {
+  if ($.cookie('hide_tournament') != 'yes') {
     $('#tournament').modal('show')
   }
   $('#tournament input[type=checkbox],#tournament label').click(function() {
-    if ($('#tournament input[type=checkbox]').is(':checked') && $.cookie('hide_tournament') != 'yes'){
-      $.cookie('hide_tournament', 'yes', {expires: 365 });
-    } else if ($.cookie('hide_tournament') == 'yes') {
-      $.cookie('hide_tournament', null);
+    if ($('#tournament input[type=checkbox]').is(':checked')){
+      $.cookie('hide_tournament', 'yes', { expires: 31, path: '/' });
+    } else if (!$('#tournament input[type=checkbox]').is(':checked')) {
+      $.removeCookie('hide_tournament', { path: '/' });
     }
   });
   $("address#map").each(function(){
