@@ -147,59 +147,9 @@
   <% end %>
 <% end %>
 
-<div id="image_upload" class="modal hide fade">
-  <div class="modal-header">
-    <a class="close" data-dismiss="modal">
-      <i class="fa fa-times-circle"></i>
-    </a>
-    <h3>Dodawanie Zdjęcia do Aktualności Ogólnej</h3>
-  </div>
-  <div class="modal-body">
-    <center>
-      <%= form_tag({:controller => "images", :action => "create"}, :method => :post, :multipart => true) do %>
-        <%= text_field_tag :przydzial, "news", "style"=>"display:none"%>
-        <%= text_field_tag :przydzial_id, @news.id, "style"=>"display:none"%>
-        <%= image_tag("spacer.gif", :class=>"img-polaroid",:id=>"ftk",:width=>"170px;") %>
-        <br>
-        <span class="label label-info" style="margin:10px;">
-          ** Rozmiar zdjęcia nie wiekszy niż 200 kB
-        </span>
-        <br>
-        <%= text_area_tag :opis,nil, "style"=>"width:80%", :placeholder => "Krótki opis do zdjęcia..." %>
-    </center>
-  </div>
-  <div class="modal-footer" id="stopka_image_add">
-    <div>
-      <div class="myfileupload-buttonbar">
-        <label class="myui-button" style="float:left;">
-          <span class="btn btn-success">
-            <i class="icon-folder-open-alt"></i>
-            Wybierz Zdjęcie
-          </span>
-          <%= file_field_tag "file", "style"=>"height:40px;display:none;", "onchange"=>"readURL(this);" %>
-        </label>
-      </div>
-    </div>
-
-        <%= button_tag(type: "submit", class: "btn btn-primary", :id=>"start") do %>
-          <i class="fa fa-upload fa-invert"></i> Dodaj Zdjęcie
-        <% end %>
-  </div>
-      <% end %>
-</div>
+<%= render "shared/add_image" %>
 
 <script>
-function readURL(input) {
-  if (input.files && input.files[0]) {
-    var reader = new FileReader();
-
-    reader.onload = function (e) {
-      $('#ftk').attr('src', e.target.result).width(170).height(170);
-    };
-    reader.readAsDataURL(input.files[0]);
-  }
-}
-
 $(".comment_reply").click(function () {
   var text = this.id
   var parent = this.title
@@ -211,8 +161,10 @@ $(".comment_reply").click(function () {
 $('.share_me').share({
   button_text: 'Udostępnij'
 })
+$(document).ready(function () {
+  $(".counted").charCounter(500,{container: "#counter"});
+});
 </script>
-
 <script>
 (function($) {
  $.fn.charCounter = function (max, settings) {
@@ -277,7 +229,7 @@ $('.share_me').share({
    .bind("focus.charCounter", function () { count(this, container); })
    .bind("mouseover.charCounter", function () { count(this, container); })
    .bind("mouseout.charCounter", function () { count(this, container); })
-   .bind("paste.charCounter", function () { 
+   .bind("paste.charCounter", function () {
      var me = this;
      setTimeout(function () { count(me, container); }, 10);
    });
