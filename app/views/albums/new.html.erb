@@ -1,19 +1,15 @@
-<h3><i class="icon-book"></i> Nowy Album</h3>
+<h3><i class="fa fa-book"></i> Nowy Album</h3>
 
 <%= form_for @album, :html => { :multipart => true } do |f| %>
-<%= render partial: 'form', locals: { f: f } %>
+  <%= render partial: 'form', locals: { f: f } %>
 
-<div class="actions">
+  <div class="actions">
+    <button type="submit" class="btn btn-primary">
+      <i class="glyphicon glyphicon-check"></i> Stwórz Album
+    </button>
 
-     <button type="submit" class="btn btn-primary">
-  	<i class="icon-check"></i> Stwórz Album
-     </button>
-     
-     <%= link_to "/galeria",:class => "btn btn-small btn-primary" do %>
-	<i class="icon-share-alt"></i> Wróć do listy albumów
-     <% end %>
-     
-</div>
-
+    <%= link_to "/galeria",:class => "btn btn-sm btn-primary" do %>
+      <i class="fa fa-share"></i> Wróć do listy albumów
+    <% end %>
+  </div>
 <% end %>
-
