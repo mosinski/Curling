@@ -1,15 +1,15 @@
-<h3><i class="icon-edit"></i> Edycja Profilu</h3>
+<h3><i class="glyphicon glyphicon-edit"></i> Edycja Profilu</h3>
 <%= form_for @user, :html => { :multipart => true, class: "form-horizontal" } do |f| %>
   <%= render partial: 'form', locals: { f: f } %>
 
-  <div class="control-group">
-    <%= f.label :facebook_ID, class: "control-label" %>
-    <div class="controls">
-      <div class="field input-prepend">
-        <span class="add-on"><i class="icon-facebook"></i></span>
-        <%= f.text_field :facebook_id, disabled: true %>
-        <%= link_to "/auth/facebook", class: "btn btn-facebook" do %>
-          <span class="icon icon-exchange"></span>
+  <div class="form-group">
+    <%= f.label :facebook_ID, class: "col-sm-4 control-label" %>
+    <div class="col-sm-8">
+      <div class="input-group col-xs-8">
+        <span class="input-group-addon"><i class="fa fa-facebook"></i></span>
+        <%= f.text_field :facebook_id, disabled: true, class: "form-control" %>
+        <%= link_to "/auth/facebook", class: "input-group-addon btn btn-facebook" do %>
+          <span class="fa fa-exchange"></span>
         <% end %>
       </div>
     </div>
@@ -18,7 +18,7 @@
   <div class="control-group">
     <div class="controls">
       <button type="submit" class="btn btn-primary">
-        <i class="icon-check"></i> Zapisz
+        <i class="glyphicon glyphicon-check"></i> Zapisz
       </button>
     </div>
   </div>

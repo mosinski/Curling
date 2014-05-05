@@ -137,7 +137,7 @@ class NewsController < ApplicationController
 
           @comment_reply = params[:parrent_id]
           @comment = Comment.build_from( @news, @user_who_commented.id, @comment_body )
-          @comment.save
+          @comment.save if @news.id != 13
 
           if @comment_reply != nil && @comment_reply != ""
             @parent = Comment.find(@comment_reply)
