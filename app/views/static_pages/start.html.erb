@@ -4,7 +4,7 @@
   </div>
   <% if @tournament_last.present? && @tournament_last.termin_end >= Date.today %>
     <p align="center">
-      <%= link_to @tournament_last, :class => "btn btn-lg btn-primary"  do %>
+      <%= link_to @tournament_last, :class => "btn btn-lg btn-sky"  do %>
         <%= @tournament_last.nazwa %>
       <% end %>
       <br /> <br />

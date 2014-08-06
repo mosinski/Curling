@@ -933,14 +933,14 @@ ol {
   color: rgb(187, 187, 187);
 }
 
-#slideshow { 
-  margin: 10px auto; 
-  position: relative; 
-  width: 220px; 
-  height: 160px; 
+#slideshow {
+  margin: 10px auto;
+  position: relative;
+  width: 220px;
+  height: 160px;
 }
 
-#slideshow > div { 
+#slideshow > div {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -1044,30 +1044,28 @@ ol {
   width: 125px;
 }
 
-.clickable
-{
+.clickable {
   cursor: pointer;
 }
 
-.clickable .glyphicon
-{
+.clickable .glyphicon {
   background: rgba(0, 0, 0, 0.15);
   display: inline-block;
   padding: 6px 12px;
   border-radius: 4px
 }
 
-.panel-heading span
-{
+.panel-heading span {
   margin-top: -23px;
   font-size: 15px;
   margin-right: -9px;
 }
+
 a.clickable { color: inherit; }
 a.clickable:hover { text-decoration:none; }
 
 .pic {
-  margin-top:50px; 
+  margin-top:50px;
   width:120px;
   margin-left:20px;
   margin-bottom:-60px;
@@ -1082,4 +1080,25 @@ a.clickable:hover { text-decoration:none; }
   padding-left:150px;
   padding-top:5px;
   font-size:30px;
+}
+
+.btn-sky {
+  color: #fff;
+  background-color: #0bacd3;
+  border-bottom:2px solid #098aa9;
+  box-shadow: 1px 1px 5px #888888;
+}
+
+.btn-sky:hover,.btn-sky.active:focus, .btn-sky:focus, .open>.dropdown-toggle.btn-sky {
+  color: #fff;
+  background-color: #29b6d8;
+  border-bottom:2px solid #2192ad;
+  outline: none;
+}
+
+.btn-sky:active, .btn-sky.active {
+  color: #fff;
+  background-color: #0a97b9;
+  border-top:2px solid #087994;
+  outline-offset: none;
 }
