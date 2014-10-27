@@ -1,5 +1,3 @@
-
-
 case Rails.env
 
 when "development"
@@ -16,4 +14,3 @@ User.create(:username => ENV['user2_login'], :password => ENV['user2_password'],
 
 User.create(:username => ENV['user3_login'], :password => ENV['user3_password'], :password_confirmation => ENV['user3_password'], :email => "gosc@asd.pl", :name_surname => "Gosc Niezalogowany", :born => "1900-01-01", :pesel => "11111111111", :role => "gosc", :potwierdzenie => 0)
 end
-

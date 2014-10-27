@@ -171,8 +171,8 @@
                       <% end %>
                     </div>
                     <div>
-                      <%= link_to("http://www.media-mag.pl/", "target"=>"_blank") do %>
-                        <%= image_tag("mm.jpg") %>
+                      <%= link_to("http://www.tapflo.com.pl", "target"=>"_blank") do %>
+                        <%= image_tag("tapflo.jpg") %>
                       <% end %>
                     </div>
                     <div>
@@ -198,11 +198,6 @@
                     <div>
                       <%= link_to("http://cukierniawz.pl/", "target"=>"_blank") do %>
                         <%= image_tag("cukiernia.jpg") %>
-                      <% end %>
-                    </div>
-                    <div>
-                      <%= link_to("http://www.malinowyogrod.pl/", "target"=>"_blank") do %>
-                        <%= image_tag("malinowy.jpg") %>
                       <% end %>
                     </div>
                     <div style="margin-left:-15px">
@@ -317,12 +312,13 @@
 <div class="circle">
 </div>
 <%= render "shared/contact_modal" %>
-<%= render "shared/tournament_modal" %>
+<%#= render "shared/tournament_modal" %>
 <script type="text/javascript" src="https://apis.google.com/js/plusone.js">
   {lang: 'pl'}
 </script>
 <script type="text/javascript">
 $(document).ready(function(){
+  /*
   if ($.cookie('hide_tournament') != 'yes') {
     $('#tournament').modal('show')
   }
@@ -333,6 +329,7 @@ $(document).ready(function(){
       $.removeCookie('hide_tournament', { path: '/' });
     }
   });
+  */
   $("address#map").each(function(){
     var embed ="<iframe width='100%' height='350' frameborder='0' scrolling='no'  marginheight='0' marginwidth='0' src='https://maps.google.com/maps?&amp;q="+ encodeURIComponent( $(this).text() ) +"&amp;output=embed&amp;z=15&amp;iwloc=near'></iframe>";
     $(this).html(embed);
