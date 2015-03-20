@@ -2,41 +2,41 @@
 
 <%= form_tag request.path, :method => 'get', :id=>"custom-search-form", :class=>"form-search form-horizontal pull-right" do %>
   <div class="input-append">
-  	<%= text_field_tag :search, params[:search], :class=>"search-query", :placeholder=>"Szukaj.." %>
-	<button type="submit" class="btn"><i class="icon-search"></i></button>
+    <%= text_field_tag :search, params[:search], :class=>"search-query", :placeholder=>"Szukaj.." %>
+    <button type="submit" class="btn"><i class="icon-search"></i></button>
   </div>
 <% end %>
-				<ul class="list3">
-				<% if @dashboards.count == 0 %>
-				<br><br>
-				<pre>Brak Aktualności Klubowych ..</pre>
-				<% else %>
-				<% @dashboards.each do |dashboard| %>
-					<li style="background:url('http://a.wpimg.pl/a/i/supersport/2012/line.png') repeat-x scroll 0px 5% transparent;"><span><em><%= image_tag("icon4.gif") %></em></span><b><%= link_to dashboard.tytul, dashboard %></b><%= (strip_tags(dashboard.tekst))[0..300]+"..." %><br />
+<ul class="list3">
+  <% if @dashboards.count == 0 %>
+    <br><br>
+        <pre>Brak Aktualności Klubowych ..</pre>
+  <% else %>
+    <% @dashboards.each do |dashboard| %>
+      <li style="background:url('http://a.wpimg.pl/a/i/supersport/2012/line.png') repeat-x scroll 0px 5% transparent;"><span><em><%= image_tag("icon4.gif") %></em></span><b><%= link_to dashboard.tytul, dashboard %></b><%= (strip_tags(dashboard.tekst))[0..300]+"..." %><br />
 
-					<div class="dashboard_data">
-					<i class="icon-calendar"></i> Opublikowano: <%= dashboard.created_at.strftime("%d.%m.%Y %H:%M") %> <i class="icon-comments-alt"></i> <%= dashboard.comment_threads.count %>
-					</div>
+      <div class="dashboard_data">
+        <i class="icon-calendar"></i> Opublikowano: <%= dashboard.created_at.strftime("%d.%m.%Y %H:%M") %> <i class="icon-comments-alt"></i> <%= dashboard.comment_threads.count %>
+      </div>
 
-					<div style="float:right;">
-					<%= link_to dashboard, :class => "btn btn-small" do %>
-  						 Czytaj więcej »
-					<% end %>
-    				<% if current_user.role == "admin" %>
-					<%= link_to edit_dashboard_path(dashboard), :class => "btn btn-small btn-inverse" do %>
-  						<i class="icon-edit"></i> Edytuj
-					<% end %>
-					<%= link_to dashboard, :confirm => "Czy napewno chcesz usunąć aktualność klubową '#{dashboard.tytul}' wraz z wszystkimi komentarzami?", :method => :delete, :class => "btn btn-small btn-danger" do %>
-  						<i class="icon-trash"></i> Usuń
-					<% end %>
-				<% end %>
-					</div>
-					</li>
-				<% end %>
-				<% end %>
-				</ul>
+      <div style="float:right;">
+        <%= link_to dashboard, class: "btn btn-sm btn-default" do %>
+          Czytaj więcej »
+        <% end %>
+        <% if current_user.role == "admin" %>
+          <%= link_to edit_dashboard_path(dashboard), class: "btn btn-sm btn-primary" do %>
+            <i class="fa fa-edit"></i> Edytuj
+          <% end %>
+          <%= link_to dashboard, confirm: "Czy napewno chcesz usunąć aktualność klubową '#{dashboard.tytul}' wraz z wszystkimi komentarzami?", method: :delete, class: "btn btn-small btn-danger" do %>
+            <i class="fa fa-trash-o"></i> Usuń
+          <% end %>
+        <% end %>
+      </div>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
 <% if @dashboards.count > 10 %>
   <div id="blog-pager" class="blog-pager">
-    <%= will_paginate @news, :container => false %>
+    <%= will_paginate @news, container: false %>
   </div>
 <% end %>
