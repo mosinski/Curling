@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.1.5'
+ruby '2.2.0'
 
 gem 'rails', '3.2.11'
 gem 'sqlite3', group: :development
@@ -27,3 +27,4 @@ gem 'rails_12factor'
 gem 'omniauth-facebook'
 gem 'certified'
 gem 'font-awesome-rails'
+gem 'test-unit'

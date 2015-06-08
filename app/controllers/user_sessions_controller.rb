@@ -8,7 +8,7 @@ class UserSessionsController < ApplicationController
       @user_session = UserSession.new
 
       respond_to do |format|
-        format.html # new.html.erb
+        format.html
         format.xml { render :xml => @user_session }
       end
     end
@@ -53,7 +53,7 @@ class UserSessionsController < ApplicationController
         format.html { redirect_to(edit_user_path(current_user.id), flash: {success: "Informacja! Konto FB połączone"}) }
       end
     else
-      @user = User.find_by_facebook_id(request.env['omniauth.auth'][:info][:nickname])
+      @user = User.find_by_facebook_id(request.env['omniauth.auth'][:info][:nickname]) if request.env['omniauth.auth'][:info][:nickname]
 
       if @user != nil
         @user_sessions = UserSession.new(@user, true)
