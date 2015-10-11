@@ -25,10 +25,4 @@ plugins:
   - media
   
 toolbar: 
-  - undo redo
-  - indent outdent bullist numlist
-  - forecolor backcolor
-  - fontselect
-  - fontsizeselect
-      
-
+  - undo redo | indent outdent bullist numlist | forecolor backcolor | fontselect | fontsizeselect
