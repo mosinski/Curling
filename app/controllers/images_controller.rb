@@ -29,9 +29,9 @@ require 'net/ftp'
         end 
 
         if @file != nil 
-          ftp = Net::FTP.new('FTP.gdanskcurlingclub.pl')
+          ftp = Net::FTP.new('ftp.d6006549-46957.home-whs.pl')
           ftp.passive = true
-          ftp.login(user = "images@gdanskcurlingclub.pl", passwd = ENV['ftp_images_password'])
+          ftp.login(user = "f145751.images", passwd = ENV['ftp_images_password'])
 
           @file.each do |zdjecie|
             if (zdjecie.size < 200.kilobytes) && (zdjecie.original_filename.end_with?('.jpg','.JPG','.png','.PNG','.gif','.GIF'))
